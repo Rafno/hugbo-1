@@ -1,5 +1,6 @@
 # hugbo-1
-
+# Muna svo að nota CamelCase
+# þetta verður fun
 
 Agreed upon coding ediquette.
 
