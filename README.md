@@ -1,7 +1,7 @@
 # hugbo-1
 # Muna svo að nota CamelCase
 # þetta verður fun
-Muna svo að nefna breyturnar þá líka á ensku
+Muna svo að nefna breyturnar þá líka á ensku  \n
 Agreed upon coding ediquette.
 
 Braces
