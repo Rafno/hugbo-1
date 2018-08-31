@@ -1,7 +1,7 @@
 # hugbo-1
 # Muna svo að nota CamelCase
 # þetta verður fun
-
+Muna svo að nefna breyturnar þá líka á ensku
 Agreed upon coding ediquette.
 
 Braces
@@ -17,4 +17,5 @@ function changeName(String nafnid)
 {
   Console.writeLinr(nafnid);
 }
+
 ```
