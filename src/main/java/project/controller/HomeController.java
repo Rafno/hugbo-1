@@ -71,4 +71,19 @@ public class HomeController {
         // Look at the User.jsp file in /main/webapp/WEB-INF/jsp/ to see how the data is accessed
         return "User";
     }
+
+    @RequestMapping(value = "/medicine", method = RequestMethod.GET)
+    public String medicine(Model model)
+    {
+
+        String name = "Ibofen";
+        String type  = "Verkjalyf";
+
+
+        // Now let's add the attributes to the model
+        model.addAttribute("name",name);
+        model.addAttribute("type", type);
+
+        return "Medicine";
+    }
 }
