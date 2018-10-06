@@ -10,7 +10,7 @@
     </head>
     <body>
 
-    <h1>HBV501G Project Spring Boot Skeleton</h1>
+    <h1>HBV501G Project Spring Boot Skeleton, Boys how do we use react on this. Djók ég fatta þetta verður náttúrulega bara apin. Svo þetta index verður tómt. Bara Json stuff hérna.</h1>
     <p>This skeleton of a Spring Boot Web project was made to help groups get started on their projects without to much hassle.</p>
 
     <ul>
