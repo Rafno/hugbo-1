@@ -1,14 +1,15 @@
 package project.service;
 
-import project.persistence.entities.PostitNote;
+import project.persistence.entities.Medicine;
 
 import java.util.List;
 
 public interface PostitNoteService {
 
     /**
-     * Save a {@link PostitNote}
-     * @param postitNote {@link PostitNote} to be saved
+     * Save a {@link Medicine
+	 * }
+     * @param postitNote {@link Medicine} to be saved
      * @return {@link PostitNote} that was saved
      */
     PostitNote save(PostitNote postitNote);
@@ -44,5 +45,4 @@ public interface PostitNoteService {
      * @return All {@link PostitNote}s with the {@link String name} passed
      */
     List<PostitNote> findByName(String name);
-
 }
