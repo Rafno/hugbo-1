@@ -3,12 +3,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
 <jsp:include page="headNavigation/headNavigater.jsp" />
-    <head>
-        <title>Project Title</title>
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/medicine.css"/>"/>
-        <h2> Virkaði </h2>
-    </head>
-    <body>
-    </body>
-    <footer>Class HBV501G, University of Iceland</footer>
+
+<head>
+    <title>Project Title</title>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/medicine.css"/>"/>
+</head>
+<h1 class = "lowerBanner">
+    <form method ="POST" class ="searchbar">
+        <img src="searchImg.png" height="42" width="42"/>
+        <input type="text" name="search" placeholder="Search.."/>
+        <button type="Leita"/>Leita</button>
+    </form>
+</h1>
+<body>
+</body>
+<footer>Class HBV501G, University of Iceland</footer>
 </html>
+
