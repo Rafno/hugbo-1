@@ -8,14 +8,22 @@
 <head>
     <title>Project Title</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/medicine.css"/>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<h1 class = "lowerBanner">
-    <form method ="POST" class ="searchbar">
-        <img src="../../img/searchImg.png" alt=""/>
-        <input type="text" name="search" placeholder="Search.."/>
-        <button type="Leita"/>Leita</button>
-    </form>
-</h1>
+
+
+<div class="lowerBanner_container">
+    <h2 class="headerTxt">  Lyfjaskápurinn heima hjá þér</h2>
+    <div class = "lowerBanner">
+
+        <label>
+            <input type="text" placeholder="Search">
+        </label>
+    </div>
+
+</div>
 <body>
 </body>
 <footer>Class HBV501G, University of Iceland</footer>
