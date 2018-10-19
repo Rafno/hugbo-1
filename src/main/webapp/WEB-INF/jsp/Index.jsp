@@ -10,14 +10,13 @@
 </head>
 <h1 class = "lowerBanner">
     <form method ="POST" class ="searchbar">
-
-        <img src="${pageContext.request.contextPath}/${searchImg.png}" border=0 width="48px" height="48px" alt="Image Not found"/>
+        <img src="../../Images/searchImg.png"/>
         <input type="text" name="search" placeholder="Search.."/>
         <button type="Leita"/>Leita</button>
     </form>
 </h1>
 <body>
 </body>
-<footer>Class HBV501G, University of Iceland</footer>
+<footer></footer>
 </html>
 
