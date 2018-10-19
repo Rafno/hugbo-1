@@ -10,7 +10,8 @@
 </head>
 <h1 class = "lowerBanner">
     <form method ="POST" class ="searchbar">
-        <img src="searchImg.png" height="42" width="42"/>
+
+        <img src="${pageContext.request.contextPath}/${searchImg.png}" border=0 width="48px" height="48px" alt="Image Not found"/>
         <input type="text" name="search" placeholder="Search.."/>
         <button type="Leita"/>Leita</button>
     </form>
