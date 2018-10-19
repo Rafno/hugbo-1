@@ -15,7 +15,7 @@ public class Medicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name_medicine;
+    private String name;
     private String active_ingredient;
     private String pharmaceutical_form;
 	private String strength;
@@ -31,11 +31,11 @@ public class Medicine {
     public Medicine() {
     }
 	
-    public Medicine(String name_medicine, String active_ingredient, String pharmaceutical_form,
+    public Medicine(String name, String active_ingredient, String pharmaceutical_form,
 					String strength, String atc_code, String legal_status, String mah,
 					String other_info, String marketed, String ma_issued) {
 	
-		this.name_medicine = name_medicine;
+		this.name = name;
 		this.active_ingredient = active_ingredient;
 		this.pharmaceutical_form = pharmaceutical_form;
 		this.strength = strength;
@@ -50,12 +50,12 @@ public class Medicine {
 	
 	public String getName_medicine()
 	{
-		return name_medicine;
+		return name;
 	}
 	
-	public void setName_medicine(String name_medicine)
+	public void setName_medicine(String name)
 	{
-		this.name_medicine = name_medicine;
+		this.name = name;
 	}
 	
 	public String getActive_ingredient()
@@ -162,6 +162,6 @@ public class Medicine {
 	public String toString() {
 		return String.format(
 			"Medicine name[name_medicine=%s, id=%s]",
-			name_medicine,id);
+			name,id);
 	}
 }

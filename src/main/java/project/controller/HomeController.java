@@ -71,7 +71,7 @@ public class HomeController {
         // Look at the User.jsp file in /main/webapp/WEB-INF/jsp/ to see how the data is accessed
         return "User";
     }
-
+	/*
     @RequestMapping(value = "/medicine", method = RequestMethod.GET)
     public String medicine(Model model)
     {
@@ -86,4 +86,5 @@ public class HomeController {
 
         return "Medicine";
     }
+    */
 }

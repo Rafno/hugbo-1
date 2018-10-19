@@ -13,7 +13,7 @@
     </head>
     <body>
 
-    <h1><a href="/medicine">Medicine Notes</a></h1>
+    <h1><a href="/medicinePost">Medicine Notes</a></h1>
 
     <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
     <%--that is added to the model that is passed to the view.--%>
