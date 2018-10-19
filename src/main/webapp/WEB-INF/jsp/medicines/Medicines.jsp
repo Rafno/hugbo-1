@@ -17,8 +17,8 @@
 
     <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
     <%--that is added to the model that is passed to the view.--%>
-    <%--See MedicineController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
-    <sf:form method="POST" modelAttribute="medicine" action="/postit">
+    <%--See MedicineController, method medicineViewGet(), and find where this attribute is added to the model.--%>
+    <sf:form method="POST" modelAttribute="medicine" action="/medicinePost">
 
         <table>
             <tr>
@@ -39,15 +39,15 @@
 
     <%--Choose what code to generate based on tests that we implement--%>
     <c:choose>
-        <%--If the model has an attribute with the name `postitNotes`--%>
+        <%--If the model has an attribute with the name `medicines`--%>
         <c:when test="${not empty medicines}">
             <%--Create a table for the Medicine Notes--%>
             <table class="notes">
 
-                <%--For each postit note, that is in the list that was passed in the model--%>
+                <%--For each medicinePost note, that is in the list that was passed in the model--%>
                 <%--generate a row in the table--%>
-                <%--Here we set `postit` as a singular item out of the list `postitNotes`--%>
-                <c:forEach var="postit" items="${medicines}">
+                <%--Here we set `medicinePost` as a singular item out of the list `medicines`--%>
+                <c:forEach var="medicinePost" items="${medicines}">
                     <tr>
                         <%--We can reference attributes of the Entity by just entering the name we gave--%>
                         <%--it in the singular item var, and then just a dot followed by the attribute name--%>

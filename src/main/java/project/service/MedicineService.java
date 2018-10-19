@@ -9,16 +9,16 @@ public interface MedicineService {
     /**
      * Save a {@link Medicine
 	 * }
-     * @param postitNote {@link Medicine} to be saved
+     * @param medicine {@link Medicine} to be saved
      * @return {@link Medicine} that was saved
      */
-    Medicine save(Medicine postitNote);
+    Medicine save(Medicine medicine);
 
     /**
      * Delete {@link Medicine}
-     * @param postitNote {@link Medicine} to be deleted
+     * @param medicine {@link Medicine} to be deleted
      */
-    void delete(Medicine postitNote);
+    void delete(Medicine medicine);
 
     /**
      * Get all {@link Medicine}s

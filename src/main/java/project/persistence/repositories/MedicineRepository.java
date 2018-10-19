@@ -15,9 +15,9 @@ import java.util.List;
  */
 public interface MedicineRepository extends JpaRepository<Medicine, Long> {
 
-    Medicine save(Medicine postitNote);
+    Medicine save(Medicine medicine);
 
-    void delete(Medicine postitNote);
+    void delete(Medicine medicine);
 
     List<Medicine> findAll();
 
