@@ -6,7 +6,7 @@
 
     <head>
         <title>Project Title</title>
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/medicine.css"/>"/>
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/headNavigation.css"/>"/>
     </head>
     <header>
         <ul class="headNavigation">
