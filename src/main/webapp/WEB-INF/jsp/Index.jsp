@@ -15,6 +15,13 @@
             <li class="itemNavigation"><a class="active" href="/">ggggddddg</a></li>
         </ul>
     </header>
+    <h1 class = "lowerBanner">
+            <form method ="POST" class ="searchbar">
+                <img src="searchImg.png" height="42" width="42"/>
+                <input type="text" name="search" placeholder="Search.."/>
+                <button type="Leita"/>Leita</button>
+            </form>
+    </h1>
     <body>
     </body>
     <footer>Class HBV501G, University of Iceland</footer>
