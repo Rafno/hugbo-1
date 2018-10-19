@@ -406,6 +406,54 @@ INSERT INTO public.medicine (id, name_medicine, active_ingredient, pharmaceutica
 INSERT INTO public.medicine (id, name_medicine, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (131, 'Afstyla', 'lonoctocog alfa', 'Stungulyfsstofn og leysir. lausn', '2000 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
 (S) Sjúkrahúsmerkt', 'CSL Behring GmbH*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
 ', 'Já', '4.1.2017');
+
+CREATE TABLE public.medicine (
+    id integer NOT NULL,
+    name_medicine character varying(5000),
+    active_ingredient character varying(5000),
+    pharmaceutical_form character varying(5000),
+    strength character varying(5000),
+    atc_code character varying(5000),
+    legal_status character varying(5000),
+    mah character varying(5000),
+    other_info character varying(8000),
+    marketed character varying(5000),
+    ma_issued character varying(5000)
+);
+
+
+ALTER TABLE public.medicine OWNER TO postgres;
+
+--
+-- TOC entry 199 (class 1259 OID 16454)
+-- Name: medicine_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.medicine_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.medicine_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2807 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: medicine_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.medicine_id_seq OWNED BY public.medicine.id;
+
+
+--
+-- TOC entry 2676 (class 2604 OID 16459)
+-- Name: medicine id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
 INSERT INTO public.medicine (id, name_medicine, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (132, 'Afstyla', 'lonoctocog alfa', 'Stungulyfsstofn og leysir. lausn', '250 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
 (S) Sjúkrahúsmerkt', 'CSL Behring GmbH*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
 ', 'Já', '4.1.2017');
