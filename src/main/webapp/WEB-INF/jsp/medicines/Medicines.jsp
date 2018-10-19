@@ -7,18 +7,18 @@
 <html lang="en">
 
     <head>
-        <title>Postit Notes</title>
+        <title>Medicine Notes</title>
 
-        <link rel="stylesheet" type="text/css" href="<c:url value="/css/postitnote.css"/>"/>
+        <link rel="stylesheet" type="text/css" href="<c:url value="/css/medicine.css"/>"/>
     </head>
     <body>
 
-    <h1><a href="/postit">Postit Notes</a></h1>
+    <h1><a href="/medicine">Medicine Notes</a></h1>
 
     <%--Note that the `commandName` given here HAS TO MATCH the name of the attribute--%>
     <%--that is added to the model that is passed to the view.--%>
-    <%--See PostitNoteController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
-    <sf:form method="POST" modelAttribute="postitNote" action="/postit">
+    <%--See MedicineController, method postitNoteViewGet(), and find where this attribute is added to the model.--%>
+    <sf:form method="POST" modelAttribute="medicine" action="/postit">
 
         <table>
             <tr>
@@ -40,22 +40,22 @@
     <%--Choose what code to generate based on tests that we implement--%>
     <c:choose>
         <%--If the model has an attribute with the name `postitNotes`--%>
-        <c:when test="${not empty postitNotes}">
-            <%--Create a table for the Postit Notes--%>
+        <c:when test="${not empty medicines}">
+            <%--Create a table for the Medicine Notes--%>
             <table class="notes">
 
                 <%--For each postit note, that is in the list that was passed in the model--%>
                 <%--generate a row in the table--%>
                 <%--Here we set `postit` as a singular item out of the list `postitNotes`--%>
-                <c:forEach var="postit" items="${postitNotes}">
+                <c:forEach var="postit" items="${medicines}">
                     <tr>
                         <%--We can reference attributes of the Entity by just entering the name we gave--%>
                         <%--it in the singular item var, and then just a dot followed by the attribute name--%>
 
                         <%--Create a link based on the name attribute value--%>
-                        <td><a href="/postit/${postit.name}">${postit.name}</a></td>
+                        <td><a href="/medicine/${medicine.name}">${medicine.name}</a></td>
                         <%--The String in the note attribute--%>
-                        <td>${postit.note}</td>
+                        <td>${medicine.note}</td>
                     </tr>
                 </c:forEach>
             </table>
