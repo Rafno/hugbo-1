@@ -11,7 +11,7 @@
 </head>
 <h1 class = "lowerBanner">
     <form method ="POST" class ="searchbar">
-        <img src="./../../searchImg.png" alt=""/>
+        <img src="../../img/searchImg.png" alt=""/>
         <input type="text" name="search" placeholder="Search.."/>
         <button type="Leita"/>Leita</button>
     </form>
