@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
+
 <jsp:include page="headNavigation/headNavigater.jsp" />
 
 <head>
@@ -10,7 +11,7 @@
 </head>
 <h1 class = "lowerBanner">
     <form method ="POST" class ="searchbar">
-        <img src="<%=renderRequest.getContextPath()%>/images/loading.gif"
+        <img src="./../../searchImg.png" alt=""/>
         <input type="text" name="search" placeholder="Search.."/>
         <button type="Leita"/>Leita</button>
     </form>
@@ -19,4 +20,3 @@
 </body>
 <footer>Class HBV501G, University of Iceland</footer>
 </html>
-
