@@ -87,4 +87,13 @@ public class HomeController {
         return "Medicine";
     }
     */
+	/*
+		* This function reciewves the path /about and goes straight to jsp file about. There we hanve
+		* Html code that displays some text and images
+	 */
+	// To call this method, enter "localhost:8080/user" into a browser
+	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	public String about(Model model){
+		return "About/about";
+	}
 }
