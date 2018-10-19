@@ -9,13 +9,15 @@
     <title>Project Title</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/medicine.css"/>"/>
 </head>
-<h1 class = "lowerBanner">
+<div class = "lowerBanner">
+    <h2 class = "headerTxt"> Lyfjaskápurinn heima hjá þér </h2>
     <form method ="POST" class ="searchbar">
-        <img src="../../img/searchImg.png" alt=""/>
-        <input type="text" name="search" placeholder="Search.."/>
-        <button type="Leita"/>Leita</button>
+        <div class="search-wrapper">
+            <img src="../../img/searchImg.png" alt=""/>
+            <input class="search-input" placeholder="Search..." type="text" value="" name="search" id="search" />
+        </div>
     </form>
-</h1>
+</div>
 <body>
 </body>
 <footer>Class HBV501G, University of Iceland</footer>

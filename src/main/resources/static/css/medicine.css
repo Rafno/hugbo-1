@@ -1,7 +1,13 @@
 .searchbar {
-    padding-top: 1.5%;
+    margin: 0
+
+    //padding-top: 1.5%;
 }
 .searchbar input {
+    border: none;
+    outline: none;
+    background: transparent;
+    flex:1;
     margin-left: 35%;
     height: 27px;
     width: 30%;
@@ -20,4 +26,54 @@
     padding-bottom: 2%;
     background-color: Gainsboro;
     margin-top: -0.1%; 
+}
+
+.headerTxt {
+    margin-left: 35%;
+    color: black;
+}
+
+.search-wrapper {
+    position: relative;
+    background: white;
+    display: flex;
+    align-items: center;
+
+@mixin searchbar-font {}
+@mixin searchbar-styles {
+    border: none;
+    outline: none;
+    color: $header-bg-color;
+    padding: 20px 65px 20px 20px;
+    background: transparent;
+    flex:1;
+}
+
+@mixin search-bar-input {
+    border: none;
+    outline: none;
+}
+
+
+
+.search-input {
+    border: none;
+    outline: none;
+    color: $header-bg-color;
+    padding: 20px 65px 20px 20px;
+    background: transparent;
+    flex:1;
+}
+.search-wrapper {
+    position: relative;
+    background: white;
+    display: flex;
+    align-items: center;
+.search-input {
+@include searchbar-font;
+@include searchbar-styles;
+}
+.search-submit {
+@include search-bar-input;
+}
 }
