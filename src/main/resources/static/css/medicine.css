@@ -1,17 +1,17 @@
 
-table.notes {
+table.id {
     border: 1px black solid;
 }
 
-.notes td {
+.id td {
     padding: 15px;
     text-align: left;
 }
 
-table.notes tr:nth-child(even) {
+table.id tr:nth-child(even) {
     background-color: antiquewhite;
 }
 
-table.notes tr:nth-child(odd) {
+table.id tr:nth-child(odd) {
     background-color: azure;
 }

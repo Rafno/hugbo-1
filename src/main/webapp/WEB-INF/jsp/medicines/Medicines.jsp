@@ -29,7 +29,7 @@
             <tr>
                 <td>Notes:</td>
                     <%--the `path` attribute matches the `note` attribute of the Entity that was passed in the model--%>
-                <td><sf:textarea path="note" type="text" placeholder="Note text here"/></td>
+                <td><sf:textarea path="id" type="text" placeholder="Note text here"/></td>
             </tr>
         </table>
 
@@ -42,7 +42,7 @@
         <%--If the model has an attribute with the name `medicines`--%>
         <c:when test="${not empty medicines}">
             <%--Create a table for the Medicine Notes--%>
-            <table class="notes">
+            <table class="id">
 
                 <%--For each medicinePost note, that is in the list that was passed in the model--%>
                 <%--generate a row in the table--%>
@@ -55,7 +55,7 @@
                         <%--Create a link based on the name attribute value--%>
                         <td><a href="/medicine/${medicine.name}">${medicine.name}</a></td>
                         <%--The String in the note attribute--%>
-                        <td>${medicine.note}</td>
+                        <td>${medicine.id}</td>
                     </tr>
                 </c:forEach>
             </table>

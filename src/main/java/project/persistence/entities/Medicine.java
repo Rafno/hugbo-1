@@ -48,13 +48,11 @@ public class Medicine {
 	}
 	
 	
-	public String getName_medicine()
-	{
+	public String getName() {
 		return name;
 	}
 	
-	public void setName_medicine(String name)
-	{
+	public void setName(String name) {
 		this.name = name;
 	}
 	
@@ -159,9 +157,8 @@ public class Medicine {
 	}
 	// This is for easier debug.
 	@Override
-	public String toString() {
-		return String.format(
-			"Medicine name[name_medicine=%s, id=%s]",
-			name,id);
+	public String toString()
+	{
+		return String.format("Medicine Note[name=%s, id=%s]", name, id);
 	}
 }
