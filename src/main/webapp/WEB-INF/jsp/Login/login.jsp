@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-<h2>um vefsíða</h2>
+<h2>Login vefsíða</h2>
 </body>
 <footer>Class HBV501G, University of Iceland</footer>
 </html>

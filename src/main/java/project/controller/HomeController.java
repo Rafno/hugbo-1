@@ -97,12 +97,5 @@ public class HomeController {
 		return "About/about";
 	}
 
-	/*
-	 * This fuction reciews path login and sends the user to the view Login/login
-	 */
-	// To call this method, enter "localhost:8080/user" into a browser
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Model model){
-		return "About/about";
-	}
+
 }

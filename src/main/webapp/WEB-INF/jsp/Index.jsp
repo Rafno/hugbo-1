@@ -7,7 +7,7 @@
 
 <head>
     <title>Project Title</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/medicine.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/index.css"/>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -15,11 +15,11 @@
 
 
 <div class="lowerBanner_container">
-    <h2 class="headerTxt">  Lyfjaskápurinn heima hjá þér</h2>
+    <p class="headerTxt">  Lyfjaskápurinn heima hjá þér</p>
     <div class = "lowerBanner">
 
         <label>
-            <input type="text" placeholder="Search">
+            <input type="text" placeholder="Leita að lyfjum á íslenskum markaði" class="searchTextArea">
         </label>
     </div>
 

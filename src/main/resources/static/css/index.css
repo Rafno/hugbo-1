@@ -7,14 +7,16 @@
     margin: auto;
     padding-bottom: 2%;
     background-color: Gainsboro;
-    margin-top: -0.1%; 
+    padding-left: 32%;
 }
 .headerTxt{
     padding-left: 42%;
+    margin: 0%;
+    font-size: 1.4rem;
+    margin-bottom: 0.5%;
 }
 .lowerBanner_container{
     background-color: Gainsboro;
-    margin-top: -1.3%;
 }
 label {
     position: relative;
@@ -32,4 +34,6 @@ label:before {
 
 input {
     padding: 10px 30px;
-}
+}.searchTextArea{
+     width: 60%;
+ }
