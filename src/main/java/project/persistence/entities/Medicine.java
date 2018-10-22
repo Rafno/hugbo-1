@@ -46,8 +46,7 @@ public class Medicine {
 		this.marketed = marketed;
 		this.ma_issued = ma_issued;
 	}
-	
-	
+
 	public String getName() {
 		return name;
 	}
