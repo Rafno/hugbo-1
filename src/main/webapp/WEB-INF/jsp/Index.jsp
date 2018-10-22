@@ -17,10 +17,11 @@
 <div class="lowerBanner_container">
     <p class="headerTxt">  Lyfjaskápurinn heima hjá þér</p>
     <div class = "lowerBanner">
-
-        <label>
-            <input type="text" placeholder="Leita að lyfjum á íslenskum markaði" class="searchTextArea">
-        </label>
+     <Form method="post">
+         <label>
+             <input type="text" placeholder="Leita að lyfjum á íslenskum markaði" class="searchTextArea">
+         </label>
+     </Form>
     </div>
 
 </div>

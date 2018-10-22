@@ -21,7 +21,6 @@
 label {
     position: relative;
 }
-
 label:before {
     content: "";
     position: absolute;
