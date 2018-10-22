@@ -1,5 +1,5 @@
-<!-- TODO REFACTOR SO THIS SCRIPT DOES NOT EXIST.
-<!-- Spring automatically creates a schema and orders it alphabetically.
+-- TODO REFACTOR SO THIS SCRIPT DOES NOT EXIST.
+-- Spring automatically creates a schema and orders it alphabetically.
 
 
 DROP TABLE IF EXISTS medicine;
