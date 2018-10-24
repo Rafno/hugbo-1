@@ -10,7 +10,7 @@
     </head>
     <header>
         <ul class="headNavigation">
-            <li class="itemNavigation"><a class="active" href="/">Appotek</a></li>
+            <li class="itemNavigation"><a class="active" href="/">Appótek</a></li>
             <li class="itemNavigation"><a class="active" href="/about">Um vefsíðuna</a></li>
             <li class="itemNavigation" id="homeArea">
                 <a class="active" href="/myHome">
