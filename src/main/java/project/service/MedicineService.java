@@ -45,4 +45,5 @@ public interface MedicineService {
      * @return All {@link Medicine}s with the {@link String name} passed
      */
     List<Medicine> findByName(String name);
+
 }
