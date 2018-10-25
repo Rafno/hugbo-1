@@ -15,15 +15,25 @@ public class Medicine {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+	@Column(length = 5000)
     private String name;
+	@Column(length = 5000)
     private String active_ingredient;
+	@Column(length = 5000)
     private String pharmaceutical_form;
+	@Column(length = 5000)
 	private String strength;
+	@Column(length = 5000)
 	private String atc_code;
+	@Column(length = 5000)
 	private String legal_status;
+	@Column(length = 5000)
 	private String mah;
+	@Column(length = 8000)
 	private String other_info;
+	@Column(length = 5000)
 	private String marketed;
+	@Column(length = 5000)
 	private String ma_issued;
 
     // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
@@ -34,7 +44,7 @@ public class Medicine {
     public Medicine(String name, String active_ingredient, String pharmaceutical_form,
 					String strength, String atc_code, String legal_status, String mah,
 					String other_info, String marketed, String ma_issued) {
-	
+		
 		this.name = name;
 		this.active_ingredient = active_ingredient;
 		this.pharmaceutical_form = pharmaceutical_form;
@@ -46,7 +56,6 @@ public class Medicine {
 		this.marketed = marketed;
 		this.ma_issued = ma_issued;
 	}
-
 	public String getName() {
 		return name;
 	}
