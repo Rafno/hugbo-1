@@ -1,3 +1,327 @@
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (1, 'Abacavir/Lamivudine Teva,', 'Abacavirum INN sulfat.Lamivudinum INN', 'Filmuhúðuð tafla', '600/300 mg', 'J05AR02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Teva B.V.', 'Ávísun lyfsins er bundin sérfræðingum í smitsjúkdómum. Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.', 'Nei', '3.3.2017');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (2, 'Abasaglar', 'Insulinum glarginum INN', 'Stungulyf. lausn í áfylltum lyfjapenna', '100 ein./ml', 'A10AE04', '(R) Lyfseðilsskylt
+', 'Eli Lilly Nederland B.V.', NULL, 'Nei', '9.9.2014');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (3, 'Abasaglar', 'Insulinum glarginum INN', 'Stungulyf. lausn í rörlykju', '100 ein./ml', 'A10AE04', '(R) Lyfseðilsskylt
+', 'Eli Lilly Nederland B.V.', NULL, 'Nei', '9.9.2014');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (4, 'ABILIFY', 'Aripiprazolum INN', 'Mixtúra. lausn', '1 mg/ml', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Netherlands B.V.', NULL, 'Já', '1.12.2005');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (5, 'ABILIFY', 'Aripiprazolum INN', 'Munndreifitafla', '10 mg', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Netherlands B.V.', NULL, 'Já', '14.7.2005');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (6, 'ABILIFY', 'Aripiprazolum INN', 'Munndreifitafla', '15 mg', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Netherlands B.V.', NULL, 'Já', '14.7.2005');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (7, 'ABILIFY', 'Aripiprazolum INN', 'Munndreifitafla', '30 mg', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Europe Ltd.', NULL, 'Nei', '14.7.2005');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (8, 'ABILIFY', 'Aripiprazolum INN', 'Stungulyf. lausn', '7.5 mg/ml', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Netherlands B.V.', NULL, 'Já', '18.1.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (9, 'ABILIFY', 'Aripiprazolum INN', 'Tafla', '10 mg', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Netherlands B.V.', NULL, 'Já', '1.7.2004');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (10, 'ABILIFY', 'Aripiprazolum INN', 'Tafla', '15 mg', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Netherlands B.V.', NULL, 'Já', '1.7.2004');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (11, 'ABILIFY', 'Aripiprazolum INN', 'Tafla', '30 mg', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Netherlands B.V.', NULL, 'Nei', '1.7.2004');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (12, 'ABILIFY', 'Aripiprazolum INN', 'Tafla', '5 mg', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Netherlands B.V.', NULL, 'Já', '1.7.2004');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (13, 'ABILIFY MAINTENA', 'Aripiprazolum INN', 'Stungulyfsstofn og leysir. forðadreifa', '300 mg', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Europe Ltd.', NULL, 'Nei', '15.11.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (14, 'ABILIFY MAINTENA', 'Aripiprazolum INN', 'Stungulyfsstofn og leysir. forðadreifa', '400 mg', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Europe Ltd.', NULL, 'Já', '15.11.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (15, 'ABILIFY MAINTENA', 'Aripiprazolum INN', 'Stungulyfsstofn og leysir. forðadreifa í áfylltri sprautu', '300 mg', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Europe Ltd.', NULL, 'Nei', '15.11.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (16, 'ABILIFY MAINTENA', 'Aripiprazolum INN', 'Stungulyfsstofn og leysir. forðadreifa í áfylltri sprautu', '400 mg', 'N05AX12', '(R) Lyfseðilsskylt
+', 'Otsuka Pharmaceutical Europe Ltd.', NULL, 'Nei', '15.11.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (17, 'Abraxane', 'Paclitaxelum INN', 'Innrennslisstofn. dreifa', '5 mg/ml', 'L01CD01', '(R) Lyfseðilsskylt
+(S) Sjúkrahúsmerkt', 'Celgene Europe B.V.', NULL, 'Já', '24.1.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (18, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '10.000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '19.9.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (19, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '1000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '19.9.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (20, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '20.000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '21.12.2009');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (21, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '2000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '19.9.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (22, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '30.000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '21.12.2009');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (23, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '3000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '19.9.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (24, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '40.000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '21.12.2009');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (25, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '4000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '19.9.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (26, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '5000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '19.9.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (27, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '6000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '19.9.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (28, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '7000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '13.12.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (29, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '8000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '19.9.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (30, 'Abseamed', 'Epoetinum alfa INN', 'Stungulyf. lausn', '9000 IU', 'B03XA01', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Medice Arzneimittel Pütter GmbH & Co. KG*', 'Ávísun lyfsins er bundin við sérfræðinga í nýrnasjúkdómum blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '13.12.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (31, 'Abstral', 'Fentanylum INN cítrat', 'Tungurótartafla', '100 míkróg', 'N02AB03', '(R X) Eftirritunarskylt (og lyfseðilsskylt)
+', 'Kyowa Kirin Ltd', 'Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Já', '10.12.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (32, 'Abstral', 'Fentanylum INN cítrat', 'Tungurótartafla', '200 míkróg', 'N02AB03', '(R X) Eftirritunarskylt (og lyfseðilsskylt)
+', 'Kyowa Kirin Ltd', 'Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Já', '10.12.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (33, 'Abstral', 'Fentanylum INN cítrat', 'Tungurótartafla', '300 míkróg', 'N02AB03', '(R X) Eftirritunarskylt (og lyfseðilsskylt)
+', 'Kyowa Kirin Ltd', 'Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Já', '10.12.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (34, 'Abstral', 'Fentanylum INN cítrat', 'Tungurótartafla', '400 míkróg', 'N02AB03', '(R X) Eftirritunarskylt (og lyfseðilsskylt)
+', 'Kyowa Kirin Ltd', 'Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Já', '10.12.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (35, 'Abstral', 'Fentanylum INN cítrat', 'Tungurótartafla', '600 míkróg', 'N02AB03', '(R X) Eftirritunarskylt (og lyfseðilsskylt)
+', 'Kyowa Kirin Ltd', 'Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Já', '10.12.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (36, 'Abstral', 'Fentanylum INN cítrat', 'Tungurótartafla', '800 míkróg', 'N02AB03', '(R X) Eftirritunarskylt (og lyfseðilsskylt)
+', 'Kyowa Kirin Ltd', 'Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Já', '10.12.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (37, 'Accofil', 'Filgrastimum INN', 'Stungulyf. lausn í áfylltri sprautu', '30 milljón ein./0.5 ml', 'L03AA02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Accord Healthcare Limited*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '18.9.2014');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (38, 'Accofil', 'Filgrastimum INN', 'Stungulyf. lausn í áfylltri sprautu', '48 milljón ein./0.5 ml', 'L03AA02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Accord Healthcare Limited*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum og krabbameinslækningum.
+', 'Nei', '18.9.2014');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (39, 'Acetylcystein Mylan', 'Acetylcysteinum INN', 'Freyðitafla', '200 mg', 'R05CB01', '(R) Lyfseðilsskylt
+', 'Mylan AB*', NULL, 'Já', '9.12.2009');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (40, 'Acetylsalicylsyra Bluefish', 'Acidum acetylsalicylicum', 'Tafla', '160 mg', 'B01AC06', '(R) Lyfseðilsskylt
+', 'Bluefish Pharmaceuticals AB', NULL, 'Nei', '8.8.2016');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (41, 'Acetylsalicylsyra Bluefish', 'Acidum acetylsalicylicum', 'Tafla', '75 mg', 'B01AC06', '(R) Lyfseðilsskylt
+', 'Bluefish Pharmaceuticals AB', NULL, 'Nei', '8.8.2016');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (42, 'Acido Folico Actavis', 'Acidum folicum INN', 'Tafla', '400 míkróg', 'B03BB01', '(R) Lyfseðilsskylt
+', 'DOC Generici S.r.l.', NULL, 'Nei', '14.2.2018');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (43, 'Acido Folico Actavis', 'Acidum folicum INN', 'Tafla', '5 mg', 'B03BB01', '(R) Lyfseðilsskylt
+', 'DOC Generici S.r.l.', NULL, 'Nei', '8.11.2010');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (44, 'Aclasta', 'Acidum zoledronicum INN', 'Innrennslislyf. lausn', NULL, 'M05BA08', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+', 'Novartis Europharm Limited*', 'Ávísun lyfsins er bundin við sérfræðinga í efnaskipta- og innkirtlalækningum - gigtarlækningum - bæklunarlækningum - öldrunarlækningum - lungnalækningum og almennum lyflækningum.
+Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Já', '9.5.2005');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (45, 'Aclovir', 'Aciclovirum INN', 'Tafla', '200 mg', 'J05AB01', '(R) Lyfseðilsskylt
+', 'ratiopharm GmbH*', NULL, 'Já', '26.2.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (46, 'Aclovir', 'Aciclovirum INN', 'Tafla', '400 mg', 'J05AB01', '(R) Lyfseðilsskylt
+', 'ratiopharm GmbH*', NULL, 'Nei', '26.2.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (47, 'Aclovir', 'Aciclovirum INN', 'Tafla', '800 mg', 'J05AB01', '(R) Lyfseðilsskylt
+', 'ratiopharm GmbH*', NULL, 'Nei', '26.2.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (48, 'Acnatac', 'Clindamycinum INN fosfat.Tretinoinum INN', 'Hlaup', '10 mg/mg + 0.25 mg/g', 'D10AF51', '(R) Lyfseðilsskylt
+', 'Meda AB', NULL, 'Nei', '4.4.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (49, 'Actelsar HCT', 'Telmisartanum INN.Hydrochlorothiazidum INN', 'Tafla', '40/12.5 mg', 'C09DA07', '(R) Lyfseðilsskylt
+', 'Actavis Group PTC ehf.*', NULL, 'Nei', '13.3.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (50, 'Actelsar HCT', 'Telmisartanum INN.Hydrochlorothiazidum INN', 'Tafla', '80/12.5 mg', 'C09DA07', '(R) Lyfseðilsskylt
+', 'Actavis Group PTC ehf.*', NULL, 'Nei', '13.3.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (51, 'Actelsar HCT', 'Telmisartanum INN.Hydrochlorothiazidum INN', 'Tafla', '80/25 mg', 'C09DA07', '(R) Lyfseðilsskylt
+', 'Actavis Group PTC ehf.*', NULL, 'Nei', '13.3.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (52, 'Act-Hib', 'Haemophilus influenzae type B', 'Stungulyfsstofn og leysir. lausn', NULL, 'J07AG01', '(R) Lyfseðilsskylt
+', 'Sanofi Pasteur Europe', NULL, 'Já', '1.7.1994');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (53, 'Actikerall', 'Fluorouracilum INN.Acidum salicylicum', 'Húðlausn', '5 mg/g + 100 mg/g', 'L01BC52', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+', 'Almirall Hermal GmbH', 'Ávísun lyfsins er bundin við sérfræðinga í húðsjúkdómum.
+', 'Nei', '24.5.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (54, 'Actilyse', 'Alteplasum INN', 'Stungulyfs-/innrennslisstofn og leysir. lausn', '50 mg', 'B01AD02', '(R) Lyfseðilsskylt
+(S) Sjúkrahúsmerkt', 'Boehringer Ingelheim International GmbH*', NULL, 'Já', '1.7.1989');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (55, 'Activelle', 'Norethisteronum INN acetat.Estradiolum INN', 'Filmuhúðuð tafla', '1mg/0.5 mg', 'G03FA01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Já', '25.11.1999');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (56, 'Activelle Low', 'Estradiolum INN.Norethisteronum INN acetat', 'Filmuhúðuð tafla', '0.5/0.1 mg', 'G03FA01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '13.1.2009');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (57, 'Actos', 'Pioglitazonum INN hýdróklóríð', 'Tafla', '15 mg', 'A10BG03', '(R) Lyfseðilsskylt
+', 'Takeda Pharma A/S*', 'Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Nei', '13.10.2000');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (58, 'Actos', 'Pioglitazonum INN hýdróklóríð', 'Tafla', '30 mg', 'A10BG03', '(R) Lyfseðilsskylt
+', 'Takeda Pharma A/S*', 'Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Nei', '13.10.2000');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (59, 'Actos', 'Pioglitazonum INN hýdróklóríð', 'Tafla', '45 mg', 'A10BG03', '(R) Lyfseðilsskylt
+', 'Takeda Pharma A/S*', 'Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Nei', '27.11.2003');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (60, 'Actraphane 30', 'Insulinum humanum INN.Insulinum isophanum humanum INN', 'Stungulyf. dreifa', '100 a.e./ml', 'A10AD01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '15.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (61, 'Actraphane 30', 'Insulinum humanum INN.Insulinum isophanum humanum INN', 'Stungulyf. dreifa', '40 a.e./ml', 'A10AD01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '15.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (62, 'Actraphane 30 FlexPen', 'Insulinum humanum INN.Insulinum isophanum humanum INN', 'Stungulyf. dreifa í áfylltum lyfjapenna', '100 a.e./ml', 'A10AD01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '15.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (63, 'Actraphane 30 InnoLet', 'Insulinum humanum INN.Insulinum isophanum humanum INN', 'Stungulyf. dreifa í áfylltum lyfjapenna', '100 a.e./ml', 'A10AD01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '15.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (64, 'Actraphane 30 Penfill', 'Insulinum humanum INN.Insulinum isophanum humanum INN', 'Stungulyf. dreifa í rörlykju', '100 a.e./ml', 'A10AD01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '15.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (65, 'Actraphane 40 Penfill', 'Insulinum humanum INN.Insulinum isophanum humanum INN', 'Stungulyf. dreifa í rörlykju', '100 a.e./ml', 'A10AD01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '15.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (66, 'Actraphane 50 Penfill', 'Insulinum humanum INN.Insulinum isophanum humanum INN', 'Stungulyf. dreifa í rörlykju', '100 a.e./ml', 'A10AD01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '15.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (67, 'Actrapid', 'Insulinum humanum INN', 'Stungulyf. lausn', '100 alþjóðlegar einingar/ ml', 'A10AB01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Já', '5.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (68, 'Actrapid', 'Insulinum humanum INN', 'Stungulyf. lausn', '40 alþjóðlegar einingar/ ml', 'A10AB01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '5.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (69, 'Actrapid Flex Pen', 'Insulinum humanum INN', 'Stungulyf. lausn í áfylltum lyfjapenna', '100 alþjóðlegar einingar/ ml', 'A10AB01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '5.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (70, 'Actrapid InnoLet', 'Insulinum humanum INN', 'Stungulyf. lausn í áfylltum lyfjapenna', '100 alþjóðlegar einingar/ ml', 'A10AB01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '5.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (71, 'Actrapid Penfill', 'Insulinum humanum INN', 'Stungulyf. lausn', '100 alþjóðlegar einingar/ ml', 'A10AB01', '(R) Lyfseðilsskylt
+', 'Novo Nordisk A/S*', NULL, 'Nei', '5.11.2002');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (72, 'Adalat Oros', 'Nifedipinum INN', 'Forðatafla', '20 mg', 'C08CA05', '(R) Lyfseðilsskylt
+', 'Bayer AB*', NULL, 'Já', '15.7.1999');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (73, 'Adalat Oros', 'Nifedipinum INN', 'Forðatafla', '30 mg', 'C08CA05', '(R) Lyfseðilsskylt
+', 'Bayer AB*', NULL, 'Já', '1.7.1994');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (74, 'Adalat Oros', 'Nifedipinum INN', 'Forðatafla', '60 mg', 'C08CA05', '(R) Lyfseðilsskylt
+', 'Bayer AB*', NULL, 'Já', '1.7.1994');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (75, 'Adartrel', 'Ropinirolum INN hýdróklóríð', 'Filmuhúðuð tafla', '0.25 mg', 'N04BC04', '(R) Lyfseðilsskylt
+', 'GlaxoSmithKline Pharma A/S', NULL, 'Já', '7.4.2006');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (76, 'Adartrel', 'Ropinirolum INN hýdróklóríð', 'Filmuhúðuð tafla', '0.50 mg', 'N04BC04', '(R) Lyfseðilsskylt
+', 'GlaxoSmithKline Pharma A/S', NULL, 'Já', '7.4.2006');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (77, 'Adartrel', 'Ropinirolum INN hýdróklóríð', 'Filmuhúðuð tafla', '2 mg', 'N04BC04', '(R) Lyfseðilsskylt
+', 'GlaxoSmithKline Pharma A/S', NULL, 'Já', '7.4.2006');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (78, 'Adasuve', 'Loxapinum INN', 'Innöndunarduft. afmældir skammtar', '4.5 mg', 'N05AH01', '(R) Lyfseðilsskylt
+(S) Sjúkrahúsmerkt', 'Ferrer Internacional S.A.', 'Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Nei', '20.2.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (79, 'Adasuve', 'Loxapinum INN', 'Innöndunarduft. afmældir skammtar', '9.1 mg', 'N05AH01', '(R) Lyfseðilsskylt
+(S) Sjúkrahúsmerkt', 'Ferrer Internacional S.A.', 'Markaðssetning á Íslandi er háð því að Lyfjastofnun hafi staðfest að sérstök skilyrði er varða öryggi og verkun við notkun lyfsins séu uppfyllt.
+', 'Nei', '20.2.2013');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (80, 'ADCETRIS', 'Brentuximabum vedotinum INN', 'Stofn fyrir innrennslisþykkni. lausn', '50 mg', 'L01XC12', '(R) Lyfseðilsskylt
+(S) Sjúkrahúsmerkt', 'Takeda Pharma A/S*', NULL, 'Já', '25.10.2012');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (81, 'Adcirca', 'Tadalafilum INN', 'Filmuhúðuð tafla', '20 mg', 'G04BE08', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Eli Lilly Nederland B.V.', 'Ávísun lyfsins er bundin við sérfræðinga í hjartasjúkdómum og sérfræðinga í lungnasjúkdómum.
+', 'Já', '16.1.2009');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (82, 'Addex-Magnesium', 'Magnesii sulfas', 'Innrennslisþykkni. lausn', NULL, 'B05XA05', '(R) Lyfseðilsskylt
+(S) Sjúkrahúsmerkt', 'Fresenius Kabi AB', NULL, 'Já', '10.3.2004');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (83, 'Adempas', 'Riociguatum INN', 'Filmuhúðuð tafla', '0.5 mg', 'C02KX05', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Bayer AG*', 'Ávísun lyfsins er bundin við sérfræðinga í lungnalækningum og sérfræðinga í hjartalækningum.
+', 'Já', '27.3.2014');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (84, 'Adempas', 'Riociguatum INN', 'Filmuhúðuð tafla', '1 mg', 'C02KX05', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Bayer AG*', 'Ávísun lyfsins er bundin við sérfræðinga í lungnalækningum og sérfræðinga í hjartalækningum.
+', 'Já', '27.3.2014');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (85, 'Adempas', 'Riociguatum INN', 'Filmuhúðuð tafla', '1.5 mg', 'C02KX05', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Bayer AG*', 'Ávísun lyfsins er bundin við sérfræðinga í lungnalækningum og sérfræðinga í hjartalækningum.
+', 'Já', '27.3.2014');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (86, 'Adempas', 'Riociguatum INN', 'Filmuhúðuð tafla', '2 mg', 'C02KX05', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Bayer AG*', 'Ávísun lyfsins er bundin við sérfræðinga í lungnalækningum og sérfræðinga í hjartalækningum.
+', 'Já', '27.3.2014');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (87, 'Adempas', 'Riociguatum INN', 'Filmuhúðuð tafla', '2.5 mg', 'C02KX05', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Bayer AG*', 'Ávísun lyfsins er bundin við sérfræðinga í lungnalækningum og sérfræðinga í hjartalækningum.
+', 'Já', '27.3.2014');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (88, 'Adenuric', 'Febuxostatum INN', 'Filmuhúðuð tafla', '120 mg', 'M04AA03', '(R) Lyfseðilsskylt
+', 'Menarini International Operations Luxembourg S.A.', NULL, 'Nei', '16.5.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (89, 'Adenuric', 'Febuxostatum INN', 'Filmuhúðuð tafla', '80 mg', 'M04AA03', '(R) Lyfseðilsskylt
+', 'Menarini International Operations Luxembourg S.A.', NULL, 'Nei', '16.5.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (90, 'Adjupanrix', 'A/VietNam/1194/2004 NIBRG-14 (H5N1) hreinsaðir mótefnavakar', 'Stungulyf. fleyti', '3.75 míkróg', 'J07BB02', '(R) Lyfseðilsskylt
+', 'GlaxoSmithKline Biologicals S.A.*', NULL, 'Nei', '5.11.2009');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (91, 'Adrenalin Mylan', 'Adrenalinum bítartrat (Epinephrinum INN bítartrat)', 'Stungulyf. lausn', '1 mg/ml', 'C01CA24', '(R) Lyfseðilsskylt
+', 'Mylan AB*', NULL, 'Já', '16.3.2009');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (92, 'Adriamycin', 'Doxorubicin Hydrochloride', 'Stungulyf. lausn', '2 mg/ml', 'L01DB01', '(R) Lyfseðilsskylt
+(S) Sjúkrahúsmerkt', 'Pfizer ApS', NULL, 'Já', '1.4.1990');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (93, 'Adrovance', 'Acidum alendronicum INN natríum.Colecalciferolum INN', 'Tafla', '70 mg/2800 a.e.', 'M05BB03', '(R) Lyfseðilsskylt
+', 'Merck Sharp & Dohme B.V.*', NULL, 'Nei', '22.1.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (94, 'Adrovance', 'Acidum alendronicum INN natríum.Colecalciferolum INN', 'Tafla', '70 mg/5600 a.e.', 'M05BB03', '(R) Lyfseðilsskylt
+', 'Merck Sharp & Dohme B.V.*', NULL, 'Nei', '19.10.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (95, 'Advagraf', 'Tacrolimusum INN', 'Hart forðahylki', '0.5 mg', 'L04AD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+', 'Astellas Pharma Europe B.V.*', 'Ávísun lyfsins er bundin við sérfræðinga sem hafa reynslu af meðferð sjúklinga eftir líffæraígræðslu
+', 'Já', '16.5.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (96, 'Advagraf', 'Tacrolimusum INN', 'Hart forðahylki', '1 mg', 'L04AD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+', 'Astellas Pharma Europe B.V.*', 'Ávísun lyfsins er bundin við sérfræðinga sem hafa reynslu af meðferð sjúklinga eftir líffæraígræðslu
+', 'Já', '16.5.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (97, 'Advagraf', 'Tacrolimusum INN', 'Hart forðahylki', '3 mg', 'L04AD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+', 'Astellas Pharma Europe B.V.*', 'Ávísun lyfsins er bundin við sérfræðinga sem hafa reynslu af meðferð sjúklinga eftir líffæraígræðslu
+', 'Já', '24.6.2009');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (98, 'Advagraf', 'Tacrolimusum INN', 'Hart forðahylki', '5 mg', 'L04AD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+', 'Astellas Pharma Europe B.V.*', 'Ávísun lyfsins er bundin við sérfræðinga sem hafa reynslu af meðferð sjúklinga eftir líffæraígræðslu
+', 'Já', '16.5.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (99, 'Advate', 'Octocogum alfa INN', 'Stungulyfsstofn og leysir. lausn', '1000 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxter AG*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Nei', '1.4.2004');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (100, 'Advate', 'Octocogum alfa INN', 'Stungulyfsstofn og leysir. lausn', '1000 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxter AG*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Já', '19.12.2011');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (101, 'Advate', 'Octocogum alfa INN', 'Stungulyfsstofn og leysir. lausn', '1500 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxter AG*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Nei', '1.4.2004');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (102, 'Advate', 'Octocogum alfa INN', 'Stungulyfsstofn og leysir. lausn', '1500 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxter AG*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Já', '19.12.2011');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (103, 'Advate', 'Octocogum alfa INN', 'Stungulyfsstofn og leysir. lausn', '2000 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxter AG*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Nei', '30.5.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (104, 'Advate', 'Octocogum alfa INN', 'Stungulyfsstofn og leysir. lausn', '250 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxter AG*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Nei', '1.4.2004');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (105, 'Advate', 'Octocogum alfa INN', 'Stungulyfsstofn og leysir. lausn', '250 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxter AG*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Já', '19.12.2011');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (106, 'Advate', 'Octocogum alfa INN', 'Stungulyfsstofn og leysir. lausn', '3000 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxter AG*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Nei', '30.5.2008');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (107, 'Advate', 'Octocogum alfa INN', 'Stungulyfsstofn og leysir. lausn', '500 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxter AG*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Nei', '1.4.2004');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (108, 'Advate', 'Octocogum alfa INN', 'Stungulyfsstofn og leysir. lausn', '500 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxter AG*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Já', '19.12.2011');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (109, 'Adynovi', 'Rurioctocogum alfa pegolum INN', 'Stungulyfsstofn og leysir. lausn', '1000 a.e./2 ml', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxalta Innovations GmbH', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum
+', 'Nei', '8.1.2018');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (110, 'Adynovi', 'Rurioctocogum alfa pegolum INN', 'Stungulyfsstofn og leysir. lausn', '1000 a.e./5 ml', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxalta Innovations GmbH', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum
+', 'Nei', '8.1.2018');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (111, 'Adynovi', 'Rurioctocogum alfa pegolum INN', 'Stungulyfsstofn og leysir. lausn', '2000 a.e./5 ml', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxalta Innovations GmbH', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum
+', 'Nei', '8.1.2018');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (112, 'Adynovi', 'Rurioctocogum alfa pegolum INN', 'Stungulyfsstofn og leysir. lausn', '250 a.e./2 ml', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxalta Innovations GmbH', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum
+', 'Nei', '8.1.2018');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (113, 'Adynovi', 'Rurioctocogum alfa pegolum INN', 'Stungulyfsstofn og leysir. lausn', '250 a.e./5 ml', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxalta Innovations GmbH', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum
+', 'Nei', '8.1.2018');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (114, 'Adynovi', 'Rurioctocogum alfa pegolum INN', 'Stungulyfsstofn og leysir. lausn', '500 a.e./2 ml', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxalta Innovations GmbH', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum
+', 'Nei', '8.1.2018');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (115, 'Adynovi', 'Rurioctocogum alfa pegolum INN', 'Stungulyfsstofn og leysir. lausn', '500 a.e./5 ml', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Baxalta Innovations GmbH', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum
+', 'Nei', '8.1.2018');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (116, 'Aerinaze', 'Desloratadinum INN.Pseudoephedrinum INN súlfat', 'Tafla með breyttan losunarhraða', '2.5/120 mg', 'R01BA52', '(R) Lyfseðilsskylt
+', 'Merck Sharp & Dohme B.V.*', NULL, 'Nei', '30.8.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (117, 'Aerius', 'Desloratadinum INN', 'Dreifitafla', '2.5 mg', 'R06AX27', '(R) Lyfseðilsskylt
+', 'Merck Sharp & Dohme B.V.*', NULL, 'Nei', '22.5.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (118, 'Aerius', 'Desloratadinum INN', 'Dreifitafla', '5 mg', 'R06AX27', '(R) Lyfseðilsskylt
+', 'Merck Sharp & Dohme B.V.*', NULL, 'Nei', '22.5.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (119, 'Aerius', 'Desloratadinum INN', 'Filmuhúðuð tafla', '5 mg', 'R06AX27', '(R) Lyfseðilsskylt
+', 'Merck Sharp & Dohme B.V.*', NULL, 'Já', '22.3.2001');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (120, 'Aerius', 'Desloratadinum INN', 'Mixtúra. lausn', '0.5 mg/ml', 'R06AX27', '(R) Lyfseðilsskylt
+', 'Merck Sharp & Dohme B.V.*', NULL, 'Já', '22.5.2007');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (121, 'Aerius (Lyf og heilsa)', 'Desloratadinum INN', 'Filmuhúðuð tafla', '5 mg', 'R06AX27', '(R) Lyfseðilsskylt
+', 'Lyf og heilsa hf', NULL, 'Já', '7.7.2006');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (122, 'Aerivio Spiromax', 'Fluticasonum INN própíónat.Salmeterolum INN xínafóat', 'Innöndunarduft', '50 míkróg/500 míkróg', 'R03AK06', '(R) Lyfseðilsskylt
+', 'Teva B.V.', NULL, 'Nei', '18.8.2016');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (123, 'Afinitor', 'Everolimusum INN', 'Tafla', '10 mg', 'L01XE10', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Novartis Europharm Limited*', 'Ávísun lyfsins er bundin við sérfræðinga í krabbameinslækningum.
+', 'Já', '15.10.2009');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (124, 'Afinitor', 'Everolimusum INN', 'Tafla', '2.5 mg', 'L01XE10', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Novartis Europharm Limited*', 'Ávísun lyfsins er bundin við sérfræðinga í krabbameinslækningum.
+', 'Nei', '18.12.2012');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (125, 'Afinitor', 'Everolimusum INN', 'Tafla', '5 mg', 'L01XE10', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'Novartis Europharm Limited*', 'Ávísun lyfsins er bundin við sérfræðinga í krabbameinslækningum.
+', 'Já', '15.10.2009');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (126, 'Afipran', 'Metoclopramidum INN hýdróklóríð', 'Stungulyf. lausn', '5 mg/ml', 'A03FA01', '(R) Lyfseðilsskylt
+', 'Takeda AS', NULL, 'Já', '17.12.2012');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (127, 'Afipran', 'Metoclopramidum INN hýdróklóríð', 'Tafla', '10 mg', 'A03FA01', '(R) Lyfseðilsskylt
+', 'Takeda AS', NULL, 'Já', '17.12.2012');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (128, 'Aflunov', 'A/turkey/Turkey/1/05 (H5N1)-líkur stofn (NIBRG-23)', 'Stungulyf. dreifa í áfylltri sprautu', '7.5 míkróg', 'J07BB02', '(R) Lyfseðilsskylt
+', 'Seqirus S.r.l.', NULL, 'Nei', '14.3.2011');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (129, 'Afstyla', 'lonoctocog alfa', 'Stungulyfsstofn og leysir. lausn', '1000 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'CSL Behring GmbH*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Já', '4.1.2017');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (130, 'Afstyla', 'lonoctocog alfa', 'Stungulyfsstofn og leysir. lausn', '1500 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'CSL Behring GmbH*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Nei', '4.1.2017');
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (131, 'Afstyla', 'lonoctocog alfa', 'Stungulyfsstofn og leysir. lausn', '2000 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
+(S) Sjúkrahúsmerkt', 'CSL Behring GmbH*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
+', 'Já', '4.1.2017');
 INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (132, 'Afstyla', 'lonoctocog alfa', 'Stungulyfsstofn og leysir. lausn', '250 a.e.', 'B02BD02', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
 (S) Sjúkrahúsmerkt', 'CSL Behring GmbH*', 'Ávísun lyfsins er bundin við sérfræðinga í blóðsjúkdómum.
 ', 'Já', '4.1.2017');
@@ -10160,7 +10484,7 @@ INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, s
 ', 'Pfizer ApS', NULL, 'Já', '1.4.1987');
 INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (4435, 'Salflumix Easyhaler', 'Fluticasonum INN própíónat.Salmeterolum INN xínafóat', 'Innöndunarduft', '50 míkróg/500 míkróg/skammt', 'R03AK06', '(R) Lyfseðilsskylt
 ', 'Orion Corporation', NULL, 'Nei', '17.4.2018');
-INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (4436, 'Salflumix Easyhaler', 'Salmeterolum INN xínafóat.Fluticasonum INN própíónat', 'Innöndunarduft', '50 míkrógram/250 míkróg/skammt', 'R03AK06', '(R) Lyfseðilsskylt
+INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (4436, 'Salflumix Easyhaler', 'Salmeterolum INN xínafóat.Fluticasonum INN própíónat', 'Innöndunarduft', '50 míkrógram/250 míkróg/skammt', 'R03AK06', '(R) Lyfseðilsskylt
 ', 'Orion Corporation', NULL, 'Nei', '17.4.2018');
 INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (4437, 'Salmex', 'Salmeterolum INN xínafóat.Fluticasonum INN própíónat', 'Innöndunarduft. afmældir skammtar', '50 míkróg/100 míkróg/skammt', 'R03AK06', '(R) Lyfseðilsskylt
 ', 'Glenmark Pharmaceuticals Europe Limited', NULL, 'Nei', '11.1.2018');

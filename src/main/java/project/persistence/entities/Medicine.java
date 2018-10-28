@@ -13,8 +13,9 @@ public class Medicine {
 
     // Declare that this attribute is the id
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", unique = true)
+   	private Long id;
 	@Column(length = 5000)
     private String name;
 	@Column(length = 5000)
@@ -163,6 +164,7 @@ public class Medicine {
 	{
 		this.id = id;
 	}
+	
 	// This is for easier debug.
 	@Override
 	public String toString()
