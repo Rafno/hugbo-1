@@ -6,13 +6,27 @@
 
 <head>
     <title>Project Title</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/medicine.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/login.css"/>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-<h2>Login vefsíða</h2>
+<Form method="post" class="LoginForm">
+        <div class="headers">Innskráning á Appótek</div>
+    <div class="row">
+        <input type="text" placeholder="Notendanafn" name="notendanafn" id="notendanafn" />
+    </div>
+    <div class="row">
+        <input type="text" placeholder="Lykilorð, Lágmark 6 stafir" name="lykilord" id="lykilord" />
+    </div>
+    <div class="row">
+        <button type="submit" clas="LoginSubmitting">Staðfesta</button>
+    </div>
+</Form>
+<div class="registering">
+    <a href="/Register">
+        <button> Búa til nýjan Notanda</button>
+    </a>
+</div>
 </body>
-<footer>Class HBV501G, University of Iceland</footer>
-</html>

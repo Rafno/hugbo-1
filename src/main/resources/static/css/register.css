@@ -1,0 +1,30 @@
+.row {
+    display: flex;
+    width: 100%;
+}
+
+h3.title {
+    padding-left: 4%;
+    width: 40%;
+}
+
+input {
+    max-width: 500px;
+    width: 100%;
+    font-size: 1.5em;
+}
+
+input#confirm {
+    width: 20%;
+    margin-left: 4%;
+    background-color: green;
+    color: white;
+    border-radius: 15px;
+    font-size: 2em;
+}
+
+select#division {
+    max-width: 500px;
+    width: 100%;
+    font-size: 1.5em;
+}
