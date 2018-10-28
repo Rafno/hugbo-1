@@ -11,7 +11,7 @@ public interface UserService
 	
 	void delete(Users user);
 	
-	String userLogin(String username, String password);
+	List<Users> userLogin(String username, String password);
 	
 	List<Users> getAllPatients(Users user);
 	
