@@ -10,3 +10,23 @@
     margin: auto;
     font-size: 3.3rem;
 }
+.inputButton{
+    width: 150%;
+    margin-bottom: 15%;
+    border-width: thin;
+    font-size: 1.5rem;
+    margin-left: -25%;
+    margin-top: 4%;
+}
+.LoginSubmitting{
+    background-color: #4CAF50;
+    color: #dddddd;
+    margin-left: -189%;
+    font-size: 1.4rem;
+}
+.createNewUser{
+    margin-left: 60%;
+    font-size: 1.3rem;
+    background-color: orange;
+    color: white;
+}

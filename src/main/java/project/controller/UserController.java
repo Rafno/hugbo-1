@@ -15,7 +15,7 @@ import project.service.UserService;
  * in your project
  */
 @Controller
-public class LoginController {
+public class UserController {
 	
 	UserService userService;
 	/*
@@ -41,12 +41,13 @@ public class LoginController {
 		// If you look at the form in Medicines.jsp, you can see that we
 		// reference this attribute there by the name `medicine`.
 		model.addAttribute("user", new Users());
-		//model.addAttribute("user", userService.userLogin(username, password));
-		// The string "Index" that is returned here is the name of the view
-		// (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
-		// If you change "Index" to something else, be sure you have a .jsp
-		// file that has the same name
-		
+
 		return "/Login/login";
+	}
+	// To call this method, enter "localhost:8080/user" into a browser
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String register(){
+
+		return "/Register/register";
 	}
 }
