@@ -13,6 +13,7 @@
 </head>
 <body>
 <h2>um vefsíða</h2>
+<p> Verkefni eftir Helga, Hinrik og Rafnar</p>
 </body>
 <footer>Class HBV501G, University of Iceland</footer>
 </html>

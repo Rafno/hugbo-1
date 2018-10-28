@@ -15,13 +15,15 @@
 <Form method="post" class="LoginForm">
         <div class="headers">Innskráning á Appótek</div>
     <div class="row">
-        <input type="text" placeholder="Notendanafn" name="notendanafn" id="notendanafn" />
+        <input type="text" placeholder="Notendanafn" name="username" />
+        <param name="username" value="">
     </div>
     <div class="row">
-        <input type="text" placeholder="Lykilorð, Lágmark 6 stafir" name="lykilord" id="lykilord" />
+        <input type="text" placeholder="Lykilorð, Lágmark 6 stafir" name="password" />
+        <param name="password" value="">
     </div>
     <div class="row">
-        <button type="submit" clas="LoginSubmitting">Staðfesta</button>
+        <button type="submit" class="LoginSubmitting">Staðfesta</button>
     </div>
 </Form>
 <div class="registering">

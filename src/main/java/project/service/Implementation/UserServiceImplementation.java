@@ -11,6 +11,8 @@ import java.util.List;
 @Service
 public class UserServiceImplementation implements UserService{
 	
+	
+	// Instance Variables
 	UsersRepository repository;
 	
 	// Dependency Injection
@@ -27,7 +29,7 @@ public class UserServiceImplementation implements UserService{
 	}
 	
 	@Override
-	public Users userLogin(String username, String password) {
+	public String userLogin(String username, String password) {
 		return repository.userLogin(username, password);
 	}
 	

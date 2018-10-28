@@ -23,7 +23,7 @@ public class Users
 	
 	// Notice the empty constructor, because we need to be able to create an empty PostitNote to add
 	// to our model so we can use it with our form
-	
+	public Users(){}
 	public Users(Long id, String name, String username, String password)
 	{
 		this.id = id;

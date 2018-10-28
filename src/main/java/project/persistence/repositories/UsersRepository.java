@@ -12,9 +12,8 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	Users create(Users user);
 	
 	void delete(Users user);
-	
-	@Query(value = "SELECT name FROM Users")
-	Users userLogin(String username, String password);
+	@Query(value = "SELECT p FROM Users p WHERE p.username = ?1 AND p.password = ?2")
+	String userLogin(String username, String password);
 	
 	// TODO FIX THIS, * cannot be used
 	@Query(value = "SELECT name FROM Users")
