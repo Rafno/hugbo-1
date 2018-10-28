@@ -19,7 +19,8 @@
     <div class = "lowerBanner">
      <Form method="post">
          <label>
-             <input type="text" placeholder="Leita að lyfjum á íslenskum markaði" class="searchTextArea">
+             <input type="text" placeholder="Leita að lyfjum á íslenskum markaði" class="searchTextArea" name="search"/>
+             <param name="search" value="">
          </label>
      </Form>
     </div>

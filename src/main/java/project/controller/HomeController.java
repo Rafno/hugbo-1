@@ -5,7 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import project.service.StringManipulationService;
+
+import java.util.Map;
 
 @Controller
 public class HomeController {
@@ -33,8 +36,8 @@ public class HomeController {
         return "Index";
     }
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String homePost(){
-  
+	public String homePost(Model model,@RequestParam("search") String leita ){
+  		System.out.println(leita);
 		// The string "Index" that is returned here is the name of the view
 		// (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
 		// If you change "Index" to something else, be sure you have a .jsp
