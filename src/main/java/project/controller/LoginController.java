@@ -17,7 +17,10 @@ import project.service.UserService;
 @Controller
 public class LoginController {
 	
-	UserService userService;
+	private UserService userService;
+	
+	@Autowired
+	public LoginController(UserService userService){this.userService = userService;}
 	/*
 	 * This fuction reciews path login and sends the user to the view Login/login
 	 */
@@ -36,7 +39,7 @@ public class LoginController {
 		
 		
 		model.addAttribute("users", userService.userLogin(username,password));
-		
+		System.out.println(userService.userLogin(username,password));
 		// Add a new Medicine Note to the model for the form
 		// If you look at the form in Medicines.jsp, you can see that we
 		// reference this attribute there by the name `medicine`.
