@@ -5,6 +5,7 @@
     overflow: hidden;
     background-color: #333;
     padding-left: 13%;
+    font-size: 1.3rem;
 }
 
 .itemNavigation {
@@ -24,4 +25,7 @@
 }
 #login{
     margin-left: 70%;
+}
+.headNavigationPic{
+
 }

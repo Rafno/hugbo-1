@@ -13,11 +13,11 @@
             <li class="itemNavigation"><a class="active" href="/">Appótek</a></li>
             <li class="itemNavigation"><a class="active" href="/about">Um vefsíðuna</a></li>
             <li class="itemNavigation" id="homeArea">
-                <a class="active" href="/myHome">
-                    <img src="./../../../img/houese.png" alt=""/>
+                <a href="/myHome"class="active">
+                    <img src="./../../../img/house.png" alt="headImage"class="headNavigationPic"/>
                 </a>
             </li>
-            <li class="itemNavigation" id="login"><a class="active" href="/login">Innskráning</a></li>
+            <li class="itemNavigation"><a class="active" href="/login">Innskráning</a></li>
 
         </ul>
     </header>

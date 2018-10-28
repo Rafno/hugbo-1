@@ -1,0 +1,12 @@
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+}
+.row{
+    margin: auto;
+}
+.headers{
+    margin: auto;
+    font-size: 3.3rem;
+}
