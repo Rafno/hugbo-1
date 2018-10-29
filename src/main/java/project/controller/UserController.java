@@ -20,7 +20,7 @@ public class UserController {
 	private UserService userService;
 	
 	@Autowired
-	public LoginController(UserService userService){this.userService = userService;}
+	public UserController(UserService userService){this.userService = userService;}
 	/*
 	 * This fuction reciews path login and sends the user to the view Login/login
 	 */
