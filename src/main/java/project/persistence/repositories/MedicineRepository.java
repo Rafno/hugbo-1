@@ -2,6 +2,7 @@ package project.persistence.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 import project.persistence.entities.Medicine;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
  * http://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
  *
  */
+@Repository
 public interface MedicineRepository extends JpaRepository<Medicine, Long> {
 
     Medicine save(Medicine medicine);
@@ -20,7 +22,8 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
     void delete(Medicine medicine);
 
     List<Medicine> findAll();
-
+    @Query("Select p from Medicine p where p.name LIKE  %?1%")
+	List<Medicine> findPlaceContainingKeywordAnywhere(String name);
     // If we need a custom query that maybe doesn't fit the naming convention used by the JPA repository,
     // then we can write it quite easily with the @Query notation, like you see below.
     // This method returns all Medicines where the length of the name is equal or greater than 3 characters.
@@ -35,6 +38,7 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
 
     @Query(value = "SELECT p FROM Medicine p WHERE p.id = ?1")
     Medicine findOne(Long id);
+
 
     List<Medicine> findByName(String name);
 }

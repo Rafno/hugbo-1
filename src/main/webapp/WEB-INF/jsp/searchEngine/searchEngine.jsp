@@ -8,13 +8,13 @@
 
 <head>
     <title>Project Title</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/searchEngine.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="../css/searchEngine.css"/>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-<table id="lyf">
+<table id="lyf" border="1">
     <tr>
         <th>Heiti lyfs</th>
         <th>Lyfjaform</th>
@@ -25,17 +25,18 @@
         <th>Markaðsett</th>
         <th>ýmsar upplýsingar</th>
     </tr>
-    <tr>
-        <td>${name}</td>
-        <td>${form}</td>
-        <td>${strength}</td>
-        <td>${ingredient}</td>
-        <td>${service}</td>
-        <td>${marketedTime}</td>
-        <td>${marketed}</td>
-        <td>${otherInfo}</td>
-    </tr>
-    
+    <c:forEach items="${medicine}" var="obj">
+        <tr>
+            <td><c:out value="${obj.name}"/></td>
+            <td><c:out value="${obj.pharmaceutical_form}"/></td>
+            <td><c:out value="${obj.strength}"/></td>
+            <td><c:out value="${obj.active_ingredient}"/></td>
+            <td><c:out value="${obj.mah}"/></td>
+            <td><c:out value="${obj.ma_issued}"/></td>
+            <td><c:out value="${obj.marketed}"/></td>
+            <td><c:out value="${obj.other_info}"/></td>
+        </tr>
+    </c:forEach>
 </table>
 
 </body>

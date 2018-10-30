@@ -14,12 +14,12 @@ import project.service.MedicineService;
 public class MedicineController {
 
     // Instance Variables
+	@Autowired
     private MedicineService medicineService;
 
     // Dependency Injection
     @Autowired
-    public MedicineController(MedicineService medicineService) {
-        this.medicineService = medicineService;
+    public MedicineController(MedicineService medicineService) {this.medicineService = medicineService;
     }
 
     // Method that returns the correct view for the URL /medicinePost
@@ -35,7 +35,6 @@ public class MedicineController {
 
         // Here we get all the Medicine Notes (in a reverse order) and add them to the model
         model.addAttribute("medicines",medicineService.findAllReverseOrder());
-
         // Return the view
         return "medicines/Medicines";
     }

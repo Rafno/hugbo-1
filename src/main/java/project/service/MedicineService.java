@@ -46,4 +46,6 @@ public interface MedicineService {
      */
     List<Medicine> findByName(String name);
 
+	List<Medicine> findPlaceContainingKeywordAnywhere(String name);
+
 }
