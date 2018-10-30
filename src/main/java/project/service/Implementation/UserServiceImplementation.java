@@ -1,6 +1,8 @@
 package project.service.Implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.Users;
 import project.persistence.repositories.UsersRepository;
@@ -15,6 +17,7 @@ public class UserServiceImplementation implements UserService{
 	// Instance Variables
 	UsersRepository repository;
 	
+	PasswordEncoder passwordEncoder;
 	// Dependency Injection
 	@Autowired
 	public UserServiceImplementation(UsersRepository repository) {
@@ -23,7 +26,16 @@ public class UserServiceImplementation implements UserService{
 	
 	@Override
 	public void save(Users user) {
-		repository.save(user);
+		// TODO, senda tilbaka villuskilaboð
+		String username = repository.findByUsername(user.getUsername());
+		if(username == null)
+		{
+			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
+			repository.save(user);
+		} else {
+			System.out.println("User already exists");
+		}
 	}
 	@Override
 	public void delete(Users user) {
@@ -31,7 +43,13 @@ public class UserServiceImplementation implements UserService{
 	}
 	
 	@Override
-	public List<Users> userLogin(String username, String password) {
+	public Users userLogin(String username, String password) {
+		String encryptedPassword = repository.checkPassword(username, password);
+		if(passwordEncoder.matches(password, encryptedPassword)){
+			System.out.println("Yas Queen");
+		} else {
+			System.out.println("Nah Queen :(");
+		}
 		return repository.userLogin(username, password);
 	}
 	
@@ -52,8 +70,8 @@ public class UserServiceImplementation implements UserService{
 	}
 	
 	@Override
-	public String findByUsername(Users user) {
+	public String findByUsername(String username) {
 		
-		return repository.findByUsername(user);
+		return repository.findByUsername(username);
 	}
 }

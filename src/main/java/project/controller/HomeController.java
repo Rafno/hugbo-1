@@ -48,6 +48,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String homePost(Model model,@RequestParam("search") String leita ){
 		medicine =  medicineService.findPlaceContainingKeywordAnywhere(leita);;
+		model.addAttribute("leita",leita);
 		model.addAttribute("medicine", medicine);
 		return "searchEngine/searchEngine";
 	}

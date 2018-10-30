@@ -59,6 +59,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.cloudinary/cloudinary-http44 -->
         <dependency>
             <groupId>com.cloudinary</groupId>
