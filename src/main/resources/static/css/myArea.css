@@ -1,3 +1,65 @@
 .myHomeHeader{
     color:red;
 }
+.myAreaLargeContainer{
+    margin-right: 20%;
+    display: flex;
+    flex-direction: row;
+}
+.myAreaContainer{
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    max-width: 30%;
+    margin-right: 10%;
+}
+.imgMyArea {
+    background-color: #333;
+    float: left;
+    min-height: 350px;
+    width: 300px;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.myAreaForm {
+    display: flex;
+    flex-direction: column;
+}
+.myAreaChooseFile{
+
+}
+.myAreaSubmit{
+    margin-top: 5%;
+}
+.myAreaTable{
+}
+#lyf {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#lyf td, #lyf th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#lyf tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#lyf tr:hover {
+    background-color: #ddd;
+}
+
+#lyf th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
