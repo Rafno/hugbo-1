@@ -24,6 +24,12 @@
     <br />
     <br />
     <div class="row">
+        <h3 class="title">Staðfesta lykilorð</h3>
+        <input type="text" placeholder="lágmark 6 stafir" name="lykilord" />
+    </div>
+    <br />
+    <br />
+    <div class="row">
         <h3 class="title">Nafn</h3>
         <input type="text" placeholder="Þarf að fylla út" name="nafn" />
     </div>
