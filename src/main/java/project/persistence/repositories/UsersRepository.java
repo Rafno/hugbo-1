@@ -14,8 +14,8 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	Users save(Users user);
 	
 	void delete(Users user);
-	@Query(value = "SELECT p.name FROM Users p WHERE p.username = ?1 AND p.password = ?2")
-	List<Users> userLogin(String username, String password);
+	@Query(value = "SELECT p.name, p.password, p.username FROM Users p WHERE p.username = ?1 AND p.password = ?2")
+	Users userLogin(String username, String password);
 	@Query(value = "SELECT p.name, p.username FROM Users p")
 	List<Users> getAllPatients(Users user);
 	
@@ -25,5 +25,7 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	@Query(value = "SELECT p.name FROM Users p")
 	String editPatient(Users user);
 	@Query(value = "SELECT p.name FROM Users p WHERE p.username = ?1")
-	String findByUsername(Users user);
+	String findByUsername(String username);
+	@Query(value = "SELECT p.password FROM Users p WHERE p.username = ?1 AND p.password = ?2")
+	String checkPassword(String username, String password);
 }

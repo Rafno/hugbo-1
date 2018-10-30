@@ -11,7 +11,7 @@ public interface UserService
 	
 	void delete(Users user);
 	
-	List<Users> userLogin(String username, String password);
+	Users userLogin(String username, String password);
 	
 	List<Users> getAllPatients(Users user);
 	
@@ -19,5 +19,5 @@ public interface UserService
 	
 	String editPatient(Users user);
 	
-	String findByUsername(Users user);
+	String findByUsername(String username);
 }
