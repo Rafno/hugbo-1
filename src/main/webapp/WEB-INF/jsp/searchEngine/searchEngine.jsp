@@ -31,7 +31,7 @@
             <td><c:out value="${obj.pharmaceutical_form}"/></td>
             <td><c:out value="${obj.strength}"/></td>
             <td><c:out value="${obj.active_ingredient}"/></td>
-            <td><c:out value="${obj.mah}"/></td>
+            <td><c:out value="${obj.legal_status}"/></td>
             <td><c:out value="${obj.ma_issued}"/></td>
             <td><c:out value="${obj.marketed}"/></td>
             <td><c:out value="${obj.other_info}"/></td>
