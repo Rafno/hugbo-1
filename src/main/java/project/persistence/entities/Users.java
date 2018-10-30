@@ -17,6 +17,7 @@ public class Users
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, columnDefinition = "serial")
 	private Long id;
+	
 	private String name;
 	private String password;
 	private String username;
@@ -24,9 +25,8 @@ public class Users
 	// Notice the empty constructor, because we need to be able to create an empty PostitNote to add
 	// to our model so we can use it with our form
 	public Users(){}
-	public Users(Long id, String name, String username, String password)
+	public Users(String name, String username, String password)
 	{
-		this.id = id;
 		this.name = name;
 		this.username = username;
 		this.password = password;
