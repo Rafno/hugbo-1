@@ -6,7 +6,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
 
     <head>
-        <title>Project Title</title>
+        <title>Appótekið</title>
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/headNavigation.css"/>"/>
     </head>
     <header>
