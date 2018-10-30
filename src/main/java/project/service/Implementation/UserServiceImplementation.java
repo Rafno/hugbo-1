@@ -22,7 +22,9 @@ public class UserServiceImplementation implements UserService{
 	}
 	
 	@Override
-	public Users create(Users user) {return repository.create(user);}
+	public void save(Users user) {
+		repository.save(user);
+	}
 	@Override
 	public void delete(Users user) {
 		 repository.delete(user);

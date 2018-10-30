@@ -38,7 +38,6 @@ public class UserController {
 		
 		
 		model.addAttribute("users", userService.userLogin(username,password));
-		System.out.println(userService.userLogin(username,password));
 		// Add a new Medicine Note to the model for the form
 		// If you look at the form in Medicines.jsp, you can see that we
 		// reference this attribute there by the name `medicine`.
@@ -47,9 +46,21 @@ public class UserController {
 		return "/Login/login";
 	}
 	// To call this method, enter "localhost:8080/user" into a browser
+	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(){
+		
+		return "/Register/register";
+	}
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String registerPost(Model model, @RequestParam("username") String username,
+						   				@RequestParam("password") String password,
+						   				@RequestParam("name") String name){
+		
+		Users newUser = new Users(name, username, password);
+		userService.save(newUser);
 
 		return "/Register/register";
 	}
+	
 }
