@@ -46,10 +46,18 @@ public class HomeController {
         return "Index/Index";
     }
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String homePost(Model model,@RequestParam("search") String leita ){
+	public String homePost(Model model,@RequestParam("search") String leita,
+						   @RequestParam("nafn") String nafn,
+						   @RequestParam("styrkur") String styrkur,
+						   @RequestParam("lyfjaform") String lyfjaform,
+						   @RequestParam("utgafudagur") String utgafudagur){
 		medicine =  medicineService.findPlaceContainingKeywordAnywhere(leita);;
 		model.addAttribute("leita",leita);
 		model.addAttribute("medicine", medicine);
+		System.out.println(nafn);
+		System.out.println(styrkur);
+		System.out.println(lyfjaform);
+		System.out.println(utgafudagur);
 		return "searchEngine/searchEngine";
 	}
     // To call this method, enter "localhost:8080/user" into a browser

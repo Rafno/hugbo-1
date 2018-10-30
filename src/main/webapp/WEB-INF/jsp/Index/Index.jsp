@@ -18,9 +18,19 @@
     <p class="headerTxt">  Lyfjaskápurinn heima hjá þér</p>
     <div class = "lowerBanner">
      <Form method="post">
-         <label>
+         <label class="leitarvel">
              <input type="text" placeholder="Leita að lyfjum á íslenskum markaði" class="searchTextArea" name="search"/>
+             <input type="hidden" name="nafn" id="nafn" value=""/>
+             <input type="hidden" name ="styrkur" id="styrkur" value=""/>
+             <input type="hidden" name ="lyfjaform" id="lyfjaform" value=""/>
+             <input type="hidden" name ="utgafudagur" id="utgafudagur" value=""/>
              <param name="search" value="">
+             <param name="nafn" value="">
+             <param name="search" value="">
+             <param name="nafn" value="">
+             <param name="styrkur" value="">
+             <param name="lyfjaform" value="">
+             <param name="utgafudagur" value="">
          </label>
      </Form>
     </div>

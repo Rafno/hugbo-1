@@ -19,7 +19,17 @@
             <Form method="post">
                 <label>
                     <input type="text" value="${leita}" class="searchTextArea" name="search"/>
+                    <input type="hidden" name="nafn" value=""/>
+                    <input type="hidden" name ="styrkur" value=""/>
+                    <input type="hidden" name ="lyfjaform"  value=""/>
+                    <input type="hidden" name ="utgafudagur" value=""/>
                     <param name="search" value="">
+                    <param name="nafn" value="">
+                    <param name="search" value="">
+                    <param name="nafn" value="">
+                    <param name="styrkur" value="">
+                    <param name="lyfjaform" value="">
+                    <param name="utgafudagur" value="">
                 </label>
             </Form>
         </div>
@@ -37,7 +47,7 @@
             <th>ýmsar upplýsingar</th>
         </tr>
         <c:forEach items="${medicine}" var="obj">
-            <tr onclick="openPopUp()">
+            <tr onclick="openPopUp('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
                 <td><c:out value="${obj.name}"/></td>
                 <td><c:out value="${obj.pharmaceutical_form}"/></td>
                 <td><c:out value="${obj.strength}"/></td>
@@ -57,22 +67,23 @@
                 <div class="close">&times;</div>
             </div>
             <div class="popUpTextContainer">
-                <div class="popUpText"><b>Nafn Lyfstins:</b> Atomoxetin Medical Valley</div>
-                <div class="popUpText"><b>Styrkur :</b> 200 mg</div>
-                <div class="popUpText"><b>Lyfjaform:</b> Tafla</div>
-                <div class="popUpText"><b>Afgreiðslutilhögun:</b>(R Z) Sérfræðingsmerkt (og lyfseðilsskylt) </div>
+                <input class="popUpTexti" type="text" name="nafn" id="nafn" readonly/>
+                <input class="popUpTexti"type="text" name="styrkur" id="styrkur" readonly/>
+                <input class="popUpTexti"type="text" name="lyfjaform" id="lyfjaform" readonly/>
+                <input class="popUpTexti"type="text" name="utgafudagur" id="utgafudagur" readonly/>
             </div>
             <button class="popUpSubmit" type="submit" name="search">Staðfesta</button>
-            <param name="search" value="${search}">
         </Form>
     </div>
-</body>
-</html>
 
 <script>
-    function openPopUp(){
+    function openPopUp(nafn,styrkur,lyfjaform,utgafudagur){
         // nær í módelið
         var modal = document.getElementById('myModal');
+        var b = document.getElementById('nafn').value = "Nafn Lyfsins: "+nafn;
+        var c = document.getElementById('styrkur').value = "styrkur:"+styrkur;
+        var d = document.getElementById('lyfjaform').value = "lyfjaform: "+lyfjaform;
+        var e = document.getElementById('utgafudagur').value = "útgáfudagur: "+utgafudagur;
 
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";
@@ -83,3 +94,5 @@
         }
     }
 </script>
+</body>
+</html>

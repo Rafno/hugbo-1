@@ -77,10 +77,11 @@
 .popUpHeadTitle{
     color: #dddddd;
 }
-.popUpText{
-    margin: 1%;
+.popUpTexti {
     font-size: 1.5rem;
     margin-right: 20%;
+    border-style: none;
+    width: 97%;
 }
 .popUpSubmit{
     border-radius: 5px;
