@@ -6,20 +6,30 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import project.persistence.entities.Medicine;
+import project.service.MedicineService;
 import project.service.StringManipulationService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class HomeController {
 
-    // Instance Variables
+    // Instance
+
     StringManipulationService stringService;
+	@Autowired
+    MedicineService medicineService;
+	List<Medicine> medicine;
 
     // Dependency Injection
     @Autowired
     public HomeController(StringManipulationService stringService) {
-        this.stringService = stringService;
+
+    	this.stringService = stringService;
+		List<Medicine> medicine = new ArrayList<Medicine>();
     }
 
     // Request mapping is the path that you want to map this method to
@@ -37,19 +47,10 @@ public class HomeController {
     }
 	@RequestMapping(value = "/", method = RequestMethod.POST)
 	public String homePost(Model model,@RequestParam("search") String leita ){
-  		System.out.println(leita);
-		model.addAttribute("name","nafn");
-		model.addAttribute("form","formid");
-		model.addAttribute("strength","styrkur");
-		model.addAttribute("ingredient","innihald");
-		model.addAttribute("service","service");
-		model.addAttribute("marketedTime","markaðstími");
-		model.addAttribute("marketed","markaðsett");
-		model.addAttribute("otherInfo","Aðrar Upplýsingar");
-
+		medicine =  medicineService.findPlaceContainingKeywordAnywhere(leita);;
+		model.addAttribute("medicine", medicine);
 		return "searchEngine/searchEngine";
 	}
-
     // To call this method, enter "localhost:8080/user" into a browser
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String user(Model model){

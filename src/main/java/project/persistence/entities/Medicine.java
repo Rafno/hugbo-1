@@ -164,7 +164,7 @@ public class Medicine {
 	{
 		this.id = id;
 	}
-	
+
 	// This is for easier debug.
 	@Override
 	public String toString()
