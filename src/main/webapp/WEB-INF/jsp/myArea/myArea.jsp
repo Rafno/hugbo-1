@@ -13,4 +13,29 @@
 </head>
 <body>
     <h2 class="myHomeHeader">Heimasvæðið mitt</h2>
+    <div class = "myAreaLargeContainer">
+        <div class="myAreaContainer">
+            <div class="imgMyArea">
+                ${image}
+            </div>
+            <form method="post" action = "/myHome" enctype="multipart/form-data" class="myAreaForm" >
+                <div class = myAreaChooseFile> <input type="file" name="pic" id="fileChooser"/> </div>
+                <div class = myAreaSubmit> <input type="submit" value="Upload" name = "pic" /> </div>
+            </form>
+        </div>
+        <div class = "myAreaTable">
+            <table id="lyf" border="1">
+                <tr>
+                    <th>Heiti lyfs</th>
+                    <th>Lyfjaform</th>
+                    <th>Styrkleiki</th>
+                    <th>Innihald lyfs</th>
+                    <th>Afgreiðslutilhögun</th>
+                    <th>Markaðsleyfi útgefið</th>
+                    <th>Markaðsett</th>
+                    <th>ýmsar upplýsingar</th>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>

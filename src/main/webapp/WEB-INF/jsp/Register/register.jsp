@@ -27,7 +27,7 @@
     <br />
     <div class="row">
         <h3 class="title">Staðfesta lykilorð</h3>
-        <input type="text" placeholder="lágmark 6 stafir" name="lykilord" />
+        <input type="text" placeholder="lágmark 6 stafir" name="passwordRepeat" />
     </div>
     <br />
     <br />
