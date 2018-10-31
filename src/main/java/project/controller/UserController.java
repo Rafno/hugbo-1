@@ -35,7 +35,7 @@ public class UserController {
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(Model model,@RequestParam("username") String username, @RequestParam("password") String password){
-		userService.userLogin(username,password);
+		//userService.userLogin(username,password);
 		// Add a new Medicine Note to the model for the form
 		// If you look at the form in Medicines.jsp, you can see that we
 		// reference this attribute there by the name `medicine`.
