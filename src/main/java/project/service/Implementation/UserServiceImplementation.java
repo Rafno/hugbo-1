@@ -1,6 +1,8 @@
 package project.service.Implementation;
 
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,21 +18,23 @@ public class UserServiceImplementation implements UserService{
 	
 	// Instance Variables
 	UsersRepository repository;
-	
+
 	PasswordEncoder passwordEncoder;
 	// Dependency Injection
 	@Autowired
 	public UserServiceImplementation(UsersRepository repository) {
+
 		this.repository = repository;
+		this.passwordEncoder = new BCryptPasswordEncoder();
 	}
 	
 	@Override
 	public void save(Users user) {
 		// TODO, senda tilbaka villuskilaboð
 		String username = repository.findByUsername(user.getUsername());
+
 		if(username == null)
 		{
-			PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			repository.save(user);
 		} else {
@@ -41,7 +45,7 @@ public class UserServiceImplementation implements UserService{
 	public void delete(Users user) {
 		 repository.delete(user);
 	}
-	
+
 	@Override
 	public Users userLogin(String username, String password) {
 		String encryptedPassword = repository.checkPassword(username, password);
