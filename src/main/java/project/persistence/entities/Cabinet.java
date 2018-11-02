@@ -16,7 +16,10 @@ public class Cabinet {
 	private Long id;
 	private Long medicineId;
 	private Long usersId;
-	
+
+	public Cabinet(){
+	}
+
 	public Cabinet(Long medicineId, Long usersId){
 		this.medicineId = medicineId;
 		this.usersId = usersId;
