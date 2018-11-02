@@ -52,6 +52,7 @@ public class HomeController {
 						   @RequestParam("styrkur") String styrkur,
 						   @RequestParam("lyfjaform") String lyfjaform,
 						   @RequestParam("utgafudagur") String utgafudagur){
+    	// get search results
 		medicine =  medicineService.findPlaceContainingKeywordAnywhere(stringService.convertStringToLowerCase(leita));
 		model.addAttribute("leita",leita);
 		model.addAttribute("medicine", medicine);

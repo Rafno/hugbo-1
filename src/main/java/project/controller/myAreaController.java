@@ -29,16 +29,19 @@ public class myAreaController {
 	private UserService userService;
 	private Cloudinary cloudinary;
 	private StringManipulationService stringManipulationService;
+
 	Map config;
 
 	@Autowired
 	public myAreaController(UserService userService){
 		this.userService = userService;
+		// connect to cloudinary
 		Map config = ObjectUtils.asMap(
 			"cloud_name", "dfhjyjyg1",
 			"api_key", "262159979451586",
 			"api_secret", "seHjAkN2IxZmE2lisxYoVyiD3vk");
 		this.cloudinary = new Cloudinary(config);
+
 	}
 
 	@RequestMapping(value = "/myHome", method = RequestMethod.GET)
@@ -51,12 +54,14 @@ public class myAreaController {
 	}
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
 	public String myAreasPost(Model model,@RequestParam("pic") MultipartFile file) throws IOException {
-		System.err.println(String.format("String: %s", file.getBytes()));
-		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
-		System.out.println(uploadResult.get("public_id"));
 
+		// load image to cloudinary
+		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
+
+		// get image from cloudinary
 		model.addAttribute("image",
 			(String)cloudinary.url().imageTag((String)uploadResult.get("public_id")));
+
 		return "myArea/myArea";
 	}
 
