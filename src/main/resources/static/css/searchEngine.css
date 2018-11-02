@@ -1,15 +1,16 @@
 #lyf {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
     display: flex;
-    max-width: 1200px;
+    font-size: 0.8rem;
+    min-width: 90%;
 }
 
 #lyf td, #lyf th {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 2px;
 }
 
 #lyf tr:nth-child(even) {
@@ -21,14 +22,14 @@
 }
 
 #lyf th {
-    padding-top: 12px;
-    padding-bottom: 12px;
     text-align: left;
     background-color: #4CAF50;
     color: white;
-    max-width: 30px;
 }
-
+/*Stýla töfluna max width á á dálka og svona*/
+.heitiLyfs{
+    max-width: 130px;
+}
 /*Pop up glugginn*/
 .modal {
     display: none; /* Hidden by default */
