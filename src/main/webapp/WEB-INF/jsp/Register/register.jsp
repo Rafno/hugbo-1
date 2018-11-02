@@ -10,29 +10,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/register.css"/>"/>
 </head>
-<form method="post">
+<form method="post" class="registering">
     <div class="row">
-        <h3 class="title">Notendanafn</h3>
+        <h2 class="title">Notendanafn</h2>
         <input type="text" placeholder="Enga íslenska stafi" name="username" />
         <param name="username" value="">
     </div>
     <br />
     <br />
     <div class="row">
-        <h3 class="title">Lykilorð</h3>
-        <input type="text" placeholder="lágmark 6 stafir" name="password" />
+        <h2 class="title">Lykilorð</h2>
+        <input type="text" placeholder="Lágmark 6 stafir" name="password"style="-webkit-text-security: disc;"/>
         <param name="password" value="">
     </div>
     <br />
     <br />
     <div class="row">
-        <h3 class="title">Staðfesta lykilorð</h3>
-        <input type="text" placeholder="lágmark 6 stafir" name="passwordRepeat" />
+        <h2 class="title">Staðfesta lykilorð</h2>
+        <input type="text" placeholder="Passaðu að hafa lykilorðin eins " name="passwordRepeat" style="-webkit-text-security: disc;"/>
     </div>
     <br />
     <br />
     <div class="row">
-        <h3 class="title">Nafn</h3>
+        <h2 class="title">Nafn</h2>
         <input type="text" placeholder="Þarf að fylla út" name="name" />
         <param name="name" value="">
     </div>

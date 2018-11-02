@@ -55,8 +55,11 @@ public class UserController {
 						   				@RequestParam("password") String password,
 						   				@RequestParam("passwordRepeat") String passwordRepeat,
 						   				@RequestParam("name") String name){
-		// TODO senda tilbaka villuskilaboð
+
+		// TODO senda villuskilaboð
+		// kalla hér á fall sem skoðar hvort username og password séu lögleg
 		if(!password.equals(passwordRepeat)) {
+
 			System.out.println("Failure");
 		} else
 		{
