@@ -6,6 +6,7 @@
     display: flex;
     font-size: 0.8rem;
     min-width: 90%;
+    border:none;
 }
 
 #lyf td, #lyf th {
@@ -25,6 +26,7 @@
     text-align: left;
     background-color: #4CAF50;
     color: white;
+    min-width: 170px;
 }
 /*Stýla töfluna max width á á dálka og svona*/
 .heitiLyfs{
