@@ -28,4 +28,7 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	String findByUsername(String username);
 	@Query(value = "SELECT p.password FROM Users p WHERE p.username = ?1 AND p.password = ?2")
 	String checkPassword(String username, String password);
+
+	@Query(value = "select (CASE WHEN userName = ?1 THEN True ELSE False END) from Users p" )
+	Boolean [] userNameExists(String username);
 }

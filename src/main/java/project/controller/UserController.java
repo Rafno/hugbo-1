@@ -82,7 +82,7 @@ public class UserController {
 		model.addAttribute("lykilordVillur",lykilordVillur);
 		return "/Register/register";
 	}
-	public static void getErrors(String notendanafn, String lykilord, String lykilordRepeat){
+	public void getErrors(String notendanafn, String lykilord, String lykilordRepeat){
 		if(!lykilord.equals(lykilordRepeat))
 		{
 			lykilordVillur.add("Lykilorðin verða að vera eins");
@@ -112,6 +112,13 @@ public class UserController {
 			if (lykilord.contains(item))
 			{
 				lykilordVillur.add("íslenskir sérstafir eru ekki leyfðir í lykilorði");
+				allGood = false;
+				break;
+			}
+		}
+		for (Boolean item : userService.userNameExists(notendanafn)){
+			if(item == true){
+				notendaVillur.add("Notendanafn er nú þegar til");
 				allGood = false;
 				break;
 			}

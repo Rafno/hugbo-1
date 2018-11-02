@@ -20,4 +20,6 @@ public interface UserService
 	String editPatient(Users user);
 	
 	String findByUsername(String username);
+
+	Boolean [] userNameExists(String username);
 }
