@@ -1,14 +1,18 @@
 package project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import project.persistence.entities.Users;
-import project.service.StringManipulationService;
+
 import project.service.UserService;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Small controller just to show that you can have multiple controllers
@@ -35,8 +39,10 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(Model model,@RequestParam("username") String username, @RequestParam("password") String password){
+	public String loginPost(Model model, HttpServletResponse response, @RequestParam("username") String username, @RequestParam("password") String password){
 		Users user = userService.userLogin(username,password);
+		Cookie myCookie = new Cookie("User",user.getUsername());
+		response.addCookie(myCookie);
 		// Add a new Medicine Note to the model for the form
 		// If you look at the form in Medicines.jsp, you can see that we
 		// reference this attribute there by the name `medicine`.
