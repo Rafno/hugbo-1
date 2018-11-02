@@ -33,16 +33,18 @@ public class UserController {
 		// file that has the same name
 		return "/Login/login";
 	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(Model model,@RequestParam("username") String username, @RequestParam("password") String password){
-		userService.userLogin(username,password);
+		Users user = userService.userLogin(username,password);
 		// Add a new Medicine Note to the model for the form
 		// If you look at the form in Medicines.jsp, you can see that we
 		// reference this attribute there by the name `medicine`.
-		model.addAttribute("user", new Users());
+		model.addAttribute("user", user);
 
 		return "/Login/login";
 	}
+	
 	// To call this method, enter "localhost:8080/user" into a browser
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)

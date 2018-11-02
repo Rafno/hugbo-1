@@ -3,6 +3,7 @@ package project.service.Implementation;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,14 +19,14 @@ public class UserServiceImplementation implements UserService{
 	
 	// Instance Variables
 	UsersRepository repository;
-
-	PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	// Dependency Injection
 	@Autowired
 	public UserServiceImplementation(UsersRepository repository) {
 
 		this.repository = repository;
-		this.passwordEncoder = new BCryptPasswordEncoder();
 	}
 	
 	@Override
@@ -47,14 +48,22 @@ public class UserServiceImplementation implements UserService{
 	}
 
 	@Override
-	public Users userLogin(String username, String password) {
-		String encryptedPassword = repository.checkPassword(username, password);
-		if(passwordEncoder.matches(password, encryptedPassword)){
-			System.out.println("Yas Queen");
-		} else {
-			System.out.println("Nah Queen :(");
+	public Users userLogin(String username, String password) throws NullPointerException
+	{
+		Users possibleUser = new Users();
+		try{
+			possibleUser = repository.userLogin(username);
+			if(passwordEncoder.matches(password, possibleUser.getPassword())) {
+				return possibleUser;
+			} else {
+				System.out.println("User does not exists");
+			}
+			
+			return possibleUser;
+		} catch (NullPointerException e){
+			System.out.println("User doesnt exist");
 		}
-		return repository.userLogin(username, password);
+		return possibleUser;
 	}
 	
 	@Override
