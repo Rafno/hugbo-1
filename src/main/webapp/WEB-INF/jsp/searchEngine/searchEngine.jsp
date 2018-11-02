@@ -35,7 +35,7 @@
         </div>
 
     </div>
-    <table id="lyf" border="1">
+    <table class="lyfid" id="lyf" border="1">
         <tr>
             <th>Heiti lyfs</th>
             <th>Lyfjaform</th>

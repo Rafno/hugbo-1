@@ -3,6 +3,8 @@
     border-collapse: collapse;
     margin-left: 5%;
     margin-right: 5%;
+    display: flex;
+    max-width: 1200px;
 }
 
 #lyf td, #lyf th {
@@ -24,6 +26,7 @@
     text-align: left;
     background-color: #4CAF50;
     color: white;
+    max-width: 30px;
 }
 
 /*Pop up glugginn*/

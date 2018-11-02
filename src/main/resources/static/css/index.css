@@ -5,15 +5,14 @@
 
 .lowerBanner {
     margin: auto;
-    padding-bottom: 2%;
+    padding-bottom: 0.3%;
     background-color: Gainsboro;
     padding-left: 32%;
 }
 .headerTxt{
     padding-left: 42%;
     margin: 0%;
-    font-size: 1.4rem;
-    margin-bottom: 0.5%;
+    font-size: 1rem;
 }
 .lowerBanner_container{
     background-color: Gainsboro;
