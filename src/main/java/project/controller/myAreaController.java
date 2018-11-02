@@ -28,15 +28,16 @@ public class myAreaController {
 
 	private UserService userService;
 	private Cloudinary cloudinary;
+	private StringManipulationService stringManipulationService;
 	Map config;
 
 	@Autowired
 	public myAreaController(UserService userService){
 		this.userService = userService;
 		Map config = ObjectUtils.asMap(
-			"cloud_name", "dusj3d8bs",
-			"api_key", "411277645212787",
-			"api_secret", "UhKNtcMgrbNrL--iBIhuF58Dxik");
+			"cloud_name", "dfhjyjyg1",
+			"api_key", "262159979451586",
+			"api_secret", "seHjAkN2IxZmE2lisxYoVyiD3vk");
 		this.cloudinary = new Cloudinary(config);
 	}
 
@@ -52,8 +53,10 @@ public class myAreaController {
 	public String myAreasPost(Model model,@RequestParam("pic") MultipartFile file) throws IOException {
 		System.err.println(String.format("String: %s", file.getBytes()));
 		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
-		System.out.println(cloudinary.url().imageTag("zqfvky2aetzjhr1yqhj8.jpg"));
-		model.addAttribute("image", (String)cloudinary.url().imageTag("zqfvky2aetzjhr1yqhj8.jpg"));
+		System.out.println(uploadResult.get("public_id"));
+
+		model.addAttribute("image",
+			(String)cloudinary.url().imageTag((String)uploadResult.get("public_id")));
 		return "myArea/myArea";
 	}
 

@@ -22,7 +22,7 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
     void delete(Medicine medicine);
 
     List<Medicine> findAll();
-    @Query("Select p from Medicine p where p.name LIKE  %?1%")
+    @Query("Select p from Medicine p where Lower(p.name) LIKE concat('%', concat(?1, '%'))")
 	List<Medicine> findPlaceContainingKeywordAnywhere(String name);
     // If we need a custom query that maybe doesn't fit the naming convention used by the JPA repository,
     // then we can write it quite easily with the @Query notation, like you see below.
