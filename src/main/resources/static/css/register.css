@@ -1,11 +1,13 @@
+/*each row there are four rows in the register*/
 .row {
     display: flex;
     width: 100%;
 }
+/* Label for registering */
+.title {
+    padding-left: 14%;
+    width: 20%;
 
-h3.title {
-    padding-left: 4%;
-    width: 40%;
 }
 
 input {
@@ -16,7 +18,7 @@ input {
 
 input#confirm {
     width: 20%;
-    margin-left: 4%;
+    margin-left: 14%;
     background-color: green;
     color: white;
     border-radius: 15px;
@@ -27,4 +29,11 @@ select#division {
     max-width: 500px;
     width: 100%;
     font-size: 1.5em;
+}
+/*Form container for register*/
+.registering{
+    margin-top: 5%;
+}
+#password {
+    font-size: 1.5rem;
 }
