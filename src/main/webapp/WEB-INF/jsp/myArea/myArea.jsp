@@ -19,8 +19,7 @@
                 ${image}
             </div>
             <form method="post" action = "/myHome" enctype="multipart/form-data" class="myAreaForm" >
-                <div class = myAreaChooseFile> <input type="file" name="pic" id="fileChooser"/> </div>
-                <div class = myAreaSubmit> <input type="submit" value="Upload" name = "pic" /> </div>
+                <div class = myAreaChooseFile> <input type="file" onchange="this.form.submit()" name="pic" id="fileChooser"/> </div>
             </form>
         </div>
         <div class = "myAreaTable">

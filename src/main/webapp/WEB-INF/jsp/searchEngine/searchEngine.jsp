@@ -69,7 +69,7 @@
                 <div class="close">&times;</div>
             </div>
             <div class="popUpTextContainer">
-                <input class="popUpTexti" type="text" name="nafn" id="nafn" readonly/>
+                <input class="popUpTexti" type="text" name="nafn" id="nafn" value = "nafn" readonly/>
                 <input class="popUpTexti"type="text" name="styrkur" id="styrkur" readonly/>
                 <input class="popUpTexti"type="text" name="lyfjaform" id="lyfjaform" readonly/>
                 <input class="popUpTexti"type="text" name="utgafudagur" id="utgafudagur" readonly/>
@@ -83,7 +83,7 @@
         // nær í módelið
         var modal = document.getElementById('myModal');
         var b = document.getElementById('nafn').value = "Nafn Lyfsins: "+nafn;
-        var c = document.getElementById('styrkur').value = "styrkur:"+styrkur;
+        var c = document.getElementById('styrkur').value = "styrkur: "+styrkur;
         var d = document.getElementById('lyfjaform').value = "lyfjaform: "+lyfjaform;
         var e = document.getElementById('utgafudagur').value = "útgáfudagur: "+utgafudagur;
 

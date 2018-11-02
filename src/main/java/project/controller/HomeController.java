@@ -13,6 +13,7 @@ import project.service.StringManipulationService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 @Controller
 public class HomeController {
@@ -54,10 +55,17 @@ public class HomeController {
 		medicine =  medicineService.findPlaceContainingKeywordAnywhere(stringService.convertStringToLowerCase(leita));
 		model.addAttribute("leita",leita);
 		model.addAttribute("medicine", medicine);
-		System.out.println(nafn);
-		System.out.println(styrkur);
-		System.out.println(lyfjaform);
-		System.out.println(utgafudagur);
+
+		// make substrings
+		if(nafn.contains(": ")) {
+			String[] s1 = nafn.split(Pattern.quote(": "));
+			String[] s2 = styrkur.split(Pattern.quote(": "));
+			String[] s3 = lyfjaform.split(Pattern.quote(": "));
+			String[] s4 = utgafudagur.split(Pattern.quote(": "));
+			System.out.println(medicineService.getMedId(s1[1], s2[1], s3[1], s4[1]));
+		}
+
+
 		return "searchEngine/searchEngine";
 	}
     // To call this method, enter "localhost:8080/user" into a browser

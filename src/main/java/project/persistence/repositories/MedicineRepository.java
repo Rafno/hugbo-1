@@ -39,6 +39,12 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
     @Query(value = "SELECT p FROM Medicine p WHERE p.id = ?1")
     Medicine findOne(Long id);
 
+    @Query(value = "select p.id from Medicine p where p.name like ?1" +
+											" and p.strength like ?2" +
+											" and p.pharmaceutical_form like ?3" +
+											" and p.ma_issued like ?4")
+	Long getMedId(String name, String strength, String form, String ma_issued);
+
 
     List<Medicine> findByName(String name);
 }
