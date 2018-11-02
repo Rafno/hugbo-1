@@ -10,6 +10,9 @@ import project.persistence.entities.Users;
 import project.service.StringManipulationService;
 import project.service.UserService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Small controller just to show that you can have multiple controllers
  * in your project
@@ -18,6 +21,9 @@ import project.service.UserService;
 public class UserController {
 	
 	private UserService userService;
+	private static List<String> notendaVillur = new ArrayList<String>();
+	private static List<String> lykilordVillur = new ArrayList<String>();
+	private static Boolean allGood;
 	
 	@Autowired
 	public UserController(UserService userService){this.userService = userService;}
@@ -46,8 +52,10 @@ public class UserController {
 	// To call this method, enter "localhost:8080/user" into a browser
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String register(){
-		
+	public String register(Model model){
+
+
+
 		return "/Register/register";
 	}
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -57,17 +65,57 @@ public class UserController {
 						   				@RequestParam("name") String name){
 
 		// TODO senda villuskilaboð
+		//gefum div togunum sín value sem user sló inn
+		model.addAttribute("nafn",name);
+		// hreinsum arrayListana
+		notendaVillur.clear();
+		lykilordVillur.clear();
 		// kalla hér á fall sem skoðar hvort username og password séu lögleg
-		if(!password.equals(passwordRepeat)) {
-
-			System.out.println("Failure");
-		} else
-		{
+		allGood = true;
+		getErrors(username,password,passwordRepeat);
+		if(allGood == true){
+			model.addAttribute("succesfull","Til hamingju "+ name+ ". Aðgangurinn þinn hefur verið búinn til");
 			Users newUser = new Users(name, username, password);
 			userService.save(newUser);
-			
 		}
+		model.addAttribute("notendaVillur",notendaVillur);
+		model.addAttribute("lykilordVillur",lykilordVillur);
 		return "/Register/register";
+	}
+	public static void getErrors(String notendanafn, String lykilord, String lykilordRepeat){
+		if(!lykilord.equals(lykilordRepeat))
+		{
+			lykilordVillur.add("Lykilorðin verða að vera eins");
+		}
+		String[] islenskirStafir = { "á", "Á", "ð", "Ð", "é", "É", "í", "Í", "ó", "Ó", "ú", "Ú", "ý", "Ý", "þ", "Þ", "æ", "Æ", "Ö", "ö"," "};
+		for (String item:islenskirStafir)
+		{
+			if (notendanafn.contains(item))
+			{
+				notendaVillur.add("Bil í orði eða íslenskir sérstafir eru ekki leyfðir í notendanafni");
+				allGood = false;
+				break;
+			}
+		}
+		if(notendanafn.length() == 0)
+		{
+			notendaVillur.add("Notendanafn má ekki vera tómt");
+			allGood = false;
+		}
+		if(lykilord.length() < 6)
+		{
+			lykilordVillur.add("Lengd á lykilorði verður að vera að lágmarki 6 stafir");
+			allGood = false;
+		}
+		for (String item:islenskirStafir)
+		{
+			if (lykilord.contains(item))
+			{
+				lykilordVillur.add("íslenskir sérstafir eru ekki leyfðir í lykilorði");
+				allGood = false;
+				break;
+			}
+		}
 	}
 	
 }

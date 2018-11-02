@@ -10,7 +10,7 @@
 
 }
 
-input {
+input.registerText {
     max-width: 500px;
     width: 100%;
     font-size: 1.5em;
@@ -32,8 +32,23 @@ select#division {
 }
 /*Form container for register*/
 .registering{
-    margin-top: 5%;
+    margin-top: 2%;
 }
 #password {
     font-size: 1.5rem;
 }
+/*Fyrir villuskiaboð*/
+.errors{
+    color: red;
+    margin-left: 35%;
+    font-size: 1.1rem;
+}
+#succesfull {
+    border: none;
+    width: 100%;
+    font-size: 1.2rem;
+    margin-left: 14%;
+}
+.registerHeader{
+    margin: auto;display: flex;
+    justify-content: center;
