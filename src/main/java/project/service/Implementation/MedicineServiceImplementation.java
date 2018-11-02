@@ -66,4 +66,8 @@ public class MedicineServiceImplementation implements MedicineService {
     public List<Medicine> findPlaceContainingKeywordAnywhere(String name){
     	return repository.findPlaceContainingKeywordAnywhere(name);
     }
+    @Override
+	public Long getMedId(String name, String strength, String form, String ma_issued){
+    	return repository.getMedId(name, strength, form, ma_issued);
+	}
 }

@@ -48,4 +48,5 @@ public interface MedicineService {
 
 	List<Medicine> findPlaceContainingKeywordAnywhere(String name);
 
+	Long getMedId(String name, String strength, String form, String ma_issued);
 }
