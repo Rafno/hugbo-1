@@ -21,6 +21,7 @@ public class Users
 	private String name;
 	private String password;
 	private String username;
+	private String imagePublicId;
 	
 	// Notice the empty constructor, because we need to be able to create an empty PostitNote to add
 	// to our model so we can use it with our form
@@ -30,7 +31,7 @@ public class Users
 		this.name = name;
 		this.username = username;
 		this.password = password;
-		
+		this.imagePublicId = null;
 	}
 	
 	public Long getId()
@@ -71,6 +72,13 @@ public class Users
 	public void setUsername(String username)
 	{
 		this.username = username;
+	}
+
+	public String getImagePublicId(){
+		return this.imagePublicId;
+	}
+	public void setImagePublicId(String imagePublicId){
+		this.imagePublicId = imagePublicId;
 	}
 	
 }
