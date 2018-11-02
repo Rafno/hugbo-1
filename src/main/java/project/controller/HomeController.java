@@ -18,7 +18,7 @@ import java.util.Map;
 public class HomeController {
 
     // Instance
-
+	@Autowired
     StringManipulationService stringService;
 	@Autowired
     MedicineService medicineService;
@@ -51,7 +51,7 @@ public class HomeController {
 						   @RequestParam("styrkur") String styrkur,
 						   @RequestParam("lyfjaform") String lyfjaform,
 						   @RequestParam("utgafudagur") String utgafudagur){
-		medicine =  medicineService.findPlaceContainingKeywordAnywhere(leita);;
+		medicine =  medicineService.findPlaceContainingKeywordAnywhere(stringService.convertStringToLowerCase(leita));
 		model.addAttribute("leita",leita);
 		model.addAttribute("medicine", medicine);
 		System.out.println(nafn);

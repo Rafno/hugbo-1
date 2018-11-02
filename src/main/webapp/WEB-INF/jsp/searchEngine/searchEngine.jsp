@@ -35,30 +35,32 @@
         </div>
 
     </div>
-    <table class="lyfid" id="lyf" border="1">
-        <tr>
-            <th>Heiti lyfs</th>
-            <th>Lyfjaform</th>
-            <th>Styrkleiki</th>
-            <th>Innihald lyfs</th>
-            <th>Afgreiðslutilhögun</th>
-            <th>Markaðsleyfi útgefið</th>
-            <th>Markaðsett</th>
-            <th>ýmsar upplýsingar</th>
-        </tr>
-        <c:forEach items="${medicine}" var="obj">
-            <tr onclick="openPopUp('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
-                <td><c:out value="${obj.name}"/></td>
-                <td><c:out value="${obj.pharmaceutical_form}"/></td>
-                <td><c:out value="${obj.strength}"/></td>
-                <td><c:out value="${obj.active_ingredient}"/></td>
-                <td><c:out value="${obj.legal_status}"/></td>
-                <td><c:out value="${obj.ma_issued}"/></td>
-                <td><c:out value="${obj.marketed}"/></td>
-                <td><c:out value="${obj.other_info}"/></td>
+    <div class="tafla">         
+        <table class="lyfid" id="lyf" border="1">
+            <tr>
+                <th>Heiti lyfs</th>
+                <th>Lyfjaform</th>
+                <th>Styrkleiki</th>
+                <th>Innihald lyfs</th>
+                <th>Afgreiðslutilhögun</th>
+                <th>Markaðsleyfi útgefið</th>
+                <th>Markaðsett</th>
+                <th>ýmsar upplýsingar</th>
             </tr>
-        </c:forEach>
-    </table>
+            <c:forEach items="${medicine}" var="obj">
+                <tr onclick="openPopUp('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
+                    <td><c:out value="${obj.name}"/></td>
+                    <td><c:out value="${obj.pharmaceutical_form}"/></td>
+                    <td><c:out value="${obj.strength}"/></td>
+                    <td><c:out value="${obj.active_ingredient}"/></td>
+                    <td><c:out value="${obj.legal_status}"/></td>
+                    <td><c:out value="${obj.ma_issued}"/></td>
+                    <td><c:out value="${obj.marketed}"/></td>
+                    <td><c:out value="${obj.other_info}"/></td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
     <div id="myModal" class="modal">
         <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
         <Form class="modal-content" method="post">

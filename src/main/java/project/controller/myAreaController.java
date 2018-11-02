@@ -28,6 +28,7 @@ public class myAreaController {
 
 	private UserService userService;
 	private Cloudinary cloudinary;
+	private StringManipulationService stringManipulationService;
 	Map config;
 
 	@Autowired
