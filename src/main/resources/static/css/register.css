@@ -49,6 +49,8 @@ select#division {
     font-size: 1.2rem;
     margin-left: 14%;
 }
-.registerHeader{
-    margin: auto;display: flex;
+.registerHeader {
+    margin: auto;
+    display: flex;
     justify-content: center;
+}
