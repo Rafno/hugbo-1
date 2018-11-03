@@ -16,7 +16,6 @@
     <form name="f" th:action="login" method="post" class="LoginForm">
             <div class="headers">Innskráning á Appótek</div>
         <div class="row">
-            <p>username = user, password = userPass</p>
             <label for="username">Username</label>
             <input type="text" id="username" name='username'/>
         </div>

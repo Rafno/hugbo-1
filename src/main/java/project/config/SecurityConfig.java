@@ -42,6 +42,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	{
 		http
 			.authorizeRequests()
+			.antMatchers("/login*").anonymous()
+			.anyRequest().authenticated()
+			.and()
+			.formLogin()
+			
+			.defaultSuccessUrl("/")
+			.failureUrl("/login.html?error=true")
+			.and()
+			.logout().logoutSuccessUrl("/login.html");
+		
+		
+		/*
+		http
+			.authorizeRequests()
 			.antMatchers("/myHome").hasRole("USER")
 			
 			.and()
@@ -63,6 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			
 			.and()
 			.csrf().disable();
+			*/
 	}
 	
 }
