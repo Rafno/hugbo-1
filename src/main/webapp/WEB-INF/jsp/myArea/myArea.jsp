@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <h2 class="myHomeHeader">Heimasvæðið mitt</h2>
+    <h2 class="myHomeHeader">Lyfjaskápurinn minn</h2>
     <div class = "myAreaLargeContainer">
         <div class="myAreaContainer">
             <div class="imgMyArea">

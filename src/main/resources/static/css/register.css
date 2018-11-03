@@ -1,7 +1,15 @@
 /*each row there are four rows in the register*/
 .row {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     width: 100%;
+    height: 5%;
+}
+.rowButton {
+    width: 100%;
+    height: 10%;
 }
 /* Label for registering */
 .title {
@@ -18,11 +26,8 @@ input.registerText {
 
 input#confirm {
     width: 20%;
-    margin-left: 14%;
-    background-color: green;
-    color: white;
-    border-radius: 15px;
-    font-size: 2em;
+    margin-left: 25%;
+    height: 100%;
 }
 
 select#division {
@@ -31,18 +36,40 @@ select#division {
     font-size: 1.5em;
 }
 /*Form container for register*/
-.registering{
-    margin-top: 2%;
+.registeringContainer{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+.registeringUsername{
+    flex: 1 0 50%;
+    min-height: 100%;
+    max-width: 50%;
+    font-size: 15px;
+
+    display: flex;
+    flex-direction: column;
+    height: auto;
+
+}
+.registeringHomeAdress{
+    flex: 0 1 50%;
+    min-height: 100%;
+    max-width: 50%;
+    font-size: 15px;
+
+    display: flex;
+    flex-direction: column;
 }
 #password {
     font-size: 1.5rem;
 }
-/*Fyrir villuskiaboð*/
 .errors{
     color: red;
     margin-left: 35%;
     font-size: 1.1rem;
 }
+
 #succesfull {
     border: none;
     width: 100%;
@@ -50,7 +77,62 @@ select#division {
     margin-left: 14%;
 }
 .registerHeader {
-    margin: auto;
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    height: 60px;
 }
+.optionPannelDoctorPatient {
+    flex: 0 1 50%;
+    width: 20%;
+    height: 20px;
+    font-size: 15px;
+}
+/* change shape and color of text bar */
+
+#inputText1 {
+    flex: 0 1 50%;
+    width: 20%;
+    height: 20px;
+    font-size: 15px;
+}
+
+#inputText2 {
+    flex: 0 1 50%;
+    width: 20%;
+    height: 20px;
+    font-size: 15px;
+}
+
+#inputText3 {
+    flex: 0 1 50%;
+    width: 20%;
+    height: 20px;
+    font-size: 15px;
+}
+
+#inputText4 {
+    flex: 0 1 50%;
+    width: 20%;
+    height: 20px;
+    font-size: 15px;
+}
+#inputText5 {
+    flex: 0 1 50%;
+    width: 20%;
+    height: 20px;
+    font-size: 15px;
+}
+
+#inputText6 {
+    flex: 0 1 50%;
+    width: 20%;
+    height: 20px;
+    font-size: 15px;
+}
+
+#inputText7 {
+    flex: 0 1 50%;
+    width: 20%;
+    height: 20px;
+    font-size: 15px;
+}
+
