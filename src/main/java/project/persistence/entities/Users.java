@@ -1,6 +1,11 @@
 package project.persistence.entities;
 
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * The class for the Users itself.
@@ -87,5 +92,8 @@ public class Users
 	{
 		return String.format("User[name=%s username=%s password=%s]", name, username, password);
 	}
-
+	
+	public List getAuthority() {
+		return Arrays.asList(new SimpleGrantedAuthority("USER"));
+	}
 }
