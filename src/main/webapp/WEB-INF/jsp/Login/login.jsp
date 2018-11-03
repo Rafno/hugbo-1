@@ -1,36 +1,25 @@
-<!DOCTYPE html>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
-<jsp:include page="../headNavigation/headNavigation.jsp" />
+<html>
+<body onload='document.loginForm.username.focus();'>
+<h1>Spring Security 5 - Login Form</h1>
 
-<head th:include="layout :: head(title=~{::title},links=~{})">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/login.css"/>"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-</head>
-<body th:include="layout :: body" th:with="content=~{::content}">
-<div th:fragment="content">
-    <form name="f" th:action="login" method="post" class="LoginForm">
-            <div class="headers">Innskráning á Appótek</div>
-        <div class="row">
-            <label for="username">Username</label>
-            <input type="text" id="username" name='username'/>
-        </div>
-        <div class="row">
-            <label for="password">Password</label>
-            <input type="password" id="password" name='password'/>
-            <div class="form-actions">
-                <button type="submit" class="LoginSubmitting">Log in</button>
-            </div>
-        </div>
-    </form>
-    <div class="registering">
-        <a href="/register">
-            <button class="createNewUser"> Búa til nýjan Notanda</button>
-        </a>
-    </div>
-</div>
+<c:if test="${not empty errorMessge}"><div style="color:red; font-weight: bold; margin: 30px 0px;">${errorMessge}</div></c:if>
+
+<form name='login' action="/login" method='POST'>
+    <table>
+        <tr>
+            <td>UserName:</td>
+            <td><input type='text' name='username' value=''></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type='password' name='password' /></td>
+        </tr>
+        <tr>
+            <td colspan='2'><input name="submit" type="submit" value="submit" /></td>
+        </tr>
+    </table>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+</form>
 </body>
+</html>

@@ -42,6 +42,7 @@ public class UserController {
 		// file that has the same name
 		return "/Login/login";
 	}
+	
 	/* TODO Kannski eyða þessu, WebMvCConfiguration sér um þetta
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(Model model, HttpServletResponse response, @RequestParam("username") String username, @RequestParam("password") String password){
