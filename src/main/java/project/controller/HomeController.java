@@ -23,7 +23,6 @@ public class HomeController {
 	@Autowired
     MedicineService medicineService;
 	List<Medicine> medicine;
-
     // Dependency Injection
     @Autowired
     public HomeController(StringManipulationService stringService) {

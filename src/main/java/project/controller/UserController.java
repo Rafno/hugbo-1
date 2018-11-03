@@ -29,6 +29,7 @@ public class UserController {
 	 * This fuction reciews path login and sends the user to the view Login/login
 	 */
 	// To call this method, enter "localhost:8080/user" into a browser
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(){
 		// The string "Index" that is returned here is the name of the view
@@ -37,20 +38,24 @@ public class UserController {
 		// file that has the same name
 		return "/Login/login";
 	}
-	
+	/* TODO Kannski eyða þessu, WebMvCConfiguration sér um þetta
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(Model model, HttpServletResponse response, @RequestParam("username") String username, @RequestParam("password") String password){
-		Users user = userService.userLogin(username,password);
-		Cookie myCookie = new Cookie("User",user.getUsername());
-		response.addCookie(myCookie);
-		// Add a new Medicine Note to the model for the form
+	/*
+		try{
+			Users user = userService.userLogin(username,password);
+			Cookie myCookie = new Cookie("User", user.getUsername());
+			response.addCookie(myCookie);
+			model.addAttribute("user", user);
+		} catch (NullPointerException e){
+			//
+		}
 		// If you look at the form in Medicines.jsp, you can see that we
 		// reference this attribute there by the name `medicine`.
-		model.addAttribute("user", user);
-
+	
 		return "/Login/login";
 	}
-	
+	*/
 	// To call this method, enter "localhost:8080/user" into a browser
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)

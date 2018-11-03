@@ -13,21 +13,15 @@
 </head>
 <body th:include="layout :: body" th:with="content=~{::content}">
 <div th:fragment="content">
-    <form name="f" th:action="@{/login}" method="post" class="LoginForm">
+    <form name="f" th:action="login" method="post" class="LoginForm">
             <div class="headers">Innskráning á Appótek</div>
-            <div th:if="${param.error}" class="alert alert-error">
-                Invalid username and password.
-            </div>
-            <div th:if="${param.logout}" class="alert alert-success">
-                You have been logged out.
-            </div>
         <div class="row">
             <label for="username">Username</label>
-            <input type="text" id="username" name="username"/>
+            <input type="text" id="username" name='username'/>
         </div>
         <div class="row">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password"/>
+            <input type="password" id="password" name='password'/>
             <div class="form-actions">
                 <button type="submit" class="LoginSubmitting">Log in</button>
             </div>
