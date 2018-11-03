@@ -93,6 +93,7 @@ public class Users
 		this.imagePublicId = imagePublicId;
 	}
 
+
 	public String getRole() {
 		return this.role;
 	}
@@ -124,4 +125,5 @@ public class Users
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
+
 }
