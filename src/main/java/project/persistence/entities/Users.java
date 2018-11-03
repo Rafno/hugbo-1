@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "users") // If you want to specify a table name, you can do so here
 public class Users
 {
-	
+	//TODO, þegar table er droppað þá resettast ekki ID.
 	// Declare that this attribute is the id
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

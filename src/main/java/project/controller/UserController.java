@@ -34,15 +34,29 @@ public class UserController {
 	 */
 	// To call this method, enter "localhost:8080/user" into a browser
 	
+	/***
+	 * Get method á login, tekur inn error messages til að skila hvort notandi sló rétt inn.
+	 * Values sem eru gefin þurfa að vera breytt í login.jsp skjalinu.
+	 * logout parameter virkar ekki þar sem það þarf á tengingu að halda.
+	 * @param error
+	 * @param logout
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(){
-		// The string "Index" that is returned here is the name of the view
-		// (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
-		// If you change "Index" to something else, be sure you have a .jsp
-		// file that has the same name
+	public String login(@RequestParam(value = "error", required = false) String error,
+						@RequestParam(value = "logout", required = false) String logout,
+						Model model) {
+		String errorMessage = null;
+		if(error != null) {
+			errorMessage = "Notendanafn eða lykilorð er ekki rétt, athugaðu að hástafir og lágstafir skipta máli.";
+		}
+		if(logout != null) {
+			errorMessage = "You have been successfully logged out !!";
+		}
+		model.addAttribute("errorMsg", errorMessage);
 		return "/Login/login";
 	}
-	
 	/* TODO Kannski eyða þessu, WebMvCConfiguration sér um þetta
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPost(Model model, HttpServletResponse response, @RequestParam("username") String username, @RequestParam("password") String password){

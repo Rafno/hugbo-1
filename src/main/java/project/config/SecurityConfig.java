@@ -37,7 +37,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			.passwordEncoder(new BCryptPasswordEncoder())
 			.authoritiesByUsernameQuery("select username, role from user_roles where username=?");
 	}
-
+	
+	/**
+	 * Handler for all our links,
+	 * important! must add new antmatcher with permissions needed if a new link is created (ie controller)
+	 * only an authenticated user (ie logged in user) can view myHome.
+	 * @param http
+	 * @throws Exception
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
 	{
@@ -48,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			.antMatchers("/about").permitAll()
 			.antMatchers("/login").permitAll()
 			.antMatchers("/about").permitAll()
-			.antMatchers("/registration").permitAll()
+			.antMatchers("/register").permitAll()
 			.antMatchers("/myHome").hasAuthority("USER").anyRequest()
 			.authenticated().and().csrf().disable()
 			.formLogin()
@@ -60,7 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			
 			.and()
 			.logout()
-			.logoutUrl("/user_logout")
+			.logoutUrl("/logout")
+			.logoutSuccessUrl("/")
 			.deleteCookies("JSESSIONID")
 			
 			.and()
