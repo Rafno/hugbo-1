@@ -73,20 +73,35 @@ public class UserController {
 	public String registerPost(Model model, @RequestParam("username") String username,
 						   				@RequestParam("password") String password,
 						   				@RequestParam("passwordRepeat") String passwordRepeat,
-						   				@RequestParam("name") String name){
+						   				@RequestParam("name") String name,
+							   			@RequestParam("role") String role,
+							   			@RequestParam("homeAddress") String homeAddress,
+							   			@RequestParam("homeTown") String homeTown,
+							   			@RequestParam("zipCode") String zipCode){
 
 		// TODO senda villuskilaboð
 		//gefum div togunum sín value sem user sló inn
+
+
 		model.addAttribute("nafn",name);
 		// hreinsum arrayListana
 		notendaVillur.clear();
 		lykilordVillur.clear();
 		// kalla hér á fall sem skoðar hvort username og password séu lögleg
+		System.out.println(role);
 		allGood = true;
 		getErrors(username,password,passwordRepeat);
 		if(allGood == true){
 			model.addAttribute("succesfull","Til hamingju "+ name+ ". Aðgangurinn þinn hefur verið búinn til");
-			Users newUser = new Users(name, username, password);
+			System.out.println(name);
+			System.out.println(username);
+			System.out.println(password);
+			System.out.println(role);
+			System.out.println(homeAddress);
+			System.out.println(homeTown);
+			System.out.println(zipCode);
+
+			Users newUser = new Users(name, username, password, role, homeAddress, homeTown, zipCode);
 			userService.save(newUser);
 		}
 		model.addAttribute("notendaVillur",notendaVillur);

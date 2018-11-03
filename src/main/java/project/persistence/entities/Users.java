@@ -22,21 +22,33 @@ public class Users
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true, columnDefinition = "serial")
 	private Long id;
-	
 	private String name;
 	private String password;
 	private String username;
 	private String imagePublicId;
-	
+	private String role;
+	private String homeAddress;
+	private String homeTown;
+	private String zipCode;
 	// Notice the empty constructor, because we need to be able to create an empty PostitNote to add
 	// to our model so we can use it with our form
 	public Users(){}
-	public Users(String name, String username, String password)
+	public Users(String name,
+				 String username,
+				 String password,
+				 String hlutverk,
+				 String homeAddress,
+				 String homeTown,
+				 String zipCode)
 	{
 		this.name = name;
 		this.username = username;
 		this.password = password;
 		this.imagePublicId = null;
+		this.role = hlutverk;
+		this.homeAddress = homeAddress;
+		this.homeTown = homeTown;
+		this.zipCode = zipCode;
 	}
 	
 	public Long getId()
@@ -85,12 +97,38 @@ public class Users
 	public void setImagePublicId(String imagePublicId){
 		this.imagePublicId = imagePublicId;
 	}
-	
 
-	@Override
-	public String toString()
-	{
-		return String.format("User[name=%s username=%s password=%s]", name, username, password);
+
+	public String getRole() {
+		return this.role;
+	}
+
+	public void setRole(String hlutverk) {
+		this.role = hlutverk;
+	}
+
+	public String getHomeAddress() {
+		return homeAddress;
+	}
+
+	public void setHomeAddress(String homeAddress) {
+		this.homeAddress = homeAddress;
+	}
+
+	public String getHomeTown() {
+		return homeTown;
+	}
+
+	public void setHomeTown(String homeTown) {
+		this.homeTown = homeTown;
+	}
+
+	public String getZipCode() {
+		return zipCode;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
 	}
 	
 	public List getAuthority() {
