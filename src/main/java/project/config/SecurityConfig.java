@@ -5,16 +5,13 @@ package project.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import project.service.Implementation.UserDetailServiceImplementation;
+
+import javax.sql.DataSource;
 
 
 @Configuration
@@ -30,37 +27,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 		return new BCryptPasswordEncoder();
 	}
 	
-	/**
-	 * UserdetailService creates a hardcoded user with the username user
-	 *  and the password userPass
-	 * @return
-	 */
 	@Autowired
-	private UserDetailServiceImplementation userDetailsService;
-	/*
-	@Bean
-	public UserDetailsService userDetailsService()
-	{
-		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-		manager.createUser(org.springframework.security.core.userdetails.User
-			.withUsername(userDetailsService().loadUserByUsername())
-			.password(passwordEncoder().encode("userPass"))
-			.roles("USER")
-			.build());
-		
-		return manager;
-	}*/
+	private DataSource dataSource;
 	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+	@Autowired
+	protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
+		auth.jdbcAuthentication().dataSource(dataSource)
+			.passwordEncoder(new BCryptPasswordEncoder())
+			.authoritiesByUsernameQuery("select username, role from user_roles where username=?");
 	}
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
 	{
 		http
 			.authorizeRequests()
-			.antMatchers("/myHome/**").hasRole("USER")
+			.antMatchers("/myHome").hasRole("USER")
 			
 			.and()
 			.formLogin()

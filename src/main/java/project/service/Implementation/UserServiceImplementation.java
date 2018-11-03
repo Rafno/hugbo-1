@@ -1,13 +1,11 @@
 package project.service.Implementation;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import project.persistence.entities.User_roles;
 import project.persistence.entities.Users;
+import project.persistence.repositories.UserRolesRepository;
 import project.persistence.repositories.UsersRepository;
 import project.service.UserService;
 
@@ -22,11 +20,14 @@ public class UserServiceImplementation implements UserService{
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	UserRolesRepository userRolesRepository;
 	// Dependency Injection
 	@Autowired
-	public UserServiceImplementation(UsersRepository repository) {
+	public UserServiceImplementation(UsersRepository repository, UserRolesRepository userRolesRepository) {
 
 		this.repository = repository;
+		this.userRolesRepository = userRolesRepository;
 	}
 	
 	@Override
@@ -38,6 +39,8 @@ public class UserServiceImplementation implements UserService{
 		{
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			repository.save(user);
+			User_roles auth = new User_roles(user.getUsername(), "USER");
+			userRolesRepository.save(auth);
 		} else {
 			System.out.println("User already exists");
 		}

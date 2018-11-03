@@ -101,7 +101,7 @@ public class UserController {
 			System.out.println(homeTown);
 			System.out.println(zipCode);
 
-			Users newUser = new Users(name, username, password, role, homeAddress, homeTown, zipCode);
+			Users newUser = new Users(name, username, password, role, homeAddress, homeTown, zipCode, true);
 			userService.save(newUser);
 		}
 		model.addAttribute("notendaVillur",notendaVillur);

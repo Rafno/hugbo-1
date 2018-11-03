@@ -1,7 +1,6 @@
 package project.persistence.entities;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Arrays;
@@ -30,20 +29,18 @@ public class Users
 	private String homeAddress;
 	private String homeTown;
 	private String zipCode;
+	private boolean enabled;
 	// Notice the empty constructor, because we need to be able to create an empty PostitNote to add
 	// to our model so we can use it with our form
 	public Users(){}
-	public Users(String name,
-				 String username,
-				 String password,
-				 String hlutverk,
-				 String homeAddress,
-				 String homeTown,
-				 String zipCode)
+	public Users(String name, String username, String password, String hlutverk, String homeAddress, String homeTown,
+				 String zipCode, boolean enabled
+				)
 	{
 		this.name = name;
 		this.username = username;
 		this.password = password;
+		this.enabled = enabled;
 		this.imagePublicId = null;
 		this.role = hlutverk;
 		this.homeAddress = homeAddress;
@@ -131,7 +128,14 @@ public class Users
 		this.zipCode = zipCode;
 	}
 	
-	public List getAuthority() {
-		return Arrays.asList(new SimpleGrantedAuthority("USER"));
+	
+	public boolean isEnabled()
+	{
+		return enabled;
+	}
+	
+	public void setEnabled(boolean enabled)
+	{
+		this.enabled = enabled;
 	}
 }
