@@ -1,17 +1,19 @@
 package project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import project.persistence.entities.Users;
-import project.service.StringManipulationService;
+
 import project.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Small controller just to show that you can have multiple controllers
@@ -31,6 +33,7 @@ public class UserController {
 	 * This fuction reciews path login and sends the user to the view Login/login
 	 */
 	// To call this method, enter "localhost:8080/user" into a browser
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(){
 		// The string "Index" that is returned here is the name of the view
@@ -39,16 +42,24 @@ public class UserController {
 		// file that has the same name
 		return "/Login/login";
 	}
+	/* TODO Kannski eyða þessu, WebMvCConfiguration sér um þetta
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(Model model,@RequestParam("username") String username, @RequestParam("password") String password){
-		userService.userLogin(username,password);
-		// Add a new Medicine Note to the model for the form
+	public String loginPost(Model model, HttpServletResponse response, @RequestParam("username") String username, @RequestParam("password") String password){
+	/*
+		try{
+			Users user = userService.userLogin(username,password);
+			Cookie myCookie = new Cookie("User", user.getUsername());
+			response.addCookie(myCookie);
+			model.addAttribute("user", user);
+		} catch (NullPointerException e){
+			//
+		}
 		// If you look at the form in Medicines.jsp, you can see that we
 		// reference this attribute there by the name `medicine`.
-		model.addAttribute("user", new Users());
-
+	
 		return "/Login/login";
 	}
+	*/
 	// To call this method, enter "localhost:8080/user" into a browser
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)

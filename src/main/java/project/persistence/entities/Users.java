@@ -81,4 +81,11 @@ public class Users
 		this.imagePublicId = imagePublicId;
 	}
 	
+
+	@Override
+	public String toString()
+	{
+		return String.format("User[name=%s username=%s password=%s]", name, username, password);
+	}
+
 }
