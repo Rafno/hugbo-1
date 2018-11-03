@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.stereotype.Service;
 import project.persistence.entities.Users;
 import project.persistence.repositories.UsersRepository;
@@ -38,7 +39,6 @@ public class UserDetailServiceImplementation implements UserDetailsService
 			System.out.println("User not found! " + username);
 			throw new UsernameNotFoundException("User " + username + " was not found in the database");
 		}
-		
 		return new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), user.getAuthority());
 	}
 }
