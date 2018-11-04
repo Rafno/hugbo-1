@@ -59,15 +59,7 @@ public class HomeController {
         // (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
         // If you change "Index" to something else, be sure you have a .jsp
         // file that has the same name
-		//*********TEST*********
 
-
-		DoctorPatients doctorPatients = new DoctorPatients(34L,20L);
-		doctorPatientsService.save(doctorPatients);
-		doctorPatients = new DoctorPatients(34L,22L);
-		doctorPatientsService.save(doctorPatients);
-
-		//**********************
 
 		try{
 			this.userDetails =
@@ -89,7 +81,6 @@ public class HomeController {
 
 
 		}catch(Exception e){
-			System.out.println("er í skjali homeControol lína 81");
 		}
 
 
@@ -113,6 +104,21 @@ public class HomeController {
 		// Find patients for Doctor
 			userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			/*
+			if(userService.getUser(userDetails.getUsername()).getRole().equals("Læknir")){
+				System.out.println("ég er læknir");
+				Long doctorId =  userService.getUser(userDetails.getUsername()).getId();
+				List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
+				List<String> patients = userService.getUsersbyId(userids);
+				for (String patient : patients) {
+					System.out.println("--------------");
+					System.out.println(patient);
+					// fruit is an element of the `fruits` array.
+				}
+			}else{
+				//ekki læknir
+			}
+			*/
 
 		// assign medicine to user
 

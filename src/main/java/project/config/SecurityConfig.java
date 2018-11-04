@@ -53,11 +53,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			.antMatchers("/about").permitAll()
 			.antMatchers("/login").permitAll()
 			.antMatchers("/register").anonymous()
-			.antMatchers("/myHome").hasAuthority("USER").anyRequest()
-			.authenticated()
+			.antMatchers("/myHome").hasAuthority("USER").anyRequest().authenticated()
 			.and()
 			.formLogin()
 			.loginPage("/login")
+			.defaultSuccessUrl("/myHome")
 			.and()
 			.httpBasic()
 			

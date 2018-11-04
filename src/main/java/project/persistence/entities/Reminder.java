@@ -4,7 +4,7 @@ import java.sql.Time;
 
 @Entity
 @Table(name = "reminders") // If you want to specify a table name, you can do so here
-public class reminder {
+public class Reminder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true)
@@ -16,9 +16,9 @@ public class reminder {
 	private Time hour3;
 	private Time hour4;
 
-	public reminder(){
+	public Reminder(){
 	}
-	public reminder(Long medicineId, Long usersId, Time hour1, Time hour2, Time hour3, Time hour4){
+	public Reminder(Long medicineId, Long usersId, Time hour1, Time hour2, Time hour3, Time hour4){
 		this.medicineId = medicineId;
 		this.usersId = usersId;
 		this.hour1 = hour1;
