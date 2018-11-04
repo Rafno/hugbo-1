@@ -71,11 +71,11 @@ public class myAreaController {
 		timer.scheduleAtFixedRate(new TimerTask() {
 			public void run() {
 				//Hér þarf að skoða Db inn.
-				List <Reminder> amining = reminderService.findAll();
-				for (Reminder item:amining
+				//List <Reminder> amining = reminderService.findAll();
+				/*for (Reminder item:amining
 					 ) {
 						System.out.println(item.getHour1());
-				}
+				}*/
 
 			}
 		}, delay, interval);

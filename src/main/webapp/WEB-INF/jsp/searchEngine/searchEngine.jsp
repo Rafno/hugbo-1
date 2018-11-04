@@ -47,11 +47,18 @@
                 <th>Markaðsett</th>
                 <th>ýmsar upplýsingar</th>
             </tr>
+                <p>${userLoggedInn} Notandi</p>
+                <p>${doctor} Læknir</p>
                 <c:forEach items="${medicine}" var="obj">
-                    <c:if test="${not empty patient}">
-                        <tr onclick="openPopUpPatient('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
-                    </c:if >
                     <c:if test="${not empty userLoggedInn}">
+                        <c:if test="${not empty doctor}">
+                            <tr onclick="openPopUpDoctor('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
+                        </c:if>
+                        <c:if test="${empty doctor}">
+                            <tr onclick="openPopUpPatient('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
+                        </c:if>
+                    </c:if >
+                    <c:if test="${empty userLoggedInn}">
                         <tr onclick="openPopUpUnRegistered()">
                     </c:if >
                         <td><c:out value="${obj.name}"/></td>
@@ -79,17 +86,28 @@
                 <input class="popUpTexti"type="text" name="styrkur" id="styrkur" readonly/>
                 <input class="popUpTexti"type="text" name="lyfjaform" id="lyfjaform" readonly/>
                 <input class="popUpTexti"type="text" name="utgafudagur" id="utgafudagur" readonly/>
-                <!--
-                <c:if test="${not empty doctor}">
-                    <select name="database1">
-                        <c:forEach items="${patient}" var="patient">
-                            <option value="${patent.name}">
-                                    ${patient.name}
-                            </option>
-                        </c:forEach>
-                    </select>
-                </c:if >
-                -->
+            </div>
+            <button class="popUpSubmit" type="submit" name="search">Staðfesta</button>
+        </Form>
+    </div>
+    <!-- Model fyril innskráða lækna -->
+    <div id="DocorMyModal" class="modal">
+        <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
+        <Form class="modal-content" method="post">
+            <div class="popUpHead">
+                <h2 class="popUpHeadTitle">Bæta lyf á sjúkling</h2>
+                <div class="close">&times;</div>
+            </div>
+            <div class="doctorePopUpContainer">
+                <div class="popUpTextContainer">
+                    <input class="popUpTexti" type="text" name="nafn" id="Doctornafn" value = "nafn" readonly/>
+                    <input class="popUpTexti"type="text" name="styrkur" id="Doctorstyrkur" readonly/>
+                    <input class="popUpTexti"type="text" name="lyfjaform" id="Doctorlyfjaform" readonly/>
+                    <input class="popUpTexti"type="text" name="utgafudagur" id="Doctorutgafudagur" readonly/>
+                </div>
+                <div class="DoctorSelectOptionsContainer">
+                    <p>hehe</p>
+                </div>
             </div>
             <button class="popUpSubmit" type="submit" name="search">Staðfesta</button>
         </Form>
@@ -130,11 +148,11 @@
 
     function openPopUpDoctor(nafn,styrkur,lyfjaform,utgafudagur){
         // nær í módelið
-        var modal = document.getElementById('myModal');
-        var b = document.getElementById('nafn').value = "Nafn Lyfsins: "+nafn;
-        var c = document.getElementById('styrkur').value = "styrkur: "+styrkur;
-        var d = document.getElementById('lyfjaform').value = "lyfjaform: "+lyfjaform;
-        var e = document.getElementById('utgafudagur').value = "útgáfudagur: "+utgafudagur;
+        var modal = document.getElementById('DocorMyModal');
+        var b = document.getElementById('Doctornafn').value = "Nafn Lyfsins: "+nafn;
+        var c = document.getElementById('Doctorstyrkur').value = "styrkur: "+styrkur;
+        var d = document.getElementById('Doctorlyfjaform').value = "lyfjaform: "+lyfjaform;
+        var e = document.getElementById('Doctorutgafudagur').value = "útgáfudagur: "+utgafudagur;
 
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";
@@ -146,14 +164,13 @@
     }
 
     function openPopUpUnRegistered() {
-        alert("óinskráður");
-        var modal = document.getElementById('myModalUnregistered');
+        var myModalUnregistered = document.getElementById('myModalUnregistered');
         // Ná í span elementið sem lokar modelinu
-        modal.style.display = "block";
+        myModalUnregistered.style.display = "block";
 
         var span = document.getElementsByClassName("close")[0];
         span.onclick = function() {
-            modal.style.display = "none";
+            myModalUnregistered.style.display = "none";
         }
     }
 </script>

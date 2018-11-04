@@ -65,19 +65,8 @@ public class HomeController {
 			this.userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("userLoggedInn",true);
-			if(userService.getUser(userDetails.getUsername()).getRole().equals("Sjúklingur")) {
-				model.addAttribute("patient", true);
-			}
-			else {
-				model.addAttribute("doctor", true);
-			}
 			String role = userService.getUser(userDetails.getUsername()).getRole();
-			if(role.equals("Læknir")){
-				Long doctorId =  userService.getUser(userDetails.getUsername()).getId();
-				List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
-				List<String> patients = userService.getUsersbyId(userids);
-				model.addAttribute("patients", patients);
-			}
+			//annars er hann þá sjúklingur
 
 
 		}catch(Exception e){
@@ -98,28 +87,12 @@ public class HomeController {
 		medicine =  medicineService.findPlaceContainingKeywordAnywhere(stringService.convertStringToLowerCase(leita));
 		model.addAttribute("leita",leita);
 		model.addAttribute("medicine", medicine);
-		UserDetails userDetails;
+
 
 		if(principal != null) {
 		// Find patients for Doctor
 			userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			/*
-			if(userService.getUser(userDetails.getUsername()).getRole().equals("Læknir")){
-				System.out.println("ég er læknir");
-				Long doctorId =  userService.getUser(userDetails.getUsername()).getId();
-				List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
-				List<String> patients = userService.getUsersbyId(userids);
-				for (String patient : patients) {
-					System.out.println("--------------");
-					System.out.println(patient);
-					// fruit is an element of the `fruits` array.
-				}
-			}else{
-				//ekki læknir
-			}
-			*/
-
 		// assign medicine to user
 
 			if (nafn.contains(": ")) {
@@ -131,7 +104,7 @@ public class HomeController {
 				s4 = utgafudagur.split(Pattern.quote(": "));
 
 				Long medicineId = medicineService.getMedId(s1[1], s2[1], s3[1], s4[1]);
-				;
+
 				Long userId = userService.getUser(userDetails.getUsername()).getId();
 				Cabinet cabinet = new Cabinet(medicineId, userId);
 				cabinetService.save(cabinet);
@@ -142,8 +115,25 @@ public class HomeController {
 			this.userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("userLoggedInn",true);
-			model.addAttribute("loggedInn",true);
+			String role = userService.getUser(userDetails.getUsername()).getRole();
+			System.out.println("rolid er : "+role);
+			if(role.equals("Læknir")){
+				try{
+					model.addAttribute("doctor", true);
+					Long doctorId =  userService.getUser(userDetails.getUsername()).getId();
+					List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
+					System.out.println("USerIds : "+userids);
+					List<String> patients = userService.getUsersById(userids);
+					System.out.println("LÆKNIR");
+				}catch(Exception e){
+					System.out.println(e);
+				}
+			}
+			//annars er hann þá sjúklingur
+
+
 		}catch(Exception e){
+			System.out.println();
 		}
 		return "searchEngine/searchEngine";
 	}
@@ -159,7 +149,6 @@ public class HomeController {
 		try{
 			this.userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			model.addAttribute("userLoggedInn",true);
 			model.addAttribute("loggedInn",true);
 		}catch(Exception err){
 		}

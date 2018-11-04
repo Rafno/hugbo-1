@@ -40,6 +40,6 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	void updateImageId(@Param("image_id") String imageId, @Param("userName") String username);
 
 	@Query( "select p.name from Users p where p.id in :ids" )
-	List<String> getUsersbyId(@Param("ids") List<Long> userids);
+	List<String> getUsersById(@Param("ids") List<Long> userids);
 
 }

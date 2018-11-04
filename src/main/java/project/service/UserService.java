@@ -25,7 +25,7 @@ public interface UserService
 	
 	String findByUsername(String username);
 
-	List<String> getUsersbyId(List<Long> userids);
+	List<String> getUsersById(List<Long> userids);
 
 	Boolean [] userNameExists(String username);
 }
