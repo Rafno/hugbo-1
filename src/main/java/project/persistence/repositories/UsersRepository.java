@@ -12,7 +12,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 public interface UsersRepository extends JpaRepository<Users, Long>{
-	//TODO endurskrifa þessi Queries
+
 	Users save(Users user);
 	
 	void delete(Users user);
@@ -31,8 +31,6 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	@Query(value = "SELECT p.name FROM Users p")
 	String editPatient(Users user);
 	String findByUsername(String username);
-	@Query(value = "SELECT p.password FROM Users p WHERE p.username = ?1 AND p.password = ?2")
-	String checkPassword(String username, String password);
 	@Query(value = "select (CASE WHEN userName = ?1 THEN True ELSE False END) from Users p" )
 	Boolean [] userNameExists(String username);
 

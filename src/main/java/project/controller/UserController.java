@@ -57,24 +57,7 @@ public class UserController {
 		model.addAttribute("errorMsg", errorMessage);
 		return "/Login/login";
 	}
-	/* TODO Kannski eyða þessu, WebMvCConfiguration sér um þetta
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String loginPost(Model model, HttpServletResponse response, @RequestParam("username") String username, @RequestParam("password") String password){
-	/*
-		try{
-			Users user = userService.userLogin(username,password);
-			Cookie myCookie = new Cookie("User", user.getUsername());
-			response.addCookie(myCookie);
-			model.addAttribute("user", user);
-		} catch (NullPointerException e){
-			//
-		}
-		// If you look at the form in Medicines.jsp, you can see that we
-		// reference this attribute there by the name `medicine`.
 	
-		return "/Login/login";
-	}
-	*/
 	// To call this method, enter "localhost:8080/user" into a browser
 	/*TODO Passa að bæjarfélag, póstnúmer og heimilisfang gildin koma aftur ef það kemur upp villa*/
 	@RequestMapping(value = "/register", method = RequestMethod.GET)

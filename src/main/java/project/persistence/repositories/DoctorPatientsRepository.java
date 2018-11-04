@@ -22,7 +22,5 @@ public interface DoctorPatientsRepository extends JpaRepository<DoctorPatients, 
 	void delete(DoctorPatients doctorPatients);
 
 	List<DoctorPatients> findAll();
-
-
-	//List<Cabinet> findById(long id);
+	
 }

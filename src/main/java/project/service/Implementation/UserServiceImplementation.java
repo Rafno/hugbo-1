@@ -10,6 +10,7 @@ import project.persistence.repositories.UsersRepository;
 import project.service.UserService;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 @Service
 public class UserServiceImplementation implements UserService{
@@ -17,6 +18,7 @@ public class UserServiceImplementation implements UserService{
 	
 	// Instance Variables
 	UsersRepository repository;
+	Logger logger;
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
@@ -59,12 +61,12 @@ public class UserServiceImplementation implements UserService{
 			if(passwordEncoder.matches(password, possibleUser.getPassword())) {
 				return possibleUser;
 			} else {
-				System.out.println("User does not exists");
+				logger.info("User did not exist");
 			}
 			
 			return possibleUser;
 		} catch (NullPointerException e){
-			System.out.println("User doesnt exist");
+			logger.info("User did not exist");
 		}
 		return possibleUser;
 	}

@@ -31,9 +31,7 @@ public class myAreaController {
 	private Cloudinary cloudinary;
 	private UserDetails userDetails;
 	private StringManipulationService stringManipulationService;
-	Users myUser;
-
-	Map config;
+	private Users myUser;
 
 	@Autowired
 	public myAreaController(UserService userService){

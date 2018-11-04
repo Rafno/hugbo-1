@@ -3,7 +3,7 @@ package project.service.Implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.persistence.repositories.DoctorPatientsRepository;
-import project.service.CabinetService;
+
 import project.persistence.entities.DoctorPatients;
 import project.service.DoctorPatientsService;
 

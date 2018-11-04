@@ -28,13 +28,32 @@
                     <th>Heiti lyfs</th>
                     <th>Lyfjaform</th>
                     <th>Styrkleiki</th>
-                    <th>Innihald lyfs</th>
-                    <th>Afgreiðslutilhögun</th>
-                    <th>Markaðsleyfi útgefið</th>
-                    <th>Markaðsett</th>
-                    <th>ýmsar upplýsingar</th>
+                    <th>Áminingakerfi</th>
+                </tr>
+                <tr>
+                    <td>Afrógen</td>
+                    <td>Stungulyf</td>
+                    <td>500 mg</td>
+                    <td><label class="switch">
+                            <input type="checkbox" id="toggler" onclick="togglerer()">
+                            <span class="slider round"></span>
+                        </label>
+                    </td>
                 </tr>
             </table>
         </div>
     </div>
 </body>
+<script>
+    function togglerer(){
+        alert("hel")
+        var a = document.getElementById("toggler").value;
+        if(a == 'on'){
+            alert("í gangir")
+        }else{
+            alert('ekki í gangi');
+        }
+        
+
+    }
+</script>
