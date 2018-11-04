@@ -10,13 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import project.persistence.entities.Cabinet;
+import project.persistence.entities.Medicine;
 import project.persistence.entities.Users;
+import project.service.CabinetService;
+import project.service.MedicineService;
 import project.service.StringManipulationService;
 import project.service.UserService;
 import com.cloudinary.Cloudinary;
 
 import javax.transaction.Transactional;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 
@@ -27,9 +33,14 @@ import java.util.Map;
 @Controller
 public class myAreaController {
 
+	@Autowired
 	private UserService userService;
-	private Cloudinary cloudinary;
+	@Autowired
+	private MedicineService medicineService;
+	@Autowired
+	private CabinetService cabinetService;
 	private UserDetails userDetails;
+	private Cloudinary cloudinary;
 	private StringManipulationService stringManipulationService;
 	private Users myUser;
 
@@ -56,21 +67,32 @@ public class myAreaController {
 		// file that has the same name
 		getUser();
 
+		if(cabinetService.findAll().size() != 0) {
+			Long userId = userService.getUser(userDetails.getUsername()).getId();
+			List<Cabinet> cab = cabinetService.getMedsByUser(userId);
+			List<Medicine> medicine = new ArrayList<>();
+			for (int i = 0; i < cab.size(); i++) {
+				medicine.add(i, medicineService.findOne(cab.get(i).getMedicineId()));
+			}
+			model.addAttribute("medicine", medicine);
+		}
+
 		model.addAttribute("image",myUser.getImagePublicId());
+
 		return "myArea/myArea";
 	}
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
 	public String myAreasPost(Model model,@RequestParam("pic") MultipartFile file) throws IOException {
 
 		// load image to cloudinary
-		//getUser();
 
 		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
 
 		String img = (String)cloudinary.url().imageTag((String)uploadResult.get("public_id"));
 
 		userService.updateImageId(img,userDetails.getUsername());
-		
+
+
 
 		model.addAttribute("image",img);
 

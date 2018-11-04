@@ -22,5 +22,8 @@ public interface CabinetRepository extends JpaRepository<Cabinet, Long> {
 	void delete(Cabinet cabinet);
 
 	List<Cabinet> findAll();
-	
+
+	@Query(value = "select c from Cabinet c where c.usersId = ?1" )
+	List<Cabinet> getMedsByUser(Long userId);
+
 }

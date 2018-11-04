@@ -11,4 +11,6 @@ public interface CabinetService {
 	void delete(Cabinet cabinet);
 
 	List<Cabinet> findAll();
+
+	List<Cabinet> getMedsByUser(Long userId);
 }
