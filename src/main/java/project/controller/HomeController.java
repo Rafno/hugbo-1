@@ -10,12 +10,15 @@ import project.persistence.entities.Medicine;
 import project.service.MedicineService;
 import project.service.StringManipulationService;
 
+import javax.net.ssl.HttpsURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-@Controller
+import java.net.HttpURLConnection;
+
 public class HomeController {
 
     // Instance
@@ -25,6 +28,7 @@ public class HomeController {
     MedicineService medicineService;
 	List<Medicine> medicine;
     // Dependency Injection
+	private static HttpURLConnection con;
     @Autowired
     public HomeController(StringManipulationService stringService) {
 
@@ -127,12 +131,15 @@ public class HomeController {
 		* Html code that displays some text and images
 	 */
 	// To call this method, enter "localhost:8080/user" into a browser
+	private void sendPost() throws Exception {
+		String url = "https://selfsolve.apple.com/wcResults.do";
+		URL obj = new URL(url);
+		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+	}
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String about(Model model){
+
 		return "About/about";
 	}
-
-
-
 
 }
