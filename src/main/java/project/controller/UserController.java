@@ -76,7 +76,7 @@ public class UserController {
 	}
 	*/
 	// To call this method, enter "localhost:8080/user" into a browser
-	
+	/*TODO Passa að bæjarfélag, póstnúmer og heimilisfang gildin koma aftur ef það kemur upp villa*/
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(Model model){
 
