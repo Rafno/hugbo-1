@@ -48,10 +48,10 @@
                 <th>ýmsar upplýsingar</th>
             </tr>
                 <c:forEach items="${medicine}" var="obj">
-                    <c:if test="${not empty loggedInn}">
-                            <tr onclick="openPopUp('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
+                    <c:if test="${not empty patient}">
+                        <tr onclick="openPopUpPatient('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
                     </c:if >
-                    <c:if test="${empty loggedInn}">
+                    <c:if test="${not empty userLoggedInn}">
                         <tr onclick="openPopUpUnRegistered()">
                     </c:if >
                         <td><c:out value="${obj.name}"/></td>
@@ -66,7 +66,7 @@
                 </c:forEach>
         </table>
     </div>
-    <!-- Modal fyrir innskráð notendur-->
+    <!-- Modal fyrir innskráð Sjúklinga-->
     <div id="myModal" class="modal">
         <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
         <Form class="modal-content" method="post">
@@ -79,6 +79,17 @@
                 <input class="popUpTexti"type="text" name="styrkur" id="styrkur" readonly/>
                 <input class="popUpTexti"type="text" name="lyfjaform" id="lyfjaform" readonly/>
                 <input class="popUpTexti"type="text" name="utgafudagur" id="utgafudagur" readonly/>
+                <!--
+                <c:if test="${not empty doctor}">
+                    <select name="database1">
+                        <c:forEach items="${patient}" var="patient">
+                            <option value="${patent.name}">
+                                    ${patient.name}
+                            </option>
+                        </c:forEach>
+                    </select>
+                </c:if >
+                -->
             </div>
             <button class="popUpSubmit" type="submit" name="search">Staðfesta</button>
         </Form>
@@ -100,7 +111,7 @@
 
 
 <script>
-    function openPopUp(nafn,styrkur,lyfjaform,utgafudagur){
+    function openPopUpPatient(nafn,styrkur,lyfjaform,utgafudagur){
         // nær í módelið
         var modal = document.getElementById('myModal');
         var b = document.getElementById('nafn').value = "Nafn Lyfsins: "+nafn;
@@ -116,8 +127,26 @@
             modal.style.display = "none";
         }
     }
+
+    function openPopUpDoctor(nafn,styrkur,lyfjaform,utgafudagur){
+        // nær í módelið
+        var modal = document.getElementById('myModal');
+        var b = document.getElementById('nafn').value = "Nafn Lyfsins: "+nafn;
+        var c = document.getElementById('styrkur').value = "styrkur: "+styrkur;
+        var d = document.getElementById('lyfjaform').value = "lyfjaform: "+lyfjaform;
+        var e = document.getElementById('utgafudagur').value = "útgáfudagur: "+utgafudagur;
+
+        // Ná í span elementið sem lokar modelinu
+        modal.style.display = "block";
+
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    }
+
     function openPopUpUnRegistered() {
-        alert("óinskra´ður");
+        alert("óinskráður");
         var modal = document.getElementById('myModalUnregistered');
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";

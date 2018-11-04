@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import project.persistence.entities.Cabinet;
+import project.persistence.entities.DoctorPatients;
 import project.persistence.entities.Medicine;
 import project.service.*;
 
@@ -58,14 +59,40 @@ public class HomeController {
         // (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
         // If you change "Index" to something else, be sure you have a .jsp
         // file that has the same name
+		//*********TEST*********
+
+
+		DoctorPatients doctorPatients = new DoctorPatients(34L,20L);
+		doctorPatientsService.save(doctorPatients);
+		doctorPatients = new DoctorPatients(34L,22L);
+		doctorPatientsService.save(doctorPatients);
+
+		//**********************
+
 		try{
 			this.userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("userLoggedInn",true);
-			model.addAttribute("loggedInn",true);
+			if(userService.getUser(userDetails.getUsername()).getRole().equals("Sjúklingur")) {
+				model.addAttribute("patient", true);
+			}
+			else {
+				model.addAttribute("doctor", true);
+			}
+			String role = userService.getUser(userDetails.getUsername()).getRole();
+			if(role.equals("Læknir")){
+				Long doctorId =  userService.getUser(userDetails.getUsername()).getId();
+				List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
+				List<String> patients = userService.getUsersbyId(userids);
+				model.addAttribute("patients", patients);
+			}
+
+
 		}catch(Exception e){
 			System.out.println("er í skjali homeControol lína 81");
 		}
+
+
         return "Index/Index";
     }
 	@RequestMapping(value = "/", method = RequestMethod.POST)
@@ -86,11 +113,6 @@ public class HomeController {
 		// Find patients for Doctor
 			userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			if(userService.getUser(userDetails.getUsername()).getRole().equals("Læknir")){
-				Long doctorId =  userService.getUser(userDetails.getUsername()).getId();
-				List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
-				List<String> patients = userService.getUsersbyId(userids);
-			}
 
 		// assign medicine to user
 
