@@ -22,7 +22,5 @@ public interface CabinetRepository extends JpaRepository<Cabinet, Long> {
 	void delete(Cabinet cabinet);
 
 	List<Cabinet> findAll();
-
-
-	//List<Cabinet> findById(long id);
+	
 }

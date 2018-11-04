@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import project.persistence.entities.Users;
 import project.service.StringManipulationService;
 import project.service.UserService;
 import com.cloudinary.Cloudinary;
@@ -29,9 +28,7 @@ public class myAreaController {
 	private UserService userService;
 	private Cloudinary cloudinary;
 	private StringManipulationService stringManipulationService;
-
-	Map config;
-
+	
 	@Autowired
 	public myAreaController(UserService userService){
 		this.userService = userService;
