@@ -3,7 +3,7 @@ package project.persistence.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import project.persistence.entities.Cabinet;
+import project.persistence.entities.reminder;
 
 import java.util.List;
 
@@ -15,15 +15,14 @@ import java.util.List;
  *
  */
 @Repository
-public interface CabinetRepository extends JpaRepository<Cabinet, Long> {
+public interface reminderRepository extends JpaRepository<reminder, Long> {
 
-	Cabinet save(Cabinet cabinet);
+	reminder save(reminder cabinet);
 
-	void delete(Cabinet cabinet);
+	void delete(reminder cabinet);
 
-	List<Cabinet> findAll();
+	List<reminder> findAll();
 
-	@Query(value = "select c from Cabinet c where c.usersId = ?1" )
-	List<Cabinet> getMedsByUser(Long userId);
 
+	//List<Cabinet> findById(long id);
 }

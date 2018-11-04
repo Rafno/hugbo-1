@@ -31,14 +31,18 @@
                     <th>Áminingakerfi</th>
                 </tr>
                 <tr>
-                    <td>Afrógen</td>
-                    <td>Stungulyf</td>
-                    <td>500 mg</td>
+                    <c:forEach items="${medicine}" var="obj">
+                    <td><c:out value="${obj.name}"/></td>
+                    <td><c:out value="${obj.pharmaceutical_form}"/></td>
+                    <td><c:out value="${obj.strength}"/></td>
                     <td><label class="switch">
-                            <input type="checkbox" id="toggler" onclick="togglerer()">
-                            <span class="slider round"></span>
+                        <input type="checkbox" id="toggler" checked onclick="togglerer()">
+                        <span class="slider round"></span>
                         </label>
                     </td>
+                </tr>
+                </c:forEach>
+
                 </tr>
             </table>
         </div>

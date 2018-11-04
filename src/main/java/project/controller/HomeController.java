@@ -8,12 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import project.persistence.entities.Cabinet;
 import project.persistence.entities.Medicine;
+import project.service.CabinetService;
 import project.service.MedicineService;
 import project.service.StringManipulationService;
+import project.service.UserService;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.net.URL;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -27,6 +31,11 @@ public class HomeController {
     StringManipulationService stringService;
 	@Autowired
     MedicineService medicineService;
+	@Autowired
+	UserService userService;
+	@Autowired
+	CabinetService cabinetService;
+
 	List<Medicine> medicine;
     // Dependency Injection
 	private static HttpURLConnection con;
@@ -61,7 +70,9 @@ public class HomeController {
         return "Index/Index";
     }
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String homePost(Model model,@RequestParam("search") String leita,
+	public String homePost(Model model,
+						   Principal principal,
+						   @RequestParam("search") String leita,
 						   @RequestParam("nafn") String nafn,
 						   @RequestParam("styrkur") String styrkur,
 						   @RequestParam("lyfjaform") String lyfjaform,
@@ -70,13 +81,24 @@ public class HomeController {
 		medicine =  medicineService.findPlaceContainingKeywordAnywhere(stringService.convertStringToLowerCase(leita));
 		model.addAttribute("leita",leita);
 		model.addAttribute("medicine", medicine);
+		UserDetails userDetails;
 
 		// make substrings
-		if(nafn.contains(": ")) {
-			String[] s1 = nafn.split(Pattern.quote(": "));
-			String[] s2 = styrkur.split(Pattern.quote(": "));
-			String[] s3 = lyfjaform.split(Pattern.quote(": "));
-			String[] s4 = utgafudagur.split(Pattern.quote(": "));
+		if(principal != null) {
+			if (nafn.contains(": ")) {
+				String[] s1, s2, s3, s4;
+				s1 = nafn.split(Pattern.quote(": "));
+				s2 = styrkur.split(Pattern.quote(": "));
+				s3 = lyfjaform.split(Pattern.quote(": "));
+				s4 = utgafudagur.split(Pattern.quote(": "));
+				userDetails =
+					(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+				Long medicineId = medicineService.getMedId(s1[1], s2[1], s3[1], s4[1]);
+				;
+				Long userId = userService.getUser(userDetails.getUsername()).getId();
+				Cabinet cabinet = new Cabinet(medicineId, userId);
+				cabinetService.save(cabinet);
+			}
 		}
 		// hér þarf að skoða hvort user er loggaður inn því þeira fara á mismunandi pop up glugga
 		try{

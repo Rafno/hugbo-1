@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			.antMatchers("/").permitAll()
 			.antMatchers("/about").permitAll()
 			.antMatchers("/login").permitAll()
-			.antMatchers("/register").permitAll()
+			.antMatchers("/register").anonymous()
 			.antMatchers("/myHome").hasAuthority("USER").anyRequest()
 			.authenticated()
 			.and()
@@ -68,7 +68,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			
 			.and()
 			.exceptionHandling()
-			.accessDeniedPage("/errorPage")
+			.accessDeniedPage("/error")
+			
 			.and()
 			.csrf().disable();
 	}

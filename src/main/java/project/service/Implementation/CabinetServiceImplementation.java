@@ -34,4 +34,9 @@ public class CabinetServiceImplementation implements CabinetService {
 	public List<Cabinet> findAll() {
 		return repository.findAll();
 	}
+
+	@Override
+	public List<Cabinet> getMedsByUser(Long userId){
+		return repository.getMedsByUser(userId);
+	}
 }

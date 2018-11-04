@@ -45,7 +45,5 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
 											" and p.ma_issued like ?4")
 	Long getMedId(String name, String strength, String form, String ma_issued);
 
-
-
     List<Medicine> findByName(String name);
 }
