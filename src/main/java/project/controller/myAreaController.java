@@ -77,6 +77,7 @@ public class myAreaController {
 			model.addAttribute("medicine", medicine);
 		}
 
+		model.addAttribute("loggedInn",true);
 		model.addAttribute("image",myUser.getImagePublicId());
 
 		return "myArea/myArea";
@@ -95,7 +96,7 @@ public class myAreaController {
 
 
 		model.addAttribute("image",img);
-
+		model.addAttribute("loggedInn",true);
 		return "myArea/myArea";
 	}
 
