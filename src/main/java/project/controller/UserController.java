@@ -101,7 +101,6 @@ public class UserController {
 		notendaVillur.clear();
 		lykilordVillur.clear();
 		// kalla hér á fall sem skoðar hvort username og password séu lögleg
-		System.out.println(role);
 		allGood = true;
 		getErrors(username,password,passwordRepeat);
 		if(allGood){

@@ -64,7 +64,7 @@ public class HomeController {
 			model.addAttribute("userLoggedInn",true);
 			model.addAttribute("loggedInn",true);
 		}catch(Exception e){
-			System.out.println("er í skjali homeControol lína 81");
+			System.out.println(e);
 		}
         return "Index/Index";
     }
