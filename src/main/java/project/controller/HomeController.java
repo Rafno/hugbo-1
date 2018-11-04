@@ -1,6 +1,8 @@
 package project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +30,9 @@ public class HomeController {
 	List<Medicine> medicine;
     // Dependency Injection
 	private static HttpURLConnection con;
-    @Autowired
+	private UserDetails userDetails;
+
+	@Autowired
     public HomeController(StringManipulationService stringService) {
 
     	this.stringService = stringService;
@@ -46,7 +50,14 @@ public class HomeController {
         // (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
         // If you change "Index" to something else, be sure you have a .jsp
         // file that has the same name
-		model.addAttribute("loggedInn",true);
+		try{
+			this.userDetails =
+				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			model.addAttribute("userLoggedInn",true);
+			model.addAttribute("loggedInn",true);
+		}catch(Exception e){
+			System.out.println("er í skjali homeControol lína 81");
+		}
         return "Index/Index";
     }
 	@RequestMapping(value = "/", method = RequestMethod.POST)
@@ -67,7 +78,14 @@ public class HomeController {
 			String[] s3 = lyfjaform.split(Pattern.quote(": "));
 			String[] s4 = utgafudagur.split(Pattern.quote(": "));
 		}
-		model.addAttribute("loggedInn",true);
+		// hér þarf að skoða hvort user er loggaður inn því þeira fara á mismunandi pop up glugga
+		try{
+			this.userDetails =
+				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			model.addAttribute("userLoggedInn",true);
+			model.addAttribute("loggedInn",true);
+		}catch(Exception e){
+		}
 		return "searchEngine/searchEngine";
 	}
  
@@ -78,7 +96,14 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
 	public String about(Model model){
-		model.addAttribute("loggedInn",true);
+		// hér þarf að skoða hvort user er loggaður inn því þeira fara á mismunandi pop up glugga
+		try{
+			this.userDetails =
+				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			model.addAttribute("userLoggedInn",true);
+			model.addAttribute("loggedInn",true);
+		}catch(Exception err){
+		}
 		return "About/about";
 	}
 
