@@ -1,5 +1,7 @@
 package project.persistence.entities;
 import javax.persistence.*;
+import java.sql.Time;
+
 @Entity
 @Table(name = "reminders") // If you want to specify a table name, you can do so here
 public class reminder {
@@ -9,14 +11,14 @@ public class reminder {
 	private Long id;
 	private Long medicineId;
 	private Long usersId;
-	private int hour1;
-	private int hour2;
-	private int hour3;
-	private int hour4;
+	private Time hour1;
+	private Time hour2;
+	private Time hour3;
+	private Time hour4;
 
 	public reminder(){
 	}
-	public reminder(Long medicineId, Long usersId, int hour1, int hour2, int hour3, int hour4){
+	public reminder(Long medicineId, Long usersId, Time hour1, Time hour2, Time hour3, Time hour4){
 		this.medicineId = medicineId;
 		this.usersId = usersId;
 		this.hour1 = hour1;
@@ -48,36 +50,45 @@ public class reminder {
 	public void setUsersId(Long usersId) {
 		this.usersId = usersId;
 	}
-
-	public int getHour1() {
+	
+	
+	public Time getHour1()
+	{
 		return hour1;
 	}
-
-	public void setHour1(int hour1) {
+	
+	public void setHour1(Time hour1)
+	{
 		this.hour1 = hour1;
 	}
-
-	public int getHour2() {
+	
+	public Time getHour2()
+	{
 		return hour2;
 	}
-
-	public void setHour2(int hour2) {
+	
+	public void setHour2(Time hour2)
+	{
 		this.hour2 = hour2;
 	}
-
-	public int getHour3() {
+	
+	public Time getHour3()
+	{
 		return hour3;
 	}
-
-	public void setHour3(int hour3) {
+	
+	public void setHour3(Time hour3)
+	{
 		this.hour3 = hour3;
 	}
-
-	public int getHour4() {
+	
+	public Time getHour4()
+	{
 		return hour4;
 	}
-
-	public void setHour4(int hour4) {
+	
+	public void setHour4(Time hour4)
+	{
 		this.hour4 = hour4;
 	}
 }
