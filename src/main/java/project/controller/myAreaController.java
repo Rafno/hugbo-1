@@ -12,19 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import project.persistence.entities.Cabinet;
 import project.persistence.entities.Medicine;
+import project.persistence.entities.Reminder;
 import project.persistence.entities.Users;
-import project.service.CabinetService;
-import project.service.MedicineService;
-import project.service.StringManipulationService;
-import project.service.UserService;
+import project.service.*;
 import com.cloudinary.Cloudinary;
 
 import javax.transaction.Transactional;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
+import java.util.*;
+import java.sql.Time;
 
 /**
  * Small controller just to show that you can have multiple controllers
@@ -42,6 +38,7 @@ public class myAreaController {
 	private UserDetails userDetails;
 	private Cloudinary cloudinary;
 	private StringManipulationService stringManipulationService;
+	private ReminderService reminderService;
 	private Users myUser;
 
 	@Autowired
@@ -66,7 +63,22 @@ public class myAreaController {
 		// If you change "Index" to something else, be sure you have a .jsp
 		// file that has the same name
 		getUser();
+		// Interval
+		int delay = 5000;   // delay for 5 sec.
+		int interval = 1000;  // iterate every sec.
+		Timer timer = new Timer();
 
+		timer.scheduleAtFixedRate(new TimerTask() {
+			public void run() {
+				//Hér þarf að skoða Db inn.
+				List <Reminder> amining = reminderService.findAll();
+				for (Reminder item:amining
+					 ) {
+						System.out.println(item.getHour1());
+				}
+
+			}
+		}, delay, interval);
 		// add medicine to my home table
 		if(cabinetService.findAll().size() != 0) {
 			Long userId = userService.getUser(userDetails.getUsername()).getId();

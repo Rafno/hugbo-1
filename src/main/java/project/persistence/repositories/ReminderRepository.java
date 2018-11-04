@@ -1,10 +1,9 @@
 package project.persistence.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import project.persistence.entities.reminder;
-
+import project.persistence.entities.Reminder;
+import java.sql.Time;
 import java.util.List;
 
 /**
@@ -15,14 +14,14 @@ import java.util.List;
  *
  */
 @Repository
-public interface reminderRepository extends JpaRepository<reminder, Long> {
+public interface ReminderRepository extends JpaRepository<Reminder, Long> {
 
-	reminder save(reminder cabinet);
+	Reminder save(Reminder reminder);
 
-	void delete(reminder cabinet);
+	void delete(Reminder reminder);
 
-	List<reminder> findAll();
+	List<Reminder> findAll();
 
 
-	//List<Cabinet> findById(long id);
+
 }

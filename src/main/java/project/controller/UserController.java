@@ -64,10 +64,6 @@ public class UserController {
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("loggedInn",true);
 		}catch(Exception e){
-<<<<<<< HEAD
-=======
-		
->>>>>>> ef13969be77d289c08626f8a530427f5a3bda89d
 		}
 
 		return "/Login/login";

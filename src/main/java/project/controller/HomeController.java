@@ -64,10 +64,6 @@ public class HomeController {
 			model.addAttribute("userLoggedInn",true);
 			model.addAttribute("loggedInn",true);
 		}catch(Exception e){
-<<<<<<< HEAD
-=======
-			System.out.println(e);
->>>>>>> ef13969be77d289c08626f8a530427f5a3bda89d
 		}
         return "Index/Index";
     }
