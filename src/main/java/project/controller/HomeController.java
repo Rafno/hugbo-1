@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import java.net.HttpURLConnection;
-
+@Controller
 public class HomeController {
 
     // Instance
