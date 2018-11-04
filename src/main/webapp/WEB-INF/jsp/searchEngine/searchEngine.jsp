@@ -47,20 +47,26 @@
                 <th>Markaðsett</th>
                 <th>ýmsar upplýsingar</th>
             </tr>
-            <c:forEach items="${medicine}" var="obj">
-                <tr onclick="openPopUp('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
-                    <td><c:out value="${obj.name}"/></td>
-                    <td><c:out value="${obj.pharmaceutical_form}"/></td>
-                    <td><c:out value="${obj.strength}"/></td>
-                    <td><c:out value="${obj.active_ingredient}"/></td>
-                    <td><c:out value="${obj.legal_status}"/></td>
-                    <td><c:out value="${obj.ma_issued}"/></td>
-                    <td><c:out value="${obj.marketed}"/></td>
-                    <td><c:out value="${obj.other_info}"/></td>
-                </tr>
-            </c:forEach>
+                <c:forEach items="${medicine}" var="obj">
+                    <c:if test="${not empty loggedInn}">
+                            <tr onclick="openPopUp('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
+                    </c:if >
+                    <c:if test="${empty loggedInn}">
+                        <tr onclick="openPopUpUnRegistered()">
+                    </c:if >
+                        <td><c:out value="${obj.name}"/></td>
+                        <td><c:out value="${obj.pharmaceutical_form}"/></td>
+                        <td><c:out value="${obj.strength}"/></td>
+                        <td><c:out value="${obj.active_ingredient}"/></td>
+                        <td><c:out value="${obj.legal_status}"/></td>
+                        <td><c:out value="${obj.ma_issued}"/></td>
+                        <td><c:out value="${obj.marketed}"/></td>
+                        <td><c:out value="${obj.other_info}"/></td>
+                    </tr>
+                </c:forEach>
         </table>
     </div>
+    <!-- Modal fyrir innskráð notendur-->
     <div id="myModal" class="modal">
         <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
         <Form class="modal-content" method="post">
@@ -77,6 +83,21 @@
             <button class="popUpSubmit" type="submit" name="search">Staðfesta</button>
         </Form>
     </div>
+    <!-- Modeal fyrir ekki innskráða notendur-->
+    <div id="myModalUnregistered" class="modal">
+        <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
+        <div class="modal-content">
+            <div class="popUpHead">
+                <h2 class="popUpHeadTitle">Óinnskráður notandi</h2>
+                <div class="close">&times;</div>
+            </div>
+            <div class="popUpTextContainer">
+                <div> Þú ert ekki innskráður notandi</div>
+                <div> Það er frítt að skrá sig inn og þú geriri það <a href="register">hérna</a></div>
+            </div>
+        </div>
+    </div>
+
 
 <script>
     function openPopUp(nafn,styrkur,lyfjaform,utgafudagur){
@@ -87,6 +108,17 @@
         var d = document.getElementById('lyfjaform').value = "lyfjaform: "+lyfjaform;
         var e = document.getElementById('utgafudagur').value = "útgáfudagur: "+utgafudagur;
 
+        // Ná í span elementið sem lokar modelinu
+        modal.style.display = "block";
+
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    }
+    function openPopUpUnRegistered() {
+        alert("óinskra´ður");
+        var modal = document.getElementById('myModalUnregistered');
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";
 
