@@ -110,13 +110,6 @@ public class UserController {
 		getErrors(username,password,passwordRepeat);
 		if(allGood == true){
 			model.addAttribute("succesfull","Til hamingju "+ name+ ". Aðgangurinn þinn hefur verið búinn til");
-			System.out.println(name);
-			System.out.println(username);
-			System.out.println(password);
-			System.out.println(role);
-			System.out.println(homeAddress);
-			System.out.println(homeTown);
-			System.out.println(zipCode);
 
 			//Cloudinary link
 			String img = "<img src='http://res.cloudinary.com/dfhjyjyg1/image/upload/zkitbd9veqxrcdpmhnlj'/>";

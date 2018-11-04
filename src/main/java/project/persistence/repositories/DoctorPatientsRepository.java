@@ -22,5 +22,8 @@ public interface DoctorPatientsRepository extends JpaRepository<DoctorPatients, 
 	void delete(DoctorPatients doctorPatients);
 
 	List<DoctorPatients> findAll();
+
+	@Query(value = "select d.patientId from DoctorPatients d where d.doctorId = ?1" )
+	List<Long> getPatientIdByDoctorId(Long doctorId);
 	
 }

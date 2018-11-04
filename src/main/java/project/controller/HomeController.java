@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import project.persistence.entities.Cabinet;
 import project.persistence.entities.Medicine;
-import project.service.CabinetService;
-import project.service.MedicineService;
-import project.service.StringManipulationService;
-import project.service.UserService;
+import project.service.*;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.net.URL;
@@ -36,6 +33,8 @@ public class HomeController {
 	UserService userService;
 	@Autowired
 	CabinetService cabinetService;
+	@Autowired
+	DoctorPatientsService doctorPatientsService;
 
 	List<Medicine> medicine;
     // Dependency Injection
@@ -75,16 +74,26 @@ public class HomeController {
 		model.addAttribute("medicine", medicine);
 		UserDetails userDetails;
 
-		// make substrings
 		if(principal != null) {
+		// Find patients for Doctor
+			userDetails =
+				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			if(userService.getUser(userDetails.getUsername()).getRole().equals("Læknir")){
+				Long doctorId =  userService.getUser(userDetails.getUsername()).getId();
+				List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
+				List<String> patients = userService.getUsersbyId(userids);
+			}
+
+		// assign medicine to user
+
 			if (nafn.contains(": ")) {
 				String[] s1, s2, s3, s4;
+				// make substrings
 				s1 = nafn.split(Pattern.quote(": "));
 				s2 = styrkur.split(Pattern.quote(": "));
 				s3 = lyfjaform.split(Pattern.quote(": "));
 				s4 = utgafudagur.split(Pattern.quote(": "));
-				userDetails =
-					(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
 				Long medicineId = medicineService.getMedId(s1[1], s2[1], s3[1], s4[1]);
 				;
 				Long userId = userService.getUser(userDetails.getUsername()).getId();

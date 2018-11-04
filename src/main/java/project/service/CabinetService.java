@@ -13,4 +13,5 @@ public interface CabinetService {
 	List<Cabinet> findAll();
 
 	List<Cabinet> getMedsByUser(Long userId);
+
 }

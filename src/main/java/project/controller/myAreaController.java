@@ -67,6 +67,7 @@ public class myAreaController {
 		// file that has the same name
 		getUser();
 
+		// add medicine to my home table
 		if(cabinetService.findAll().size() != 0) {
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
 			List<Cabinet> cab = cabinetService.getMedsByUser(userId);

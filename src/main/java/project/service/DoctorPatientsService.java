@@ -11,4 +11,6 @@ public interface DoctorPatientsService {
 	void delete(DoctorPatients doctorPatients);
 
 	List<DoctorPatients> findAll();
+
+	List<Long> getPatientIdByDoctorId(Long doctorId);
 }

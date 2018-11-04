@@ -35,4 +35,9 @@ public class DoctorPatientsServiceImplementation implements DoctorPatientsServic
 	public List<DoctorPatients> findAll() {
 		return repository.findAll();
 	}
+
+	@Override
+	public List<Long> getPatientIdByDoctorId(Long doctorId){
+		return repository.getPatientIdByDoctorId(doctorId);
+	}
 }
