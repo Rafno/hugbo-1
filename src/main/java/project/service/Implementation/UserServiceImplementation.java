@@ -43,8 +43,6 @@ public class UserServiceImplementation implements UserService{
 			repository.save(user);
 			User_roles auth = new User_roles(user.getUsername(), "USER");
 			userRolesRepository.save(auth);
-		} else {
-			System.out.println("User already exists");
 		}
 	}
 	@Override

@@ -29,7 +29,7 @@ public class UserController {
 	private static List<String> lykilordVillur = new ArrayList<String>();
 	private static Boolean allGood;
 	private UserDetails userDetails;
-
+	
 	@Autowired
 	public UserController(UserService userService){this.userService = userService;}
 	/*
@@ -64,6 +64,10 @@ public class UserController {
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("loggedInn",true);
 		}catch(Exception e){
+<<<<<<< HEAD
+=======
+		
+>>>>>>> ef13969be77d289c08626f8a530427f5a3bda89d
 		}
 
 		return "/Login/login";
@@ -79,7 +83,7 @@ public class UserController {
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("loggedInn",true);
 		}catch(Exception e){
-			System.out.println("er í skjali userControl lína 83");
+		
 		}
 
 
@@ -94,20 +98,15 @@ public class UserController {
 							   			@RequestParam("homeAddress") String homeAddress,
 							   			@RequestParam("homeTown") String homeTown,
 							   			@RequestParam("zipCode") String zipCode){
-
-		// TODO senda villuskilaboð
-		//gefum div togunum sín value sem user sló inn
-
-
+		
 		model.addAttribute("nafn",name);
 		// hreinsum arrayListana
 		notendaVillur.clear();
 		lykilordVillur.clear();
 		// kalla hér á fall sem skoðar hvort username og password séu lögleg
-		System.out.println(role);
 		allGood = true;
 		getErrors(username,password,passwordRepeat);
-		if(allGood == true){
+		if(allGood){
 			model.addAttribute("succesfull","Til hamingju "+ name+ ". Aðgangurinn þinn hefur verið búinn til");
 
 			//Cloudinary link
