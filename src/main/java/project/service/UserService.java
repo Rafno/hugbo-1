@@ -17,6 +17,8 @@ public interface UserService
 
 	Users getUser(String username);
 
+	Users findOne(Long id);
+
 	List<Users> getAllPatients(Users user);
 	
 	String addPatient(Users user);

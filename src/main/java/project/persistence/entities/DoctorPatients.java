@@ -16,8 +16,8 @@ public class DoctorPatients
 	// Declare that this attribute is the id
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "doctorId", unique = true, columnDefinition = "serial")
-
+	@Column(name = "id", unique = true)
+	private Long id;
 	private Long doctorId;
 	private Long patientId;
 

@@ -9,6 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "medicine") // If you want to specify a table name, you can do so here
+
 public class Medicine {
 
     // Declare that this attribute is the id
