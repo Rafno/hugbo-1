@@ -55,7 +55,7 @@ public class myAreaController {
 		// If you change "Index" to something else, be sure you have a .jsp
 		// file that has the same name
 		getUser();
-
+		model.addAttribute("loggedInn",true);
 		model.addAttribute("image",myUser.getImagePublicId());
 		return "myArea/myArea";
 	}
@@ -73,7 +73,7 @@ public class myAreaController {
 		
 
 		model.addAttribute("image",img);
-
+		model.addAttribute("loggedInn",true);
 		return "myArea/myArea";
 	}
 
