@@ -78,7 +78,9 @@ select#division {
 }
 .registerHeader {
     text-align: center;
+    font-size: 2rem;
     height: 60px;
+    font-weight: bold;
 }
 .optionPannelDoctorPatient {
     flex: 0 1 50%;

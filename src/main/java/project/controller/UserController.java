@@ -2,6 +2,8 @@ package project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +28,8 @@ public class UserController {
 	private static List<String> notendaVillur = new ArrayList<String>();
 	private static List<String> lykilordVillur = new ArrayList<String>();
 	private static Boolean allGood;
-	
+	private UserDetails userDetails;
+
 	@Autowired
 	public UserController(UserService userService){this.userService = userService;}
 	/*
@@ -55,6 +58,15 @@ public class UserController {
 			errorMessage = "You have been successfully logged out !!";
 		}
 		model.addAttribute("errorMsg", errorMessage);
+		// Búum til try catch sem skoðar hvort user er skráður inn
+		try{
+			this.userDetails =
+				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			model.addAttribute("loggedInn",true);
+		}catch(Exception e){
+			System.out.println("er í skjali userCOntroller lína 67");
+		}
+
 		return "/Login/login";
 	}
 	
@@ -62,7 +74,14 @@ public class UserController {
 	/*TODO Passa að bæjarfélag, póstnúmer og heimilisfang gildin koma aftur ef það kemur upp villa*/
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String register(Model model){
-
+		// Búum til try catch sem skoðar hvort user er skráður inn
+		try{
+			this.userDetails =
+				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+				model.addAttribute("loggedInn",true);
+		}catch(Exception e){
+			System.out.println("er í skjali userControl lína 83");
+		}
 
 
 		return "/Register/register";
