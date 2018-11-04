@@ -64,7 +64,6 @@ public class HomeController {
 			model.addAttribute("userLoggedInn",true);
 			model.addAttribute("loggedInn",true);
 		}catch(Exception e){
-			System.out.println("er í skjali homeControol lína 81");
 		}
         return "Index/Index";
     }
@@ -87,9 +86,17 @@ public class HomeController {
 			userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			if(userService.getUser(userDetails.getUsername()).getRole().equals("Læknir")){
+				System.out.println("ég er læknir");
 				Long doctorId =  userService.getUser(userDetails.getUsername()).getId();
 				List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
 				List<String> patients = userService.getUsersbyId(userids);
+				for (String patient : patients) {
+					System.out.println("--------------");
+					System.out.println(patient);
+					// fruit is an element of the `fruits` array.
+				}
+			}else{
+				//ekki læknir
 			}
 
 		// assign medicine to user

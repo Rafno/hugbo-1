@@ -64,7 +64,6 @@ public class UserController {
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("loggedInn",true);
 		}catch(Exception e){
-			System.out.println("er í skjali userCOntroller lína 67");
 		}
 
 		return "/Login/login";
@@ -78,7 +77,7 @@ public class UserController {
 		try{
 			this.userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-				model.addAttribute("loggedInn",true);
+			model.addAttribute("loggedInn",true);
 		}catch(Exception e){
 			System.out.println("er í skjali userControl lína 83");
 		}
