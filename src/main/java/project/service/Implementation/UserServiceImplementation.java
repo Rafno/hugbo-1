@@ -68,7 +68,12 @@ public class UserServiceImplementation implements UserService{
 		}
 		return possibleUser;
 	}
-	
+
+	@Override
+	public Users getUser(String username){
+		return repository.getUser(username);
+	}
+
 	@Override
 	public List<Users> getAllPatients(Users user) {
 		return repository.getAllPatients(user);
@@ -93,5 +98,9 @@ public class UserServiceImplementation implements UserService{
 	@Override
 	public Boolean [] userNameExists(String username){
 		return repository.userNameExists(username);
+	}
+
+	public void updateImageId(String imageId, String userName){
+		repository.updateImageId(imageId,userName);
 	}
 }

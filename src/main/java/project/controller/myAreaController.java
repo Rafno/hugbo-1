@@ -15,6 +15,7 @@ import project.service.StringManipulationService;
 import project.service.UserService;
 import com.cloudinary.Cloudinary;
 
+import javax.transaction.Transactional;
 import java.io.*;
 import java.util.Map;
 
@@ -28,43 +29,61 @@ public class myAreaController {
 
 	private UserService userService;
 	private Cloudinary cloudinary;
+	private UserDetails userDetails;
 	private StringManipulationService stringManipulationService;
+	Users myUser;
 
 	Map config;
 
 	@Autowired
 	public myAreaController(UserService userService){
-		this.userService = userService;
 		// connect to cloudinary
-		Map config = ObjectUtils.asMap(
+		Map config = ObjectUtils.asMap
+			(
 			"cloud_name", "dfhjyjyg1",
 			"api_key", "262159979451586",
-			"api_secret", "seHjAkN2IxZmE2lisxYoVyiD3vk");
+			"api_secret", "seHjAkN2IxZmE2lisxYoVyiD3vk"
+		);
+
 		this.cloudinary = new Cloudinary(config);
+		this.userService = userService;
 
 	}
 
 	@RequestMapping(value = "/myHome", method = RequestMethod.GET)
-	public String myAreas(){
+	public String myAreas(Model model){
 		// The string "Index" that is returned here is the name of the view
 		// (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
 		// If you change "Index" to something else, be sure you have a .jsp
 		// file that has the same name
+		getUser();
+
+		model.addAttribute("image",myUser.getImagePublicId());
 		return "myArea/myArea";
 	}
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
 	public String myAreasPost(Model model,@RequestParam("pic") MultipartFile file) throws IOException {
-		UserDetails userDetails =
-			(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println(userDetails.getUsername());
+
 		// load image to cloudinary
+		//getUser();
+
 		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
 
-		// get image from cloudinary
-		model.addAttribute("image",
-			(String)cloudinary.url().imageTag((String)uploadResult.get("public_id")));
+		String img = (String)cloudinary.url().imageTag((String)uploadResult.get("public_id"));
+
+		userService.updateImageId(img,userDetails.getUsername());
+		
+
+		model.addAttribute("image",img);
 
 		return "myArea/myArea";
 	}
 
+	public void getUser(){
+
+		this.userDetails =
+			(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(userDetails.getUsername());
+		this.myUser = userService.getUser(userDetails.getUsername());
+	}
 }
