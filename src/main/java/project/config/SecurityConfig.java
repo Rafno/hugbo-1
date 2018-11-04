@@ -46,26 +46,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	 * @param http
 	 * @throws Exception
 	 */
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception
 	{
 		
 		http
 			.authorizeRequests()
-			.antMatchers("/myHome").hasAuthority("USER")
-			.antMatchers("/*").permitAll()
-			.and().csrf().disable()
+			.antMatchers("/").permitAll()
+			.antMatchers("/about").permitAll()
+			.antMatchers("/login").permitAll()
+			.antMatchers("/register").permitAll()
+			.antMatchers("/myHome").hasAuthority("USER").anyRequest()
+			.authenticated()
+			.and()
 			.formLogin()
 			.loginPage("/login")
-			.usernameParameter("username")//
-			.passwordParameter("password")
 			.and()
 			.httpBasic()
 			
 			.and()
 			.logout()
 			.logoutUrl("/logout")
-			.logoutSuccessUrl("/")
 			.deleteCookies("JSESSIONID")
 			
 			.and()
@@ -74,8 +76,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			
 			.and()
 			.csrf().disable();
-			
 	}
+	
 	@Override
 	public void configure(WebSecurity web) throws Exception{
 		web
