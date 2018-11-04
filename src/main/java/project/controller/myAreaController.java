@@ -1,8 +1,9 @@
 package project.controller;
 
-import com.cloudinary.utils.Base64Coder;
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,6 @@ import project.service.StringManipulationService;
 import project.service.UserService;
 import com.cloudinary.Cloudinary;
 
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.Map;
 
@@ -54,7 +54,9 @@ public class myAreaController {
 	}
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
 	public String myAreasPost(Model model,@RequestParam("pic") MultipartFile file) throws IOException {
-
+		UserDetails userDetails =
+			(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(userDetails.getUsername());
 		// load image to cloudinary
 		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
 
