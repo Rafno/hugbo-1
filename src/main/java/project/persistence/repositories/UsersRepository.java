@@ -6,11 +6,13 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import project.persistence.entities.Users;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
+@Repository
 public interface UsersRepository extends JpaRepository<Users, Long>{
 
 	Users save(Users user);
@@ -33,6 +35,9 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	String findByUsername(String username);
 	@Query(value = "select (CASE WHEN userName = ?1 THEN True ELSE False END) from Users p" )
 	Boolean [] userNameExists(String username);
+
+	@Query(value = "SELECT p FROM Users p WHERE p.id = ?1")
+	Users findOne(Long id);
 
 	@Transactional
 	@Modifying

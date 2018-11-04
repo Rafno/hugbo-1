@@ -75,6 +75,11 @@ public class UserServiceImplementation implements UserService{
 	}
 
 	@Override
+	public Users findOne(Long id){
+		return repository.findOne(id);
+	}
+
+	@Override
 	public List<Users> getAllPatients(Users user) {
 		return repository.getAllPatients(user);
 	}

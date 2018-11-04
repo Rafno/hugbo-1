@@ -18,9 +18,7 @@ public class DoctorPatients
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true)
 	private Long id;
-	@Column(name = "doctorId", unique = false)
 	private Long doctorId;
-	@Column(name = "patientId", unique = false)
 	private Long patientId;
 
 	// Notice the empty constructor, because we need to be able to create an empty PostitNote to add

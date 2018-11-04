@@ -10,15 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import project.persistence.entities.Cabinet;
-import project.persistence.entities.Medicine;
-import project.persistence.entities.Reminder;
-import project.persistence.entities.Users;
+import project.persistence.entities.*;
 import project.service.*;
 import com.cloudinary.Cloudinary;
 
 import javax.transaction.Transactional;
 import java.io.*;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.sql.Time;
 
@@ -35,10 +36,13 @@ public class myAreaController {
 	private MedicineService medicineService;
 	@Autowired
 	private CabinetService cabinetService;
+	@Autowired
+	private ReminderService reminderService;
+
 	private UserDetails userDetails;
 	private Cloudinary cloudinary;
 	private StringManipulationService stringManipulationService;
-	private ReminderService reminderService;
+
 	private Users myUser;
 
 	@Autowired
@@ -64,20 +68,52 @@ public class myAreaController {
 		// file that has the same name
 		getUser();
 		// Interval
-		int delay = 5000;   // delay for 5 sec.
-		int interval = 1000;  // iterate every sec.
+		int delay = 0;   // delay for 5 sec.
+		int interval = 600000;  // iterate every sec.
 		Timer timer = new Timer();
+
+		//    TEST
+		String myDateString1 = "22:35:40";
+		String myDateString2 = "22:40:40";
+		String myDateString3 = "22:45:40";
+		String myDateString4 = "23:00:40";
+
+		reminderService.save(new Reminder(1L, 2L,  myDateString1 , myDateString2, myDateString3, myDateString4));
+
+		ZoneId z = ZoneId.of( "Atlantic/Reykjavik" );
+		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.systemDefault());
 
 		timer.scheduleAtFixedRate(new TimerTask() {
 			public void run() {
 				//Hér þarf að skoða Db inn.
-				//List <Reminder> amining = reminderService.findAll();
-				/*for (Reminder item:amining
-					 ) {
-						System.out.println(item.getHour1());
-				}*/
 
+				List <Reminder> amining = reminderService.findAll();
+				for (Reminder item:amining) {
+					LocalTime current_time = zdt.toLocalTime();
+					LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+					LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+					LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+					LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+
+					if( Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10){
+						System.out.println("Senda notification  : " + localTime2) ;
+						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
+					}
+					if( Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10){
+						System.out.println("Senda notification kl : " + localTime2);
+						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
+					}
+					if( Math.abs(localTime3.getMinute() - current_time.getMinute()) < 10){
+						System.out.println("Senda notification : " + localTime3);
+						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
+					}
+					if( Math.abs(localTime4.getMinute() - current_time.getMinute()) < 10){
+						System.out.println("Senda notification : " + localTime4);
+						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
+					}
+				}
 			}
+
 		}, delay, interval);
 		// add medicine to my home table
 		if(cabinetService.findAll().size() != 0) {
