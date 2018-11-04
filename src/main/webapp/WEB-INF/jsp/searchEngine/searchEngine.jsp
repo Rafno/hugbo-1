@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="lowerBanner_container">
-        <p class="headerTxt">  Lyfjaskápurinn heima hjá þér</p>
+        <p class="headerTxt">  Lyfjaskápurinn heima hjá Mömmu þinni</p>
         <div class = "lowerBanner">
             <Form method="post">
                 <label>
