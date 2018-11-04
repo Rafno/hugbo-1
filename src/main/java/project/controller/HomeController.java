@@ -14,7 +14,6 @@ import javax.net.ssl.HttpsURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.regex.Pattern;
 
 import java.net.HttpURLConnection;
@@ -66,78 +65,19 @@ public class HomeController {
 			String[] s2 = styrkur.split(Pattern.quote(": "));
 			String[] s3 = lyfjaform.split(Pattern.quote(": "));
 			String[] s4 = utgafudagur.split(Pattern.quote(": "));
-			System.out.println(medicineService.getMedId(s1[1], s2[1], s3[1], s4[1]));
 		}
 
 
 		return "searchEngine/searchEngine";
 	}
-    // To call this method, enter "localhost:8080/user" into a browser
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String user(Model model){
-
-        // Here we will show how to add attributes to a model and send it to the view
-
-        // Since this small example is for a user, let's create some attributes
-        // that users might usually have in a system
-        String name = "Rincewind";
-        String job  = "Wizzard";
-        String email = "rincewizz@unseenuni.edu";
-        String description = "most likely to survive in a dungeon dimension.";
-
-
-        // Since we want our attributes regarding the user always in the same format,
-        // we are going to convert some strings using our StringManipulationService
-
-        // Let's assume that the name, job and description always have
-        // the first character in upper case
-        name = stringService.convertsFirstCharInStringToUpperCase(name);
-        job = stringService.convertsFirstCharInStringToUpperCase(job);
-        description = stringService.convertsFirstCharInStringToUpperCase(description);
-
-        // Let's assume that we always want e-mail in lower case
-        email = stringService.convertStringToLowerCase(email);
-
-
-        // Now let's add the attributes to the model
-        model.addAttribute("name",name);
-        model.addAttribute("job",job);
-        model.addAttribute("email",email);
-        model.addAttribute("description",description);
-
-        // By adding attributes to the model, we can pass information from the controller
-        // to the view (the .jsp file).
-        // Look at the User.jsp file in /main/webapp/WEB-INF/jsp/ to see how the data is accessed
-        return "User";
-    }
-	/*
-    @RequestMapping(value = "/medicine", method = RequestMethod.GET)
-    public String medicine(Model model)
-    {
-
-        String name = "Ibofen";
-        String type  = "Verkjalyf";
-
-
-        // Now let's add the attributes to the model
-        model.addAttribute("name",name);
-        model.addAttribute("type", type);
-
-        return "Medicine";
-    }
-    */
-	/*
-		* This function reciewves the path /about and goes straight to jsp file about. There we hanve
-		* Html code that displays some text and images
-	 */
-	// To call this method, enter "localhost:8080/user" into a browser
+ 
 	private void sendPost() throws Exception {
 		String url = "https://selfsolve.apple.com/wcResults.do";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 	}
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
-	public String about(Model model){
+	public String about(){
 
 		return "About/about";
 	}

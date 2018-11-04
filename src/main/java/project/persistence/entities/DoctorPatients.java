@@ -1,8 +1,7 @@
 package project.persistence.entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * The class for the Users itself.
