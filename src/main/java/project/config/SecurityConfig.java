@@ -39,24 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			.authoritiesByUsernameQuery("select username, role from user_roles where username=?");
 	}
 	
-	@Configuration
-	@Order(1)
-	public static class ApiWebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
-		protected void configure(HttpSecurity http) throws Exception {
-			http
-				.antMatcher("/myHome/**")
-				.authorizeRequests()
-				.anyRequest().hasRole("USER")
-				.and()
-				.csrf().disable()
-				.formLogin()
-				.loginPage("/login")
-				.usernameParameter("username")//
-				.passwordParameter("password")
-				.and()
-				.httpBasic();
-		}
-	}
 	/**
 	 * Handler for all our links,
 	 * important! must add new antmatcher with permissions needed if a new link is created (ie controller)
@@ -70,11 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 		
 		http
 			.authorizeRequests()
-			.antMatchers("/").permitAll()
-			.antMatchers("/about").permitAll()
-			.antMatchers("/login").permitAll()
-			.antMatchers("/about").permitAll()
-			.antMatchers("/register").permitAll()
+			.antMatchers("/myHome").hasAuthority("USER")
+			.antMatchers("/*").permitAll()
 			.and().csrf().disable()
 			.formLogin()
 			.loginPage("/login")
