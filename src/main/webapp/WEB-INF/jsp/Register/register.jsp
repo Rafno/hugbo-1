@@ -6,7 +6,6 @@
 
 <head>
     <title>Project Title</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/medicine.css"/>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/register.css"/>"/>
 </head>
@@ -83,3 +82,20 @@
         </div>
     </div>
 </form>
+<script>
+    /*setInterval(function(){
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://hugbo1.herokuapp.com", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            to: 'helgigretargunnars.96@gmail.com',
+            content: 'hello helgi'
+        }));
+        xhr.onload = function() {
+            console.log("HELLO")
+            console.log(this.responseText);
+            var data = JSON.parse(this.responseText);
+            console.log(data);
+        }
+        }, 20000);*/
+</script>
