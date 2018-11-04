@@ -9,6 +9,7 @@
         <title>Appótekið</title>
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/headNavigation.css"/>"/>
     </head>
+<c:if test="${not empty loggedInn}">
     <header>
         <ul class="headNavigation">
             <li class="itemNavigation"><a class="active" href="/">Appótek</a></li>
@@ -18,8 +19,22 @@
                     <img src="./../../../img/house.png" alt="headImage"class="headNavigationPic"/>
                 </a>
             </li>
-            <li class="itemNavigation"><a class="active" href="/login">Innskráning</a></li>
+            <li class="itemNavigation"><a class="active" href="/logout">útskráning</a></li>
 
         </ul>
     </header>
+</c:if>
+<c:if test="${empty loggedInn}">
+    <ul class="headNavigation">
+        <li class="itemNavigation"><a class="active" href="/">Appótek</a></li>
+        <li class="itemNavigation"><a class="active" href="/about">Um vefsíðuna</a></li>
+        <li class="itemNavigation">
+            <a href="/myHome"class="active">
+
+            </a>
+        </li>
+        <li class="itemNavigation"><a class="active" href="/login">innskráning</a></li>
+        <li class="itemNavigation"><a class="active" href="/register">Búa til aðgang</a></li>
+    </ul>
+</c:if>
 </html>

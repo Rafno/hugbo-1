@@ -40,12 +40,13 @@ public class HomeController {
     // is running and you enter "localhost:8080" into a browser, this
     // method is called
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String home(){
+    public String home(Model model){
 		
         // The string "Index" that is returned here is the name of the view
         // (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
         // If you change "Index" to something else, be sure you have a .jsp
         // file that has the same name
+		model.addAttribute("loggedInn",true);
         return "Index/Index";
     }
 	@RequestMapping(value = "/", method = RequestMethod.POST)
@@ -66,8 +67,7 @@ public class HomeController {
 			String[] s3 = lyfjaform.split(Pattern.quote(": "));
 			String[] s4 = utgafudagur.split(Pattern.quote(": "));
 		}
-
-
+		model.addAttribute("loggedInn",true);
 		return "searchEngine/searchEngine";
 	}
  
@@ -77,8 +77,8 @@ public class HomeController {
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 	}
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
-	public String about(){
-
+	public String about(Model model){
+		model.addAttribute("loggedInn",true);
 		return "About/about";
 	}
 
