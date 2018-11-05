@@ -33,7 +33,7 @@
             <br />
             <div class="row">
             <h4 class="title">Nafn</h4>
-            <input type="text" placeholder="  Şarf ağ fylla út" name="name" value="${nafn}" required class="registerText" id = inputText4 />
+            <input type="text" placeholder="  Şarf ağ fylla út" name="name" value="${nafn}" required class="registerText" id = inputText4 maxlength="40" />
             </div>
             <br />
             <div class="row">

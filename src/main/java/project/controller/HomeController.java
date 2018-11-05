@@ -139,20 +139,23 @@ public class HomeController {
 		}
 		return "searchEngine/searchEngine";
 	}
- 
+
 	private void sendPost() throws Exception {
 		String url = "https://selfsolve.apple.com/wcResults.do";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 	}
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
-	public String about(Model model){
+	public String about(Model model, Principal principal){
 		// hér þarf að skoða hvort user er loggaður inn því þeira fara á mismunandi pop up glugga
 		try{
 			this.userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("loggedInn",true);
+			String user = userService.getUsersByUsername(principal.getName());
+			System.out.println(user+" lína 155");
 		}catch(Exception err){
+			System.out.println(err);
 		}
 		return "About/about";
 	}

@@ -19,7 +19,8 @@
                     <img src="./../../../img/house.png" alt="headImage"class="headNavigationPic"/>
                 </a>
             </li>
-            <li class="itemNavigation"><a class="active" href="/logout">útskráning</a></li>
+            <li class="itemNavigation" id="logout"><a class="active" href="/logout" >útskráning</a></li>
+            <li class="itemNavigation"><a class="active">Helgi Grétar Gunnarsson</a></li>
 
         </ul>
     </header>
@@ -33,8 +34,8 @@
 
             </a>
         </li>
-        <li class="itemNavigation"><a class="active" href="/login">innskráning</a></li>
-        <li class="itemNavigation"><a class="active" href="/register">Búa til aðgang</a></li>
+        <li class="itemNavigation" id="login"><a class="active" href="/login" >innskráning</a></li>
+        <li class="itemNavigation" ><a class="active" href="/register">Búa til aðgang</a></li>
     </ul>
 </c:if>
 </html>
