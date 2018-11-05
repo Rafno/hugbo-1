@@ -79,7 +79,7 @@
         <Form class="modal-content" method="post">
             <div class="popUpHead">
                 <h2 class="popUpHeadTitle">Bæta lyf í lyfjaskáp</h2>
-                <div class="close">&times;</div>
+                <div class="close" id="patientClose">&times;</div>
             </div>
             <div class="popUpTextContainer">
                 <input class="popUpTexti" type="text" name="nafn" id="nafn" value = "nafn" readonly/>
@@ -96,7 +96,7 @@
         <Form class="modal-content" method="post">
             <div class="popUpHead">
                 <h2 class="popUpHeadTitle">Bæta lyf á sjúkling</h2>
-                <div class="close">&times;</div>
+                <div class="close" id="doctorClose">&times;</div>
             </div>
             <div class="doctorePopUpContainer">
                 <div class="popUpTextContainer">
@@ -118,7 +118,7 @@
         <div class="modal-content">
             <div class="popUpHead">
                 <h2 class="popUpHeadTitle">Óinnskráður notandi</h2>
-                <div class="close">&times;</div>
+                <div class="close" id="unregisterdClosing"onclick="closing()">&times;</div>
             </div>
             <div class="popUpTextContainer">
                 <div> Þú ert ekki innskráður notandi</div>
@@ -140,7 +140,7 @@
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";
 
-        var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementById("patientClose");
         span.onclick = function() {
             modal.style.display = "none";
         }
@@ -157,7 +157,7 @@
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";
 
-        var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementById("doctorClose");
         span.onclick = function() {
             modal.style.display = "none";
         }
@@ -168,8 +168,20 @@
         // Ná í span elementið sem lokar modelinu
         myModalUnregistered.style.display = "block";
 
-        var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementById("unregisterdClosing");
         span.onclick = function() {
+            alert("óinnskra´ður")
+            myModalUnregistered.style.display = "none";
+        }
+    }
+    function closing() {
+        alert("closing")
+        var myModalUnregistered = document.getElementById('myModalUnregistered');
+        var span = document.getElementsByClassName("close")[0];
+        myModalUnregistered.style.display = "block";
+        span.onclick = function() {
+            alert("óinniskráður")
+           // myModalUnregistered.style.display = "block";
             myModalUnregistered.style.display = "none";
         }
     }

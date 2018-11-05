@@ -65,6 +65,7 @@ public class HomeController {
 			this.userDetails =
 				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			model.addAttribute("userLoggedInn",true);
+			model.addAttribute("loggedInn",true);
 			String role = userService.getUser(userDetails.getUsername()).getRole();
 			//annars er hann þá sjúklingur
 
@@ -120,6 +121,7 @@ public class HomeController {
 			if(role.equals("Læknir")){
 				try{
 					model.addAttribute("doctor", true);
+					model.addAttribute("loggedInn",true);
 					Long doctorId =  userService.getUser(userDetails.getUsername()).getId();
 					List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
 					System.out.println("USerIds : "+userids);
