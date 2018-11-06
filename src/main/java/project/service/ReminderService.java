@@ -5,7 +5,7 @@ import project.persistence.entities.Reminder;
 
 import java.util.List;
 import java.sql.Time;
-public  interface ReminderService {
+public interface ReminderService {
 
 	void save(Reminder reminder);
 
