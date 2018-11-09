@@ -28,8 +28,9 @@ import java.sql.Time;
  * in your project
  */
 @Controller
-public class myAreaController {
-
+public class myAreaController
+{
+	
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -38,30 +39,29 @@ public class myAreaController {
 	private CabinetService cabinetService;
 	@Autowired
 	private ReminderService reminderService;
-
+	@Autowired
+	private DoctorPatientsService doctorPatientsService;
+	
+	
 	private UserDetails userDetails;
 	private Cloudinary cloudinary;
 	private StringManipulationService stringManipulationService;
-
+	
 	private Users myUser;
-
+	
 	@Autowired
-	public myAreaController(UserService userService){
+	public myAreaController(UserService userService)
+	{
 		// connect to cloudinary
-		Map config = ObjectUtils.asMap
-			(
-			"cloud_name", "dfhjyjyg1",
-			"api_key", "262159979451586",
-			"api_secret", "seHjAkN2IxZmE2lisxYoVyiD3vk"
-		);
-
-		this.cloudinary = new Cloudinary(config);
-		this.userService = userService;
-
+		Map config = ObjectUtils.asMap("cloud_name", "dfhjyjyg1", "api_key", "262159979451586", "api_secret", "seHjAkN2IxZmE2lisxYoVyiD3vk");
+		
+		this.cloudinary = new Cloudinary(config); this.userService = userService;
+		
 	}
-
+	
 	@RequestMapping(value = "/myHome", method = RequestMethod.GET)
-	public String myAreas(Model model){
+	public String myAreas(Model model)
+	{
 		// The string "Index" that is returned here is the name of the view
 		// (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
 		// If you change "Index" to something else, be sure you have a .jsp
@@ -71,89 +71,92 @@ public class myAreaController {
 		int delay = 0;   // delay for 5 sec.
 		int interval = 600000;  // iterate every sec.
 		Timer timer = new Timer();
-
+		
 		//    TEST
-		String myDateString1 = "17:29:40";
-		String myDateString2 = "17:29:20";
-		String myDateString3 = "17:29:30";
+		String myDateString1 = "17:29:40"; String myDateString2 = "17:29:20"; String myDateString3 = "17:29:30";
 		String myDateString4 = "17:29:10";
-
-		reminderService.save(new Reminder(1L, 2L,  myDateString1 , myDateString2, myDateString3, myDateString4));
-
-		ZoneId z = ZoneId.of( "Atlantic/Reykjavik" );
-		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.systemDefault());
-
-		timer.scheduleAtFixedRate(new TimerTask() {
-			public void run() {
+		
+		reminderService.save(new Reminder(1L, 2L, myDateString1, myDateString2, myDateString3, myDateString4));
+		
+		ZoneId z = ZoneId.of("Atlantic/Reykjavik"); ZonedDateTime zdt = ZonedDateTime.now(ZoneId.systemDefault());
+		
+		timer.scheduleAtFixedRate(new TimerTask()
+		{
+			public void run()
+			{
 				//Hér þarf að skoða Db inn.
-
-				List <Reminder> amining = reminderService.findAll();
-				for (Reminder item:amining) {
-					LocalTime current_time = zdt.toLocalTime();
-					LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-					LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-					LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-					LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-					System.out.println("Waiting"+localTime1);
-					if( Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10){
-						System.out.println("Senda notification  : " + localTime2) ;
-						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
-					}
-					if( Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10){
-						System.out.println("Senda notification kl : " + localTime2);
-						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
-					}
-					if( Math.abs(localTime3.getMinute() - current_time.getMinute()) < 10){
-						System.out.println("Senda notification : " + localTime3);
-						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
-					}
-					if( Math.abs(localTime4.getMinute() - current_time.getMinute()) < 10){
-						System.out.println("Senda notification : " + localTime4);
-						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
-					}
-				}
+				
+				List<Reminder> amining = reminderService.findAll(); for(Reminder item : amining)
+			{
+				LocalTime current_time = zdt.toLocalTime();
+				LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+				LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+				LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+				LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+				/*
+				System.out.println("Waiting" + localTime1);
+				if(Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10)
+				{
+					System.out.println("Senda notification  : " + localTime2);
+					System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
+				} if(Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10)
+			{
+				System.out.println("Senda notification kl : " + localTime2);
+				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
+			} if(Math.abs(localTime3.getMinute() - current_time.getMinute()) < 10)
+			{
+				System.out.println("Senda notification : " + localTime3);
+				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
+			} if(Math.abs(localTime4.getMinute() - current_time.getMinute()) < 10)
+			{
+				System.out.println("Senda notification : " + localTime4);
+				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
 			}
-
+			*/
+			}
+			
+			}
+			
 		}, delay, interval);
 		// add medicine to my home table
-		if(cabinetService.findAll().size() != 0) {
+		if(cabinetService.findAll().size() != 0)
+		{
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
-			List<Cabinet> cab = cabinetService.getMedsByUser(userId);
-			List<Medicine> medicine = new ArrayList<>();
-			for (int i = 0; i < cab.size(); i++) {
+			List<Cabinet> cab = cabinetService.getMedsByUser(userId); List<Medicine> medicine = new ArrayList<>();
+			for(int i = 0; i < cab.size(); i++)
+			{
 				medicine.add(i, medicineService.findOne(cab.get(i).getMedicineId()));
-			}
-			model.addAttribute("medicine", medicine);
+			} model.addAttribute("medicine", medicine);
 		}
-
-		model.addAttribute("loggedInn",true);
-		model.addAttribute("image",myUser.getImagePublicId());
-
+		
+		model.addAttribute("patients", userService.findAll());
+		model.addAttribute("loggedInn", true);
+		String name = userService.getUsersByUsername(userDetails.getUsername());
+		model.addAttribute("name", name); model.addAttribute("image", myUser.getImagePublicId());
+		
 		return "myArea/myArea";
 	}
+	
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
-	public String myAreasPost(Model model,@RequestParam("pic") MultipartFile file) throws IOException {
-
+	public String myAreasPost(Model model, @RequestParam("pic") MultipartFile file) throws IOException
+	{
+		
 		// load image to cloudinary
-
+		
 		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
-
-		String img = (String)cloudinary.url().imageTag((String)uploadResult.get("public_id"));
-
-		userService.updateImageId(img,userDetails.getUsername());
-
-
-
-		model.addAttribute("image",img);
-		model.addAttribute("loggedInn",true);
-		return "myArea/myArea";
+		
+		String img = (String) cloudinary.url().imageTag((String) uploadResult.get("public_id"));
+		
+		userService.updateImageId(img, userDetails.getUsername());
+		
+		
+		model.addAttribute("image", img); model.addAttribute("loggedInn", true); return "myArea/myArea";
 	}
-
-	public void getUser(){
-
-		this.userDetails =
-			(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println(userDetails.getUsername());
+	
+	public void getUser()
+	{
+		
+		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		this.myUser = userService.getUser(userDetails.getUsername());
 	}
 }

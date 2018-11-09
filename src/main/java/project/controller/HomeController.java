@@ -1,7 +1,6 @@
 package project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -23,9 +22,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import java.net.HttpURLConnection;
+
 @Controller
-public class HomeController {
+public class HomeController
+{
 
 	// Instance
 	@Autowired
@@ -41,14 +41,15 @@ public class HomeController {
 
 	List<Medicine> medicine;
 	// Dependency Injection
-	private static HttpURLConnection con;
+
 	private UserDetails userDetails;
 
-	@Autowired
-	public HomeController(StringManipulationService stringService) {
 
-		this.stringService = stringService;
-		List<Medicine> medicine = new ArrayList<Medicine>();
+	@Autowired
+	public HomeController(StringManipulationService stringService)
+	{
+
+		this.stringService = stringService; List<Medicine> medicine = new ArrayList<Medicine>();
 	}
 
 	// Request mapping is the path that you want to map this method to
@@ -56,24 +57,23 @@ public class HomeController {
 	// is running and you enter "localhost:8080" into a browser, this
 	// method is called
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Model model) {
+	public String home(Model model, Principal principal)
+	{
 
 		// The string "Index" that is returned here is the name of the view
 		// (the Index.jsp file) that is in the path /main/webapp/WEB-INF/jsp/
 		// If you change "Index" to something else, be sure you have a .jsp
 		// file that has the same name
-
-
-		try {
-			this.userDetails =
-				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			model.addAttribute("userLoggedInn", true);
+		try
+		{
+			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			String name = userService.getUsersByUsername(userDetails.getUsername());
+			model.addAttribute("name", name); model.addAttribute("userLoggedInn", true);
 			model.addAttribute("loggedInn", true);
-			String role = userService.getUser(userDetails.getUsername()).getRole();
-			//annars er hann þá sjúklingur
 
-
-		} catch (Exception e) {
+		}
+		catch(Exception e)
+		{
 		}
 
 
@@ -81,90 +81,90 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String homePost(Model model,
-						   Principal principal,
-						   @RequestParam("search") String leita,
-						   @RequestParam("nafn") String nafn,
-						   @RequestParam("styrkur") String styrkur,
-						   @RequestParam("lyfjaform") String lyfjaform,
-						   @RequestParam("utgafudagur") String utgafudagur) {
+	public String homePost(Model model, Principal principal, @RequestParam("search") String leita,
+						   @RequestParam("nafn") String nafn, @RequestParam("styrkur") String styrkur,
+						   @RequestParam("lyfjaform") String lyfjaform, @RequestParam("utgafudagur") String utgafudagur
+	)
+	{
 		// get search results
 		medicine = medicineService.findPlaceContainingKeywordAnywhere(stringService.convertStringToLowerCase(leita));
-		model.addAttribute("leita", leita);
-		model.addAttribute("medicine", medicine);
+		model.addAttribute("leita", leita); model.addAttribute("medicine", medicine);
 
 
-		if (principal != null) {
+		if(principal != null)
+		{
 			// Find patients for Doctor
-			userDetails =
-				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			String name = userService.getUsersByUsername(userDetails.getUsername());
 			// assign medicine to user
 
-			if (nafn.contains(": ")) {
+			if(nafn.contains(": "))
+			{
 				String[] s1, s2, s3, s4;
 				// make substrings
-				s1 = nafn.split(Pattern.quote(": "));
-				s2 = styrkur.split(Pattern.quote(": "));
-				s3 = lyfjaform.split(Pattern.quote(": "));
-				s4 = utgafudagur.split(Pattern.quote(": "));
+				s1 = nafn.split(Pattern.quote(": ")); s2 = styrkur.split(Pattern.quote(": "));
+				s3 = lyfjaform.split(Pattern.quote(": ")); s4 = utgafudagur.split(Pattern.quote(": "));
 
 				Long medicineId = medicineService.getMedId(s1[1], s2[1], s3[1], s4[1]);
 
 				Long userId = userService.getUser(userDetails.getUsername()).getId();
-				Cabinet cabinet = new Cabinet(medicineId, userId);
-				cabinetService.save(cabinet);
+				Cabinet cabinet = new Cabinet(medicineId, userId); cabinetService.save(cabinet);
 			}
 		}
 		// hér þarf að skoða hvort user er loggaður inn því þeira fara á mismunandi pop up glugga
-		try {
-			this.userDetails =
-				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			model.addAttribute("userLoggedInn", true);
-			String role = userService.getUser(userDetails.getUsername()).getRole();
-			System.out.println("rolid er : " + role);
-			if (role.equals("Læknir")) {
-				try {
-					model.addAttribute("doctor", true);
-					model.addAttribute("loggedInn", true);
+		try
+		{
+			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			String name = userService.getUsersByUsername(userDetails.getUsername());
+			model.addAttribute("userLoggedInn", true); model.addAttribute("loggedInn", true);
+			model.addAttribute("name", name); String role = userService.getUser(userDetails.getUsername()).getRole();
+
+			if(role.equals("Læknir"))
+			{
+				try
+				{
+					model.addAttribute("doctor", true); model.addAttribute("loggedInn", true);
 					Long doctorId = userService.getUser(userDetails.getUsername()).getId();
 					List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
-					System.out.println("USerIds : " + userids);
 					List<String> patients = userService.getUsersById(userids);
-					System.out.println("LÆKNIR");
-				} catch (Exception e) {
-					System.out.println(e);
+
+				}
+				catch(Exception e)
+				{
+
 				}
 			}
 			//annars er hann þá sjúklingur
 
 
-		} catch (Exception e) {
-			System.out.println();
 		}
-		return "searchEngine/searchEngine";
+		catch(Exception e)
+		{
+
+		} return "searchEngine/searchEngine";
 	}
 
-	private void sendPost() throws Exception {
-		String url = "https://selfsolve.apple.com/wcResults.do";
-		URL obj = new URL(url);
+	private void sendPost() throws Exception
+	{
+		String url = "https://selfsolve.apple.com/wcResults.do"; URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 	}
 
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
-	public String about(Model model, Principal principal) {
+	public String about(Model model, Principal principal)
+	{
 		// hér þarf að skoða hvort user er loggaður inn því þeira fara á mismunandi pop up glugga
-		try {
-			this.userDetails =
-				(UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			model.addAttribute("loggedInn", true);
-			String user = userService.getUsersByUsername(principal.getName());
-			System.out.println(user + " lína 155");
-		} catch (Exception err) {
-			System.out.println(err);
+		try
+		{
+			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			String name = userService.getUsersByUsername(userDetails.getUsername());
+			model.addAttribute("loggedInn", true); model.addAttribute("name", name);
 		}
-		return "About/about";
-	}
+		catch(Exception err)
+		{
 
+		} return "About/about";
+	}
 	@RequestMapping(value = "/netfangstadfest", method = RequestMethod.GET)
 	public String email(HttpServletRequest request) throws IOException {
 		// Hér næ ég í ID

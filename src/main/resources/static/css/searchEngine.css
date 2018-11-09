@@ -46,7 +46,7 @@
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
-modalUnregistered {
+.modalUnregistered {
     display: none; /* Hidden by default */
     position: fixed;
     z-index: 1;
@@ -101,7 +101,9 @@ modalUnregistered {
     margin-right: 20%;
     border-style: none;
     width: 97%;
+    color:red;
 }
+
 .popUpSubmit{
     border-radius: 5px;
     background-color: green;

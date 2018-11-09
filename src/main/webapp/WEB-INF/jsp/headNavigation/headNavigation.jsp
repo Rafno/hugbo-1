@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="itemNavigation" id="logout"><a class="active" href="/logout" >útskráning</a></li>
-            <li class="itemNavigation"><a class="active">Helgi Grétar Gunnarsson</a></li>
+            <li class="itemNavigation"><a class="active">${name}</a></li>
 
         </ul>
     </header>

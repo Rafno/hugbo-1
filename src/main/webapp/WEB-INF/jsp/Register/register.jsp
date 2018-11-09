@@ -39,8 +39,8 @@
             <div class="row">
             <h4 class="title">Hlutverk</h4>
             <select class="optionPannelDoctorPatient" onChange="myFunction(this.options[this.selectedIndex].value)" name = "role">
-                <option value="Sjúklingur">    Sjúklingur  </option>
-                <option value="Læknir">        Læknir          </option>
+                <option value="USER">    Sjúklingur  </option>
+                <option value="DOCTOR">        Læknir          </option>
             </select>
             </div>
             <br />

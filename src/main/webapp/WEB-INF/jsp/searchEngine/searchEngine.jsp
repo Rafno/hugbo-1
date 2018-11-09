@@ -84,7 +84,7 @@
                 <input class="popUpTexti"type="text" name="styrkur" id="styrkur" readonly/>
                 <input class="popUpTexti"type="text" name="lyfjaform" id="lyfjaform" readonly/>
                 <input class="popUpTexti"type="text" name="utgafudagur" id="utgafudagur" readonly/>
-                <a href="${medicine.pdfLink}" class="popUpTexti" id="pdfLink"/>Sérlyfjaskrá</a>
+                <a class="popUpTexti" id="pdfLink" name="pdfLink"></a>
             </div>
             <button class="popUpSubmit" type="submit" name="search">Staðfesta</button>
         </Form>
@@ -98,7 +98,7 @@
                 <div class="close" id="doctorClose">&times;</div>
             </div>
             <div class="doctorePopUpContainer">
-                <div class="popUpTextContainer">
+                <div class="popUpTextContainer" id="container">
                     <input class="popUpTexti" type="text" name="nafn" id="Doctornafn" value = "nafn" readonly/>
                     <input class="popUpTexti"type="text" name="styrkur" id="Doctorstyrkur" readonly/>
                     <input class="popUpTexti"type="text" name="lyfjaform" id="Doctorlyfjaform" readonly/>
@@ -130,14 +130,16 @@
 <script>
     function openPopUpPatient(nafn,styrkur,lyfjaform,utgafudagur,pdfLink){
         console.log(pdfLink);
-        // nær í módelið
         var modal = document.getElementById('myModal');
         var b = document.getElementById('nafn').value = "Nafn Lyfsins: "+nafn;
         var c = document.getElementById('styrkur').value = "styrkur: "+styrkur;
         var d = document.getElementById('lyfjaform').value = "lyfjaform: "+lyfjaform;
         var e = document.getElementById('utgafudagur').value = "útgáfudagur: "+utgafudagur;
-        var f = document.getElementById('pdfLink').value = "Sérlyfjaskrá" + pdfLink;
-
+        if(pdfLink){
+            document.getElementById('pdfLink').text = "Sérlyfjaskrá";
+            document.getElementById('pdfLink').href = pdfLink;
+        }
+        // nær í módelið
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";
 
