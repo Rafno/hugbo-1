@@ -73,10 +73,12 @@ public class myAreaController
 		Timer timer = new Timer();
 		
 		//    TEST
-		String myDateString1 = "17:29:40"; String myDateString2 = "17:29:20"; String myDateString3 = "17:29:30";
-		String myDateString4 = "17:29:10";
+		String myDateString1 = "22:53:10";
+		String myDateString2 = "22:53:30";
+		String myDateString3 = "22:53:47";
+		String myDateString4 = "22:53:43";
 		
-		reminderService.save(new Reminder(1L, 2L, myDateString1, myDateString2, myDateString3, myDateString4));
+		reminderService.save(new Reminder(1L, 87L, myDateString1, myDateString2, myDateString3, myDateString4));
 		
 		ZoneId z = ZoneId.of("Atlantic/Reykjavik"); ZonedDateTime zdt = ZonedDateTime.now(ZoneId.systemDefault());
 		
@@ -93,26 +95,36 @@ public class myAreaController
 				LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
 				LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
 				LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-				/*
+				String ids = item.getUsersId().toString();
+				String testing = "87";
 				System.out.println("Waiting" + localTime1);
+
 				if(Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10)
 				{
 					System.out.println("Senda notification  : " + localTime2);
-					System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
+
+					System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.getUsersByUsername(userService.findOne(item.getUsersId()).getName()));
+					UserController a = new UserController(userService);
+					try {
+						a.sendHttp("helgigretargunnars.96@gmail.com", userService.getUsersByUsername(userService.findOne(item.getUsersId()).getName()),false);
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+
 				} if(Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10)
 			{
 				System.out.println("Senda notification kl : " + localTime2);
-				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
+				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.getUsersByUsername(userService.findOne(item.getUsersId()).getName()));
 			} if(Math.abs(localTime3.getMinute() - current_time.getMinute()) < 10)
 			{
 				System.out.println("Senda notification : " + localTime3);
-				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
+				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.getUsersByUsername(userService.findOne(item.getUsersId()).getName()));
 			} if(Math.abs(localTime4.getMinute() - current_time.getMinute()) < 10)
 			{
 				System.out.println("Senda notification : " + localTime4);
-				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
+				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.getUsersByUsername(userService.findOne(item.getUsersId()).getName()));
 			}
-			*/
+
 			}
 			
 			}
@@ -159,4 +171,5 @@ public class myAreaController
 		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		this.myUser = userService.getUser(userDetails.getUsername());
 	}
+
 }
