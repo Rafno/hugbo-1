@@ -55,7 +55,8 @@ public class myAreaController
 		// connect to cloudinary
 		Map config = ObjectUtils.asMap("cloud_name", "dfhjyjyg1", "api_key", "262159979451586", "api_secret", "seHjAkN2IxZmE2lisxYoVyiD3vk");
 		
-		this.cloudinary = new Cloudinary(config); this.userService = userService;
+		this.cloudinary = new Cloudinary(config);
+		this.userService = userService;
 		
 	}
 	
@@ -134,19 +135,53 @@ public class myAreaController
 		if(cabinetService.findAll().size() != 0)
 		{
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
-			List<Cabinet> cab = cabinetService.getMedsByUser(userId); List<Medicine> medicine = new ArrayList<>();
+			List<Cabinet> cab = cabinetService.getMedsByUser(userId);
+			List<Medicine> medicine = new ArrayList<>();
 			for(int i = 0; i < cab.size(); i++)
 			{
 				medicine.add(i, medicineService.findOne(cab.get(i).getMedicineId()));
 			} model.addAttribute("medicine", medicine);
 		}
-		
-		model.addAttribute("patients", userService.findAll());
+		// Find role returns the appropriate column name, patients for doctors, doctors for patients.
+		// If this user is a doctor, show all of their patients.
+		model.addAttribute("role",findRole(this.myUser.getRole()));
+		model.addAttribute("image", myUser.getImagePublicId());
+		Long id = this.myUser.getId();
 		model.addAttribute("loggedInn", true);
-		String name = userService.getUsersByUsername(userDetails.getUsername());
-		model.addAttribute("name", name); model.addAttribute("image", myUser.getImagePublicId());
+		String name = findName(userDetails);
 		
+		model.addAttribute("name", name);
+		addPatientsOrDoctorsById(id, this.myUser.getRole(), model);
 		return "myArea/myArea";
+	}
+	
+	private String findName(UserDetails userDetails)
+	{
+		return userService.getUsersByUsername(userDetails.getUsername());
+	}
+	
+	private void addPatientsOrDoctorsById(Long id, String role, Model model)
+	{
+		if(role.matches("DOCTOR"))
+		{
+			model.addAttribute("patients", userService.findAllPatients(id));
+		}
+		else if(role.matches("USER"))
+		{
+			model.addAttribute("patients", userService.findDoctor(id));
+		}
+	}
+	
+	private String findRole(String role)
+	{
+		if(role.matches("DOCTOR")){
+			role = "Sjúklingar";
+		}
+		else {
+			role = "Læknir";
+		}
+		
+		return role;
 	}
 	
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
@@ -162,7 +197,8 @@ public class myAreaController
 		userService.updateImageId(img, userDetails.getUsername());
 		
 		
-		model.addAttribute("image", img); model.addAttribute("loggedInn", true); return "myArea/myArea";
+		model.addAttribute("image", img); model.addAttribute("loggedInn", true);
+		return "myArea/myArea";
 	}
 	
 	public void getUser()

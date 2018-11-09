@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Cabinet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", unique = true)
+	@Column(name = "id", unique = true, columnDefinition = "serial")
 	private Long id;
 	private Long medicineId;
 	private Long usersId;

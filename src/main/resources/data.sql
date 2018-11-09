@@ -13564,3 +13564,7 @@ INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, s
 INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, strength, atc_code, legal_status, mah, other_info, marketed, ma_issued) VALUES (5721, 'Zyvoxid', 'Linezolidum INN', 'Mixtúrukyrni. dreifa', '20 mg/ml', 'J01XX08', '(R Z) Sérfræðingsmerkt (og lyfseðilsskylt)
 (S) Sjúkrahúsmerkt', 'Pfizer ApS', 'Ávísun lyfsins er bundin við sérfræðinga í smitsjúkdómum.
 ', 'Nei', '28.9.2001');
+
+UPDATE medicine
+    SET pdf_link = 'https://www.serlyfjaskra.is/FileRepos/5045a32c-6aa4-e711-80d7-ce1550b700f3/Sobril_fylgisedill.pdf'
+WHERE name = 'Sobril';

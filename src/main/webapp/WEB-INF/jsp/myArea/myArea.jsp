@@ -26,7 +26,7 @@
             <c:if test="${not empty patients}">
                 <table id="lyf" border="1">
                     <tr>
-                    <th>Sjúklingar</th>
+                        <th>${role}</th>
                     </tr>
                     <tr>
                     <c:forEach var="pat" items="${patients}">
@@ -40,7 +40,7 @@
                     <th>Heiti lyfs</th>
                     <th>Lyfjaform</th>
                     <th>Styrkleiki</th>
-                    <th>Áminingakerfi</th>
+                    <th>Sendu mér áminningu</th>
                 </tr>
                 <tr>
 
@@ -62,14 +62,15 @@
 </body>
 <script>
     function togglerer(){
-        alert("hel")
+
+        
         var a = document.getElementById("toggler").value;
         if(a == 'on'){
-            alert("í gangir")
+
         }else{
-            alert('ekki í gangi');
+
         }
-        
+
 
     }
 </script>
