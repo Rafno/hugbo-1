@@ -21,16 +21,18 @@ public interface UserService
 
 	List<Users> findAllPatients(Long id);
 	
+	List<Users> findDoctor(Long id);
+	
 	String addPatient(Users user);
 	
 	String editPatient(Users user);
 	
 	String findByUsername(String username);
-
+	
 	List<String> getUsersById(List<Long> userids);
-
+	
 	String getUsersByUsername(String username);
-
+	
 	Boolean [] userNameExists(String username);
 	
 	List<Users>findAll();

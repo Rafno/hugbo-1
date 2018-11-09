@@ -29,6 +29,9 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	@Query(value="SELECT p FROM Users p INNER JOIN DoctorPatients dp ON p.id = dp.patientId WHERE dp.doctorId = ?1")
 	List<Users> findAllPatients(Long id);
 	
+	@Query(value="SELECT p FROM Users p INNER JOIN DoctorPatients dp ON p.id = dp.doctorId WHERE dp.patientId = ?1")
+	List<Users> findDoctor(Long id);
+	
 	List<Users>findAll();
 	
 	@Query(value = "SELECT p.name FROM Users p")

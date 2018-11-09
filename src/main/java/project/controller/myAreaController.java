@@ -136,6 +136,11 @@ public class myAreaController
 			Long id = this.myUser.getId();
 			model.addAttribute("patients", userService.findAllPatients(id));
 		}
+		if(this.myUser.getRole().matches("USER"))
+		{
+			Long id = this.myUser.getId();
+			model.addAttribute("patients", userService.findDoctor(id));
+		}
 		model.addAttribute("loggedInn", true);
 		String name = userService.getUsersByUsername(userDetails.getUsername());
 		model.addAttribute("name", name);
