@@ -34,7 +34,7 @@ public class UserServiceImplementation implements UserService{
 	
 	@Override
 	public void save(Users user) {
-		// TODO, senda tilbaka villuskilaboð
+		
 		String username = repository.findByUsername(user.getUsername());
 
 		if(username == null)

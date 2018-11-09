@@ -27,7 +27,7 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	@Query(value = "SELECT p.name, p.username FROM Users p")
 	List<Users> getAllPatients(Users user);
 	
-	// TODO Bæta við virkni til að bæta við notanda
+	
 	@Query(value = "SELECT p.name FROM Users p")
 	String addPatient(Users user);
 	@Query(value = "SELECT p.name FROM Users p")

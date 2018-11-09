@@ -37,7 +37,7 @@ public class Medicine {
 	private String marketed;
 	@Column(length = 5000)
 	private String ma_issued;
-
+	private String pdfLink;
     // Notice the empty constructor, because we need to be able to create an empty PostitNote to add
     // to our model so we can use it with our form
     public Medicine() {
@@ -58,6 +58,7 @@ public class Medicine {
 		this.marketed = marketed;
 		this.ma_issued = ma_issued;
 	}
+
 	public String getName() {
 		return name;
 	}
@@ -171,5 +172,15 @@ public class Medicine {
 	public String toString()
 	{
 		return String.format("Medicine Note[name=%s, id=%s]", name, id);
+	}
+	
+	public String getPdfLink()
+	{
+		return pdfLink;
+	}
+	
+	public void setPdfLink(String pdfLink)
+	{
+		this.pdfLink = pdfLink;
 	}
 }
