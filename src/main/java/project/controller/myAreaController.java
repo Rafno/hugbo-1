@@ -73,10 +73,10 @@ public class myAreaController {
 		Timer timer = new Timer();
 
 		//    TEST
-		String myDateString1 = "22:35:40";
-		String myDateString2 = "22:40:40";
-		String myDateString3 = "22:45:40";
-		String myDateString4 = "23:00:40";
+		String myDateString1 = "17:29:40";
+		String myDateString2 = "17:29:20";
+		String myDateString3 = "17:29:30";
+		String myDateString4 = "17:29:10";
 
 		reminderService.save(new Reminder(1L, 2L,  myDateString1 , myDateString2, myDateString3, myDateString4));
 
@@ -94,7 +94,7 @@ public class myAreaController {
 					LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
 					LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
 					LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-
+					System.out.println("Waiting"+localTime1);
 					if( Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10){
 						System.out.println("Senda notification  : " + localTime2) ;
 						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
