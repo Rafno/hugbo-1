@@ -39,6 +39,9 @@ public class myAreaController
 	private CabinetService cabinetService;
 	@Autowired
 	private ReminderService reminderService;
+	@Autowired
+	private DoctorPatientsService doctorPatientsService;
+	
 	
 	private UserDetails userDetails;
 	private Cloudinary cloudinary;
@@ -90,6 +93,7 @@ public class myAreaController
 				LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
 				LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
 				LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+				/*
 				System.out.println("Waiting" + localTime1);
 				if(Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10)
 				{
@@ -108,7 +112,9 @@ public class myAreaController
 				System.out.println("Senda notification : " + localTime4);
 				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()));
 			}
+			*/
 			}
+			
 			}
 			
 		}, delay, interval);
@@ -123,7 +129,9 @@ public class myAreaController
 			} model.addAttribute("medicine", medicine);
 		}
 		
-		model.addAttribute("loggedInn", true); String name = userService.getUsersByUsername(userDetails.getUsername());
+		model.addAttribute("patients", userService.findAll());
+		model.addAttribute("loggedInn", true);
+		String name = userService.getUsersByUsername(userDetails.getUsername());
 		model.addAttribute("name", name); model.addAttribute("image", myUser.getImagePublicId());
 		
 		return "myArea/myArea";
@@ -149,6 +157,6 @@ public class myAreaController
 	{
 		
 		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println(userDetails.getUsername()); this.myUser = userService.getUser(userDetails.getUsername());
+		this.myUser = userService.getUser(userDetails.getUsername());
 	}
 }
