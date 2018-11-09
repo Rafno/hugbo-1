@@ -53,7 +53,7 @@
         <div class="registeringHomeAdress">
             <div class="row">
                 <h4 class="title">Netfang</h4>
-                <input type="text" name="emailAddress"  class="registerText" id = inputTex8 />
+                <input type="text" name="emailAddress"  class="registerText" id = inputTex8 required/>
                 <param name="emailAddress" value="">
             </div>
             <div class="row">
