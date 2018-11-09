@@ -23,15 +23,22 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 
 	@Query(value = "SELECT p FROM Users p WHERE p.username = ?1")
 	Users getUser(String username);
+	//VERY IMPORTANT!
+	// While the entity is created via camelCase, Spring will CHANGE camelCase into snake_case
+	//All queries must be used with the entity names.
+	@Query(value="SELECT p FROM Users p INNER JOIN DoctorPatients dp ON p.id = dp.patientId WHERE dp.doctorId = ?1")
+	List<Users> findAllPatients(Long id);
 	
-	List<Users> findAll();
-	
+	List<Users>findAll();
 	
 	@Query(value = "SELECT p.name FROM Users p")
 	String addPatient(Users user);
+	
 	@Query(value = "SELECT p.name FROM Users p")
 	String editPatient(Users user);
+	
 	String findByUsername(String username);
+	
 	@Query(value = "select (CASE WHEN userName = ?1 THEN True ELSE False END) from Users p" )
 	Boolean [] userNameExists(String username);
 

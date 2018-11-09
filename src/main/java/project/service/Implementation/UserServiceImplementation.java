@@ -80,9 +80,13 @@ public class UserServiceImplementation implements UserService{
 	}
 
 	@Override
-	public List<Users> findAll() {
-		return repository.findAll();
+	public List<Users> findAllPatients(Long id) {
+		
+		return repository.findAllPatients(id);
 	}
+	
+	@Override
+	public List<Users>findAll(){return repository.findAll();}
 	
 	@Override
 	public String addPatient(Users user) {

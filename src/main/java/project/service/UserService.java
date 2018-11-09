@@ -19,7 +19,7 @@ public interface UserService
 
 	Users findOne(Long id);
 
-	List<Users> findAll();
+	List<Users> findAllPatients(Long id);
 	
 	String addPatient(Users user);
 	
@@ -32,4 +32,6 @@ public interface UserService
 	String getUsersByUsername(String username);
 
 	Boolean [] userNameExists(String username);
+	
+	List<Users>findAll();
 }

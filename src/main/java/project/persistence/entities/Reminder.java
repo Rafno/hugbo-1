@@ -6,7 +6,6 @@ import javax.persistence.*;
 public class Reminder {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", unique = true)
 	private Long id;
 	private Long medicineId;
 	private Long usersId;

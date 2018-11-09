@@ -55,7 +55,8 @@ public class myAreaController
 		// connect to cloudinary
 		Map config = ObjectUtils.asMap("cloud_name", "dfhjyjyg1", "api_key", "262159979451586", "api_secret", "seHjAkN2IxZmE2lisxYoVyiD3vk");
 		
-		this.cloudinary = new Cloudinary(config); this.userService = userService;
+		this.cloudinary = new Cloudinary(config);
+		this.userService = userService;
 		
 	}
 	
@@ -122,17 +123,23 @@ public class myAreaController
 		if(cabinetService.findAll().size() != 0)
 		{
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
-			List<Cabinet> cab = cabinetService.getMedsByUser(userId); List<Medicine> medicine = new ArrayList<>();
+			List<Cabinet> cab = cabinetService.getMedsByUser(userId);
+			List<Medicine> medicine = new ArrayList<>();
 			for(int i = 0; i < cab.size(); i++)
 			{
 				medicine.add(i, medicineService.findOne(cab.get(i).getMedicineId()));
 			} model.addAttribute("medicine", medicine);
 		}
-		
-		model.addAttribute("patients", userService.findAll());
+		// If this user is a doctor, show all of their patients.
+		if(this.myUser.getRole().matches("DOCTOR"))
+		{
+			Long id = this.myUser.getId();
+			model.addAttribute("patients", userService.findAllPatients(id));
+		}
 		model.addAttribute("loggedInn", true);
 		String name = userService.getUsersByUsername(userDetails.getUsername());
-		model.addAttribute("name", name); model.addAttribute("image", myUser.getImagePublicId());
+		model.addAttribute("name", name);
+		model.addAttribute("image", myUser.getImagePublicId());
 		
 		return "myArea/myArea";
 	}
@@ -150,7 +157,8 @@ public class myAreaController
 		userService.updateImageId(img, userDetails.getUsername());
 		
 		
-		model.addAttribute("image", img); model.addAttribute("loggedInn", true); return "myArea/myArea";
+		model.addAttribute("image", img); model.addAttribute("loggedInn", true);
+		return "myArea/myArea";
 	}
 	
 	public void getUser()
