@@ -121,7 +121,7 @@
             </div>
             <div class="popUpTextContainer">
                 <div> Þú ert ekki innskráður notandi</div>
-                <div> Það er frítt að skrá sig inn og þú geriri það <a href="register">hérna</a></div>
+                <div> Það er frítt að skrá sig inn og þú gerir það með að smella <a href="register">hér</a></div>
             </div>
         </div>
     </div>
@@ -174,7 +174,6 @@
 
         var span = document.getElementById("unregisterdClosing");
         span.onclick = function() {
-            alert("óinnskra´ður")
             myModalUnregistered.style.display = "none";
         }
     }
