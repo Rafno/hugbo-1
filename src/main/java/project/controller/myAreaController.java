@@ -130,23 +130,46 @@ public class myAreaController
 				medicine.add(i, medicineService.findOne(cab.get(i).getMedicineId()));
 			} model.addAttribute("medicine", medicine);
 		}
+		// Find role returns the appropriate column name, patients for doctors, doctors for patients.
 		// If this user is a doctor, show all of their patients.
-		if(this.myUser.getRole().matches("DOCTOR"))
+		model.addAttribute("role",findRole(this.myUser.getRole()));
+		model.addAttribute("image", myUser.getImagePublicId());
+		Long id = this.myUser.getId();
+		model.addAttribute("loggedInn", true);
+		String name = findName(userDetails);
+		
+		model.addAttribute("name", name);
+		addPatientsOrDoctorsById(id, this.myUser.getRole(), model);
+		return "myArea/myArea";
+	}
+	
+	private String findName(UserDetails userDetails)
+	{
+		return userService.getUsersByUsername(userDetails.getUsername());
+	}
+	
+	private void addPatientsOrDoctorsById(Long id, String role, Model model)
+	{
+		if(role.matches("DOCTOR"))
 		{
-			Long id = this.myUser.getId();
 			model.addAttribute("patients", userService.findAllPatients(id));
 		}
-		if(this.myUser.getRole().matches("USER"))
+		else if(role.matches("USER"))
 		{
-			Long id = this.myUser.getId();
 			model.addAttribute("patients", userService.findDoctor(id));
 		}
-		model.addAttribute("loggedInn", true);
-		String name = userService.getUsersByUsername(userDetails.getUsername());
-		model.addAttribute("name", name);
-		model.addAttribute("image", myUser.getImagePublicId());
+	}
+	
+	private String findRole(String role)
+	{
+		if(role.matches("DOCTOR")){
+			role = "Sjúklingar";
+		}
+		else {
+			role = "Læknir";
+		}
 		
-		return "myArea/myArea";
+		return role;
 	}
 	
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)

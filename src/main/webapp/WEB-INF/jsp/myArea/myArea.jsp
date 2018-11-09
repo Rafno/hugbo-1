@@ -26,12 +26,7 @@
             <c:if test="${not empty patients}">
                 <table id="lyf" border="1">
                     <tr>
-                        <c:when test="${patients.role == 'DOCTOR'}">
-                            <th>Læknir</th>
-                        </c:when>
-                        <c:otherwise>
-                        <th>Sjúklingar</th>
-                    </c:otherwise>
+                        <th>${role}</th>
                     </tr>
                     <tr>
                     <c:forEach var="pat" items="${patients}">
