@@ -34,14 +34,14 @@ public class UserServiceImplementation implements UserService{
 	
 	@Override
 	public void save(Users user) {
-		
+		//Skoða ef læknir
+		//if(user.getRole().matches("Læknir"))
 		String username = repository.findByUsername(user.getUsername());
-
 		if(username == null)
 		{
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			repository.save(user);
-			User_roles auth = new User_roles(user.getUsername(), "USER");
+			User_roles auth = new User_roles(user.getUsername(), user.getRole());
 			userRolesRepository.save(auth);
 		}
 	}
@@ -80,8 +80,8 @@ public class UserServiceImplementation implements UserService{
 	}
 
 	@Override
-	public List<Users> getAllPatients(Users user) {
-		return repository.getAllPatients(user);
+	public List<Users> findAll() {
+		return repository.findAll();
 	}
 	
 	@Override

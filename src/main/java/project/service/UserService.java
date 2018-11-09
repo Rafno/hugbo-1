@@ -19,7 +19,7 @@ public interface UserService
 
 	Users findOne(Long id);
 
-	List<Users> getAllPatients(Users user);
+	List<Users> findAll();
 	
 	String addPatient(Users user);
 	

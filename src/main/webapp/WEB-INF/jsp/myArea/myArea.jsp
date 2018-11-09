@@ -23,6 +23,18 @@
             </form>
         </div>
         <div class = "myAreaTable">
+            <c:if test="${not empty patients}">
+                <table id="lyf" border="1">
+                    <tr>
+                    <th>Sjúklingar</th>
+                    </tr>
+                    <tr>
+                    <c:forEach var="pat" items="${patients}">
+                        <td><c:out value="${pat.name}"/></td>
+                    </tr>
+                </c:forEach>
+                </table>
+            </c:if>
             <table id="lyf" border="1">
                 <tr>
                     <th>Heiti lyfs</th>
@@ -31,7 +43,8 @@
                     <th>Áminingakerfi</th>
                 </tr>
                 <tr>
-                    <c:forEach items="${medicine}" var="obj">
+
+                <c:forEach items="${medicine}" var="obj">
                     <td><c:out value="${obj.name}"/></td>
                     <td><c:out value="${obj.pharmaceutical_form}"/></td>
                     <td><c:out value="${obj.strength}"/></td>
@@ -43,7 +56,6 @@
                 </tr>
                 </c:forEach>
 
-                </tr>
             </table>
         </div>
     </div>

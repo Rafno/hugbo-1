@@ -2,6 +2,7 @@ package project.service.Implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import project.persistence.entities.Users;
 import project.persistence.repositories.DoctorPatientsRepository;
 
 import project.persistence.entities.DoctorPatients;
@@ -40,4 +41,9 @@ public class DoctorPatientsServiceImplementation implements DoctorPatientsServic
 	public List<Long> getPatientIdByDoctorId(Long doctorId){
 		return repository.getPatientIdByDoctorId(doctorId);
 	}
+	
+	
+	//TODO klára return
+	@Override
+	public List<Users> findAllPatients(Long id){return null;}
 }
