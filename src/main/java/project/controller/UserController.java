@@ -133,7 +133,7 @@ public class UserController {
 			// Senda Confrimation email
 
 			System.out.println(emailAddress);
-			sendHttp(emailAddress);
+			//sendHttp(emailAddress);
 
 			model.addAttribute("succesfull","Til hamingju "+ name+ ". Aðgangurinn þinn hefur verið búinn til");
 
