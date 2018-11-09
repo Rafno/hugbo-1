@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="lowerBanner_container">
-        <p class="headerTxt">  Lyfjaskápurinn heima hjá Mömmu þinni</p>
+        <p class="headerTxt">  Lyfjaskápurinn heima hjá þér</p>
         <div class = "lowerBanner">
             <Form method="post">
                 <label>
@@ -75,7 +75,7 @@
     </div>
     <!-- Modal fyrir innskráð Sjúklinga-->
     <div id="myModal" class="modal">
-        <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
+        <!-- Þetta er glugginn sem kemur ofan á gráa gluggan-->
         <Form class="modal-content" method="post">
             <div class="popUpHead">
                 <h2 class="popUpHeadTitle">Bæta lyf í lyfjaskáp</h2>
