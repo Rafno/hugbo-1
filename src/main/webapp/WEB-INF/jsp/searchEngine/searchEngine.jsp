@@ -105,7 +105,12 @@
                     <input class="popUpTexti"type="text" name="utgafudagur" id="Doctorutgafudagur" readonly/>
                 </div>
                 <div class="DoctorSelectOptionsContainer">
-                    <p>hehe</p>
+                    <c:forEach items="${patients}" var="obj">
+                        <h2>leita</h2>
+                        <option value="${obj}">
+                                ${obj}
+                        </option>
+                    </c:forEach>
                 </div>
             </div>
             <button class="popUpSubmit" type="submit" name="search">Staðfesta</button>

@@ -112,6 +112,8 @@ public class HomeController
 			}
 		}
 		// hér þarf að skoða hvort user er loggaður inn því þeira fara á mismunandi pop up glugga
+		//doctorPatientsService.save(new DoctorPatients(91L, 87L));
+		//doctorPatientsService.save(new DoctorPatients(91L, 89L));
 		try
 		{
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -119,14 +121,17 @@ public class HomeController
 			model.addAttribute("userLoggedInn", true); model.addAttribute("loggedInn", true);
 			model.addAttribute("name", name); String role = userService.getUser(userDetails.getUsername()).getRole();
 
-			if(role.equals("Læknir"))
+			if(role.equals("DOCTOR"))
 			{
 				try
 				{
-					model.addAttribute("doctor", true); model.addAttribute("loggedInn", true);
+					System.out.println("leita");
+					model.addAttribute("doctor", true);
+					//model.addAttribute("loggedInn", true);
 					Long doctorId = userService.getUser(userDetails.getUsername()).getId();
 					List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
 					List<String> patients = userService.getUsersById(userids);
+					model.addAttribute("patiens", patients );
 
 				}
 				catch(Exception e)
