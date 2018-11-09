@@ -84,7 +84,7 @@
                 <input class="popUpTexti"type="text" name="styrkur" id="styrkur" readonly/>
                 <input class="popUpTexti"type="text" name="lyfjaform" id="lyfjaform" readonly/>
                 <input class="popUpTexti"type="text" name="utgafudagur" id="utgafudagur" readonly/>
-                <input class="popUpTexti"type="text" name="pdfLink" id="pdfLink" readonly/>
+                <a href="${medicine.pdfLink}" class="popUpTexti" id="pdfLink"/>Sérlyfjaskrá</a>
             </div>
             <button class="popUpSubmit" type="submit" name="search">Staðfesta</button>
         </Form>
