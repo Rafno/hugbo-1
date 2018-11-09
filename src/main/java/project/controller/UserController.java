@@ -1,7 +1,18 @@
 package project.controller;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpHeaders;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -13,8 +24,23 @@ import project.persistence.entities.Users;
 
 import project.service.UserService;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.BasicResponseHandler;
+
+import javax.net.ssl.HttpsURLConnection;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 /**
@@ -23,7 +49,7 @@ import java.util.List;
  */
 @Controller
 public class UserController {
-	
+
 	private UserService userService;
 	private static List<String> notendaVillur = new ArrayList<String>();
 	private static List<String> lykilordVillur = new ArrayList<String>();
@@ -92,8 +118,9 @@ public class UserController {
 						   				@RequestParam("name") String name,
 							   			@RequestParam("role") String role,
 							   			@RequestParam("homeAddress") String homeAddress,
+							   			@RequestParam("emailAddress") String emailAddress,
 							   			@RequestParam("homeTown") String homeTown,
-							   			@RequestParam("zipCode") String zipCode){
+							   			@RequestParam("zipCode") String zipCode) throws IOException {
 		
 		model.addAttribute("nafn",name);
 		// hreinsum arrayListana
@@ -103,6 +130,11 @@ public class UserController {
 		allGood = true;
 		getErrors(username,password,passwordRepeat);
 		if(allGood){
+			// Senda Confrimation email
+
+			System.out.println(emailAddress);
+			sendHttp(emailAddress);
+
 			model.addAttribute("succesfull","Til hamingju "+ name+ ". Aðgangurinn þinn hefur verið búinn til");
 
 			//Cloudinary link
@@ -115,6 +147,8 @@ public class UserController {
 		model.addAttribute("lykilordVillur",lykilordVillur);
 		return "/Register/register";
 	}
+
+
 	public void getErrors(String notendanafn, String lykilord, String lykilordRepeat){
 		if(!lykilord.equals(lykilordRepeat))
 		{
@@ -157,5 +191,42 @@ public class UserController {
 			}
 		}
 	}
-	
+	public void sendHttp(String emailAddress) throws IOException {
+
+		String url = "https://hugbo1.herokuapp.com/confirm";
+		URL obj = new URL(url);
+		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+
+		//add reuqest header
+		con.setRequestMethod("POST");
+		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+
+		String urlParameters = "to="+emailAddress;
+
+		// Send post request
+		con.setDoOutput(true);
+		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+		wr.writeBytes(urlParameters);
+		wr.flush();
+		wr.close();
+
+		int responseCode = con.getResponseCode();
+		System.out.println("\nSending 'POST' request to URL : " + url);
+		System.out.println("Post parameters : " + urlParameters);
+		System.out.println("Response Code : " + responseCode);
+
+		BufferedReader in = new BufferedReader(
+			new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+
+		//print result
+		System.out.println(response.toString());
+
+	}
 }

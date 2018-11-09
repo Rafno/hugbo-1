@@ -52,6 +52,11 @@
         </div>
         <div class="registeringHomeAdress">
             <div class="row">
+                <h4 class="title">Netfang</h4>
+                <input type="text" name="emailAddress"  class="registerText" id = inputTex8 />
+                <param name="emailAddress" value="">
+            </div>
+            <div class="row">
                 <h4 class="title">Heimilisfang</h4>
                 <input type="text" name="homeAddress"  class="registerText" id = inputText5 />
                 <param name="homeAddress" value="">

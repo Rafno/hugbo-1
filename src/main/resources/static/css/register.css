@@ -137,4 +137,10 @@ select#division {
     height: 20px;
     font-size: 15px;
 }
+#inputTex8 {
+    flex: 0 1 50%;
+    width: 20%;
+    height: 20px;
+    font-size: 15px;
+}
 
