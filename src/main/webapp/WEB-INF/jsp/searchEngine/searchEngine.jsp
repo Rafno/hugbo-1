@@ -47,15 +47,13 @@
                 <th>Markaðsett</th>
                 <th>ýmsar upplýsingar</th>
             </tr>
-                <p>${userLoggedInn} Notandi</p>
-                <p>${doctor} Læknir</p>
                 <c:forEach items="${medicine}" var="obj">
                     <c:if test="${not empty userLoggedInn}">
                         <c:if test="${not empty doctor}">
-                            <tr onclick="openPopUpDoctor('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
+                            <tr onclick="openPopUpDoctor('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}','${obj.pdfLink}')">
                         </c:if>
                         <c:if test="${empty doctor}">
-                            <tr onclick="openPopUpPatient('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}')">
+                            <tr onclick="openPopUpPatient('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}','${obj.pdfLink}')">
                         </c:if>
                     </c:if >
                     <c:if test="${empty userLoggedInn}">
@@ -86,6 +84,7 @@
                 <input class="popUpTexti"type="text" name="styrkur" id="styrkur" readonly/>
                 <input class="popUpTexti"type="text" name="lyfjaform" id="lyfjaform" readonly/>
                 <input class="popUpTexti"type="text" name="utgafudagur" id="utgafudagur" readonly/>
+                <input class="popUpTexti"type="text" name="pdfLink" id="pdfLink" readonly/>
             </div>
             <button class="popUpSubmit" type="submit" name="search">Staðfesta</button>
         </Form>
@@ -129,13 +128,15 @@
 
 
 <script>
-    function openPopUpPatient(nafn,styrkur,lyfjaform,utgafudagur){
+    function openPopUpPatient(nafn,styrkur,lyfjaform,utgafudagur,pdfLink){
+        console.log(pdfLink);
         // nær í módelið
         var modal = document.getElementById('myModal');
         var b = document.getElementById('nafn').value = "Nafn Lyfsins: "+nafn;
         var c = document.getElementById('styrkur').value = "styrkur: "+styrkur;
         var d = document.getElementById('lyfjaform').value = "lyfjaform: "+lyfjaform;
         var e = document.getElementById('utgafudagur').value = "útgáfudagur: "+utgafudagur;
+        var f = document.getElementById('pdfLink').value = "Sérlyfjaskrá" + pdfLink;
 
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";
@@ -146,13 +147,14 @@
         }
     }
 
-    function openPopUpDoctor(nafn,styrkur,lyfjaform,utgafudagur){
+    function openPopUpDoctor(nafn,styrkur,lyfjaform,utgafudagur,pdfLink){
         // nær í módelið
         var modal = document.getElementById('DocorMyModal');
         var b = document.getElementById('Doctornafn').value = "Nafn Lyfsins: "+nafn;
         var c = document.getElementById('Doctorstyrkur').value = "styrkur: "+styrkur;
         var d = document.getElementById('Doctorlyfjaform').value = "lyfjaform: "+lyfjaform;
         var e = document.getElementById('Doctorutgafudagur').value = "útgáfudagur: "+utgafudagur;
+        var f = document.getElementById('pdfLink').value = "Sérlyfjaskrá" + pdfLink;
 
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";
