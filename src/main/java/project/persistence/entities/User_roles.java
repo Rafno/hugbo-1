@@ -5,6 +5,12 @@ import javax.persistence.Entity;
 
 import javax.persistence.Table;
 
+/**
+ * Simple schema that holds over which roles which users have, only two available:
+ * Doctor users and Users users.
+ * This is necessary for Spring Security, as it will not work without both this entity
+ * and a much needed role column in users.
+ */
 @Entity
 @Table(name = "user_roles")
 public class User_roles
