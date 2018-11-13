@@ -10,6 +10,8 @@ import java.util.List;
  * The class for the Users itself.
  * The system generates a table schema based on this class for this entity.
  * Be sure to annotate any entities you have with the @Entity annotation.
+ * Every information about a user,
+ * TODO: Maybe change so that not every information about a user is available.
  */
 @Entity
 @Table(name = "users") // If you want to specify a table name, you can do so here

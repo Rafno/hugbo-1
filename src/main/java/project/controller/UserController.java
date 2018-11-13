@@ -135,8 +135,8 @@ public class UserController {
 			// Senda Confrimation email
 
 			System.out.println(emailAddress);
-			Boolean confirm = true;
-			sendHttp(emailAddress,name,confirm);
+			
+			sendHttp(emailAddress,name,true);
 
 			model.addAttribute("succesfull","Til hamingju "+ name+ ". Aðgangurinn þinn hefur verið búinn til");
 

@@ -14,6 +14,11 @@ import java.util.List;
  * http://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
  *
  */
+
+/**
+ * The DoctorPatients repository uses mostly Spring commands.
+ * Used for connecting users to their doctors/patients.
+ */
 @Repository
 public interface DoctorPatientsRepository extends JpaRepository<DoctorPatients, Long> {
 

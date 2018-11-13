@@ -18,9 +18,19 @@ public interface UserService
 	Users getUser(String username);
 
 	Users findOne(Long id);
-
+	
+	/**
+	 * finds all patient users.
+	 * @param id
+	 * @return
+	 */
 	List<Users> findAllPatients(Long id);
 	
+	/**
+	 * Finds all doctor users
+	 * @param id
+	 * @return
+	 */
 	List<Users> findDoctor(Long id);
 	
 	String addPatient(Users user);

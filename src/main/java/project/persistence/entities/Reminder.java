@@ -1,6 +1,11 @@
 package project.persistence.entities;
 import javax.persistence.*;
+import java.sql.Time;
 
+/**
+ * Table for which hours a user should be reminded
+ * TODO: Please Helgi refactor this into java.sql.Time rather than string
+ */
 @Entity
 @Table(name = "reminders") // If you want to specify a table name, you can do so here
 public class Reminder {

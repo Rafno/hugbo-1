@@ -12,15 +12,28 @@ import project.persistence.entities.Users;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * Every user function is used here.
+ * Users are created, users can be patients or doctors
+ */
+
+/**
+ * HOW TO CREATE QUERIES
+ * @Query(value="Select f from Foo f"
+ * Foo must be the name of the java class of the entity, not the schema created by Spring.
+ * f must be a variable used to parse through the schema, such as select f from Foo f where f.username = ?1
+ * INSERT/DELETE is not supported by spring queries. must be used via the nativeQuery keyword.
+ */
 @Repository
 public interface UsersRepository extends JpaRepository<Users, Long>{
 
 	Users save(Users user);
 	
 	void delete(Users user);
+	//used to check logins.
 	@Query(value = "SELECT p FROM Users p WHERE p.username = ?1")
 	Users userLogin(String username);
-
+	// Used to verify logins
 	@Query(value = "SELECT p FROM Users p WHERE p.username = ?1")
 	Users getUser(String username);
 	//VERY IMPORTANT!
@@ -47,7 +60,12 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 
 	@Query(value = "SELECT p FROM Users p WHERE p.id = ?1")
 	Users findOne(Long id);
-
+	
+	/**
+	 * Used to update images on your myHome page.
+	 * @param imageId
+	 * @param username
+	 */
 	@Transactional
 	@Modifying
 	@Query("UPDATE Users p SET p.imagePublicId = :image_id WHERE p.username = :userName")

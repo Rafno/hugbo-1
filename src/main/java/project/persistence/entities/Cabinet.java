@@ -3,9 +3,10 @@ package project.persistence.entities;
 import javax.persistence.*;
 
 /**
- * The class for the Medicine itself.
+ * The class for the Cabinet itself.
  * The system generates a table schema based on this class for this entity.
  * Be sure to annotate any entities you have with the @Entity annotation.
+ * The cabinet entity is a many to one table that connects which medicine a user is registered to.
  */
 @Entity
 @Table(name = "cabinet") // If you want to specify a table name, you can do so here

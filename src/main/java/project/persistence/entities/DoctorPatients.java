@@ -4,9 +4,11 @@ import javax.persistence.*;
 
 
 /**
- * The class for the Users itself.
+ * The class for the DoctorPatients itself.
  * The system generates a table schema based on this class for this entity.
  * Be sure to annotate any entities you have with the @Entity annotation.
+ * A many to many schema that connects doctors to patients.
+ * Used to show what doctor has which patients and opposite.
  */
 @Entity
 @Table(name = "DoctorPatients") // If you want to specify a table name, you can do so here
