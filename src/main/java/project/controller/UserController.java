@@ -1,5 +1,8 @@
 package project.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import net.minidev.json.JSONObject;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
@@ -36,6 +39,7 @@ import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 
+import javax.lang.model.element.Name;
 import javax.net.ssl.HttpsURLConnection;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -131,8 +135,8 @@ public class UserController {
 			// Senda Confrimation email
 
 			System.out.println(emailAddress);
-			Boolean confirm = true;
-			sendHttp(emailAddress,name,confirm);
+			
+			sendHttp(emailAddress,name,true);
 
 			model.addAttribute("succesfull","Til hamingju "+ name+ ". Aðgangurinn þinn hefur verið búinn til");
 
@@ -233,12 +237,22 @@ public class UserController {
 		StringBuffer response = new StringBuffer();
 
 		while ((inputLine = in.readLine()) != null) {
+			System.out.println(inputLine);
 			response.append(inputLine);
 		}
 		in.close();
 
 		//print result
+		String nmmber = response.toString().substring(response.toString().lastIndexOf(":") + 1);
 		System.out.println(response.toString());
+		System.out.println("talan er hérna setja þetta í db"+nmmber);
 
+	}
+}
+class Number {
+	private String number;
+
+	public String getNumbers() {
+		return number;
 	}
 }

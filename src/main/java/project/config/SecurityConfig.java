@@ -28,6 +28,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	@Autowired
 	private DataSource dataSource;
 	
+	/**
+	 * jdbc authentication that saves our user while he is logged in
+	 * verifying him to our dataSource(database)
+	 * then a simple query to search for users by role rather than user_roles
+	 * @param auth
+	 * @throws Exception
+	 */
 	@Autowired
 	protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
 		auth.jdbcAuthentication().dataSource(dataSource)
@@ -39,6 +46,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	 * Handler for all our links,
 	 * important! must add new antmatcher with permissions needed if a new link is created (ie controller)
 	 * only an authenticated user (ie logged in user) can view myHome.
+	 * The most specific rules should go first, but don't for our case due to this being weird.
+	 * Please do not touch as this is very delicate
 	 * @param http
 	 * @throws Exception
 	 */
@@ -76,6 +85,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			.csrf().disable();
 	}
 	
+	/**
+	 * Allows all utils, resources, css, jsp files and images.
+	 * @param web
+	 * @throws Exception
+	 */
 	@Override
 	public void configure(WebSecurity web) throws Exception{
 		web

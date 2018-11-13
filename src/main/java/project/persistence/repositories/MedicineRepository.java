@@ -14,6 +14,11 @@ import java.util.List;
  * http://docs.spring.io/spring-data/data-commons/docs/1.6.1.RELEASE/reference/html/repositories.html
  *
  */
+
+/**
+ * created from postitNotes,
+ * uses a few specially made queries.
+ */
 @Repository
 public interface MedicineRepository extends JpaRepository<Medicine, Long> {
 
@@ -22,6 +27,7 @@ public interface MedicineRepository extends JpaRepository<Medicine, Long> {
     void delete(Medicine medicine);
 
     List<Medicine> findAll();
+    // Used for searching
     @Query("Select p from Medicine p where Lower(p.name) LIKE concat('%', concat(?1, '%'))")
 	List<Medicine> findPlaceContainingKeywordAnywhere(String name);
     // If we need a custom query that maybe doesn't fit the naming convention used by the JPA repository,

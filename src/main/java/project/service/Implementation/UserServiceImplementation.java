@@ -32,6 +32,11 @@ public class UserServiceImplementation implements UserService{
 		this.userRolesRepository = userRolesRepository;
 	}
 	
+	/**
+	 * Saves the user, encrypts the password before inserting into database.
+	 * user roles are saved dynamically.
+	 * @param user
+	 */
 	@Override
 	public void save(Users user) {
 		//Skoða ef læknir
@@ -49,7 +54,17 @@ public class UserServiceImplementation implements UserService{
 	public void delete(Users user) {
 		 repository.delete(user);
 	}
-
+	
+	/**
+	 * Huge mess.
+	 * Checks if the user exists by looking into database for the unique username,
+	 * then checks if the user with that username matches the encrypted password.
+	 * if correct, send the user data back.
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws NullPointerException
+	 */
 	@Override
 	public Users userLogin(String username, String password) throws NullPointerException
 	{
@@ -95,7 +110,6 @@ public class UserServiceImplementation implements UserService{
 	
 	@Override
 	public String addPatient(Users user) {
-		// Get all the Users notes
 		return repository.addPatient(user);
 	}
 	

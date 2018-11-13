@@ -13568,3 +13568,23 @@ INSERT INTO public.medicine (id, name, active_ingredient, pharmaceutical_form, s
 UPDATE medicine
     SET pdf_link = 'https://www.serlyfjaskra.is/FileRepos/5045a32c-6aa4-e711-80d7-ce1550b700f3/Sobril_fylgisedill.pdf'
 WHERE name = 'Sobril';
+
+UPDATE medicine
+  SET pdf_link = 'https://www.ema.europa.eu/documents/product-information/circadin-epar-product-information_is.pdf'
+WHERE name = 'circadin';
+
+update medicine
+  SET pdf_link = 'https://www.lyfjastofnun.is/media/eftirlit/Sildenafil-DHCP-oktober_2018.PDF'
+WHERE name = 'Viagra';
+
+update medicine
+SET pdf_link = 'https://www.serlyfjaskra.is/FileRepos/1d937b2a-830a-e811-80dc-00155d15470c/Ritalin_toflur_fylgisedill.pdf'
+WHERE name = 'Ritalin Uno';
+
+update medicine
+SET pdf_link = 'https://www.serlyfjaskra.is/FileRepos/1d937b2a-830a-e811-80dc-00155d15470c/Ritalin_toflur_fylgisedill.pdf'
+WHERE name = 'Ritalin';
+
+update medicine
+SET pdf_link = 'https://www.serlyfjaskra.is/FileRepos/1d937b2a-830a-e811-80dc-00155d15470c/Ritalin_toflur_fylgisedill.pdf'
+WHERE name = 'Atarax';

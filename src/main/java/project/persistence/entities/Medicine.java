@@ -6,6 +6,7 @@ import javax.persistence.*;
  * The class for the Medicine itself.
  * The system generates a table schema based on this class for this entity.
  * Be sure to annotate any entities you have with the @Entity annotation.
+ * Every single medicine that is for sale in Iceland. (as of October 2018)
  */
 @Entity
 @Table(name = "medicine") // If you want to specify a table name, you can do so here
@@ -17,6 +18,8 @@ public class Medicine {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", unique = true)
    	private Long id;
+    // needed a much bigger length of varchars.
+	// all Strings in entities are automatically made to 255 varchar lengths in Spring.
 	@Column(length = 5000)
     private String name;
 	@Column(length = 5000)
