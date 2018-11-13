@@ -29,12 +29,13 @@ public class Users
 	private String homeAddress;
 	private String homeTown;
 	private String zipCode;
+	private String email;
 	private boolean enabled;
 	// Notice the empty constructor, because we need to be able to create an empty PostitNote to add
 	// to our model so we can use it with our form
 	public Users(){}
 	public Users(String name, String username, String password, String hlutverk,String img ,String homeAddress, String homeTown,
-				 String zipCode, boolean enabled
+				 String zipCode, String email ,boolean enabled
 				)
 	{
 		this.name = name;
@@ -46,6 +47,7 @@ public class Users
 		this.homeAddress = homeAddress;
 		this.homeTown = homeTown;
 		this.zipCode = zipCode;
+		this.email = email;
 	}
 	
 	public Long getId()
@@ -127,7 +129,14 @@ public class Users
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
-	
+
+	public void setEmail(String email){
+		this.email = email;
+	}
+
+	public String getEmail(){
+		return this.email;
+	}
 	
 	public boolean isEnabled()
 	{

@@ -16,6 +16,7 @@ import com.cloudinary.Cloudinary;
 
 import javax.transaction.Transactional;
 import java.io.*;
+import java.security.Principal;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -74,12 +75,14 @@ public class myAreaController
 		Timer timer = new Timer();
 		
 		//    TEST
-		String myDateString1 = "22:53:10";
+		String myDateString1 = "17:58:10";
 		String myDateString2 = "22:53:30";
 		String myDateString3 = "22:53:47";
 		String myDateString4 = "22:53:43";
-		
-		reminderService.save(new Reminder(1L, 87L, myDateString1, myDateString2, myDateString3, myDateString4));
+
+		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Long userID = userService.getUsersByUsername(userDetails.getUsername()).getId();
+		reminderService.save(new Reminder(1L, userID , myDateString1, myDateString2, myDateString3, myDateString4));
 		
 		ZoneId z = ZoneId.of("Atlantic/Reykjavik"); ZonedDateTime zdt = ZonedDateTime.now(ZoneId.systemDefault());
 		
@@ -89,48 +92,49 @@ public class myAreaController
 			{
 				//Hér þarf að skoða Db inn.
 				
-				List<Reminder> amining = reminderService.findAll(); for(Reminder item : amining)
-			{
-				LocalTime current_time = zdt.toLocalTime();
-				LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-				LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-				LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-				LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-				String ids = item.getUsersId().toString();
-				String testing = "87";
-				System.out.println("Waiting" + localTime1);
-
-				if(Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10)
+				List<Reminder> amining = reminderService.findAll();
+				for(Reminder item : amining)
 				{
-					System.out.println("Senda notification  : " + localTime2);
+					LocalTime current_time = zdt.toLocalTime();
+					LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+					LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+					LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+					LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+					String ids = item.getUsersId().toString();
+					String testing = "87";
+					System.out.println("Waiting" + current_time.getMinute());
+					if(localTime1.getHour() == current_time.getHour() && Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10)
+					{
+						System.out.println("Senda notification  : " + localTime2);
 
-					System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.getUsersByUsername(userService.findOne(item.getUsersId()).getName()));
-					UserController a = new UserController(userService);
-					try {
-						a.sendHttp("helgigretargunnars.96@gmail.com", userService.getUsersByUsername(userService.findOne(item.getUsersId()).getName()),false);
-					} catch (IOException e) {
-						e.printStackTrace();
+						System.out.println("Lyf: " + medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName() + " Email: " + userService.findOne(item.getUsersId()).getEmail());
+						UserController a = new UserController(userService);
+						try {
+							a.sendHttp("helgigretargunnars.96@gmail.com", userService.findOne(item.getUsersId()).getName(),false);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+
+					} 
+					if(localTime2.getHour() == current_time.getHour() &&  Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10)
+					{
+						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
+					}
+					if(localTime3.getHour() == current_time.getHour() && Math.abs(localTime3.getMinute() - current_time.getMinute()) < 10)
+					{
+						System.out.println("Senda notification : " + localTime3);
+						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
+					}
+					if(localTime4.getHour() == current_time.getHour() && Math.abs(localTime4.getMinute() - current_time.getMinute()) < 10)
+					{
+						System.out.println("Senda notification : " + localTime4);
+						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
 					}
 
-				} if(Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10)
-			{
-				System.out.println("Senda notification kl : " + localTime2);
-				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.getUsersByUsername(userService.findOne(item.getUsersId()).getName()));
-			} if(Math.abs(localTime3.getMinute() - current_time.getMinute()) < 10)
-			{
-				System.out.println("Senda notification : " + localTime3);
-				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.getUsersByUsername(userService.findOne(item.getUsersId()).getName()));
-			} if(Math.abs(localTime4.getMinute() - current_time.getMinute()) < 10)
-			{
-				System.out.println("Senda notification : " + localTime4);
-				System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.getUsersByUsername(userService.findOne(item.getUsersId()).getName()));
+				}
 			}
 
-			}
-			
-			}
-			
-		}, delay, interval);
+			}, delay, interval);
 		// add medicine to my home table
 		if(cabinetService.findAll().size() != 0)
 		{
@@ -157,7 +161,7 @@ public class myAreaController
 	
 	private String findName(UserDetails userDetails)
 	{
-		return userService.getUsersByUsername(userDetails.getUsername());
+		return userService.getUsersByUsername(userDetails.getUsername()).getName();
 	}
 	
 	private void addPatientsOrDoctorsById(Long id, String role, Model model)

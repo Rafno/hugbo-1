@@ -139,7 +139,7 @@ public class UserController {
 			//Cloudinary link
 			String img = "<img src='http://res.cloudinary.com/dfhjyjyg1/image/upload/zkitbd9veqxrcdpmhnlj'/>";
 
-			Users newUser = new Users(name, username, password, role,img, homeAddress, homeTown, zipCode, true);
+			Users newUser = new Users(name, username, password, role,img, homeAddress, homeTown, zipCode,emailAddress, true);
 			userService.save(newUser);
 		}
 		model.addAttribute("notendaVillur",notendaVillur);

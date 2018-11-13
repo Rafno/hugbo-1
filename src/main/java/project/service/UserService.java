@@ -31,7 +31,7 @@ public interface UserService
 	
 	List<String> getUsersById(List<Long> userids);
 	
-	String getUsersByUsername(String username);
+	Users getUsersByUsername(String username);
 	
 	Boolean [] userNameExists(String username);
 	
