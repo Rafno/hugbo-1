@@ -156,6 +156,13 @@ public class myAreaController
 		
 		model.addAttribute("name", name);
 		addPatientsOrDoctorsById(id, this.myUser.getRole(), model);
+		String role = userService.getUser(userDetails.getUsername()).getRole();
+		if(role.equals("DOCTOR"))
+		{
+			model.addAttribute("doctorLoggadurInn", true);
+		}else {
+			// Doctor er ekki loggaður inn
+		}
 		return "myArea/myArea";
 	}
 	
@@ -202,6 +209,14 @@ public class myAreaController
 		
 		
 		model.addAttribute("image", img); model.addAttribute("loggedInn", true);
+		String role = userService.getUser(userDetails.getUsername()).getRole();
+		if(role.equals("DOCTOR"))
+		{
+			System.out.println("þessi er læknir");
+			model.addAttribute("doctorLoggadurInn", true);
+		}else {
+			// Doctor er ekki loggaður inn
+		}
 		return "myArea/myArea";
 	}
 	
