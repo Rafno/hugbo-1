@@ -31,6 +31,10 @@ import project.service.UserService;
 
 import java.io.*;
 import java.nio.charset.Charset;
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.http.HttpResponse;
@@ -146,7 +150,24 @@ public class UserController {
 			//Cloudinary link
 			String img = "<img src='http://res.cloudinary.com/dfhjyjyg1/image/upload/zkitbd9veqxrcdpmhnlj'/>";
 
-			Users newUser = new Users(name, username, password, role, img, homeAddress, homeTown, zipCode, emailAddress, number, true);
+			ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
+			System.out.println(OffsetDateTime.now().toEpochSecond());
+			Users newUser = new Users(
+										name,
+										username,
+										password,
+										role,
+										img,
+										homeAddress,
+										homeTown,
+										zipCode,
+										emailAddress,
+										number,
+										zdt.now().toLocalDate().toString(),
+										OffsetDateTime.now().toEpochSecond(),
+										false ,
+										true
+			);
 			userService.save(newUser);
 
 		}

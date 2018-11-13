@@ -33,12 +33,27 @@ public class Users
 	private String zipCode;
 	private String email;
 	private String confirmationNumber;
+	private String date;
+	private Long epochTime;
+	private boolean confirmed;
 	private boolean enabled;
 	// Notice the empty constructor, because we need to be able to create an empty PostitNote to add
 	// to our model so we can use it with our form
 	public Users(){}
-	public Users(String name, String username, String password, String hlutverk,String img ,String homeAddress, String homeTown,
-				 String zipCode, String email , String confirmationNumber, boolean enabled
+	public Users(String name,
+				 String username,
+				 String password,
+				 String hlutverk,
+				 String img ,
+				 String homeAddress,
+				 String homeTown,
+				 String zipCode,
+				 String email ,
+				 String confirmationNumber,
+				 String date,
+				 Long epochTime,
+				 boolean confirmed,
+				 boolean enabled
 				)
 	{
 		this.name = name;
@@ -52,6 +67,10 @@ public class Users
 		this.zipCode = zipCode;
 		this.email = email;
 		this.confirmationNumber = confirmationNumber;
+		this.date = date;
+		this.epochTime = epochTime;
+		this.confirmed = confirmed;
+
 	}
 	
 	public Long getId()
@@ -157,5 +176,28 @@ public class Users
 	public void setEnabled(boolean enabled)
 	{
 		this.enabled = enabled;
+	}
+
+	public String getDate(){
+		return this.date;
+	}
+	public void setDate(String date){
+		this.date = date;
+	}
+
+	public long getEpochTime(){
+		return this.epochTime;
+	}
+
+	public void setEpochTime(Long epochTime){
+		this.epochTime = epochTime;
+	}
+
+	public boolean getConfirmed(){
+		return this.confirmed;
+	}
+
+	public void setConfirmed(boolean confirmed){
+		this.confirmed = confirmed;
 	}
 }
