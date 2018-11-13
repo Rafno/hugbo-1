@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import project.persistence.entities.Cabinet;
 import project.persistence.entities.DoctorPatients;
 import project.persistence.entities.Medicine;
+import project.persistence.entities.Users;
 import project.service.*;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -24,7 +25,7 @@ import java.util.regex.Pattern;
 
 
 @Controller
-public class Doktor
+public class DoktorController
 {
 
 	// Instance
@@ -46,7 +47,7 @@ public class Doktor
 
 
 	@Autowired
-	public Doktor(StringManipulationService stringService)
+	public DoktorController(StringManipulationService stringService)
 	{
 
 		this.stringService = stringService; List<Medicine> medicine = new ArrayList<Medicine>();
@@ -59,6 +60,14 @@ public class Doktor
 	@RequestMapping(value = "/allusers", method = RequestMethod.GET)
 	public String allUsers()
 	{
+		return "allUsers/allUsers";
+	}
+
+	@RequestMapping(value = "/allusers", method = RequestMethod.POST)
+	public String doctorPost()
+	{
+		// Dagsetning - Nafn - Bæjarfélag - póstnúmer - heimilsfang - email
+		List<Users> allUsers = userService.findAll();
 		return "allUsers/allUsers";
 	}
 }

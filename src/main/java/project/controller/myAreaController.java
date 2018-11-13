@@ -84,7 +84,7 @@ public class myAreaController
 		Long userID = userService.getUsersByUsername(userDetails.getUsername()).getId();
 		reminderService.save(new Reminder(1L, userID , myDateString1, myDateString2, myDateString3, myDateString4));
 		
-		ZoneId z = ZoneId.of("Atlantic/Reykjavik"); ZonedDateTime zdt = ZonedDateTime.now(ZoneId.systemDefault());
+		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
 		
 		timer.scheduleAtFixedRate(new TimerTask()
 		{
