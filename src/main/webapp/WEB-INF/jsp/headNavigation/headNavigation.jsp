@@ -19,11 +19,14 @@
                     <img src="./../../../img/house.png" alt="headImage"class="headNavigationPic"/>
                 </a>
             </li>
+            <c:if test="${not empty doctorLoggadurInn}">
+                <li class="itemNavigation"><a class="active" href="/allusers">Allir notendur</a></li>
+            </c:if>
             <li class="itemNavigation" id="logout"><a class="active" href="/logout" >Útskráning</a></li>
             <li class="itemNavigation"><a class="active">${name}</a></li>
-
         </ul>
     </header>
+
 </c:if>
 <c:if test="${empty loggedInn}">
     <ul class="headNavigation">

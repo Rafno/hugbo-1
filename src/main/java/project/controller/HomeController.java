@@ -71,9 +71,13 @@ public class HomeController
 			model.addAttribute("name", name); model.addAttribute("userLoggedInn", true);
 			model.addAttribute("loggedInn", true);
 			String role = userService.getUser(userDetails.getUsername()).getRole();
+			// Skoða hvort að notandi er læknir eða ekki
 			if(role.equals("DOCTOR"))
 			{
-				
+				System.out.println("þessi er læknir");
+				model.addAttribute("doctorLoggadurInn", true);
+			}else {
+				// Doctor er ekki loggaður inn
 			}
 
 		}
@@ -138,6 +142,7 @@ public class HomeController
 					List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
 					List<String> patients = userService.getUsersById(userids);
 					model.addAttribute("patiens", patients );
+					model.addAttribute("doctorLoggadurInn", true);
 
 				}
 				catch(Exception e)
@@ -153,12 +158,6 @@ public class HomeController
 		{
 
 		} return "searchEngine/searchEngine";
-	}
-
-	private void sendPost() throws Exception
-	{
-		String url = "https://selfsolve.apple.com/wcResults.do"; URL obj = new URL(url);
-		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 	}
 
 	@RequestMapping(value = "/about", method = RequestMethod.GET)

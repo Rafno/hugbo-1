@@ -249,10 +249,3 @@ public class UserController {
 
 	}
 }
-class Number {
-	private String number;
-
-	public String getNumbers() {
-		return number;
-	}
-}
