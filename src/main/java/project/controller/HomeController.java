@@ -67,7 +67,7 @@ public class HomeController
 		try
 		{
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			String name = userService.getUsersByUsername(userDetails.getUsername());
+			String name = userService.getUsersByUsername(userDetails.getUsername()).getName();
 			model.addAttribute("name", name); model.addAttribute("userLoggedInn", true);
 			model.addAttribute("loggedInn", true);
 			String role = userService.getUser(userDetails.getUsername()).getRole();
@@ -104,7 +104,7 @@ public class HomeController
 		{
 			// Find patients for Doctor
 			userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			String name = userService.getUsersByUsername(userDetails.getUsername());
+			String name = userService.getUsersByUsername(userDetails.getUsername()).getName();
 			// assign medicine to user
 
 			if(nafn.contains(": "))
@@ -126,7 +126,7 @@ public class HomeController
 		try
 		{
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			String name = userService.getUsersByUsername(userDetails.getUsername());
+			String name = userService.getUsersByUsername(userDetails.getUsername()).getName();
 			model.addAttribute("userLoggedInn", true); model.addAttribute("loggedInn", true);
 			model.addAttribute("name", name);
 			String role = userService.getUser(userDetails.getUsername()).getRole();
@@ -167,7 +167,7 @@ public class HomeController
 		try
 		{
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			String name = userService.getUsersByUsername(userDetails.getUsername());
+			String name = userService.getUsersByUsername(userDetails.getUsername()).getName();
 			model.addAttribute("loggedInn", true); model.addAttribute("name", name);
 		}
 		catch(Exception err)
