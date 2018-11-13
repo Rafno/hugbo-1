@@ -7,6 +7,7 @@
 <head>
     <title>Appótekið - Heimasvæði</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/myArea.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/searchEngine.css"/>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -59,18 +60,43 @@
             </table>
         </div>
     </div>
+    <!-- Pop up kassinn fyrir notification -->
+    <div id="myModalUnregistered" class="modal">
+        <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
+        <div class="modal-content">
+            <div class="popUpHead">
+                <h2 class="popUpHeadTitle">Óinnskráður notandi</h2>
+                <div class="close" id="unregisterdClosing"onclick="closing()">&times;</div>
+            </div>
+            <div class="popUpTextContainer">
+                <div> Þú ert ekki innskráður notandi</div>
+                <div> Það er frítt að skrá sig inn og þú gerir það með að smella <a href="register">hér</a></div>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
     function togglerer(){
 
         
         var a = document.getElementById("toggler").value;
+        alert(a)
         if(a == 'on'){
-
+            openNotification()
         }else{
-
+            alert("sérst þú");
         }
 
 
+    }
+    function openNotification() {
+        var myModalUnregistered = document.getElementById('myModalUnregistered');
+        // Ná í span elementið sem lokar modelinu
+        myModalUnregistered.style.display = "block";
+
+        var span = document.getElementById("unregisterdClosing");
+        span.onclick = function() {
+            myModalUnregistered.style.display = "none";
+        }
     }
 </script>
