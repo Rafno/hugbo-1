@@ -240,10 +240,8 @@ public class UserController {
 		in.close();
 
 		//print result
-		String nmmber = response.toString().substring(response.toString().lastIndexOf(":") + 1);
-		System.out.println(response.toString());
-		System.out.println("talan er hérna setja þetta í db" + nmmber);
-
-		return nmmber;
+		String number = response.toString().substring(response.toString().lastIndexOf(":") + 1);
+		number = number.substring(0,number.length()-1);
+		return number;
 	}
 }
