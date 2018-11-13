@@ -115,7 +115,7 @@ public class myAreaController
 							e.printStackTrace();
 						}
 
-					} 
+					}
 					if(localTime2.getHour() == current_time.getHour() &&  Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10)
 					{
 						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());

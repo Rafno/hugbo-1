@@ -135,16 +135,17 @@ public class UserController {
 			// Senda Confrimation email
 
 			System.out.println(emailAddress);
-			
-			sendHttp(emailAddress,name,true);
+
+			String number = sendHttp(emailAddress,name,true);
 
 			model.addAttribute("succesfull","Til hamingju "+ name+ ". Aðgangurinn þinn hefur verið búinn til");
 
 			//Cloudinary link
 			String img = "<img src='http://res.cloudinary.com/dfhjyjyg1/image/upload/zkitbd9veqxrcdpmhnlj'/>";
 
-			Users newUser = new Users(name, username, password, role,img, homeAddress, homeTown, zipCode,emailAddress, true);
+			Users newUser = new Users(name, username, password, role,img, homeAddress, homeTown, zipCode,emailAddress, number ,true);
 			userService.save(newUser);
+			
 		}
 		model.addAttribute("notendaVillur",notendaVillur);
 		model.addAttribute("lykilordVillur",lykilordVillur);
@@ -194,7 +195,7 @@ public class UserController {
 			}
 		}
 	}
-	public void sendHttp(String emailAddress,String name,Boolean confirm) throws IOException {
+	public String sendHttp(String emailAddress,String name,Boolean confirm) throws IOException {
 		String url = "";
 		if(confirm == true){
 			url = "https://hugbo1.herokuapp.com";
@@ -247,12 +248,7 @@ public class UserController {
 		System.out.println(response.toString());
 		System.out.println("talan er hérna setja þetta í db"+nmmber);
 
+		return nmmber;
 	}
 }
-class Number {
-	private String number;
 
-	public String getNumbers() {
-		return number;
-	}
-}
