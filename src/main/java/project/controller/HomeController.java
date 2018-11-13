@@ -70,6 +70,11 @@ public class HomeController
 			String name = userService.getUsersByUsername(userDetails.getUsername());
 			model.addAttribute("name", name); model.addAttribute("userLoggedInn", true);
 			model.addAttribute("loggedInn", true);
+			String role = userService.getUser(userDetails.getUsername()).getRole();
+			if(role.equals("DOCTOR"))
+			{
+				
+			}
 
 		}
 		catch(Exception e)
@@ -119,7 +124,8 @@ public class HomeController
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String name = userService.getUsersByUsername(userDetails.getUsername());
 			model.addAttribute("userLoggedInn", true); model.addAttribute("loggedInn", true);
-			model.addAttribute("name", name); String role = userService.getUser(userDetails.getUsername()).getRole();
+			model.addAttribute("name", name);
+			String role = userService.getUser(userDetails.getUsername()).getRole();
 
 			if(role.equals("DOCTOR"))
 			{
