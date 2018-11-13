@@ -134,5 +134,5 @@ public class UserServiceImplementation implements UserService{
 
 	public List<String> getUsersById(List<Long> userids){return repository.getUsersById(userids);	}
 
-	public String getUsersByUsername(String username){return repository.getUsersByUsername(username);}
+	public Users getUsersByUsername(String username){return repository.getUsersByUsername(username);}
 }
