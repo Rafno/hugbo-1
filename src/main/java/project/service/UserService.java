@@ -45,8 +45,10 @@ public interface UserService
 	
 	List<Users>findAll();
 
-	List<Users> getPatients();
+	List<Users> getPatients(String userRole);
 
 	List<Users> getUsersById(List<Long> userids);
+	
+	void confirmEmail(Users user);
 
 }

@@ -73,11 +73,15 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 
 	@Query( "select p from Users p where p.id in :ids" )
 	List<Users> getUsersById(@Param("ids") List<Long> userids);
-
+	
 	@Query( "select p from Users p where p.username LIKE ?1" )
 	Users getUsersByUsername(String username);
+	
+	//@Query( "select p from Users p where p.role LIKE 'USER' ")
+	//List<Users> getPatients();
+	List<Users> findByRoleLikeUser(String user);
 
-	@Query( "select p from Users p where p.role LIKE 'USER' ")
-	List<Users> getPatients();
-
+	
+	@Query("UPDATE Users p Set p.confirmed = true WHERE p.id")
+	void confirmEmail(Users user);
 }

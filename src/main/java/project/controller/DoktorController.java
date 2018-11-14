@@ -59,7 +59,7 @@ public class DoktorController
 	@RequestMapping(value = "/allusers", method = RequestMethod.GET)
 	public String allUsers(Model model)
 	{
-		List<Users> allUsers = userService.getPatients();
+		List<Users> allUsers = userService.getPatients("USER");
 
 		model.addAttribute("users", allUsers);
 
@@ -80,7 +80,7 @@ public class DoktorController
 				doctorPatientsService.save(new DoctorPatients(doctorID,userId));
 		}
 
-		List<Users> allUsers = userService.getPatients();
+		List<Users> allUsers = userService.getPatients("USER");
 
 		model.addAttribute("users", allUsers);
 		System.out.println(userId);

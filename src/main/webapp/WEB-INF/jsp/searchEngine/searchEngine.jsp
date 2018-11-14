@@ -103,6 +103,7 @@
                     <input class="popUpTexti"type="text" name="styrkur" id="Doctorstyrkur" readonly/>
                     <input class="popUpTexti"type="text" name="lyfjaform" id="Doctorlyfjaform" readonly/>
                     <input class="popUpTexti"type="text" name="utgafudagur" id="Doctorutgafudagur" readonly/>
+                    <a class="popUpTexti" id="pdfLink" name="pdfLink"></a>
                 </div>
                 <div class="DoctorSelectOptionsContainer">
                     <select class="optionPannelAddMedToUser" onChange="myFunction(this.options[this.selectedIndex].value)" name = "userId">
@@ -135,7 +136,6 @@
 
 <script>
     function openPopUpPatient(nafn,styrkur,lyfjaform,utgafudagur,pdfLink){
-        console.log(pdfLink);
         var modal = document.getElementById('myModal');
         var b = document.getElementById('nafn').value = "Nafn Lyfsins: "+nafn;
         var c = document.getElementById('styrkur').value = "styrkur: "+styrkur;
@@ -162,8 +162,11 @@
         var c = document.getElementById('Doctorstyrkur').value = "styrkur: "+styrkur;
         var d = document.getElementById('Doctorlyfjaform').value = "lyfjaform: "+lyfjaform;
         var e = document.getElementById('Doctorutgafudagur').value = "útgáfudagur: "+utgafudagur;
-        var f = document.getElementById('pdfLink').value = "Sérlyfjaskrá" + pdfLink;
         var g = document.getElementById('getMed').value = medId;
+        if(pdfLink){
+            document.getElementById('pdfLink').text = "Sérlyfjaskrá";
+            document.getElementById('pdfLink').href = pdfLink;
+        }
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";
 
