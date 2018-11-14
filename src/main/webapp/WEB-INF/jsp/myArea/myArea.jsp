@@ -64,34 +64,37 @@
     <!-- Pop up kassinn fyrir notification -->
     <div id="myModalUnregistered" class="modal">
         <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
-        <div class="modal-content">
-            <div class="popUpHeadReminder">
-                <h2 class="popUpHeadTitle" id = "Doctorutgafudagur"></h2>
-                <div class="close" id="unregisterdClosing" onclick="closing()">&times;</div>
+        <Form method="POST" action="/myhome">
+            <div class="modal-content">
+                <div class="popUpHeadReminder">
+                    <h2 class="popUpHeadTitle" id = "Doctorutgafudagur"></h2>
+                    <input type="submit" class="close" id="unregisterdClosing" onclick="closing()" value="&times;">
+                </div>
+                <div class="amminingaContainer">
+                    <div class="aminingaBox">
+                        <h2 class="reminderHeadTitle">1.Ámining</h2>
+                        <input type="time" value="18:00" class="Clock" name="time1" id="time1">
+                        <input type="button" class="confirmReminderButton"  value="Staðfest">
+                        <input type="hidden" value="Staðfest" name="buttonFyrst" id="buttonFyrst" />
+                    </div>
+                    <div class="aminingaBox">
+                        <h2 class="reminderHeadTitle">2.Ámining</h2>
+                        <input type="time" value="18:00" class="Clock">
+                        <button class="confirmReminderButton">Staðfest</button>
+                    </div>
+                    <div class="aminingaBox">
+                        <h2 class="reminderHeadTitle">3.Ámining</h2>
+                        <input type="time" value="18:00" class="Clock">
+                        <button class="confirmReminderButton">Staðfest</button>
+                    </div>
+                    <div class="aminingaBox">
+                        <h2 class="reminderHeadTitle">4.Ámining</h2>
+                        <input type="time" value="18:00" class="Clock">
+                        <button class="confirmReminderButton">Staðfest</button>
+                    </div>
+                </div>
             </div>
-            <div class="amminingaContainer">
-                <div class="aminingaBox">
-                    <h2 class="reminderHeadTitle">1.Ámining</h2>
-                    <input type="time" value="18:00" class="Clock">
-                    <button class="confirmReminderButton">Staðfest</button>
-                </div>
-                <div class="aminingaBox">
-                    <h2 class="reminderHeadTitle">2.Ámining</h2>
-                    <input type="time" value="18:00" class="Clock">
-                    <button class="confirmReminderButton">Staðfest</button>
-                </div>
-                <div class="aminingaBox">
-                    <h2 class="reminderHeadTitle">3.Ámining</h2>
-                    <input type="time" value="18:00" class="Clock">
-                    <button class="confirmReminderButton">Staðfest</button>
-                </div>
-                <div class="aminingaBox">
-                    <h2 class="reminderHeadTitle">4.Ámining</h2>
-                    <input type="time" value="18:00" class="Clock">
-                    <button class="confirmReminderButton">Staðfest</button>
-                </div>
-            </div>
-        </div>
+        </Form>
     </div>
 </body>
 <script>
@@ -113,12 +116,30 @@
         var span = document.getElementById("unregisterdClosing");
         span.onclick = function() {
             myModalUnregistered.style.display = "none";
+            postForm();
             alert("hello");
             
         }
     }
-    function closing(){
+    function postForm(){
+        var form = document.createElement("form");
+        var element1 = document.createElement("input");
+        var element2 = document.createElement("input");
 
+        form.method = "POST";
+
+        element2.value="bb";
+        element2.name="pic";
+        form.appendChild(element1);
+        
+        element1.value="bb";
+        element1.name="time1";
+        form.appendChild(element1);
+
+
+        document.body.appendChild(form);
+
+        form.submit();
     }
 </script>
 <style>
