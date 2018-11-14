@@ -132,7 +132,9 @@ public class UserServiceImplementation implements UserService{
 		repository.updateImageId(imageId,userName);
 	}
 
-	public List<String> getUsersById(List<Long> userids){return repository.getUsersById(userids);	}
+	public List<Users> getUsersById(List<Long> userids){return repository.getUsersById(userids);	}
 
 	public Users getUsersByUsername(String username){return repository.getUsersByUsername(username);}
+
+	public List<Users> getPatients(){ return repository.getPatients();}
 }

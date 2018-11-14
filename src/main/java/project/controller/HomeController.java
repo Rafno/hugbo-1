@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import project.persistence.entities.Cabinet;
 import project.persistence.entities.DoctorPatients;
 import project.persistence.entities.Medicine;
+import project.persistence.entities.Users;
 import project.service.*;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -135,14 +136,14 @@ public class HomeController
 			{
 				try
 				{
-					System.out.println("leita");
 					model.addAttribute("doctor", true);
+					model.addAttribute("doctorLoggadurInn", true);
 					//model.addAttribute("loggedInn", true);
 					Long doctorId = userService.getUser(userDetails.getUsername()).getId();
 					List<Long> userids = doctorPatientsService.getPatientIdByDoctorId(doctorId);
-					List<String> patients = userService.getUsersById(userids);
-					model.addAttribute("patiens", patients );
-					model.addAttribute("doctorLoggadurInn", true);
+					List<Users> patients = userService.getUsersById(userids);
+
+					model.addAttribute("patients", patients );
 
 				}
 				catch(Exception e)
