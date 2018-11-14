@@ -8,6 +8,7 @@
     <title>Appótekið - Heimasvæði</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/myArea.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/searchEngine.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/checkBox.css"/>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -52,7 +53,7 @@
                     <td><label class="switch">
                         <input type="checkbox" id="toggler" checked onclick="togglerer()">
                         <span class="slider round"></span>
-                        </label>
+                    </label>
                     </td>
                 </tr>
                 </c:forEach>
@@ -65,7 +66,7 @@
         <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
         <div class="modal-content">
             <div class="popUpHead">
-                <h2 class="popUpHeadTitle">Óinnskráður notandi</h2>
+                <input  class="popUpHeadTitle" type="text" id="Doctorutgafudagur" readonly/>
                 <div class="close" id="unregisterdClosing"onclick="closing()">&times;</div>
             </div>
             <div class="popUpTextContainer">
@@ -78,14 +79,11 @@
 <script>
     function togglerer(){
 
-        
+
         var a = document.getElementById("toggler").value;
         alert(a)
-        if(a == 'on'){
-            openNotification()
-        }else{
-            alert("sérst þú");
-        }
+        var e = document.getElementById('Doctorutgafudagur').value = "útgáfudagur";
+        openNotification()
 
 
     }
