@@ -50,7 +50,6 @@ public class DoktorController
 	public DoktorController(StringManipulationService stringService)
 	{
 
-		this.stringService = stringService; List<Medicine> medicine = new ArrayList<Medicine>();
 	}
 
 	// Request mapping is the path that you want to map this method to
@@ -58,16 +57,33 @@ public class DoktorController
 	// is running and you enter "localhost:8080" into a browser, this
 	// method is called
 	@RequestMapping(value = "/allusers", method = RequestMethod.GET)
-	public String allUsers()
+	public String allUsers(Model model)
 	{
+		List<Users> allUsers = userService.getPatients();
+
+		model.addAttribute("users", allUsers);
+
 		return "allUsers/allUsers";
 	}
 
 	@RequestMapping(value = "/allusers", method = RequestMethod.POST)
-	public String doctorPost()
+	public String doctorPost(Model model,
+							 @RequestParam(value = "Accept", required=false) Long userId)
 	{
-		// Dagsetning - Nafn - Bæjarfélag - póstnúmer - heimilsfang - email
-		List<Users> allUsers = userService.findAll();
+		if(userId == null){
+			userId = -1L;
+		}
+		if(userId > 0L){
+			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Long doctorID = userService.getUsersByUsername(userDetails.getUsername()).getId();
+			if(!doctorPatientsService.getPatientIdByDoctorId(doctorID).contains(userId))
+				doctorPatientsService.save(new DoctorPatients(doctorID,userId));
+		}
+
+		List<Users> allUsers = userService.getPatients();
+
+		model.addAttribute("users", allUsers);
+		System.out.println(userId);
 		return "allUsers/allUsers";
 	}
 }

@@ -106,9 +106,8 @@
                 </div>
                 <div class="DoctorSelectOptionsContainer">
                     <c:forEach items="${patients}" var="obj">
-                        <h2>leita</h2>
-                        <option value="${obj}">
-                                ${obj}
+                        <option value="${obj.name}">
+                                ${obj.name}
                         </option>
                     </c:forEach>
                 </div>

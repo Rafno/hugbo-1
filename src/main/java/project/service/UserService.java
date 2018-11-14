@@ -39,11 +39,14 @@ public interface UserService
 	
 	String findByUsername(String username);
 	
-	List<String> getUsersById(List<Long> userids);
-	
 	Users getUsersByUsername(String username);
 	
 	Boolean [] userNameExists(String username);
 	
 	List<Users>findAll();
+
+	List<Users> getPatients();
+
+	List<Users> getUsersById(List<Long> userids);
+
 }
