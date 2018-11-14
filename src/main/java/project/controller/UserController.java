@@ -129,7 +129,8 @@ public class UserController {
 							   @RequestParam("homeAddress") String homeAddress,
 							   @RequestParam("emailAddress") String emailAddress,
 							   @RequestParam("homeTown") String homeTown,
-							   @RequestParam("zipCode") String zipCode) throws IOException {
+							   @RequestParam("zipCode") String zipCode
+							   ) throws IOException {
 
 		model.addAttribute("nafn", name);
 		// hreinsum arrayListana

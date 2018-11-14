@@ -2,16 +2,14 @@ package project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import project.persistence.entities.Cabinet;
-import project.persistence.entities.DoctorPatients;
-import project.persistence.entities.Medicine;
-import project.persistence.entities.Users;
+import project.persistence.entities.*;
 import project.service.*;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -39,17 +37,20 @@ public class HomeController
 	CabinetService cabinetService;
 	@Autowired
 	DoctorPatientsService doctorPatientsService;
+	@Autowired
+	ReminderService reminderService;
 
 	List<Medicine> medicine;
 	// Dependency Injection
 
 	private UserDetails userDetails;
+	private String prevLeita;
 
 
 	@Autowired
 	public HomeController(StringManipulationService stringService)
 	{
-
+		this.prevLeita = "";
 		this.stringService = stringService; List<Medicine> medicine = new ArrayList<Medicine>();
 	}
 
@@ -91,12 +92,21 @@ public class HomeController
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String homePost(Model model, Principal principal, @RequestParam("search") String leita,
+	public String homePost(Model model, Principal principal, @RequestParam(value = "search", required = false) String leita,
 						   @RequestParam("nafn") String nafn, @RequestParam("styrkur") String styrkur,
-						   @RequestParam("lyfjaform") String lyfjaform, @RequestParam("utgafudagur") String utgafudagur
+						   @RequestParam("lyfjaform") String lyfjaform, @RequestParam("utgafudagur") String utgafudagur,
+						   @RequestParam(value = "userId", required=false) Long patientId,
+						   @RequestParam(value = "medId", required=false) Long medId
 	)
 	{
-		// get search results
+		if(leita == null){
+			leita = this.prevLeita;
+		}
+		else{
+			this.prevLeita = leita;
+		}
+
+		System.out.println(patientId + "userId" + leita +"leita");
 		medicine = medicineService.findPlaceContainingKeywordAnywhere(stringService.convertStringToLowerCase(leita));
 		model.addAttribute("leita", leita); model.addAttribute("medicine", medicine);
 
@@ -144,7 +154,10 @@ public class HomeController
 					List<Users> patients = userService.getUsersById(userids);
 
 					model.addAttribute("patients", patients );
-
+					if(patientId >= 0){
+						if(!reminderService.getMedIdByUserId(patientId).contains(medId))
+							reminderService.save(new Reminder(medId,patientId,null,null,null,null));
+					}
 				}
 				catch(Exception e)
 				{

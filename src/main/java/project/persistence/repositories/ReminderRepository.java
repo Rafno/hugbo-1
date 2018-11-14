@@ -1,6 +1,8 @@
 package project.persistence.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import project.persistence.entities.Reminder;
 import java.sql.Time;
@@ -21,6 +23,9 @@ public interface ReminderRepository extends JpaRepository<Reminder, Long> {
 	void delete(Reminder reminder);
 
 	List<Reminder> findAll();
+
+	@Query( "select r.medicineId from Reminder r where r.usersId = ?1" )
+	List<Reminder> getMedIdByUserId(Long userId);
 
 
 

@@ -24,4 +24,8 @@ public class ReminderServiceImplementation implements ReminderService {
 	public List<Reminder> findAll() {
 		return repository.findAll();
 	}
+
+	public List<Reminder> getMedIdByUserId(Long userId){
+		return repository.getMedIdByUserId(userId);
+	}
 }

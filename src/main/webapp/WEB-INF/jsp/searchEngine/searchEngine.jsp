@@ -6,7 +6,7 @@
 <jsp:include page="../headNavigation/headNavigation.jsp" />
 <head>
     <title>Project Title</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="../css/searchEngine.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="../css/searchEng.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="../css/index.css"/>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -50,7 +50,7 @@
                 <c:forEach items="${medicine}" var="obj">
                     <c:if test="${not empty userLoggedInn}">
                         <c:if test="${not empty doctor}">
-                            <tr onclick="openPopUpDoctor('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}','${obj.pdfLink}')">
+                            <tr onclick="openPopUpDoctor('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}','${obj.pdfLink}','${obj.id}')">
                         </c:if>
                         <c:if test="${empty doctor}">
                             <tr onclick="openPopUpPatient('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}','${obj.pdfLink}')">
@@ -90,14 +90,14 @@
         </Form>
     </div>
     <!-- Model fyril innskráða lækna -->
-    <div id="DocorMyModal" class="modal">
+    <div id="DocorMyModal" class="modalDoctor">
         <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
         <Form class="modal-content" method="post">
-            <div class="popUpHead">
-                <h2 class="popUpHeadTitle">Bæta lyf á sjúkling</h2>
-                <div class="close" id="doctorClose">&times;</div>
+            <div class="popUpHead" name = "search" value = "">
+                <h2 class="popUpHeadTitle"> Bæta lyf á sjúkling</h2>
+                <div class="close"  id="doctorClose">&times;</div>
             </div>
-            <div class="doctorePopUpContainer">
+            <div class="doctorPopUpContainer">
                 <div class="popUpTextContainer" id="container">
                     <input class="popUpTexti" type="text" name="nafn" id="Doctornafn" value = "nafn" readonly/>
                     <input class="popUpTexti"type="text" name="styrkur" id="Doctorstyrkur" readonly/>
@@ -105,14 +105,16 @@
                     <input class="popUpTexti"type="text" name="utgafudagur" id="Doctorutgafudagur" readonly/>
                 </div>
                 <div class="DoctorSelectOptionsContainer">
-                    <c:forEach items="${patients}" var="obj">
-                        <option value="${obj.name}">
-                                ${obj.name}
-                        </option>
-                    </c:forEach>
+                    <select class="optionPannelAddMedToUser" onChange="myFunction(this.options[this.selectedIndex].value)" name = "userId">
+                        <c:forEach items="${patients}" var="obj">
+                            <option value="${obj.id}">  ${obj.name} </option>
+                        </c:forEach>
+                    </select>
                 </div>
             </div>
-            <button class="popUpSubmit" type="submit" name="search">Staðfesta</button>
+            <div class="acceptContainer" method = "post" >
+                <button class="popUpSubmitDoctor" type="submit" id = "getMed" name="medId">Staðfesta</button>
+            </div>
         </Form>
     </div>
     <!-- Modeal fyrir ekki innskráða notendur-->
@@ -153,7 +155,7 @@
         }
     }
 
-    function openPopUpDoctor(nafn,styrkur,lyfjaform,utgafudagur,pdfLink){
+    function openPopUpDoctor(nafn,styrkur,lyfjaform,utgafudagur,pdfLink,medId){
         // nær í módelið
         var modal = document.getElementById('DocorMyModal');
         var b = document.getElementById('Doctornafn').value = "Nafn Lyfsins: "+nafn;
@@ -161,7 +163,7 @@
         var d = document.getElementById('Doctorlyfjaform').value = "lyfjaform: "+lyfjaform;
         var e = document.getElementById('Doctorutgafudagur').value = "útgáfudagur: "+utgafudagur;
         var f = document.getElementById('pdfLink').value = "Sérlyfjaskrá" + pdfLink;
-
+        var g = document.getElementById('getMed').value = medId;
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";
 

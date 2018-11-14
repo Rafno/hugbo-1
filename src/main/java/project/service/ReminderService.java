@@ -12,4 +12,6 @@ public interface ReminderService {
 	void delete(Reminder reminder);
 
 	List<Reminder> findAll();
+
+	List<Reminder> getMedIdByUserId(Long userId);
 }
