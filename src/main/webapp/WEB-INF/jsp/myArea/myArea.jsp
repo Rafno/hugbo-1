@@ -51,7 +51,7 @@
                     <td><c:out value="${obj.pharmaceutical_form}"/></td>
                     <td><c:out value="${obj.strength}"/></td>
                     <td><label class="switch">
-                        <input type="checkbox" id="toggler" checked onclick="togglerer()">
+                        <input type="checkbox" id="toggler" checked onclick="togglerer('${obj.name}')">
                         <span class="slider round"></span>
                     </label>
                     </td>
@@ -65,24 +65,42 @@
     <div id="myModalUnregistered" class="modal">
         <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
         <div class="modal-content">
-            <div class="popUpHead">
-                <input  class="popUpHeadTitle" type="text" id="Doctorutgafudagur" readonly/>
-                <div class="close" id="unregisterdClosing"onclick="closing()">&times;</div>
+            <div class="popUpHeadReminder">
+                <h2 class="popUpHeadTitle" id = "Doctorutgafudagur"></h2>
+                <div class="close" id="unregisterdClosing" onclick="closing()">&times;</div>
             </div>
-            <div class="popUpTextContainer">
-                <div> Þú ert ekki innskráður notandi</div>
-                <div> Það er frítt að skrá sig inn og þú gerir það með að smella <a href="register">hér</a></div>
+            <div class="amminingaContainer">
+                <div class="aminingaBox">
+                    <h2 class="reminderHeadTitle">1.Ámining</h2>
+                    <input type="time" value="18:00" class="Clock">
+                    <button class="confirmReminderButton">Staðfest</button>
+                </div>
+                <div class="aminingaBox">
+                    <h2 class="reminderHeadTitle">2.Ámining</h2>
+                    <input type="time" value="18:00" class="Clock">
+                    <button class="confirmReminderButton">Staðfest</button>
+                </div>
+                <div class="aminingaBox">
+                    <h2 class="reminderHeadTitle">3.Ámining</h2>
+                    <input type="time" value="18:00" class="Clock">
+                    <button class="confirmReminderButton">Staðfest</button>
+                </div>
+                <div class="aminingaBox">
+                    <h2 class="reminderHeadTitle">4.Ámining</h2>
+                    <input type="time" value="18:00" class="Clock">
+                    <button class="confirmReminderButton">Staðfest</button>
+                </div>
             </div>
         </div>
     </div>
 </body>
 <script>
-    function togglerer(){
+    function togglerer(name){
 
 
         var a = document.getElementById("toggler").value;
-        alert(a)
-        var e = document.getElementById('Doctorutgafudagur').value = "útgáfudagur";
+        document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminingu á "+name;
+
         openNotification()
 
 
@@ -95,6 +113,62 @@
         var span = document.getElementById("unregisterdClosing");
         span.onclick = function() {
             myModalUnregistered.style.display = "none";
+            alert("hello");
+            
         }
     }
+    function closing(){
+
+    }
 </script>
+<style>
+    /*Pop up container fyrir reminder*/
+    .amminingaContainer {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        background-color: slategrey;
+        justify-content: center;
+        padding-top: 6%;
+        border: 1px solid black;
+    }
+    .aminingaBox {
+        width: 29%;
+        background-color: white;
+        margin-left: 1%;
+        margin-right: 1%;
+        border: 3px solid black;
+        border-radius: 4px;
+        justify-content: center;
+        min-height: 100%;
+        margin-bottom: 2%;
+        border-radius: 4px;
+    }
+    /*Stíla takkana í reminder*/
+    .confirmReminderButton{
+        font-size: 1.6rem;
+        margin-left: 20%;
+        margin-bottom: 10%;
+        color: white;
+        background-color: black;
+    }
+    /*Head container í pop up reminder*/
+
+    .popUpHeadReminder{
+        display: flex;
+        flex-direction: row;
+        background-color: darkgreen;
+        justify-content: center;
+        border: 1px solid black;
+    }
+    .Clock {
+        font-size: 2rem;
+        margin-bottom: 10%;
+        margin-top: 10%;
+        margin-left:5%;
+    }
+    .reminderHeadTitle {
+        margin-left: 10%;
+        font-weight: bold;
+    }
+</style>
