@@ -10,19 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 import project.persistence.entities.*;
 import project.service.*;
 import com.cloudinary.Cloudinary;
 
-import javax.transaction.Transactional;
 import java.io.*;
-import java.security.Principal;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.sql.Time;
 
 /**
  * Small controller just to show that you can have multiple controllers
@@ -101,8 +99,8 @@ public class myAreaController
 					LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
 					LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
 					String ids = item.getUsersId().toString();
-					String testing = "87";
-					System.out.println("Waiting" + current_time.getMinute());
+					// testing = "87";
+					//System.out.println("Waiting" + current_time.getMinute());
 					if(localTime1.getHour() == current_time.getHour() && Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10)
 					{
 						System.out.println("Senda notification  : " + localTime2);
@@ -118,17 +116,17 @@ public class myAreaController
 					}
 					if(localTime2.getHour() == current_time.getHour() &&  Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10)
 					{
-						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
+						//System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
 					}
 					if(localTime3.getHour() == current_time.getHour() && Math.abs(localTime3.getMinute() - current_time.getMinute()) < 10)
 					{
-						System.out.println("Senda notification : " + localTime3);
-						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
+						//System.out.println("Senda notification : " + localTime3);
+						//System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
 					}
 					if(localTime4.getHour() == current_time.getHour() && Math.abs(localTime4.getMinute() - current_time.getMinute()) < 10)
 					{
-						System.out.println("Senda notification : " + localTime4);
-						System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
+						//System.out.println("Senda notification : " + localTime4);
+						//System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
 					}
 
 				}
@@ -196,11 +194,11 @@ public class myAreaController
 	}
 	
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
-	public String myAreasPost(Model model, @RequestParam("pic") MultipartFile file) throws IOException
+	public String myAreasPost(Model model, @RequestParam("pic") MultipartFile file, @RequestParam("time1") String time1) throws IOException
 	{
 		
 		// load image to cloudinary
-		
+		System.out.println(time1);
 		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
 		
 		String img = (String) cloudinary.url().imageTag((String) uploadResult.get("public_id"));
@@ -212,12 +210,26 @@ public class myAreaController
 		String role = userService.getUser(userDetails.getUsername()).getRole();
 		if(role.equals("DOCTOR"))
 		{
-			System.out.println("þessi er læknir");
 			model.addAttribute("doctorLoggadurInn", true);
 		}else {
 			// Doctor er ekki loggaður inn
 		}
 		return "myArea/myArea";
+	}
+	@RequestMapping(value = "/myhome", method = RequestMethod.POST)
+	public RedirectView myAreaPut(Model model,
+								  @RequestParam("time1") String time1,
+								  @RequestParam("buttonFyrst") String buttonFyrst)
+	{
+		// Time 1
+		System.out.println(time1+" takki"+ buttonFyrst);
+		//Time 2
+		RedirectView redirectView = new RedirectView();
+		//Time 3
+
+		//Time 4
+		redirectView.setUrl("/myHome");
+		return redirectView;
 	}
 	
 	public void getUser()
