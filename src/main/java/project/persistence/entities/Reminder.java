@@ -15,19 +15,36 @@ public class Reminder {
 	private Long medicineId;
 	private Long usersId;
 	private String hour1;
+	private boolean enable1;
 	private String hour2;
+	private boolean enable2;
 	private String hour3;
+	private boolean enable3;
 	private String hour4;
+	private boolean enable4;
 
 	public Reminder(){
 	}
-	public Reminder(Long medicineId, Long usersId, String hour1, String hour2, String hour3, String hour4){
+	public Reminder(Long medicineId,
+					Long usersId,
+					String hour1,
+					String hour2,
+					String hour3,
+					String hour4,
+					boolean enable1,
+					boolean enable2,
+					boolean enable3,
+					boolean enable4){
 		this.medicineId = medicineId;
 		this.usersId = usersId;
 		this.hour1 = hour1;
 		this.hour2 = hour2;
 		this.hour3 = hour3;
 		this.hour4 = hour4;
+		this.enable1 = enable1;
+		this.enable2 = enable2;
+		this.enable3 = enable3;
+		this.enable4 = enable4;
 	}
 
 	public Long getId() {
@@ -94,4 +111,30 @@ public class Reminder {
 	{
 		this.hour4 = hour4;
 	}
+
+	private boolean getEnable1(){
+		return this.enable1;
+	}
+	private boolean getEnable2(){
+		return this.getEnable2();
+	}
+	private boolean getEnable3(){
+		return this.enable3;
+	}
+	private boolean getEnable4(){
+		return this.enable4;
+	}
+	private void setEnable1(boolean enable1){
+		this.enable1 = enable1;
+	}
+	private void setEnable2(boolean enable2){
+		this.enable1 = enable2;
+	}
+	private void setEnable3(boolean enable3){
+		this.enable1 = enable3;
+	}
+	private void setEnable4(boolean enable4){
+		this.enable1 = enable4;
+	}
+
 }

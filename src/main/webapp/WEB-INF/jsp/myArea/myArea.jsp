@@ -51,7 +51,7 @@
                     <td><c:out value="${obj.pharmaceutical_form}"/></td>
                     <td><c:out value="${obj.strength}"/></td>
                     <td>
-                        <input type="button" id="toggler" checked onclick="togglerer('${obj.name}')" value="Skoða áminingar">
+                        <input type="button" id="toggler" checked onclick="togglerer('${obj.name}',${obj.id})" value="Skoða áminingar">
                     </td>
                 </tr>
                 </c:forEach>
@@ -92,6 +92,7 @@
                         <input type="time" value="18:00" class="Clock" name="time4" id="time4">
                         <input type="button" class="confirmReminderButton" onclick="butts(4)" id="butt4" value="Staðfesta">
                         <input type="hidden" name="buttonFourth" id="buttonFourth" value=""/>
+                        <input type="hidden" name="medicineId" id="medicineId"/>
                     </div>
                 </div>
             </div>
@@ -163,11 +164,12 @@
         }
 
     }
-    function togglerer(name){
+    function togglerer(name, id){
 
 
         var a = document.getElementById("toggler").value;
         document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
+        document.getElementById("medicineId").value = id;
 
         openNotification()
 
