@@ -7,13 +7,13 @@
 
 <head>
     <title>Appótekið</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/allUsers.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/allUser.css"/>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
     <body>
-        <H2>Allir sjúklingar</H2>
+        <h2 class="allUsersHeader">Allir sjúklingar</h2>
     <div class = "allPatientsTable">
         <table id="patient" border="1">
             <tr>

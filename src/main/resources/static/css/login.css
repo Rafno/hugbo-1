@@ -34,6 +34,15 @@
     font-size: 1.6rem;
 }
 .loginContainer {
-    margin-left: 42%;
+    margin-left: 40%;
     margin-top: 10%;
+}
+.loginHeader {
+    font-weight: bold;
+}
+.buttonSumbitLogin {
+    font-size: 1.4rem;
+    color: white;
+    background-color: green;
+    margin: 4%;
 }

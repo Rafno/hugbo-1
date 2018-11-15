@@ -14,7 +14,7 @@
 </head>
 <jsp:include page="../headNavigation/headNavigation.jsp" />
 <div class="loginContainer">
-    <h1>Innskráning</h1>
+    <h1 class="loginHeader">Innskráning</h1>
 
     <c:if test="${not empty errorMsg}"><div style="color:red; font-weight: bold; margin: 30px 0px;">${errorMsg}</div></c:if>
 
@@ -29,7 +29,7 @@
                 <td><input type='password' name='password' value="" class="inputText"/></td>
             </tr>
             <tr>
-                <td colspan='2'><input name="submit"type="submit" value="Staðfesta" /></td>
+                <td colspan='2'><input name="submit"type="submit" value="Staðfesta" class="buttonSumbitLogin"/></td>
             </tr>
         </table>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />

@@ -1,4 +1,7 @@
-
+.allUsersHeader {
+    display: flex;
+    justify-content: center;
+}
 .allPatientsTable{
     margin-right: 50%;
 }
@@ -51,7 +54,7 @@
     margin: auto;
     border: 1px solid #888;
     height: 40%;
-    width: 50%;
+    width: 30%;
     margin-top: 10%;
 }
 
@@ -83,6 +86,8 @@
 .popUpHeadTitle{
     flex: 1 0 95%;
     color: #dddddd;
+    font-size: 2rem;
+    padding-left: 26%;
 }
 .popUpMainContainer{
     height: 70%;
@@ -91,12 +96,12 @@
 }
 .popUpTexti {
     flex: 1 0 50%;
-    font-size: 1.0rem;
+    font-size: 1.2rem;
     margin-right: 20%;
     border-style: none;
     width: 80%;
     height: 100%;
-    color:black;
+    color: black;
 }
 .popUpButtonContainer{
     flex: 0 1 50%;
