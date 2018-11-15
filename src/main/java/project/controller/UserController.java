@@ -1,5 +1,6 @@
 package project.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -63,7 +64,7 @@ public class UserController {
 			errorMessage = "Notendanafn eða lykilorð er ekki rétt, athugaðu að hástafir og lágstafir skipta máli.";
 		}
 		if (logout != null) {
-			errorMessage = "You have been successfully logged out !!";
+			errorMessage = "Þú hefur verið útskráður";
 		}
 		model.addAttribute("errorMsg", errorMessage);
 		// Búum til try catch sem skoðar hvort user er skráður inn
@@ -112,11 +113,9 @@ public class UserController {
 		lykilordVillur.clear();
 		// kalla hér á fall sem skoðar hvort username og password séu lögleg
 		allGood = true;
-		getErrors(username, password, passwordRepeat);
+		getErrors(username, password, passwordRepeat, zipCode);
 		if (allGood) {
 			// Senda Confrimation email
-
-			System.out.println(emailAddress);
 
 			String number = sendHttp(emailAddress, name, true);
 
@@ -152,9 +151,14 @@ public class UserController {
 	}
 
 
-	public void getErrors(String notendanafn, String lykilord, String lykilordRepeat) {
+	public void getErrors(String notendanafn, String lykilord, String lykilordRepeat, String zipCode) {
+		if(!StringUtils.isNumeric(zipCode)){
+			lykilordVillur.add("Póstnúmer verður að vera númer");
+			allGood = false;
+		}
 		if (!lykilord.equals(lykilordRepeat)) {
 			lykilordVillur.add("Lykilorðin verða að vera eins");
+			allGood = false;
 		}
 		String[] islenskirStafir = {"á", "Á", "ð", "Ð", "é", "É", "í", "Í", "ó", "Ó", "ú", "Ú", "ý", "Ý", "þ", "Þ", "æ", "Æ", "Ö", "ö", " "};
 		for (String item : islenskirStafir) {

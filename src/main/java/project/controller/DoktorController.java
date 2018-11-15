@@ -52,7 +52,6 @@ public class DoktorController
 	public String allUsers(Model model)
 	{
 		List<Users> allUsers = userService.getPatients();
-		
 		model.addAttribute("users", allUsers);
 		
 		return "allUsers/allUsers";
@@ -73,9 +72,16 @@ public class DoktorController
 		}
 		
 		List<Users> allUsers = userService.getPatients();
-		
+		// Skoða hvort sá user sem er smellt á hefur gilt email og staðfest það.
 		model.addAttribute("users", allUsers);
-		System.out.println(userId);
+		Users patient = userService.findOne(userId);
+		if(patient.getConfirmed()){
+			// TODO tengja við helgaFAll
+		} else {
+			// TODO senda á html, að notandi er ekki með staðfest email eða með rétt email
+			
+		}
+		
 		return "allUsers/allUsers";
 	}
 }

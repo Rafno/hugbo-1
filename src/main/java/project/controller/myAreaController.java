@@ -231,8 +231,7 @@ public class myAreaController
 								  @RequestParam(value = "time3", required = false) String time3,
 								  @RequestParam(value = "buttonFourth", required = false) String buttonFourth,
 								  @RequestParam(value = "time4", required = false) String time4,
-								  @RequestParam(value = "medicineId", required = false) Long medId
-								  )
+								  @RequestParam(value = "medicineId", required = false) Long medId)
 	{
 		// Time 1
 		if(medId != null) {
@@ -241,7 +240,7 @@ public class myAreaController
 			if (buttonSeckond.equals("Staðfesta")) enable2 = true;
 			if (buttonThird.equals("Staðfesta")) enable3 = true;
 			if (buttonFourth.equals("Staðfesta")) enable4 = true;
-
+			
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
 			Long reminderID = reminderService.getIdOfRelation(userId, medId);
