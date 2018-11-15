@@ -28,4 +28,20 @@ public class ReminderServiceImplementation implements ReminderService {
 	public List<Reminder> getMedIdByUserId(Long userId){
 		return repository.getMedIdByUserId(userId);
 	}
+
+	public Long getIdOfRelation(Long userId, Long medicineId){
+		return repository.getIdOfRelation(userId,medicineId);
+	}
+	public void updateReminder(Long id,
+							   String time1,
+							   String time2,
+							   String time3,
+							   String time4,
+							   Boolean enable1,
+							   Boolean enable2,
+							   Boolean enable3,
+							   Boolean enable4
+	){
+		repository.updateReminder(id,time1,time2,time3,time4,enable1,enable2,enable3,enable4);
+	}
 }

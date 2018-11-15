@@ -73,6 +73,7 @@ public class myAreaController
 		Timer timer = new Timer();
 		
 		//    TEST
+		/*
 		String myDateString1 = "17:58:10";
 		String myDateString2 = "22:53:30";
 		String myDateString3 = "22:53:47";
@@ -81,9 +82,10 @@ public class myAreaController
 		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long userID = userService.getUsersByUsername(userDetails.getUsername()).getId();
 		reminderService.save(new Reminder(1L, userID , myDateString1, myDateString2, myDateString3, myDateString4, false, false, false, false));
-		
+		*/
+
 		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
-		
+
 		timer.scheduleAtFixedRate(new TimerTask()
 		{
 			public void run() {
@@ -216,47 +218,56 @@ public class myAreaController
 	}
 	@RequestMapping(value = "/myhome", method = RequestMethod.POST)
 	public RedirectView myAreaPut(Model model,
-								  @RequestParam("time1") String time1,
-								  @RequestParam("buttonFyrst") String buttonFyrst,
-								  @RequestParam("buttonSeckond") String buttonSeckond,
-								  @RequestParam("time2") String time2,
-								  @RequestParam("buttonThird") String buttonThird,
-								  @RequestParam("time3") String time3,
-								  @RequestParam("buttonFourth") String buttonFourth,
-								  @RequestParam("time4") String time4,
-								  @RequestParam("medicineId") Long medId
-								  )
+								  @RequestParam(value = "time1", required = false) String time1,
+								  @RequestParam(value = "buttonFyrst", required = false) String buttonFyrst,
+								  @RequestParam(value = "buttonSeckond", required = false) String buttonSeckond,
+								  @RequestParam(value = "time2", required = false) String time2,
+								  @RequestParam(value = "buttonThird", required = false) String buttonThird,
+								  @RequestParam(value = "time3", required = false) String time3,
+								  @RequestParam(value = "buttonFourth", required = false) String buttonFourth,
+								  @RequestParam(value = "time4", required = false) String time4,
+								  @RequestParam(value = "medicineId", required = false) Long medId)
 	{
 		// Time 1
-		boolean enable1 = false, enable2 = false, enable3 = false, enable4 = false;
-		if(buttonFyrst.equals("Staðfesta")) enable1 = true;
-		if(buttonSeckond.equals("Staðfesta")) enable2 = true;
-		if(buttonThird.equals("Staðfesta")) enable3 = true;
-		if(buttonFourth.equals("Staðfesta")) enable4 = true;
+		if(medId != null) {
+			boolean enable1 = false, enable2 = false, enable3 = false, enable4 = false;
+			if (buttonFyrst.equals("Staðfesta")) enable1 = true;
+			if (buttonSeckond.equals("Staðfesta")) enable2 = true;
+			if (buttonThird.equals("Staðfesta")) enable3 = true;
+			if (buttonFourth.equals("Staðfesta")) enable4 = true;
+			
+			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Long userId = userService.getUser(userDetails.getUsername()).getId();
+			Long reminderID = reminderService.getIdOfRelation(userId, medId);
+			System.out.println(reminderID);
+			if (reminderID != null) {
+				reminderService.updateReminder(
+					reminderID,
+					time1,
+					time2,
+					time3,
+					time4,
+					enable1,
+					enable2,
+					enable3,
+					enable4
+				);
+			} else {
+				Reminder myReminder = new Reminder(medId,
+					userId,
+					time1,
+					time2,
+					time3,
+					time4,
+					enable1,
+					enable2,
+					enable3,
+					enable4);
+				reminderService.save(myReminder);
+			}
+		}
 
-		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		Reminder myReminder = new Reminder(	medId,
-											userService.getUser(userDetails.getUsername()).getId(),
-											time1,
-											time2,
-											time3,
-											time4,
-											enable1,
-											enable2,
-											enable3,
-											enable4);
-		reminderService.save(myReminder);
-		System.out.println("H'erdsjkfndfdjdfsj    +++___kjnfdjksnfkjdsnfjsdnfjdsnfjkdsfnjkdsfnkjds___jds");
-		System.out.println(time1+" takki1 "+ buttonFyrst);
-		System.out.println("---------------------------");
-		System.out.println(time2+ " takki 2 "+buttonSeckond);
-		System.out.println("---------------------------");
-		System.out.println(time3 +  " takki 3 "+buttonThird);
-		System.out.println("----------------------------");
-		System.out.println(time4 + " takki 4"+ buttonFourth);
-		System.out.println("-------------------------------");
-		System.out.println("id :" + medId);
-		//Redirec
+		//Redirect
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl("/myHome");
 		return redirectView;
