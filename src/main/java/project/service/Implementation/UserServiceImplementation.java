@@ -17,13 +17,13 @@ public class UserServiceImplementation implements UserService{
 	
 	
 	// Instance Variables
-	UsersRepository repository;
-	Logger logger;
+	private UsersRepository repository;
+	
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
-	UserRolesRepository userRolesRepository;
+	private UserRolesRepository userRolesRepository;
 	// Dependency Injection
 	@Autowired
 	public UserServiceImplementation(UsersRepository repository, UserRolesRepository userRolesRepository) {
@@ -35,7 +35,7 @@ public class UserServiceImplementation implements UserService{
 	/**
 	 * Saves the user, encrypts the password before inserting into database.
 	 * user roles are saved dynamically.
-	 * @param user
+	 * @param user user object
 	 */
 	@Override
 	public void save(Users user) {
@@ -60,10 +60,10 @@ public class UserServiceImplementation implements UserService{
 	 * Checks if the user exists by looking into database for the unique username,
 	 * then checks if the user with that username matches the encrypted password.
 	 * if correct, send the user data back.
-	 * @param username
-	 * @param password
-	 * @return
-	 * @throws NullPointerException
+	 * @param username username of user
+	 * @param password password of user
+	 * @return Returns possible user
+	 * @throws NullPointerException if we catch a null.
 	 */
 	@Override
 	public Users userLogin(String username, String password) throws NullPointerException
@@ -74,12 +74,12 @@ public class UserServiceImplementation implements UserService{
 			if(passwordEncoder.matches(password, possibleUser.getPassword())) {
 				return possibleUser;
 			} else {
-				logger.info("User did not exist");
+			
 			}
 			
 			return possibleUser;
 		} catch (NullPointerException e){
-			logger.info("User did not exist");
+		
 		}
 		return possibleUser;
 	}
@@ -141,9 +141,9 @@ public class UserServiceImplementation implements UserService{
 	/**
 	 * Changes the boolean value in the table Users to true
 	 * since the user has confirmed their email.
-	 * @param user
+	 * @param id id of possible user, pushed in with email.
 	 */
-	public void confirmEmail(Users user){
-		repository.confirmEmail(user);
+	public void confirmEmail(String id){
+		repository.confirmEmail(id);
 	}
 }
