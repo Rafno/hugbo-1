@@ -78,6 +78,7 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	@Query( "select p from Users p where p.role LIKE 'USER' ")
 	List<Users> getPatients();
 	
+	//Bætt við comment hér.
 	@Transactional
 	@Modifying
 	@Query("UPDATE Users p SET p.confirmed = TRUE WHERE p.confirmationNumber = :id")
