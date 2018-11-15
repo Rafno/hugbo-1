@@ -116,7 +116,7 @@ public class Reminder {
 		return this.enable1;
 	}
 	private boolean getEnable2(){
-		return this.getEnable2();
+		return this.enable2;
 	}
 	private boolean getEnable3(){
 		return this.enable3;
