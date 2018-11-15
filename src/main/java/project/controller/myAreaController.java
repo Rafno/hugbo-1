@@ -224,7 +224,7 @@ public class myAreaController
 								  @RequestParam("time3") String time3,
 								  @RequestParam("buttonFourth") String buttonFourth,
 								  @RequestParam("time4") String time4,
-								  @RequestParam("medicineId") String medId
+								  @RequestParam("medicineId") Long medId
 								  )
 	{
 		// Time 1
@@ -235,7 +235,6 @@ public class myAreaController
 		if(buttonFourth.equals("Staðfesta")) enable4 = true;
 
 		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		Long medId = 1L;
 		Reminder myReminder = new Reminder(	medId,
 											userService.getUser(userDetails.getUsername()).getId(),
 											time1,
