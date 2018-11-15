@@ -7,7 +7,7 @@
 <head>
     <title>Appótekið - Heimasvæði</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/myArea.css"/>"/>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/searchEngine.css"/>"/>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/css/searchEng.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/checkBox.css"/>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -50,10 +50,8 @@
                     <td><c:out value="${obj.name}"/></td>
                     <td><c:out value="${obj.pharmaceutical_form}"/></td>
                     <td><c:out value="${obj.strength}"/></td>
-                    <td><label class="switch">
-                        <input type="checkbox" id="toggler" checked onclick="togglerer('${obj.name}')">
-                        <span class="slider round"></span>
-                    </label>
+                    <td>
+                        <input type="button" id="toggler" checked onclick="togglerer('${obj.name}')" value="Skoða áminingar">
                     </td>
                 </tr>
                 </c:forEach>
@@ -64,7 +62,7 @@
     <!-- Pop up kassinn fyrir notification -->
     <div id="myModalUnregistered" class="modal">
         <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
-        <Form method="POST" action="/myhome">
+        <Form method="POST" action="/myhome" class="reminderForm">
             <div class="modal-content">
                 <div class="popUpHeadReminder">
                     <h2 class="popUpHeadTitle" id = "Doctorutgafudagur"></h2>
@@ -72,25 +70,28 @@
                 </div>
                 <div class="amminingaContainer">
                     <div class="aminingaBox">
-                        <h2 class="reminderHeadTitle">1.Ámining</h2>
+                        <h2 class="reminderHeadTitle">1.Áminning</h2>
                         <input type="time" value="18:00" class="Clock" name="time1" id="time1">
-                        <input type="button" class="confirmReminderButton"  value="Staðfest">
-                        <input type="hidden" value="Staðfest" name="buttonFyrst" id="buttonFyrst" />
+                        <input type="button" class="confirmReminderButton"  onclick="butts(1)" id="butt1" value="Staðfesta">
+                        <input type="hidden" name="buttonFyrst" id="buttonFyrst" value=""/>
                     </div>
                     <div class="aminingaBox">
-                        <h2 class="reminderHeadTitle">2.Ámining</h2>
-                        <input type="time" value="18:00" class="Clock">
-                        <button class="confirmReminderButton">Staðfest</button>
+                        <h2 class="reminderHeadTitle">2.Áminning</h2>
+                        <input type="time" value="18:00" class="Clock"name="time2" id="time2">
+                        <input type="button" class="confirmReminderButton"   onclick="butts(2)" id="butt2" value="Staðfesta">
+                        <input type="hidden" name="buttonSeckond" id="buttonSeckond" value=""/>
                     </div>
                     <div class="aminingaBox">
-                        <h2 class="reminderHeadTitle">3.Ámining</h2>
-                        <input type="time" value="18:00" class="Clock">
-                        <button class="confirmReminderButton">Staðfest</button>
+                        <h2 class="reminderHeadTitle">3.Áminning</h2>
+                        <input type="time" value="18:00" class="Clock" name="time3" id="time3">
+                        <input type="button" class="confirmReminderButton"  onclick="butts(3)" id="butt3" value="Staðfesta">
+                        <input type="hidden" name="buttonThird" id="buttonThird" value=""/>
                     </div>
                     <div class="aminingaBox">
-                        <h2 class="reminderHeadTitle">4.Ámining</h2>
-                        <input type="time" value="18:00" class="Clock">
-                        <button class="confirmReminderButton">Staðfest</button>
+                        <h2 class="reminderHeadTitle">4.Áminning</h2>
+                        <input type="time" value="18:00" class="Clock" name="time4" id="time4">
+                        <input type="button" class="confirmReminderButton" onclick="butts(4)" id="butt4" value="Staðfesta">
+                        <input type="hidden" name="buttonFourth" id="buttonFourth" value=""/>
                     </div>
                 </div>
             </div>
@@ -98,11 +99,75 @@
     </div>
 </body>
 <script>
+    function  butts(numb) {
+        var responseButton = ""
+        var responseBackroundColor = "";
+        if(numb == 1){
+            if(document.getElementById("butt1").value =="Hætta við") {
+                responseBackroundColor = "background-color: green";
+                responseButton = "Staðfesta"
+
+            }else{
+                responseButton="Hætta við"
+                responseBackroundColor = "background-color: red";
+            }
+            document.getElementById("butt1").value = responseButton;
+            document.getElementById("buttonFyrst").value = responseButton;
+            document.getElementById("butt1").style = responseBackroundColor;
+
+        }
+        if(numb == 2) {
+            if (document.getElementById("butt2").value == "Hætta við") {
+                document.getElementById("butt2").style = "background-color: red";
+                document.getElementById("")
+                responseBackroundColor = "background-color: green";
+                responseButton = "Staðfesta"
+
+            } else {
+                responseButton = "Hætta við"
+                responseBackroundColor = "background-color: red";
+            }
+            document.getElementById("butt2").value = responseButton;
+            document.getElementById("buttonSeckond").value = responseButton;
+            document.getElementById("butt2").style = responseBackroundColor;
+        }
+
+        if(numb == 3) {
+            if (document.getElementById("butt3").value == "Hætta við") {
+                document.getElementById("butt3").style = "background-color: red";
+                responseBackroundColor = "background-color: green";
+                responseButton = "Staðfesta"
+
+            } else {
+                responseButton = "Hætta við"
+                responseBackroundColor = "background-color: red";
+            }
+            document.getElementById("butt3").value = responseButton;
+            document.getElementById("buttonThird").value = responseButton;
+            document.getElementById("butt3").style = responseBackroundColor;
+        }
+
+        if(numb == 4) {
+            if (document.getElementById("butt4").value == "Hætta við") {
+                document.getElementById("butt4").style = "background-color: red";
+                responseBackroundColor = "background-color: green";
+                responseButton = "Staðfesta"
+
+            } else {
+                responseButton = "Hætta við"
+                responseBackroundColor = "background-color: red";
+            }
+            document.getElementById("butt4").value = responseButton;
+            document.getElementById("buttonFourth").value = responseButton;
+            document.getElementById("butt4").style = responseBackroundColor;
+        }
+
+    }
     function togglerer(name){
 
 
         var a = document.getElementById("toggler").value;
-        document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminingu á "+name;
+        document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
 
         openNotification()
 
@@ -117,7 +182,6 @@
         span.onclick = function() {
             myModalUnregistered.style.display = "none";
             postForm();
-            alert("hello");
             
         }
     }
@@ -141,6 +205,7 @@
 
         form.submit();
     }
+
 </script>
 <style>
     /*Pop up container fyrir reminder*/
@@ -154,10 +219,8 @@
         border: 1px solid black;
     }
     .aminingaBox {
-        width: 29%;
+        width: 27%;
         background-color: white;
-        margin-left: 1%;
-        margin-right: 1%;
         border: 3px solid black;
         border-radius: 4px;
         justify-content: center;
@@ -171,7 +234,7 @@
         margin-left: 20%;
         margin-bottom: 10%;
         color: white;
-        background-color: black;
+        background-color: red;
     }
     /*Head container í pop up reminder*/
 
@@ -183,10 +246,9 @@
         border: 1px solid black;
     }
     .Clock {
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin-bottom: 10%;
         margin-top: 10%;
-        margin-left:5%;
     }
     .reminderHeadTitle {
         margin-left: 10%;

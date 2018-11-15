@@ -193,7 +193,9 @@ public class HomeController
 	public String email(HttpServletRequest request) throws IOException {
 		// Hér næ ég í ID
 		System.out.println(request.getQueryString());
-		// Hér þarf að bera saman Id sem server sendi og mið við hvað email notandi gerði
+		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(userService.getUser(userDetails.getUsername()).getConfirmationNumber());
+
 		return ("email/emails");
 
 	}

@@ -88,7 +88,6 @@
     font-size: 28px;
     font-weight: bold;
     position: absolute;
-    top: 32%;
     right: 25.4%;
     color: #dddd;
 }
@@ -114,7 +113,6 @@
     margin-right: 20%;
     border-style: none;
     width: 97%;
-    color:red;
 }
 
 .popUpSubmit{
