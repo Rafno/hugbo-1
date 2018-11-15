@@ -64,7 +64,7 @@ public class UserController {
 			errorMessage = "Notendanafn eða lykilorð er ekki rétt, athugaðu að hástafir og lágstafir skipta máli.";
 		}
 		if (logout != null) {
-			errorMessage = "You have been successfully logged out !!";
+			errorMessage = "Þú hefur verið útskráður";
 		}
 		model.addAttribute("errorMsg", errorMessage);
 		// Búum til try catch sem skoðar hvort user er skráður inn
