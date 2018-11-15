@@ -13,25 +13,27 @@
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/headNavigation.css"/>"/>
 </head>
 <jsp:include page="../headNavigation/headNavigation.jsp" />
-<h1>Innskráning</h1>
+<div class="loginContainer">
+    <h1>Innskráning</h1>
 
-<c:if test="${not empty errorMsg}"><div style="color:red; font-weight: bold; margin: 30px 0px;">${errorMsg}</div></c:if>
+    <c:if test="${not empty errorMsg}"><div style="color:red; font-weight: bold; margin: 30px 0px;">${errorMsg}</div></c:if>
 
-<form name='login' action="/login" method='POST'>
-    <table>
-        <tr>
-            <td>UserName:</td>
-            <td><input type='text' name='username' value=''></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type='password' name='password' value=""/></td>
-        </tr>
-        <tr>
-            <td colspan='2'><input name="submit"type="submit" value="Staðfesta" /></td>
-        </tr>
-    </table>
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-</form>
+    <form name='login' action="/login" method='POST'>
+        <table>
+            <tr>
+                <td>Notendanafn:</td>
+                <td><input type='text' name='username' value='' class="inputText"></td>
+            </tr>
+            <tr>
+                <td>Lykilorð:</td>
+                <td><input type='password' name='password' value="" class="inputText"/></td>
+            </tr>
+            <tr>
+                <td colspan='2'><input name="submit"type="submit" value="Staðfesta" /></td>
+            </tr>
+        </table>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    </form>
+</div>
 </body>
 </html>
