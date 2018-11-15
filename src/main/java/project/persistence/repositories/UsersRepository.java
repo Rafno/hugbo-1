@@ -73,11 +73,15 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 
 	@Query( "select p from Users p where p.id in :ids" )
 	List<Users> getUsersById(@Param("ids") List<Long> userids);
-
+	
 	@Query( "select p from Users p where p.username LIKE ?1" )
 	Users getUsersByUsername(String username);
-
+	
 	@Query( "select p from Users p where p.role LIKE 'USER' ")
 	List<Users> getPatients();
+	
 
+	
+	@Query("SELECT p FROM Users p")
+	void confirmEmail(Users user);
 }

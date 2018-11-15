@@ -76,7 +76,6 @@ public class HomeController
 			// Skoða hvort að notandi er læknir eða ekki
 			if(role.equals("DOCTOR"))
 			{
-				System.out.println("þessi er læknir");
 				model.addAttribute("doctorLoggadurInn", true);
 			}else {
 				// Doctor er ekki loggaður inn
@@ -105,8 +104,6 @@ public class HomeController
 		else{
 			this.prevLeita = leita;
 		}
-
-		System.out.println(patientId + "userId" + leita +"leita");
 		medicine = medicineService.findPlaceContainingKeywordAnywhere(stringService.convertStringToLowerCase(leita));
 		model.addAttribute("leita", leita); model.addAttribute("medicine", medicine);
 
@@ -189,14 +186,5 @@ public class HomeController
 
 		} return "About/about";
 	}
-	@RequestMapping(value = "/netfangstadfest", method = RequestMethod.GET)
-	public String email(HttpServletRequest request) throws IOException {
-		// Hér næ ég í ID
-		System.out.println(request.getQueryString());
-		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println(userService.getUser(userDetails.getUsername()).getConfirmationNumber());
 
-		return ("email/emails");
-
-	}
 }
