@@ -14,7 +14,7 @@ import java.io.IOException;
 @Controller
 public class emailController
 {
-	@Autowired
+	
 	private UserService userService;
 	
 	private UserDetails userDetails;
@@ -22,9 +22,10 @@ public class emailController
 	@RequestMapping(value = "/netfangstadfest", method = RequestMethod.GET)
 	public String email(HttpServletRequest request) throws IOException
 	{
-		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		//this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		// Hér næ ég í ID
-		System.out.println(request.getQueryString());
+		String req = request.getQueryString();
+		userService.confirmEmail(req);
 		// Hér þarf að bera saman Id sem server sendi og mið við hvað email notandi gerði
 		//userService.confirmEmail();
 		return ("email/emails");

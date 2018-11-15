@@ -21,15 +21,15 @@ public interface UserService
 	
 	/**
 	 * finds all patient users.
-	 * @param id
-	 * @return
+	 * @param id Id á lækninum
+	 * @return Allir patient users sem tengjast þessum lækni.
 	 */
 	List<Users> findAllPatients(Long id);
 	
 	/**
 	 * Finds all doctor users
-	 * @param id
-	 * @return
+	 * @param id Finnur alla usera sem eru læknar.
+	 * @return Skilar lista af læknum
 	 */
 	List<Users> findDoctor(Long id);
 	
@@ -49,6 +49,6 @@ public interface UserService
 
 	List<Users> getUsersById(List<Long> userids);
 	
-	void confirmEmail(Users user);
+	void confirmEmail(String id);
 
 }

@@ -15,9 +15,7 @@ import java.util.List;
 /**
  * Every user function is used here.
  * Users are created, users can be patients or doctors
- */
 
-/**
  * HOW TO CREATE QUERIES
  * @Query(value="Select f from Foo f"
  * Foo must be the name of the java class of the entity, not the schema created by Spring.
@@ -63,8 +61,8 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	
 	/**
 	 * Used to update images on your myHome page.
-	 * @param imageId
-	 * @param username
+	 * @param imageId id á myndinni í cloudinary
+	 * @param username usernameið á notandanum
 	 */
 	@Transactional
 	@Modifying
@@ -80,8 +78,8 @@ public interface UsersRepository extends JpaRepository<Users, Long>{
 	@Query( "select p from Users p where p.role LIKE 'USER' ")
 	List<Users> getPatients();
 	
-
-	
-	@Query("SELECT p FROM Users p")
-	void confirmEmail(Users user);
+	@Transactional
+	@Modifying
+	@Query("UPDATE Users p SET p.confirmed = TRUE WHERE p.confirmationNumber = :id")
+	void confirmEmail(@Param("id") String id);
 }
