@@ -197,10 +197,13 @@ public class UserController {
 
 	public String sendHttp(String emailAddress, String name, Boolean confirm, String medicineName) throws IOException {
 		String url = "";
+		String urlParameters ="";
 		if (confirm) {
 			url = "https://hugbo1.herokuapp.com";
+			urlParameters = "to=" + emailAddress + ";SPLITER;" + name;
 		} else {
 			url = "https://hugbo1.herokuapp.com/reminder";
+			urlParameters = "to=" + emailAddress + ";SPLITER;" + name + ";SPLITER;" + medicineName;
 		}
 
 
@@ -210,9 +213,7 @@ public class UserController {
 		//add reuqest header
 		con.setRequestMethod("POST");
 		con.setRequestProperty("Accept-Language", "IS;q=0.5");
-
-
-		String urlParameters = "to=" + emailAddress + ";SPLITER;" + name + ";SPLITTER;" + medicineName;
+		
 		byte[] bytes = new byte[10];
 		String finalUrl = new String(bytes, Charset.forName("UTF-8"));
 		System.out.println(urlParameters);
