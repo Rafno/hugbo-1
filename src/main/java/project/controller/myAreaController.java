@@ -93,8 +93,14 @@ public class myAreaController
 
 				List<Reminder> amining = reminderService.findAll();
 
+				LocalTime current_time = zdt.toLocalTime();
 				for (Reminder item : amining) {
-                    LocalTime current_time = zdt.toLocalTime();
+					try{
+
+					}
+					catch(Exception e){
+
+					}
                     LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm:ss"));
                     LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
                     LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
@@ -112,7 +118,6 @@ public class myAreaController
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
                     }
                     if (localTime2.getHour() == current_time.getHour() && Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10) {
                         //System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
