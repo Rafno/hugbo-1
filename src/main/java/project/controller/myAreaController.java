@@ -92,13 +92,12 @@ public class myAreaController
 				//Hér þarf að skoða Db inn.
 
 				List<Reminder> amining = reminderService.findAll();
-
+				LocalTime current_time = zdt.toLocalTime();
 				for (Reminder item : amining) {
-                    LocalTime current_time = zdt.toLocalTime();
-                    LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-                    LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-                    LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-                    LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+                    LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm"));
+                    LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm"));
+                    LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm"));
+                    LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm"));
                     String ids = item.getUsersId().toString();
                     // testing = "87";
                     //System.out.println("Waiting" + current_time.getMinute());
@@ -157,6 +156,14 @@ public class myAreaController
 			model.addAttribute("doctorLoggadurInn", true);
 		}else {
 			// Doctor er ekki loggaður inn
+		}
+
+		if(role.equals("USER"))
+		{
+			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Long userId = userService.getUser(userDetails.getUsername()).getId();
+			List<Reminder> reminders = reminderService.getMedIdByUserId(userId);
+			model.addAttribute("Reminders", reminders);
 		}
 		// Lastly þarf að skoða fyrir áminingarnar því það er js function semsagt client side ef pop up glugginn er
 		// opnaður svo við þurfum að halda utan um fyrir hvern user hvernig reminder hann vill fá. Líklega best að setja
