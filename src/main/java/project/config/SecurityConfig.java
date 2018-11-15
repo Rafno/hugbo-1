@@ -68,7 +68,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			.and()
 			.formLogin()
 			.loginPage("/login")
-		//	.defaultSuccessUrl("/myHome")
+			.defaultSuccessUrl("/", true)
 			.and()
 			.httpBasic()
 			
@@ -86,6 +86,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	}
 	
 	/**
+	 * 
 	 * Allows all utils, resources, css, jsp files and images.
 	 * @param web
 	 * @throws Exception
@@ -94,7 +95,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	public void configure(WebSecurity web) throws Exception{
 		web
 			.ignoring()
-			.antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**");
+			.antMatchers("/resources/**", "/static/**", "/css/**", "/webapp/**", "/img/**");
 	}
 	
 }

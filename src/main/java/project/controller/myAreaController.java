@@ -111,7 +111,6 @@ public class myAreaController
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-
                     }
                     if (localTime2.getHour() == current_time.getHour() && Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10) {
                         //System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
@@ -233,8 +232,7 @@ public class myAreaController
 								  @RequestParam(value = "time3", required = false) String time3,
 								  @RequestParam(value = "buttonFourth", required = false) String buttonFourth,
 								  @RequestParam(value = "time4", required = false) String time4,
-								  @RequestParam(value = "medicineId", required = false) Long medId
-								  )
+								  @RequestParam(value = "medicineId", required = false) Long medId)
 	{
 		// Time 1
 		if(medId != null) {
@@ -243,7 +241,7 @@ public class myAreaController
 			if (buttonSeckond.equals("Staðfesta")) enable2 = true;
 			if (buttonThird.equals("Staðfesta")) enable3 = true;
 			if (buttonFourth.equals("Staðfesta")) enable4 = true;
-
+			
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
 			Long reminderID = reminderService.getIdOfRelation(userId, medId);
