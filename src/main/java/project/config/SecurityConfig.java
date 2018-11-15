@@ -86,7 +86,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	}
 	
 	/**
-	 * 
+	 *
 	 * Allows all utils, resources, css, jsp files and images.
 	 * @param web
 	 * @throws Exception

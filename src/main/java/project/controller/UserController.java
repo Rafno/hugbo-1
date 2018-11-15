@@ -30,11 +30,14 @@ import java.net.URL;
  */
 @Controller
 public class UserController {
-
+	
+	@Autowired
 	private UserService userService;
+	
 	private static List<String> notendaVillur = new ArrayList<String>();
 	private static List<String> lykilordVillur = new ArrayList<String>();
 	private static Boolean allGood;
+	
 	private UserDetails userDetails;
 
 	@Autowired

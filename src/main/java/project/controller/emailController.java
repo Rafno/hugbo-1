@@ -14,7 +14,7 @@ import java.io.IOException;
 @Controller
 public class emailController
 {
-	
+	@Autowired
 	private UserService userService;
 	
 	private UserDetails userDetails;
