@@ -161,6 +161,10 @@ public class myAreaController
 		}else {
 			// Doctor er ekki loggaður inn
 		}
+		// Lastly þarf að skoða fyrir áminingarnar því það er js function semsagt client side ef pop up glugginn er
+		// opnaður svo við þurfum að halda utan um fyrir hvern user hvernig reminder hann vill fá. Líklega best að setja
+		// í bobjectid sem er runnað í gegnum þau lyf sem user er að taka.
+
 		return "myArea/myArea";
 	}
 	
@@ -194,11 +198,10 @@ public class myAreaController
 	}
 	
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
-	public String myAreasPost(Model model, @RequestParam("pic") MultipartFile file, @RequestParam("time1") String time1) throws IOException
+	public String myAreasPost(Model model, @RequestParam("pic") MultipartFile file) throws IOException
 	{
 		
 		// load image to cloudinary
-		System.out.println(time1);
 		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
 		
 		String img = (String) cloudinary.url().imageTag((String) uploadResult.get("public_id"));
@@ -219,15 +222,25 @@ public class myAreaController
 	@RequestMapping(value = "/myhome", method = RequestMethod.POST)
 	public RedirectView myAreaPut(Model model,
 								  @RequestParam("time1") String time1,
-								  @RequestParam("buttonFyrst") String buttonFyrst)
+								  @RequestParam("buttonFyrst") String buttonFyrst,
+								  @RequestParam("buttonSeckond") String buttonSeckond,
+								  @RequestParam("time2") String time2,
+								  @RequestParam("buttonThird") String buttonThird,
+								  @RequestParam("time3") String time3,
+								  @RequestParam("buttonFourth") String buttonFourth,
+								  @RequestParam("time4") String time4
+								  )
 	{
 		// Time 1
-		System.out.println(time1+" takki"+ buttonFyrst);
-		//Time 2
+		System.out.println(time1+" takki1 "+ buttonFyrst);
+		System.out.println("---------------------------");
+		System.out.println(time2+ " takki 2 "+buttonSeckond);
+		System.out.println("---------------------------");
+		System.out.println(time3 +  " takki 3 "+buttonThird);
+		System.out.println("----------------------------");
+		System.out.println(time4 + " takki 4"+ buttonFourth);
+		//Redirec
 		RedirectView redirectView = new RedirectView();
-		//Time 3
-
-		//Time 4
 		redirectView.setUrl("/myHome");
 		return redirectView;
 	}
