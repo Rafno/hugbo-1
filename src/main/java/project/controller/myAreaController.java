@@ -129,15 +129,38 @@ public class myAreaController
 			}, delay, interval);
 
 		// add medicine to my home table
-		if(cabinetService.findAll().size() != 0)
+		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		Long userId = userService.getUser(userDetails.getUsername()).getId();
+		List<Cabinet> cab = cabinetService.getMedsByUser(userId);
+		System.out.println(cab.size());
+		if(cab.size() > 0)
 		{
-			Long userId = userService.getUser(userDetails.getUsername()).getId();
-			List<Cabinet> cab = cabinetService.getMedsByUser(userId);
 			List<Medicine> medicine = new ArrayList<>();
 			for(int i = 0; i < cab.size(); i++)
 			{
+				Long medId = cab.get(i).getMedicineId();
 				medicine.add(i, medicineService.findOne(cab.get(i).getMedicineId()));
-			} model.addAttribute("medicine", medicine);
+				Long reminderID = reminderService.getIdOfRelation(userId, medId);
+				if(reminderID == null){
+					Reminder myReminder = new Reminder(
+						medId,
+						userId,
+						"18:00",
+						"18:00",
+						"18:00",
+						"18:00",
+						false,
+						false,
+						false,
+						false);
+					reminderService.save(myReminder);
+				}
+			}
+			List<Reminder> reminders = reminderService.getMedIdByUserId(userId);
+			model.addAttribute("medicine", medicine);
+			model.addAttribute("reminder", reminders);
+			
 		}
 		// Find role returns the appropriate column name, patients for doctors, doctors for patients.
 		// If this user is a doctor, show all of their patients.
@@ -157,13 +180,7 @@ public class myAreaController
 			// Doctor er ekki loggaður inn
 		}
 
-		if(role.equals("USER"))
-		{
-			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			Long userId = userService.getUser(userDetails.getUsername()).getId();
-			List<Reminder> reminders = reminderService.getMedIdByUserId(userId);
-			model.addAttribute("Reminders", reminders);
-		}
+
 		// Lastly þarf að skoða fyrir áminingarnar því það er js function semsagt client side ef pop up glugginn er
 		// opnaður svo við þurfum að halda utan um fyrir hvern user hvernig reminder hann vill fá. Líklega best að setja
 		// í bobjectid sem er runnað í gegnum þau lyf sem user er að taka.

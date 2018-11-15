@@ -47,14 +47,14 @@
                 <tr>
 
                 <c:forEach items="${medicine}" var="obj">
-                    <td><c:out value="${obj.name}"/></td>
-                    <td><c:out value="${obj.pharmaceutical_form}"/></td>
-                    <td><c:out value="${obj.strength}"/></td>
-                    <td>
-                        <input type="button" id="toggler" checked onclick="togglerer('${obj.name}',${obj.id})" value="Skoða áminingar">
-                    </td>
-                </tr>
+                    <c:forEach items="${reminder}" var="obj2">
+
+                    <c:if test = "${obj.id == obj2.medicine_id }">
+                        <p> hello</p>
+                        </c:if>
+                    </c:forEach>
                 </c:forEach>
+                </tr>
 
             </table>
         </div>
@@ -164,9 +164,9 @@
         }
 
     }
-    function togglerer(name, id){
+    function togglerer(name, id,hour1,hour2,hour3,hour3,enable1,enable2,enable3,enable4){
 
-
+        console.log(name,id,hour1,hour2,hour3,hour4,enable1,enable2,enable3,enable4)
         var a = document.getElementById("toggler").value;
         document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
         document.getElementById("medicineId").value = id;
