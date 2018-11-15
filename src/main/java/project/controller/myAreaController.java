@@ -73,6 +73,7 @@ public class myAreaController
 		Timer timer = new Timer();
 		
 		//    TEST
+		/*
 		String myDateString1 = "17:58:10";
 		String myDateString2 = "22:53:30";
 		String myDateString3 = "22:53:47";
@@ -80,59 +81,55 @@ public class myAreaController
 
 		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Long userID = userService.getUsersByUsername(userDetails.getUsername()).getId();
-		reminderService.save(new Reminder(1L, userID , myDateString1, myDateString2, myDateString3, myDateString4));
-		
+		reminderService.save(new Reminder(1L, userID , myDateString1, myDateString2, myDateString3, myDateString4, false, false, false, false));
+		*/
+
 		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
-		
+
 		timer.scheduleAtFixedRate(new TimerTask()
 		{
-			public void run()
-			{
+			public void run() {
 				//Hér þarf að skoða Db inn.
-				
+
 				List<Reminder> amining = reminderService.findAll();
-				for(Reminder item : amining)
-				{
-					LocalTime current_time = zdt.toLocalTime();
-					LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-					LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-					LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-					LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-					String ids = item.getUsersId().toString();
-					// testing = "87";
-					//System.out.println("Waiting" + current_time.getMinute());
-					if(localTime1.getHour() == current_time.getHour() && Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10)
-					{
-						System.out.println("Senda notification  : " + localTime2);
 
-						System.out.println("Lyf: " + medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName() + " Email: " + userService.findOne(item.getUsersId()).getEmail());
-						UserController a = new UserController(userService);
-						try {
-							a.sendHttp("helgigretargunnars.96@gmail.com", userService.findOne(item.getUsersId()).getName(),false);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
+				for (Reminder item : amining) {
+                    LocalTime current_time = zdt.toLocalTime();
+                    LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+                    LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+                    LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+                    LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+                    String ids = item.getUsersId().toString();
+                    // testing = "87";
+                    //System.out.println("Waiting" + current_time.getMinute());
+                    if (localTime1.getHour() == current_time.getHour() && Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10) {
+                        System.out.println("Senda notification  : " + localTime2);
 
-					}
-					if(localTime2.getHour() == current_time.getHour() &&  Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10)
-					{
-						//System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
-					}
-					if(localTime3.getHour() == current_time.getHour() && Math.abs(localTime3.getMinute() - current_time.getMinute()) < 10)
-					{
-						//System.out.println("Senda notification : " + localTime3);
-						//System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
-					}
-					if(localTime4.getHour() == current_time.getHour() && Math.abs(localTime4.getMinute() - current_time.getMinute()) < 10)
-					{
-						//System.out.println("Senda notification : " + localTime4);
-						//System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
-					}
+                        System.out.println("Lyf: " + medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName() + " Email: " + userService.findOne(item.getUsersId()).getEmail());
+                        UserController a = new UserController(userService);
+                        try {
+                            a.sendHttp("helgigretargunnars.96@gmail.com", userService.findOne(item.getUsersId()).getName(), false);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
-				}
+                    }
+                    if (localTime2.getHour() == current_time.getHour() && Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10) {
+                        //System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
+                    }
+                    if (localTime3.getHour() == current_time.getHour() && Math.abs(localTime3.getMinute() - current_time.getMinute()) < 10) {
+                        //System.out.println("Senda notification : " + localTime3);
+                        //System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
+                    }
+                    if (localTime4.getHour() == current_time.getHour() && Math.abs(localTime4.getMinute() - current_time.getMinute()) < 10) {
+                        //System.out.println("Senda notification : " + localTime4);
+                        //System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
+                    }
+
+                }
 			}
-
 			}, delay, interval);
+
 		// add medicine to my home table
 		if(cabinetService.findAll().size() != 0)
 		{
@@ -221,28 +218,57 @@ public class myAreaController
 	}
 	@RequestMapping(value = "/myhome", method = RequestMethod.POST)
 	public RedirectView myAreaPut(Model model,
-								  @RequestParam("time1") String time1,
-								  @RequestParam("buttonFyrst") String buttonFyrst,
-								  @RequestParam("buttonSeckond") String buttonSeckond,
-								  @RequestParam("time2") String time2,
-								  @RequestParam("buttonThird") String buttonThird,
-								  @RequestParam("time3") String time3,
-								  @RequestParam("buttonFourth") String buttonFourth,
-								  @RequestParam("time4") String time4,
-								  @RequestParam("medicineId") String medId
+								  @RequestParam(value = "time1", required = false) String time1,
+								  @RequestParam(value = "buttonFyrst", required = false) String buttonFyrst,
+								  @RequestParam(value = "buttonSeckond", required = false) String buttonSeckond,
+								  @RequestParam(value = "time2", required = false) String time2,
+								  @RequestParam(value = "buttonThird", required = false) String buttonThird,
+								  @RequestParam(value = "time3", required = false) String time3,
+								  @RequestParam(value = "buttonFourth", required = false) String buttonFourth,
+								  @RequestParam(value = "time4", required = false) String time4,
+								  @RequestParam(value = "medicineId", required = false) Long medId
 								  )
 	{
 		// Time 1
-		System.out.println(time1+" takki1 "+ buttonFyrst);
-		System.out.println("---------------------------");
-		System.out.println(time2+ " takki 2 "+buttonSeckond);
-		System.out.println("---------------------------");
-		System.out.println(time3 +  " takki 3 "+buttonThird);
-		System.out.println("----------------------------");
-		System.out.println(time4 + " takki 4"+ buttonFourth);
-		System.out.println("-------------------------------");
-		System.out.println("id :" + medId);
-		//Redirec
+		if(medId != null) {
+			boolean enable1 = false, enable2 = false, enable3 = false, enable4 = false;
+			if (buttonFyrst.equals("Staðfesta")) enable1 = true;
+			if (buttonSeckond.equals("Staðfesta")) enable2 = true;
+			if (buttonThird.equals("Staðfesta")) enable3 = true;
+			if (buttonFourth.equals("Staðfesta")) enable4 = true;
+
+			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			Long userId = userService.getUser(userDetails.getUsername()).getId();
+			Long reminderID = reminderService.getIdOfRelation(userId, medId);
+			System.out.println(reminderID);
+			if (reminderID != null) {
+				reminderService.updateReminder(
+					reminderID,
+					time1,
+					time2,
+					time3,
+					time4,
+					enable1,
+					enable2,
+					enable3,
+					enable4
+				);
+			} else {
+				Reminder myReminder = new Reminder(medId,
+					userId,
+					time1,
+					time2,
+					time3,
+					time4,
+					enable1,
+					enable2,
+					enable3,
+					enable4);
+				reminderService.save(myReminder);
+			}
+		}
+
+		//Redirect
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl("/myHome");
 		return redirectView;
