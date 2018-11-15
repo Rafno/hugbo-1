@@ -1,9 +1,7 @@
 /*each row there are four rows in the register*/
 .row {
     display: flex;
-    justify-content: center;
     align-items: center;
-    text-align: center;
     width: 100%;
     height: 5%;
 }
@@ -17,47 +15,44 @@
     width: 20%;
 
 }
-
 input.registerText {
     max-width: 500px;
-    width: 100%;
-    font-size: 1.5em;
+    width: 60%;
 }
-
 input#confirm {
     width: 20%;
     margin-left: 25%;
     height: 100%;
+    background-color: green;
+    color: white;
+    border-radius: 4px;
 }
 
 select#division {
     max-width: 500px;
     width: 100%;
-    font-size: 1.5em;
 }
 /*Form container for register*/
 .registeringContainer{
     display: flex;
     width: 100%;
     justify-content: flex-start;
+    font-size: 1.4rem;
 }
 .registeringUsername{
     flex: 1 0 50%;
     min-height: 100%;
     max-width: 50%;
     font-size: 15px;
-
     display: flex;
     flex-direction: column;
     height: auto;
-
 }
 .registeringHomeAdress{
     flex: 0 1 50%;
     min-height: 100%;
     max-width: 50%;
     font-size: 15px;
-
     display: flex;
     flex-direction: column;
 }
@@ -81,6 +76,7 @@ select#division {
     font-size: 2rem;
     height: 60px;
     font-weight: bold;
+    margin-bottom: 3%;
 }
 .optionPannelDoctorPatient {
     flex: 0 1 50%;
@@ -89,58 +85,4 @@ select#division {
     font-size: 15px;
 }
 /* change shape and color of text bar */
-
-#inputText1 {
-    flex: 0 1 50%;
-    width: 20%;
-    height: 20px;
-    font-size: 15px;
-}
-
-#inputText2 {
-    flex: 0 1 50%;
-    width: 20%;
-    height: 20px;
-    font-size: 15px;
-}
-
-#inputText3 {
-    flex: 0 1 50%;
-    width: 20%;
-    height: 20px;
-    font-size: 15px;
-}
-
-#inputText4 {
-    flex: 0 1 50%;
-    width: 20%;
-    height: 20px;
-    font-size: 15px;
-}
-#inputText5 {
-    flex: 0 1 50%;
-    width: 20%;
-    height: 20px;
-    font-size: 15px;
-}
-
-#inputText6 {
-    flex: 0 1 50%;
-    width: 20%;
-    height: 20px;
-    font-size: 15px;
-}
-
-#inputText7 {
-    flex: 0 1 50%;
-    width: 20%;
-    height: 20px;
-    font-size: 15px;
-}
-#inputTex8 {
-    flex: 0 1 50%;
-    width: 20%;
-    height: 20px;
-    font-size: 15px;
-}
 

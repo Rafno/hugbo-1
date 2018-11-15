@@ -17,23 +17,23 @@
         <div class="registeringUsername">
             <div class="row">
                 <h4 class="title" id = registerUserName>Notendanafn</h4>
-                <input type="text" placeholder="  Enga íslenska stafi" name="username"  class="registerText" id = inputText1 />
+                <input type="text" placeholder="  Enga íslenska stafi" name="username"  class="registerText"  />
                 <param name = "username" value="">
             </div>
             <br />
             <div class="row">
                 <h4 class="title">Lykilorð</h4>
-                <input type="text" placeholder="  Lágmark 6 stafir" name="password"style="-webkit-text-security: disc;" class="registerText" id = inputText2 />
+                <input type="text" placeholder="  Lágmark 6 stafir" name="password"style="-webkit-text-security: disc;" class="registerText"/>
             </div>
             <br />
             <div class="row">
             <h4 class="title">Staðfesta lykilorð</h4>
-            <input type="text" placeholder="  Passaðu að hafa lykilorðin eins " name="passwordRepeat" style="-webkit-text-security: disc;" class="registerText" id = inputText3 />
+            <input type="text" placeholder="  Passaðu að hafa lykilorðin eins " name="passwordRepeat" style="-webkit-text-security: disc;" class="registerText"/>
             </div>
             <br />
             <div class="row">
             <h4 class="title">Nafn</h4>
-            <input type="text" placeholder="  Þarf að fylla út" name="name" value="${nafn}" required class="registerText" id = inputText4 maxlength="40" />
+            <input type="text" placeholder="  Þarf að fylla út" name="name" value="${nafn}" required class="registerText" maxlength="40" />
             </div>
             <br />
             <div class="row">
@@ -53,24 +53,25 @@
         <div class="registeringHomeAdress">
             <div class="row">
                 <h4 class="title">Netfang</h4>
-                <input type="text" name="emailAddress"  class="registerText" id = inputTex8 required/>
+                <input type="text" name="emailAddress"  class="registerText" required/>
                 <param name="emailAddress" value="">
             </div>
+            <br />
             <div class="row">
                 <h4 class="title">Heimilisfang</h4>
-                <input type="text" name="homeAddress"  class="registerText" id = inputText5 />
+                <input type="text" name="homeAddress"  class="registerText"/>
                 <param name="homeAddress" value="">
             </div>
             <br />
             <div class="row">
                 <h4 class="title">Bæjarfélag</h4>
-                <input type="text"  name="homeTown" class="registerText" id = inputText6 />
+                <input type="text"  name="homeTown" class="registerText" />
                 <param name="homeTown" value="">
             </div>
             <br />
             <div class="row">
                 <h4 class="title">Póstnúmer</h4>
-                <input type="text" placeholder="  Aðeins tölustafir " name="zipCode" class="registerText" id = inputText7 />
+                <input type="text" placeholder="  Aðeins tölustafir " name="zipCode" class="registerText" />
                 <param name = "zipCode" value = "">
             </div>
             <div class="errors">
