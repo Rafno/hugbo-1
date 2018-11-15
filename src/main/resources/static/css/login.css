@@ -30,3 +30,10 @@
     background-color: orange;
     color: white;
 }
+.inputText {
+    font-size: 1.6rem;
+}
+.loginContainer {
+    margin-left: 42%;
+    margin-top: 10%;
+}

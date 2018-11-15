@@ -228,7 +228,8 @@ public class myAreaController
 								  @RequestParam("buttonThird") String buttonThird,
 								  @RequestParam("time3") String time3,
 								  @RequestParam("buttonFourth") String buttonFourth,
-								  @RequestParam("time4") String time4
+								  @RequestParam("time4") String time4,
+								  @RequestParam("medicineId") String medId
 								  )
 	{
 		// Time 1
@@ -239,6 +240,8 @@ public class myAreaController
 		System.out.println(time3 +  " takki 3 "+buttonThird);
 		System.out.println("----------------------------");
 		System.out.println(time4 + " takki 4"+ buttonFourth);
+		System.out.println("-------------------------------");
+		System.out.println("id :" + medId);
 		//Redirec
 		RedirectView redirectView = new RedirectView();
 		redirectView.setUrl("/myHome");
