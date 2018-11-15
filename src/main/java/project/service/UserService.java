@@ -45,7 +45,7 @@ public interface UserService
 	
 	List<Users>findAll();
 
-	List<Users> getPatients(String userRole);
+	List<Users> getPatients();
 
 	List<Users> getUsersById(List<Long> userids);
 	

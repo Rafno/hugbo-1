@@ -136,7 +136,7 @@ public class UserServiceImplementation implements UserService{
 
 	public Users getUsersByUsername(String username){return repository.getUsersByUsername(username);}
 
-	public List<Users> getPatients(String userRole){ return repository.findByRoleLikeUser(userRole);}
+	public List<Users> getPatients(){ return repository.getPatients();}
 	
 	/**
 	 * Changes the boolean value in the table Users to true
