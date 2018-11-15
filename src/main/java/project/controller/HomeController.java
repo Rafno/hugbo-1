@@ -156,7 +156,7 @@ public class HomeController
 					model.addAttribute("patients", patients );
 					if(patientId >= 0){
 						if(!reminderService.getMedIdByUserId(patientId).contains(medId))
-							reminderService.save(new Reminder(medId,patientId,null,null,null,null));
+							reminderService.save(new Reminder(medId,patientId,null,null,null,null,false,false,false,false));
 					}
 				}
 				catch(Exception e)
