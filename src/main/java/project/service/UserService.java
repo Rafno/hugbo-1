@@ -48,5 +48,7 @@ public interface UserService
 	List<Users> getPatients();
 
 	List<Users> getUsersById(List<Long> userids);
+	
+	void confirmEmail(Users user);
 
 }
