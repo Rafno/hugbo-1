@@ -30,11 +30,14 @@ import java.net.URL;
  */
 @Controller
 public class UserController {
-
+	
+	@Autowired
 	private UserService userService;
+	
 	private static List<String> notendaVillur = new ArrayList<String>();
 	private static List<String> lykilordVillur = new ArrayList<String>();
 	private static Boolean allGood;
+	
 	private UserDetails userDetails;
 
 	@Autowired
@@ -117,7 +120,7 @@ public class UserController {
 		if (allGood) {
 			// Senda Confrimation email
 
-			String number = sendHttp(emailAddress, name, true);
+			String number = sendHttp(emailAddress, name, true, "");
 
 			model.addAttribute("succesfull", "Til hamingju " + name + ". Aðgangurinn þinn hefur verið búinn til");
 
@@ -192,12 +195,15 @@ public class UserController {
 		}
 	}
 
-	public String sendHttp(String emailAddress, String name, Boolean confirm) throws IOException {
+	public String sendHttp(String emailAddress, String name, Boolean confirm, String medicineName) throws IOException {
 		String url = "";
-		if (confirm == true) {
+		String urlParameters ="";
+		if (confirm) {
 			url = "https://hugbo1.herokuapp.com";
+			urlParameters = "to=" + emailAddress + ";SPLITER;" + name;
 		} else {
 			url = "https://hugbo1.herokuapp.com/reminder";
+			urlParameters = "to=" + emailAddress + ";SPLITER;" + name + ";SPLITER;" + medicineName;
 		}
 
 
@@ -207,9 +213,7 @@ public class UserController {
 		//add reuqest header
 		con.setRequestMethod("POST");
 		con.setRequestProperty("Accept-Language", "IS;q=0.5");
-
-
-		String urlParameters = "to=" + emailAddress + ";SPLITER;" + name;
+		
 		byte[] bytes = new byte[10];
 		String finalUrl = new String(bytes, Charset.forName("UTF-8"));
 		System.out.println(urlParameters);

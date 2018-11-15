@@ -45,6 +45,7 @@ public class myAreaController
 	private UserDetails userDetails;
 	private Cloudinary cloudinary;
 	private StringManipulationService stringManipulationService;
+	private UserController userController = new UserController(userService);
 	
 	private Users myUser;
 	
@@ -78,51 +79,31 @@ public class myAreaController
 		String myDateString2 = "22:53:30";
 		String myDateString3 = "22:53:47";
 		String myDateString4 = "22:53:43";
-
-		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		*/
+		//this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		/*
 		Long userID = userService.getUsersByUsername(userDetails.getUsername()).getId();
 		reminderService.save(new Reminder(1L, userID , myDateString1, myDateString2, myDateString3, myDateString4, false, false, false, false));
 		*/
-
-		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
 
 		timer.scheduleAtFixedRate(new TimerTask()
 		{
 			public void run() {
 				//Hér þarf að skoða Db inn.
-
+				
 				List<Reminder> amining = reminderService.findAll();
-				LocalTime current_time = zdt.toLocalTime();
 				for (Reminder item : amining) {
                     LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm"));
                     LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm"));
                     LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm"));
                     LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm"));
                     String ids = item.getUsersId().toString();
-                    // testing = "87";
-                    //System.out.println("Waiting" + current_time.getMinute());
-                    if (localTime1.getHour() == current_time.getHour() && Math.abs(localTime1.getMinute() - current_time.getMinute()) < 10) {
-                        System.out.println("Senda notification  : " + localTime2);
-
-                        System.out.println("Lyf: " + medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName() + " Email: " + userService.findOne(item.getUsersId()).getEmail());
-                        UserController a = new UserController(userService);
-                        try {
-                            a.sendHttp("helgigretargunnars.96@gmail.com", userService.findOne(item.getUsersId()).getName(), false);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (localTime2.getHour() == current_time.getHour() && Math.abs(localTime2.getMinute() - current_time.getMinute()) < 10) {
-                        //System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
-                    }
-                    if (localTime3.getHour() == current_time.getHour() && Math.abs(localTime3.getMinute() - current_time.getMinute()) < 10) {
-                        //System.out.println("Senda notification : " + localTime3);
-                        //System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
-                    }
-                    if (localTime4.getHour() == current_time.getHour() && Math.abs(localTime4.getMinute() - current_time.getMinute()) < 10) {
-                        //System.out.println("Senda notification : " + localTime4);
-                        //System.out.println(medicineService.findOne(item.getMedicineId()).getName() + " Sjúklingur: " + userService.findOne(item.getUsersId()).getName());
-                    }
+                    
+                    // Checks if our hour is valid to Iceland, then sends the email to that our user.
+					if(assertHour(localTime1)) setEmail(item);
+					if(assertHour(localTime2)) setEmail(item);
+					if(assertHour(localTime3)) setEmail(item);
+					if(assertHour(localTime4)) setEmail(item);
 
                 }
 			}
@@ -188,6 +169,31 @@ public class myAreaController
 		return "myArea/myArea";
 	}
 	
+	/**
+	 * Assert hour accepts a time, makes sure that it is valid and returns true.
+	 * @param time
+	 * @return
+	 */
+	private boolean assertHour(LocalTime time){
+		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
+		LocalTime current_time = zdt.toLocalTime();
+		if (time.getHour() == current_time.getHour() && Math.abs(time.getMinute() - current_time.getMinute()) < 10) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 *	Accepts an item and sets up an email service for that user.
+	 * @param item
+	 */
+	private void setEmail(Reminder item){
+		try {
+			userController.sendHttp(myUser.getEmail(), userService.findOne(item.getUsersId()).getName(), false, medicineService.findOne(item.getMedicineId()).getName());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	private String findName(UserDetails userDetails)
 	{
 		return userService.getUsersByUsername(userDetails.getUsername()).getName();
