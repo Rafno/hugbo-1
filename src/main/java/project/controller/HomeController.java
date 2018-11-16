@@ -184,7 +184,10 @@ public class HomeController
 		catch(Exception err)
 		{
 
-		} return "About/about";
+		}
+		
+		
+		return "About/about";
 	}
 
 }
