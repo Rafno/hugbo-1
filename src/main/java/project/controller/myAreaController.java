@@ -200,10 +200,10 @@ public class myAreaController
 						"18:00",
 						"18:00",
 						"18:00",
-						false,
-						false,
-						false,
-						false
+						true,
+						true,
+						true,
+						true
 					);
 					
 					reminderService.save(myReminder);
