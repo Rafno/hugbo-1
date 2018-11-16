@@ -120,7 +120,7 @@ public class UserController {
 		if (allGood) {
 			// Senda Confrimation email
 
-			String number = sendHttp(emailAddress, name, true, "");
+			String number = sendHttp(emailAddress, name,"", "");
 
 			model.addAttribute("succesfull", "Til hamingju " + name + ". Aðgangurinn þinn hefur verið búinn til");
 
@@ -187,26 +187,26 @@ public class UserController {
 			}
 		}
 		for (Boolean item : userService.userNameExists(notendanafn)) {
-			if (item == true) {
+			if (item) {
 				notendaVillur.add("Notendanafn er nú þegar til");
 				allGood = false;
 				break;
 			}
 		}
 	}
-
-	public String sendHttp(String emailAddress, String name, Boolean confirm, String medicineName) throws IOException {
+	public String sendHttp(String emailAddress, String name, String medicineName, String urlLocation) throws IOException {
 		String url = "";
 		String urlParameters ="";
-		if (confirm) {
-			url = "https://hugbo1.herokuapp.com";
-			urlParameters = "to=" + emailAddress + ";SPLITER;" + name;
-		} else {
-			url = "https://hugbo1.herokuapp.com/reminder";
+		url = "https://hugbo1.herokuapp.com" + urlLocation;
+		if(medicineName.length() > 0){
 			urlParameters = "to=" + emailAddress + ";SPLITER;" + name + ";SPLITER;" + medicineName;
+		} else {
+			urlParameters = "to=" + emailAddress + ";SPLITER;" + name;
 		}
-
-
+		return sendingHttp(url,urlParameters);
+	}
+	
+	private String sendingHttp(String url,String urlParameters) throws IOException{
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -246,6 +246,8 @@ public class UserController {
 		//print result
 		String number = response.toString().substring(response.toString().lastIndexOf(":") + 1);
 		number = number.substring(0,number.length()-1);
+		// þurfum að generata hash key sem er gert í servernum.
 		return number;
 	}
+	
 }
