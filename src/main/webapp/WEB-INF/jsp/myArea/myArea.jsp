@@ -189,11 +189,11 @@
         console.log(a," þetta er strengurinn");
         var c = hour1.substr(0,2)+":"+hour1.substr(3,5);
         var d = c.substr(0,1);
-        console.log(c);
         console.log(d);
+        console.log(c);
         document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
         document.getElementById("medicineId").value = id;
-        document.getElementById("time1").value = d;
+        document.getElementById("time1").value = c;
         document.getElementById("time2").value = String(hour2).toString();
         document.getElementById("time3").value = String(hour3).toString();
         document.getElementById("time4").value = String(hour4).toString();
