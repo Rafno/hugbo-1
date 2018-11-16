@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import project.persistence.entities.Reminder;
 
 import javax.transaction.Transactional;
-import java.sql.Time;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * By extending the {@link JpaRepository} we have access to powerful methods.
@@ -24,7 +24,9 @@ public interface ReminderRepository extends JpaRepository<Reminder, Long> {
 	Reminder save(Reminder reminder);
 
 	void delete(Reminder reminder);
-
+	
+	Reminder findByUsersId(Long id);
+	
 	List<Reminder> findAll();
 
 	@Query(value = "SELECT r FROM Reminder r WHERE r.usersId = ?1")
@@ -53,4 +55,6 @@ public interface ReminderRepository extends JpaRepository<Reminder, Long> {
 						@Param("enable3") boolean enable3,
 						@Param("enable4") boolean enable4
 	);
+	
+	
 }

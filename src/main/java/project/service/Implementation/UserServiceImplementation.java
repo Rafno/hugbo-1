@@ -3,13 +3,13 @@ package project.service.Implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import project.persistence.entities.User_roles;
-import project.persistence.entities.Users;
-import project.persistence.repositories.UserRolesRepository;
-import project.persistence.repositories.UsersRepository;
+import project.persistence.entities.*;
+import project.persistence.repositories.*;
 import project.service.UserService;
 
+import javax.validation.constraints.Null;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Logger;
 
 @Service
@@ -25,11 +25,16 @@ public class UserServiceImplementation implements UserService{
 	
 	private UserRolesRepository userRolesRepository;
 	// Dependency Injection
+	private CabinetRepository cabinetRepository;
+	private DoctorPatientsRepository doctorPatientsRepository;
+	private ReminderRepository reminderRepository;
 	@Autowired
-	public UserServiceImplementation(UsersRepository repository, UserRolesRepository userRolesRepository) {
+	public UserServiceImplementation(UsersRepository repository, UserRolesRepository userRolesRepository,
+									 CabinetRepository cabinetRepository, DoctorPatientsRepository doctorPatientsRepository, ReminderRepository reminderRepository) {
 
 		this.repository = repository;
 		this.userRolesRepository = userRolesRepository;
+
 	}
 	
 	/**
@@ -50,9 +55,43 @@ public class UserServiceImplementation implements UserService{
 			userRolesRepository.save(auth);
 		}
 	}
+	
+	/**
+	 * Deletes user and all possible combinations in our schema.
+	 * One of the worst codes I've ever written, due to a fundemental problem with our schema relations.
+	 * no foreign keys of any kind, due to any kind of googling of one-to-one, one-to-many resulting in errors
+	 * and deprecated functions that Java Spring won't accept any more.
+	 * Beware all who come here, do not touch this and do not ever ask me to read this.
+	 * @param user
+	 */
 	@Override
 	public void delete(Users user) {
-		 repository.delete(user);
+		DoctorPatients doctorPatients;
+		try{
+			if(user.getRole() == "DOCTOR"){
+				doctorPatients = doctorPatientsRepository.findByDoctorId(user.getId());
+			} else {
+				doctorPatients = doctorPatientsRepository.findByPatientId(user.getId());
+			}
+			doctorPatientsRepository.delete(doctorPatients);
+		} catch (NullPointerException e) {
+			// user did not have a doctor patient relationship.
+		}
+		try {
+			Reminder reminder = reminderRepository.findByUsersId(user.getId());
+			reminderRepository.delete(reminder);
+		} catch (NullPointerException e){
+			// User did not have a reminder service
+		}
+		try {
+			Cabinet cab = cabinetRepository.findByUsersId(user.getId());
+			cabinetRepository.delete(cab);
+		} catch(NullPointerException e){
+			// user did not have a cabinet
+		}
+		User_roles auth = userRolesRepository.findByUsername(user.getUsername());
+		userRolesRepository.delete(auth);
+		repository.delete(user);
 	}
 	
 	/**

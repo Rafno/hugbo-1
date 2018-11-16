@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 import project.persistence.entities.Users;
 
 import project.service.UserService;
@@ -39,7 +40,10 @@ public class UserController {
 	private static Boolean allGood;
 	
 	private UserDetails userDetails;
-
+	private myAreaController myAreaController;
+	private Users myUser;
+	
+	
 	@Autowired
 	public UserController(UserService userService) {
 		this.userService = userService;
@@ -80,7 +84,14 @@ public class UserController {
 
 		return "/Login/login";
 	}
-
+	@RequestMapping(value ="/deletemyuserrightnow", method = RequestMethod.GET)
+	public RedirectView delete(){
+		getUser();
+		userService.delete(myUser);
+		RedirectView redirectView = new RedirectView();
+		redirectView.setUrl("/logout");
+		return redirectView;
+	}
 	// To call this method, enter "localhost:8080/user" into a browser
 	/*TODO Passa að bæjarfélag, póstnúmer og heimilisfang gildin koma aftur ef það kemur upp villa*/
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -247,5 +258,11 @@ public class UserController {
 				break;
 			}
 		}
+	}
+	public void getUser()
+	{
+		
+		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		this.myUser = userService.getUser(userDetails.getUsername());
 	}
 }
