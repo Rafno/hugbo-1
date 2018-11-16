@@ -25,7 +25,8 @@ public class Reminder {
 
 	public Reminder(){
 	}
-	public Reminder(Long medicineId,
+	public Reminder(
+					Long medicineId,
 					Long usersId,
 					String hour1,
 					String hour2,

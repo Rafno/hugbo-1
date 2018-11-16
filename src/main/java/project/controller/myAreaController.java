@@ -122,9 +122,11 @@ public class myAreaController
 			{
 				Long medId = cab.get(i).getMedicineId();
 				Medicine med = medicineService.findOne(cab.get(i).getMedicineId());
-				Reminder myReminder = reminderService.getRelation(userId, medId);
+
+				Reminder myReminder = reminderService.getRelation(userId,medId);
 
 				if(myReminder == null){
+
 					myReminder = new Reminder(
 						 medId,
 						 userId,
@@ -137,24 +139,25 @@ public class myAreaController
 						false,
 						false
 					);
+
 					reminderService.save(myReminder);
 				}
-				else{
-					myReminder = reminderService.getRelation(userId,medId);
-				}
+
+				Reminder newReminder = reminderService.getRelation(userId,medId);
+
 				reminderMeds.add(i, new ReminderMeds(
 													med.getName(),
 													med.getPharmaceutical_form(),
 													med.getStrength(),
 													med.getId(),
-													myReminder.getHour1(),
-													myReminder.getHour2(),
-													myReminder.getHour3(),
-													myReminder.getHour4(),
-													myReminder.getEnable1(),
-													myReminder.getEnable2(),
-													myReminder.getEnable3(),
-													myReminder.getEnable4()
+													newReminder.getHour1(),
+													newReminder.getHour2(),
+													newReminder.getHour3(),
+													newReminder.getHour4(),
+													newReminder.getEnable1(),
+													newReminder.getEnable2(),
+													newReminder.getEnable3(),
+													newReminder.getEnable4()
 					)
 				);
 			}
@@ -289,6 +292,7 @@ public class myAreaController
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
 			Long reminderID = reminderService.getRelation(userId, medId).getId();
+			
 			if (reminderID != null) {
 				reminderService.updateReminder(
 					reminderID,
@@ -301,18 +305,6 @@ public class myAreaController
 					enable3,
 					enable4
 				);
-			} else {
-				Reminder myReminder = new Reminder(medId,
-					userId,
-					time1,
-					time2,
-					time3,
-					time4,
-					enable1,
-					enable2,
-					enable3,
-					enable4);
-				reminderService.save(myReminder);
 			}
 		}
 

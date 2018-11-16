@@ -30,7 +30,7 @@ public interface ReminderRepository extends JpaRepository<Reminder, Long> {
 	@Query(value = "SELECT r FROM Reminder r WHERE r.usersId = ?1")
 	Reminder findOneByUserID(Long id);
 
-	@Query("select r.medicineId from Reminder r where r.usersId = ?1")
+	@Query("select r from Reminder r where r.usersId = ?1")
 	List<Reminder> getMedIdByUserId(Long userId);
 
 	@Query("select r from Reminder r where r.usersId = ?1 and r.medicineId = ?2")
