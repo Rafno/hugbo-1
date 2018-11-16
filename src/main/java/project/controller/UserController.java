@@ -151,48 +151,7 @@ public class UserController {
 		model.addAttribute("lykilordVillur", lykilordVillur);
 		return "/Register/register";
 	}
-
-
-	public void getErrors(String notendanafn, String lykilord, String lykilordRepeat, String zipCode) {
-		if(!StringUtils.isNumeric(zipCode)){
-			lykilordVillur.add("Póstnúmer verður að vera númer");
-			allGood = false;
-		}
-		if (!lykilord.equals(lykilordRepeat)) {
-			lykilordVillur.add("Lykilorðin verða að vera eins");
-			allGood = false;
-		}
-		String[] islenskirStafir = {"á", "Á", "ð", "Ð", "é", "É", "í", "Í", "ó", "Ó", "ú", "Ú", "ý", "Ý", "þ", "Þ", "æ", "Æ", "Ö", "ö", " "};
-		for (String item : islenskirStafir) {
-			if (notendanafn.contains(item)) {
-				notendaVillur.add("Bil í orði eða íslenskir sérstafir eru ekki leyfðir í notendanafni");
-				allGood = false;
-				break;
-			}
-		}
-		if (notendanafn.length() == 0) {
-			notendaVillur.add("Notendanafn má ekki vera tómt");
-			allGood = false;
-		}
-		if (lykilord.length() < 6) {
-			lykilordVillur.add("Lengd á lykilorði verður að vera að lágmarki 6 stafir");
-			allGood = false;
-		}
-		for (String item : islenskirStafir) {
-			if (lykilord.contains(item)) {
-				lykilordVillur.add("íslenskir sérstafir eru ekki leyfðir í lykilorði");
-				allGood = false;
-				break;
-			}
-		}
-		for (Boolean item : userService.userNameExists(notendanafn)) {
-			if (item) {
-				notendaVillur.add("Notendanafn er nú þegar til");
-				allGood = false;
-				break;
-			}
-		}
-	}
+	
 	public String sendDoctorHttp(String emailAddress, String docName,String patientName) throws IOException{
 		String url = "https://hugbo1.herokuapp.com/doctorSend";
 		String urlParameters ="to=" + emailAddress + ";SPLITER;" + docName + ";SPLITER;" + patientName;
@@ -249,5 +208,44 @@ public class UserController {
 		// þurfum að generata hash key sem er gert í servernum.
 		return number;
 	}
-	
+	private void getErrors(String notendanafn, String lykilord, String lykilordRepeat, String zipCode) {
+		if(!StringUtils.isNumeric(zipCode)){
+			lykilordVillur.add("Póstnúmer verður að vera númer");
+			allGood = false;
+		}
+		if (!lykilord.equals(lykilordRepeat)) {
+			lykilordVillur.add("Lykilorðin verða að vera eins");
+			allGood = false;
+		}
+		String[] islenskirStafir = {"á", "Á", "ð", "Ð", "é", "É", "í", "Í", "ó", "Ó", "ú", "Ú", "ý", "Ý", "þ", "Þ", "æ", "Æ", "Ö", "ö", " "};
+		for (String item : islenskirStafir) {
+			if (notendanafn.contains(item)) {
+				notendaVillur.add("Bil í orði eða íslenskir sérstafir eru ekki leyfðir í notendanafni");
+				allGood = false;
+				break;
+			}
+		}
+		if (notendanafn.length() == 0) {
+			notendaVillur.add("Notendanafn má ekki vera tómt");
+			allGood = false;
+		}
+		if (lykilord.length() < 6) {
+			lykilordVillur.add("Lengd á lykilorði verður að vera að lágmarki 6 stafir");
+			allGood = false;
+		}
+		for (String item : islenskirStafir) {
+			if (lykilord.contains(item)) {
+				lykilordVillur.add("íslenskir sérstafir eru ekki leyfðir í lykilorði");
+				allGood = false;
+				break;
+			}
+		}
+		for (Boolean item : userService.userNameExists(notendanafn)) {
+			if (item) {
+				notendaVillur.add("Notendanafn er nú þegar til");
+				allGood = false;
+				break;
+			}
+		}
+	}
 }
