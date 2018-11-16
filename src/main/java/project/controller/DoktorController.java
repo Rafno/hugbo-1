@@ -81,10 +81,10 @@ public class DoktorController
 		Users patient = userService.findOne(userId);
 		if(patient.getConfirmed()){
 			Users doctor = this.userService.getUsersByUsername(this.userDetails.getUsername());
-			userController.sendHttp(patient.getEmail(), doctor.getName(), patient.getName(), "/doctorSend");
+			String ID = userController.sendDoctorHttp(patient.getEmail(), doctor.getName(), patient.getName());
 		} else {
-			// TODO senda á html, að notandi er ekki með staðfest email eða með rétt email
-			
+			String error = "Villa kom upp, þessi notandi er ekki með staðfestan tölvupóst.";
+			model.addAttribute("error", error);
 		}
 		
 		return "allUsers/allUsers";
