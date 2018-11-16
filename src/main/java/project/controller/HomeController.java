@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import project.persistence.entities.*;
 import project.service.*;
 
+
+import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,13 +88,15 @@ public class HomeController
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST)
-	public String homePost(Model model, Principal principal, @RequestParam(value = "search", required = false) String leita,
+	public String homePost(Model model, HttpServletRequest request, Principal principal, @RequestParam(value = "search", required = false) String leita,
 						   @RequestParam("nafn") String nafn, @RequestParam("styrkur") String styrkur,
 						   @RequestParam("lyfjaform") String lyfjaform, @RequestParam("utgafudagur") String utgafudagur,
 						   @RequestParam(value = "userId", required=false) Long patientId,
 						   @RequestParam(value = "medId", required=false) Long medId
 	)
 	{
+
+
 		if(leita == null){
 			leita = this.prevLeita;
 		}
@@ -163,7 +167,21 @@ public class HomeController
 		catch(Exception e)
 		{
 
-		} return "searchEngine/searchEngine";
+		}
+		System.out.print("þetta er post og þett er query");
+		String req = request.getQueryString();
+		System.out.println(req);
+
+		//Segjum að við erum á síðu 2
+		int page = 2;
+		int starting = 50;
+		int ending = 100;
+		// það þarf síðan að margfalda það við 50 svi við fáum þá frá 50-10
+		//Hér þarf að setja inn starting point og ending point fyrir foreach.
+		model.addAttribute("starting",starting );
+		model.addAttribute("ending",ending);
+		model.addAttribute("search",leita);
+		return "searchEngine/searchEngine";
 	}
 
 	@RequestMapping(value = "/about", method = RequestMethod.GET)

@@ -47,27 +47,32 @@
                 <th>Markaðsett</th>
                 <th>ýmsar upplýsingar</th>
             </tr>
+                <c:set var = "counter" scope = "session" value = "${0}"/>
                 <c:forEach items="${medicine}" var="obj">
-                    <c:if test="${not empty userLoggedInn}">
-                        <c:if test="${not empty doctor}">
-                            <tr onclick="openPopUpDoctor('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}','${obj.pdfLink}','${obj.id}')">
-                        </c:if>
-                        <c:if test="${empty doctor}">
-                            <tr onclick="openPopUpPatient('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}','${obj.pdfLink}')">
-                        </c:if>
-                    </c:if >
-                    <c:if test="${empty userLoggedInn}">
-                        <tr onclick="openPopUpUnRegistered()">
-                    </c:if >
-                        <td><c:out value="${obj.name}"/></td>
-                        <td><c:out value="${obj.pharmaceutical_form}"/></td>
-                        <td><c:out value="${obj.strength}"/></td>
-                        <td><c:out value="${obj.active_ingredient}"/></td>
-                        <td><c:out value="${obj.legal_status}"/></td>
-                        <td><c:out value="${obj.ma_issued}"/></td>
-                        <td><c:out value="${obj.marketed}"/></td>
-                        <td><c:out value="${obj.other_info}"/></td>
-                    </tr>
+                    <c:if test="${starting <= Integer.parseInt(counter) and ending >= Integer.parseInt(counter) }">
+                        <!-- Hér þarf að skilgreina starting og endastað-->
+                        <c:if test="${not empty userLoggedInn}">
+                            <c:if test="${not empty doctor}">
+                                <tr onclick="openPopUpDoctor('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}','${obj.pdfLink}','${obj.id}')">
+                            </c:if>
+                            <c:if test="${empty doctor}">
+                                <tr onclick="openPopUpPatient('${obj.name}','${obj.strength}','${obj.pharmaceutical_form}','${obj.ma_issued}','${obj.pdfLink}')">
+                            </c:if>
+                        </c:if >
+                        <c:if test="${empty userLoggedInn}">
+                            <tr onclick="openPopUpUnRegistered()">
+                        </c:if >
+                            <td><c:out value="${obj.name}"/></td>
+                            <td><c:out value="${obj.pharmaceutical_form}"/></td>
+                            <td><c:out value="${obj.strength}"/></td>
+                            <td><c:out value="${obj.active_ingredient}"/></td>
+                            <td><c:out value="${obj.legal_status}"/></td>
+                            <td><c:out value="${obj.ma_issued}"/></td>
+                            <td><c:out value="${obj.marketed}"/></td>
+                            <td><c:out value="${obj.other_info}"/></td>
+                        </tr>
+                    </c:if>
+                        <c:set var = "counter" scope = "session" value = "${counter+1}"/>
                 </c:forEach>
         </table>
     </div>
@@ -131,6 +136,16 @@
                 <div> Það er frítt að skrá sig inn og þú gerir það með að smella <a href="register">hér</a></div>
             </div>
         </div>
+    </div>
+    <div class="pagingContainer">
+        <a href="http://localhost:8080?start=${search}?page=${Integer.parseInt(starting)-50}">
+            <button>aftur á bak</button>
+
+        </a>
+        <h4>Síða nr 5</h4>
+        <a href="http://localhost:8080?start=${search}page=${Integer.parseInt(starting)+50}">
+            <button>Áfram</button>
+        </a>
     </div>
 
 

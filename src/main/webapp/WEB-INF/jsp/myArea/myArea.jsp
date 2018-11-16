@@ -182,11 +182,10 @@
 
     }
     function togglerer(name, id,hour1,hour2,hour3,hour4,enable1,enable2,enable3,enable4){
-        
-        var a = hour1.substr(0,2);
+        /*var a = hour1.substr(0,2);
         var b = hour1.substr(3,5);
         console.log(hour1.substr(3,5));
-        
+        */
         document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
         document.getElementById("medicineId").value = id;
         document.getElementById("time1").value = hour1.substr(3,5);
@@ -194,39 +193,50 @@
         document.getElementById("time3").value = hour3.substr(3,5);
         document.getElementById("time4").value = hour4.substr(3,5);
 
-
-        if (enable1){
-            alert("enable1");
+        // Fyrst tíminn
+        if (enable1.length == 7){
             document.getElementById("butt1").value = "Staðfesta";
+            document.getElementById("butt1").style.backgroundColor = "green";
             document.getElementById("buttonFyrst").value = "Staðfesta";
         }
+      
 
         else{
             document.getElementById("butt1").value = "Hætta við";
             document.getElementById("buttonFyrst").value = "Hætta við";
+            document.getElementById("butt1").style.backgroundColor = "red";
         }
-        if (enable2){
+        // annat tíminn
+        if (enable2.length == 7){
             document.getElementById("butt2").value = "Staðfesta";
+            document.getElementById("butt2").style.backgroundColor = "green";
             document.getElementById("buttonSeckond").value = "Staðfesta";
         }
         else{
             document.getElementById("butt2").value = "Hætta við";
+            document.getElementById("butt2").style.backgroundColor = "red";
             document.getElementById("buttonSeckond").value = "Hætta við";
         }
-        if (enable3){
+        //þriðji tíminn
+        if (enable3.length == 7){
             document.getElementById("butt3").value = "Staðfesta";
+            document.getElementById("butt3").style.backgroundColor = "green";
             document.getElementById("buttonThird").value = "Staðfesta";
         }
         else{
             document.getElementById("butt3").value = "Hætta við";
+            document.getElementById("butt3").style.backgroundColor = "red";
             document.getElementById("buttonThird").value = "Hætta við";
         }
-        if (enable4){
+        // fjórði tíminn
+        if (enable4.length == 7){
+            document.getElementById("butt4").style.backgroundColor = "green";
             document.getElementById("butt4").value = "Staðfesta";
             document.getElementById("buttonFourth").value = "Staðfesta";
         }
         else{
             document.getElementById("butt4").value = "Hætta við";
+            document.getElementById("butt4").style.backgroundColor = "red";
             document.getElementById("buttonFourth").value = "Hætta við";
         }
 

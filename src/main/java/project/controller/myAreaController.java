@@ -281,10 +281,10 @@ public class myAreaController
 		// Time 1
 		if(medId != null) {
 			boolean enable1 = false, enable2 = false, enable3 = false, enable4 = false;
-			if (buttonFyrst.equals("Staðfesta")) enable1 = true;
-			if (buttonSeckond.equals("Staðfesta")) enable2 = true;
-			if (buttonThird.equals("Staðfesta")) enable3 = true;
-			if (buttonFourth.equals("Staðfesta")) enable4 = true;
+			if (buttonFyrst.equals("Hætta við")) enable1 = true;
+			if (buttonSeckond.equals("Hætta við")) enable2 = true;
+			if (buttonThird.equals("Hætta við")) enable3 = true;
+			if (buttonFourth.equals("Hætta við")) enable4 = true;
 
 
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
