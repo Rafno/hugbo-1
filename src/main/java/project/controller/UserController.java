@@ -65,6 +65,7 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@RequestParam(value = "error", required = false) String error,
 						@RequestParam(value = "logout", required = false) String logout,
+						@RequestParam(value = "deleteAccount", required = false) String deleteAccount,
 						Model model) {
 		String errorMessage = null;
 		if (error != null) {
@@ -72,6 +73,9 @@ public class UserController {
 		}
 		if (logout != null) {
 			errorMessage = "Þú hefur verið útskráður";
+		}
+		if(deleteAccount !=null){
+			errorMessage = "Aðgangi eytt";
 		}
 		model.addAttribute("errorMsg", errorMessage);
 		// Búum til try catch sem skoðar hvort user er skráður inn

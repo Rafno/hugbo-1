@@ -65,6 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 			.antMatchers("/login").permitAll()
 			.antMatchers("/register").anonymous()
 			.antMatchers("/myHome").hasAnyAuthority("DOCTOR","USER")
+			.antMatchers("/myHome/*").hasAuthority("DOCTOR")
 			.antMatchers("/deletemyuserrightnow").hasAnyAuthority("DOCTOR","USER")
 			.anyRequest().authenticated()
 			.and()
