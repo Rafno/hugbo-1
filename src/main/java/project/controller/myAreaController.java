@@ -249,9 +249,9 @@ public class myAreaController
 	}
 	
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
-	public String myAreasPost(Model model, @RequestParam("pic") MultipartFile file) throws IOException
+	public String myAreasPost(Model model,
+							  @RequestParam("pic") MultipartFile file) throws IOException
 	{
-		
 		// load image to cloudinary
 		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
 		
@@ -280,8 +280,13 @@ public class myAreaController
 								  @RequestParam(value = "time3", required = false) String time3,
 								  @RequestParam(value = "buttonFourth", required = false) String buttonFourth,
 								  @RequestParam(value = "time4", required = false) String time4,
-								  @RequestParam(value = "medicineId", required = false) Long medId)
+								  @RequestParam(value = "medicineId", required = false) Long medId,
+								  @RequestParam(value = "deleteAccount", required = false) String deleteAccount)
 	{
+		if(deleteAccount.equals("Eyða aðgang")){
+			System.out.println("Virkar");
+			userService.delete(userService.getUser(userDetails.getUsername()));
+		}
 		// Time 1
 		if(medId != null) {
 			boolean enable1 = false, enable2 = false, enable3 = false, enable4 = false;
