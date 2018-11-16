@@ -88,7 +88,7 @@
             <div class="modal-content">
                 <div class="popUpHeadReminder">
                     <h2 class="popUpHeadTitle" id = "Doctorutgafudagur"></h2>
-                    <input type="submit" class="close" id="unregisterdClosing" onclick="closing()" value="&times;">
+                    <input type="submit" class="close" id="unregisterdClosing" value="&times;">
                 </div>
                 <div class="amminingaContainer">
                     <div class="aminingaBox">
@@ -129,6 +129,7 @@
     </form>
 </body>
 <script>
+
     function  butts(numb) {
         var responseButton = ""
         var responseBackroundColor = "";
@@ -264,29 +265,7 @@
         var span = document.getElementById("unregisterdClosing");
         span.onclick = function() {
             myModalUnregistered.style.display = "none";
-            postForm();
-            
         }
-    }
-    function postForm(){
-        var form = document.createElement("form");
-        var element1 = document.createElement("input");
-        var element2 = document.createElement("input");
-
-        form.method = "POST";
-
-        element2.value="bb";
-        element2.name="pic";
-        form.appendChild(element1);
-        
-        element1.value="bb";
-        element1.name="time1";
-        form.appendChild(element1);
-
-
-        document.body.appendChild(form);
-
-        form.submit();
     }
 
 </script>

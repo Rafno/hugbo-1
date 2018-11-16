@@ -224,7 +224,6 @@ public class myAreaController
 			}
 			
 			model.addAttribute("reminderMeds", reminderMeds);
-			
 		}
 		// Find role returns the appropriate column name, patients for doctors, doctors for patients.
 		// If this user is a doctor, show all of their patients.
@@ -249,10 +248,20 @@ public class myAreaController
 					String ids = item.getUsersId().toString();
 					
 					// Checks if our hour is valid to Iceland, then sends the email to that our user.
-					if(assertHour(localTime1)) setEmail(item);
-					if(assertHour(localTime2)) setEmail(item);
-					if(assertHour(localTime3)) setEmail(item);
-					if(assertHour(localTime4)) setEmail(item);
+					//Enable is mirrored, if false send email, if true don't send email.
+					// I hate you Helgi.
+					if(item.getEnable1()){
+						if(assertHour(localTime1)) setEmail(item);
+					}
+					if(item.getEnable2()){
+						if(assertHour(localTime2)) setEmail(item);
+					}
+					if(item.getEnable3()){
+						if(assertHour(localTime3)) setEmail(item);
+					}
+					if(item.getEnable4()){
+						if(assertHour(localTime4)) setEmail(item);
+					}
 					
 				}
 			}
