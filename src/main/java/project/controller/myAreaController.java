@@ -73,18 +73,6 @@ public class myAreaController
 		int interval = 600000;  // iterate every sec.
 		Timer timer = new Timer();
 		
-		//    TEST
-		/*
-		String myDateString1 = "17:58:10";
-		String myDateString2 = "22:53:30";
-		String myDateString3 = "22:53:47";
-		String myDateString4 = "22:53:43";
-		*/
-		//this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		/*
-		Long userID = userService.getUsersByUsername(userDetails.getUsername()).getId();
-		reminderService.save(new Reminder(1L, userID , myDateString1, myDateString2, myDateString3, myDateString4, false, false, false, false));
-		*/
 
 		timer.scheduleAtFixedRate(new TimerTask()
 		{
@@ -114,7 +102,6 @@ public class myAreaController
 
 		Long userId = userService.getUser(userDetails.getUsername()).getId();
 		List<Cabinet> cab = cabinetService.getMedsByUser(userId);
-		System.out.println(cab.size());
 		if(cab.size() > 0)
 		{
 			List<Medicine> medicine = new ArrayList<>();
@@ -194,8 +181,8 @@ public class myAreaController
 	
 	/**
 	 * Assert hour accepts a time, makes sure that it is valid and returns true.
-	 * @param time
-	 * @return
+	 * @param time Time value for our timezone.
+	 * @return a boolean value if the time is correct
 	 */
 	private boolean assertHour(LocalTime time){
 		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
@@ -208,7 +195,7 @@ public class myAreaController
 	
 	/**
 	 *	Accepts an item and sets up an email service for that user.
-	 * @param item
+	 * @param item reminder item from entity.
 	 */
 	private void setEmail(Reminder item){
 		try {
@@ -293,21 +280,6 @@ public class myAreaController
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
 			Long reminderID = reminderService.getRelation(userId, medId).getId();
-			System.out.println(reminderID);
-			/*
-			if (reminderID != null) {
-				reminderService.updateReminder(
-					reminderID,
-					time1,
-					time2,
-					time3,
-					time4,
-					enable1,
-					enable2,
-					enable3,
-					enable4
-				);
-			}*/
 		}
 
 		//Redirect

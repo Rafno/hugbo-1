@@ -128,7 +128,6 @@ public class UserController {
 			String img = "<img src='http://res.cloudinary.com/dfhjyjyg1/image/upload/zkitbd9veqxrcdpmhnlj'/>";
 
 			ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
-			System.out.println(OffsetDateTime.now().toEpochSecond());
 			Users newUser = new Users(
 										name,
 										username,
@@ -152,9 +151,64 @@ public class UserController {
 		model.addAttribute("lykilordVillur", lykilordVillur);
 		return "/Register/register";
 	}
+	
+	public String sendDoctorHttp(String emailAddress, String docName,String patientName) throws IOException{
+		String url = "https://hugbo1.herokuapp.com/doctorSend";
+		String urlParameters ="to=" + emailAddress + ";SPLITER;" + docName + ";SPLITER;" + patientName;
+		return sendingHttp(url, urlParameters);
+	}
+	public String sendHttp(String emailAddress, String name, String medicineName, String urlLocation) throws IOException {
+		String url = "";
+		String urlParameters ="";
+		url = "https://hugbo1.herokuapp.com" + urlLocation;
+		if(medicineName.length() > 0){
+			urlParameters = "to=" + emailAddress + ";SPLITER;" + name + ";SPLITER;" + medicineName;
+		} else {
+			urlParameters = "to=" + emailAddress + ";SPLITER;" + name;
+		}
+
+		return sendingHttp(url,urlParameters);
+	}
+	
+	private String sendingHttp(String url,String urlParameters) throws IOException{
+		URL obj = new URL(url);
+		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
+
+		//add reuqest header
+		con.setRequestMethod("POST");
+		con.setRequestProperty("Accept-Language", "IS;q=0.5");
+		
+		byte[] bytes = new byte[10];
+		String finalUrl = new String(bytes, Charset.forName("UTF-8"));
 
 
-	public void getErrors(String notendanafn, String lykilord, String lykilordRepeat, String zipCode) {
+		// Send post request
+		con.setDoOutput(true);
+		DataOutputStream test = new DataOutputStream(con.getOutputStream());
+		OutputStreamWriter wr = new OutputStreamWriter(test, "UTF-8");
+		wr.write(urlParameters);
+		wr.flush();
+		wr.close();
+
+		int responseCode = con.getResponseCode();
+
+		BufferedReader in = new BufferedReader(
+			new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+
+		//print result
+		String number = response.toString().substring(response.toString().lastIndexOf(":") + 1);
+		number = number.substring(0,number.length()-1);
+		// þurfum að generata hash key sem er gert í servernum.
+		return number;
+	}
+	private void getErrors(String notendanafn, String lykilord, String lykilordRepeat, String zipCode) {
 		if(!StringUtils.isNumeric(zipCode)){
 			lykilordVillur.add("Póstnúmer verður að vera númer");
 			allGood = false;
@@ -194,66 +248,4 @@ public class UserController {
 			}
 		}
 	}
-	public String sendDoctorHttp(String emailAddress, String docName,String patientName) throws IOException{
-		String url = "https://hugbo1.herokuapp.com/doctorSend";
-		String urlParameters ="to=" + emailAddress + ";SPLITER;" + docName + ";SPLITER;" + patientName;
-		return sendingHttp(url, urlParameters);
-	}
-	public String sendHttp(String emailAddress, String name, String medicineName, String urlLocation) throws IOException {
-		String url = "";
-		String urlParameters ="";
-		url = "https://hugbo1.herokuapp.com" + urlLocation;
-		if(medicineName.length() > 0){
-			urlParameters = "to=" + emailAddress + ";SPLITER;" + name + ";SPLITER;" + medicineName;
-		} else {
-			urlParameters = "to=" + emailAddress + ";SPLITER;" + name;
-		}
-
-		return sendingHttp(url,urlParameters);
-	}
-	
-	private String sendingHttp(String url,String urlParameters) throws IOException{
-		URL obj = new URL(url);
-		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
-
-		//add reuqest header
-		con.setRequestMethod("POST");
-		con.setRequestProperty("Accept-Language", "IS;q=0.5");
-		
-		byte[] bytes = new byte[10];
-		String finalUrl = new String(bytes, Charset.forName("UTF-8"));
-		System.out.println(urlParameters);
-
-
-		// Send post request
-		con.setDoOutput(true);
-		DataOutputStream test = new DataOutputStream(con.getOutputStream());
-		OutputStreamWriter wr = new OutputStreamWriter(test, "UTF-8");
-		wr.write(urlParameters);
-		wr.flush();
-		wr.close();
-
-		int responseCode = con.getResponseCode();
-		System.out.println("\nSending 'POST' request to URL : " + url);
-		System.out.println("Post parameters : " + urlParameters);
-		System.out.println("Response Code : " + responseCode);
-
-		BufferedReader in = new BufferedReader(
-			new InputStreamReader(con.getInputStream()));
-		String inputLine;
-		StringBuffer response = new StringBuffer();
-
-		while ((inputLine = in.readLine()) != null) {
-			System.out.println(inputLine);
-			response.append(inputLine);
-		}
-		in.close();
-
-		//print result
-		String number = response.toString().substring(response.toString().lastIndexOf(":") + 1);
-		number = number.substring(0,number.length()-1);
-		// þurfum að generata hash key sem er gert í servernum.
-		return number;
-	}
-	
 }
