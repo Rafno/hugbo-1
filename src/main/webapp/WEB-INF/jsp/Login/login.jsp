@@ -3,7 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
-
+<!--  Þetta skjal er með routid '/login' og það er með login kerfið okkar, sýnir villur ef svo er annars success -->
 <head>
     <title>Appótekið</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/login.css"/>"/>

@@ -2,6 +2,7 @@ package project.controller;
 
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -347,7 +348,6 @@ public class myAreaController
 								  @RequestParam(value = "time4", required = false) String time4,
 								  @RequestParam(value = "medicineId", required = false) Long medId)
 	{
-
 		// Time 1
 		if(medId != null) {
 			boolean enable1 = false, enable2 = false, enable3 = false, enable4 = false;
@@ -355,10 +355,21 @@ public class myAreaController
 			if (buttonSeckond.equals("Staðfesta")) enable2 = true;
 			if (buttonThird.equals("Staðfesta")) enable3 = true;
 			if (buttonFourth.equals("Staðfesta")) enable4 = true;
-			
+
+
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
-			Long reminderID = reminderService.getRelation(userId, medId).getId();
+			Long id = reminderService.getRelation(userId, medId).getId();
+			reminderService.updateReminder(	id,
+											time1,
+											time2,
+											time3,
+											time4,
+											enable1,
+											enable2,
+											enable3,
+											enable4
+			);
 		}
 
 		//Redirect

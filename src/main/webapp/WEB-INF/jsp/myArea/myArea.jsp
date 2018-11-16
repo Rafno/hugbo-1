@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
 <jsp:include page="../headNavigation/headNavigation.jsp" />
-
+<!-- ROutid herna er '/myHome' og þetta html skjal er fyrir heimasvæðið þitt bæði sem dr og patient. Hér geturð sett áminingar á þig
+     sme sjúkligur og sem læknir geturðu fylgst með sjúklingunum þínum.-->
 <head>
     <title>Appótekið - Heimasvæði</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/myArea.css"/>"/>
@@ -121,8 +122,10 @@
             </div>
         </Form>
     </div>
+
     <form method="GET" action = "/deletemyuserrightnow" class="deleteAccountButton">
         <input type="submit" class="unSubscribeButton" value="Eyða aðgangi">
+
     </form>
 </body>
 <script>
@@ -192,12 +195,16 @@
     }
     function togglerer(name, id,hour1,hour2,hour3,hour4,enable1,enable2,enable3,enable4){
         
+        var a = hour1.substr(0,2);
+        var b = hour1.substr(3,5);
+        console.log(hour1.substr(3,5));
+        
         document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
         document.getElementById("medicineId").value = id;
-        document.getElementById("time1").value = String(hour1).toString();
-        document.getElementById("time2").value = String(hour2).toString();
-        document.getElementById("time3").value = String(hour3).toString();
-        document.getElementById("time4").value = String(hour4).toString();
+        document.getElementById("time1").value = hour1.substr(3,5);
+        document.getElementById("time2").value = hour2.substr(3,5);
+        document.getElementById("time3").value = hour3.substr(3,5);
+        document.getElementById("time4").value = hour4.substr(3,5);
 
 
         if (enable1){

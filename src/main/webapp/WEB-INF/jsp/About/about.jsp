@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
 <jsp:include page="../headNavigation/headNavigation.jsp" />
-
+<!-- Þessi html síða er fyrir routið '/about'. Hún útskýrir hvernig síðan virkar og um hvað hún er -->
 <head>
     <title>Appótekið</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/about.css"/>"/>
