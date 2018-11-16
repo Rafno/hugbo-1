@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
 <jsp:include page="headNavigation/headNavigation.jsp" />
-
+<!-- error skjal -->
 <head>
     <title>Project Title</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/error.css"/>"/>
@@ -17,6 +17,7 @@
 <body>
 <h1 class="errorHeader">OOPSIE WOOPSIE!!</h1>
 <p class="errorBody">Uwu We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWRD to fix this!</p>
+<p> we sworrrrrryyy</p>
 <div class="errorImage">
     <img src="http://i.imgur.com/kYXmcu3.jpg" alt="code monkey">
 </div>

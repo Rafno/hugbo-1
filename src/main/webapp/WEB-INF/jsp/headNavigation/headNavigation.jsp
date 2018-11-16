@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
-
+<!--- Þetta html skjal er includað á mörgum stöðum. Það eina sem þetta skjal gerrir er að sýna HeadBannerinn. -->
     <head>
         <title>Appótekið</title>
         <link rel="stylesheet" type="text/css" href="<c:url value="/css/headNavigation.css"/>"/>

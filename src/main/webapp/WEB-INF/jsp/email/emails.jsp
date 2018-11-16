@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
 <jsp:include page="../headNavigation/headNavigation.jsp" />
-
+<!-- routið '/netfangstadfest' tekur við query sem er bætt við route með ? og síðan id eftir því
+     þesa Id segir hvort notandi hafi gefið okkur rétt email. -->
 <head>
     <title>Appótekið</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/medicine.css"/>"/>

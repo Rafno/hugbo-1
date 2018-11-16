@@ -2,7 +2,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
-
+<!-- routid herna er '/register'. Þetta html skjal sér um register kerfið og gefur villur ef upp koma villur en annars
+     sendir þér email með netfangi sem þú gafst okkur og þú þarft að vikrja það til þess að geta notað email þjónustuna
+     okkar. -->
 <head>
     <title>Appótekið - nýskráning</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
