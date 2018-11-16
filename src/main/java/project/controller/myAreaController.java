@@ -106,7 +106,6 @@ public class myAreaController
 					if(assertHour(localTime4)) setEmail(item);
 
                 }
-                System.out.println("REEEE");
 			}
 			}, delay, interval);
 
@@ -115,7 +114,6 @@ public class myAreaController
 
 		Long userId = userService.getUser(userDetails.getUsername()).getId();
 		List<Cabinet> cab = cabinetService.getMedsByUser(userId);
-		System.out.println(cab.size());
 		if(cab.size() > 0)
 		{
 			List<Medicine> medicine = new ArrayList<>();
@@ -192,8 +190,8 @@ public class myAreaController
 	
 	/**
 	 * Assert hour accepts a time, makes sure that it is valid and returns true.
-	 * @param time
-	 * @return
+	 * @param time Time value for our timezone.
+	 * @return a boolean value if the time is correct
 	 */
 	private boolean assertHour(LocalTime time){
 		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
@@ -206,7 +204,7 @@ public class myAreaController
 	
 	/**
 	 *	Accepts an item and sets up an email service for that user.
-	 * @param item
+	 * @param item reminder item from entity.
 	 */
 	private void setEmail(Reminder item){
 		try {
@@ -291,7 +289,6 @@ public class myAreaController
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
 			Long reminderID = reminderService.getRelation(userId, medId).getId();
-			System.out.println(reminderID);
 			if (reminderID != null) {
 				reminderService.updateReminder(
 					reminderID,

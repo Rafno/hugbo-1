@@ -128,7 +128,6 @@ public class UserController {
 			String img = "<img src='http://res.cloudinary.com/dfhjyjyg1/image/upload/zkitbd9veqxrcdpmhnlj'/>";
 
 			ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
-			System.out.println(OffsetDateTime.now().toEpochSecond());
 			Users newUser = new Users(
 										name,
 										username,
@@ -222,7 +221,6 @@ public class UserController {
 		
 		byte[] bytes = new byte[10];
 		String finalUrl = new String(bytes, Charset.forName("UTF-8"));
-		System.out.println(urlParameters);
 
 
 		// Send post request
@@ -234,9 +232,6 @@ public class UserController {
 		wr.close();
 
 		int responseCode = con.getResponseCode();
-		System.out.println("\nSending 'POST' request to URL : " + url);
-		System.out.println("Post parameters : " + urlParameters);
-		System.out.println("Response Code : " + responseCode);
 
 		BufferedReader in = new BufferedReader(
 			new InputStreamReader(con.getInputStream()));
@@ -244,7 +239,6 @@ public class UserController {
 		StringBuffer response = new StringBuffer();
 
 		while ((inputLine = in.readLine()) != null) {
-			System.out.println(inputLine);
 			response.append(inputLine);
 		}
 		in.close();
