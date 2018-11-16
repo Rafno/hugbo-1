@@ -65,6 +65,7 @@ public class DoktorController
 	public String doctorPost(Model model,
 							 @RequestParam(value = "Accept", required=false) Long userId) throws IOException
 	{
+		// bæta við tengingu læknir -> sjúklingur
 		if(userId == null){
 			userId = -1L;
 		}

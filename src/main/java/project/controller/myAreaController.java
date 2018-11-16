@@ -100,6 +100,8 @@ public class myAreaController
 		// add medicine to my home table
 		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+		// bæta við reminder á user
+
 		Long userId = userService.getUser(userDetails.getUsername()).getId();
 		List<Cabinet> cab = cabinetService.getMedsByUser(userId);
 		if(cab.size() > 0)
@@ -113,6 +115,7 @@ public class myAreaController
 
 				Reminder myReminder = reminderService.getRelation(userId,medId);
 
+				// ef ekki til bua til
 				if(myReminder == null){
 
 					myReminder = new Reminder(
