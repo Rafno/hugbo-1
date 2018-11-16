@@ -194,6 +194,11 @@ public class UserController {
 			}
 		}
 	}
+	public String sendDoctorHttp(String emailAddress, String docName,String patientName) throws IOException{
+		String url = "https://hugbo1.herokuapp.com/doctorSend";
+		String urlParameters ="to=" + emailAddress + ";SPLITER;" + docName + ";SPLITER;" + patientName;
+		return sendingHttp(url, urlParameters);
+	}
 	public String sendHttp(String emailAddress, String name, String medicineName, String urlLocation) throws IOException {
 		String url = "";
 		String urlParameters ="";
@@ -203,6 +208,7 @@ public class UserController {
 		} else {
 			urlParameters = "to=" + emailAddress + ";SPLITER;" + name;
 		}
+
 		return sendingHttp(url,urlParameters);
 	}
 	

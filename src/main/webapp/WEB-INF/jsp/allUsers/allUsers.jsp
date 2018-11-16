@@ -56,6 +56,7 @@
             </div>
         </Form>
     </div>
+    <p class="allUserserrors">${error}</p>
 <script>
     function addPatient(nafn, id) {
         var modal = document.getElementById('myModal');
