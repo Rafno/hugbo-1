@@ -42,15 +42,9 @@ public class DoktorController
 	private UserDetails userDetails;
 	
 	
-	@Autowired
-	public DoktorController(StringManipulationService stringService)
-	{
-	
-	}
-	
 	// Request mapping is the path that you want to map this method to
-	// In this case, the mapping is the root "/", so when the project
-	// is running and you enter "localhost:8080" into a browser, this
+	// In this case, the mapping is the "/allusers", so when the project
+	// is running and you are signed in as a doctor, enter "localhost:8080/allusers" into a browser, this
 	// method is called
 	@RequestMapping(value = "/allusers", method = RequestMethod.GET)
 	public String allUsers(Model model)

@@ -25,19 +25,19 @@ public class HomeController
 
 	// Instance
 	@Autowired
-	StringManipulationService stringService;
+	private StringManipulationService stringService;
 	@Autowired
-	MedicineService medicineService;
+	private MedicineService medicineService;
 	@Autowired
-	UserService userService;
+	private UserService userService;
 	@Autowired
-	CabinetService cabinetService;
+	private CabinetService cabinetService;
 	@Autowired
-	DoctorPatientsService doctorPatientsService;
+	private DoctorPatientsService doctorPatientsService;
 	@Autowired
-	ReminderService reminderService;
+	private ReminderService reminderService;
 
-	List<Medicine> medicine;
+	private List<Medicine> medicine;
 	// Dependency Injection
 
 	private UserDetails userDetails;
@@ -168,14 +168,10 @@ public class HomeController
 		{
 
 		}
-		System.out.print("þetta er post og þett er query");
-		String req = request.getQueryString();
-		System.out.println(req);
-
 		//Segjum að við erum á síðu 2
 		int page = 2;
-		int starting = 50;
-		int ending = 100;
+		int starting = 0;
+		int ending = 50;
 		// það þarf síðan að margfalda það við 50 svi við fáum þá frá 50-10
 		//Hér þarf að setja inn starting point og ending point fyrir foreach.
 		model.addAttribute("starting",starting );

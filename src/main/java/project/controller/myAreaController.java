@@ -2,7 +2,6 @@ package project.controller;
 
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -16,8 +15,6 @@ import org.springframework.web.servlet.view.RedirectView;
 import project.persistence.entities.*;
 import project.service.*;
 import com.cloudinary.Cloudinary;
-
-import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -41,13 +38,11 @@ public class myAreaController
 	private CabinetService cabinetService;
 	@Autowired
 	private ReminderService reminderService;
-	@Autowired
-	private DoctorPatientsService doctorPatientsService;
+	
 	
 	
 	private UserDetails userDetails;
 	private Cloudinary cloudinary;
-	private StringManipulationService stringManipulationService;
 	private UserController userController = new UserController(userService);
 	
 	private Users myUser;

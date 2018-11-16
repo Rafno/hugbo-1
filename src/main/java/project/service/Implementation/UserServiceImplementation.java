@@ -95,7 +95,7 @@ public class UserServiceImplementation implements UserService{
 	}
 	
 	/**
-	 * Huge mess.
+	 * Huge mess. Absolutely not up to safety standards. NEVER USE FOR PRODUCTION CODE
 	 * Checks if the user exists by looking into database for the unique username,
 	 * then checks if the user with that username matches the encrypted password.
 	 * if correct, send the user data back.
@@ -122,57 +122,119 @@ public class UserServiceImplementation implements UserService{
 		}
 		return possibleUser;
 	}
-
+	
+	/**
+	 * Returns the user with matching username
+	 * @param {String} username
+	 * @return a user
+	 */
 	@Override
 	public Users getUser(String username){
 		return repository.getUser(username);
 	}
-
+	
+	/**
+	 * Returns the user with matching id
+	 * @param {Long} id
+	 * @return a user
+	 */
 	@Override
 	public Users findOne(Long id){
 		return repository.findOne(id);
 	}
-
+	
+	/**
+	 * Returns a list of users who are connected to a doctor
+	 * @param id Id á lækninum
+	 * @return list of users
+	 */
 	@Override
 	public List<Users> findAllPatients(Long id) {
 		
 		return repository.findAllPatients(id);
 	}
 	
+	/**
+	 *
+	 * @param id Finnur alla usera sem eru læknar.
+	 * @return
+	 */
 	@Override
 	public List<Users> findDoctor(Long id){
 		return repository.findDoctor(id);
 	}
 	
+	/**
+	 *
+	 * @return all users
+	 */
 	@Override
 	public List<Users>findAll(){return repository.findAll();}
 	
+	/**
+	 * Adds a patient, used with Doctor/Patients.
+	 * @param user
+	 * @return
+	 */
 	@Override
 	public String addPatient(Users user) {
 		return repository.addPatient(user);
 	}
 	
+	/**
+	 * used to modify a patients profile.
+	 * @param user
+	 * @return
+	 */
 	@Override
 	public String editPatient(Users user) {
 		return repository.editPatient(user);
 	}
 	
+	/**
+	 * I have no idea what this returns.
+	 * This method should not be returning a string.
+	 * @param username
+	 * @return
+	 */
 	@Override
 	public String findByUsername(String username) {
 		
 		return repository.findByUsername(username);
 	}
+	
+	/**
+	 * Returns true if a user with said username exists
+	 * Works due to all usernames in our database being unique.
+	 * @param username
+	 * @return
+	 */
 	@Override
 	public Boolean [] userNameExists(String username){
 		return repository.userNameExists(username);
 	}
-
+	
+	/**
+	 * Updates image for a user, finding them via username
+	 * @param imageId
+	 * @param userName
+	 */
 	public void updateImageId(String imageId, String userName){
 		repository.updateImageId(imageId,userName);
 	}
-
+	
+	/**
+	 * Returns a list of users found connected to a list of ids.
+	 * @param userids
+	 * @return
+	 */
 	public List<Users> getUsersById(List<Long> userids){return repository.getUsersById(userids);	}
-
+	
+	/**
+	 * Returns a user by their username, TODO, this is a duplicate of another repository.
+	 * @param username
+	 * @return
+	 */
 	public Users getUsersByUsername(String username){return repository.getUsersByUsername(username);}
 
 	public List<Users> getPatients(){ return repository.getPatients();}
