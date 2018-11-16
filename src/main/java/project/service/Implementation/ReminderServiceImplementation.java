@@ -25,13 +25,16 @@ public class ReminderServiceImplementation implements ReminderService {
 		return repository.findAll();
 	}
 
+	@Override
 	public List<Reminder> getMedIdByUserId(Long userId){
 		return repository.getMedIdByUserId(userId);
 	}
-
-	public Long getIdOfRelation(Long userId, Long medicineId){
-		return repository.getIdOfRelation(userId,medicineId);
+	@Override
+	public Reminder getRelation(Long userId, Long medicineId){
+		return repository.getRelation(userId,medicineId);
 	}
+
+	@Override
 	public void updateReminder(Long id,
 							   String time1,
 							   String time2,

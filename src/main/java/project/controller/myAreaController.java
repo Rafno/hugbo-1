@@ -118,15 +118,17 @@ public class myAreaController
 		if(cab.size() > 0)
 		{
 			List<Medicine> medicine = new ArrayList<>();
+			List<ReminderMeds> reminderMeds = new ArrayList<>();
 			for(int i = 0; i < cab.size(); i++)
 			{
 				Long medId = cab.get(i).getMedicineId();
-				medicine.add(i, medicineService.findOne(cab.get(i).getMedicineId()));
-				Long reminderID = reminderService.getIdOfRelation(userId, medId);
-				if(reminderID == null){
-					Reminder myReminder = new Reminder(
-						medId,
-						userId,
+				Medicine med = medicineService.findOne(cab.get(i).getMedicineId());
+				Reminder myReminder = reminderService.getRelation(userId, medId);
+
+				if(myReminder == null){
+					myReminder = new Reminder(
+						 medId,
+						 userId,
 						"18:00",
 						"18:00",
 						"18:00",
@@ -134,13 +136,31 @@ public class myAreaController
 						false,
 						false,
 						false,
-						false);
+						false
+					);
 					reminderService.save(myReminder);
 				}
+				else{
+					myReminder = reminderService.getRelation(userId,medId);
+				}
+				reminderMeds.add(i, new ReminderMeds(
+													med.getName(),
+													med.getPharmaceutical_form(),
+													med.getStrength(),
+													med.getId(),
+													myReminder.getHour1(),
+													myReminder.getHour2(),
+													myReminder.getHour3(),
+													myReminder.getHour4(),
+													myReminder.getEnable1(),
+													myReminder.getEnable2(),
+													myReminder.getEnable3(),
+													myReminder.getEnable4()
+					)
+				);
 			}
-			List<Reminder> reminders = reminderService.getMedIdByUserId(userId);
-			model.addAttribute("medicine", medicine);
-			model.addAttribute("reminder", reminders);
+
+			model.addAttribute("reminderMeds", reminderMeds);
 			
 		}
 		// Find role returns the appropriate column name, patients for doctors, doctors for patients.
@@ -267,7 +287,7 @@ public class myAreaController
 			
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
-			Long reminderID = reminderService.getIdOfRelation(userId, medId);
+			Long reminderID = reminderService.getRelation(userId, medId).getId();
 			System.out.println(reminderID);
 			if (reminderID != null) {
 				reminderService.updateReminder(

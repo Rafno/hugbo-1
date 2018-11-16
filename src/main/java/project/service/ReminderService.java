@@ -15,7 +15,7 @@ public interface ReminderService {
 
 	List<Reminder> getMedIdByUserId(Long userId);
 
-	Long getIdOfRelation(Long userId, Long medicineId);
+	Reminder getRelation(Long userId, Long medicineId);
 
 	void updateReminder(Long id,
 						String time1,

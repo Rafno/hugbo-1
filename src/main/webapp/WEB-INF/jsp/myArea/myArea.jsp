@@ -46,15 +46,26 @@
                 </tr>
                 <tr>
 
-                <c:forEach items="${medicine}" var="obj">
-                    <c:forEach items="${reminder}" var="obj2">
-
-                    <c:if test = "${obj.id == obj2.medicine_id }">
-                        <p> hello</p>
-                        </c:if>
-                    </c:forEach>
-                </c:forEach>
+                <c:forEach items="${reminderMeds}" var="obj">
+                    <td><c:out value="${obj.name}"/></td>
+                    <td><c:out value="${obj.pharmaceutical_form}"/></td>
+                    <td><c:out value="${obj.strength}"/></td>
+                    <td>
+                        <input type="button" id="toggler" checked onclick="togglerer(
+                            '   ${obj.name}',
+                            '   ${obj.medicineId}',
+                            '   ${obj.hour1}',
+                            '   ${obj.hour2}',
+                            '   ${obj.hour3}',
+                            '   ${obj.hour4}',
+                            '   ${obj.enable1}',
+                            '   ${obj.enable2}',
+                            '   ${obj.enable3}',
+                            '   ${obj.enable4}'
+                            )" value="Skoða áminingar">
+                    </td>
                 </tr>
+                </c:forEach>
 
             </table>
         </div>
@@ -72,25 +83,25 @@
                     <div class="aminingaBox">
                         <h2 class="reminderHeadTitle">1.Áminning</h2>
                         <input type="time" value="18:00" class="Clock" name="time1" id="time1">
-                        <input type="button" class="confirmReminderButton"  onclick="butts(1)" id="butt1" value="Staðfesta">
+                        <input type="button" class="confirmReminderButton"  onclick="butts(1)" id="butt1">
                         <input type="hidden" name="buttonFyrst" id="buttonFyrst" value=""/>
                     </div>
                     <div class="aminingaBox">
                         <h2 class="reminderHeadTitle">2.Áminning</h2>
                         <input type="time" value="18:00" class="Clock"name="time2" id="time2">
-                        <input type="button" class="confirmReminderButton"   onclick="butts(2)" id="butt2" value="Staðfesta">
+                        <input type="button" class="confirmReminderButton"   onclick="butts(2)" id="butt2">
                         <input type="hidden" name="buttonSeckond" id="buttonSeckond" value=""/>
                     </div>
                     <div class="aminingaBox">
                         <h2 class="reminderHeadTitle">3.Áminning</h2>
                         <input type="time" value="18:00" class="Clock" name="time3" id="time3">
-                        <input type="button" class="confirmReminderButton"  onclick="butts(3)" id="butt3" value="Staðfesta">
+                        <input type="button" class="confirmReminderButton"  onclick="butts(3)" id="butt3">
                         <input type="hidden" name="buttonThird" id="buttonThird" value=""/>
                     </div>
                     <div class="aminingaBox">
                         <h2 class="reminderHeadTitle">4.Áminning</h2>
                         <input type="time" value="18:00" class="Clock" name="time4" id="time4">
-                        <input type="button" class="confirmReminderButton" onclick="butts(4)" id="butt4" value="Staðfesta">
+                        <input type="button" class="confirmReminderButton" onclick="butts(4)" id="butt4">
                         <input type="hidden" name="buttonFourth" id="buttonFourth" value=""/>
                         <input type="hidden" name="medicineId" id="medicineId"/>
                     </div>
@@ -164,12 +175,40 @@
         }
 
     }
-    function togglerer(name, id,hour1,hour2,hour3,hour3,enable1,enable2,enable3,enable4){
+    function togglerer(name, id,hour1,hour2,hour3,hour4,enable1,enable2,enable3,enable4){
 
-        console.log(name,id,hour1,hour2,hour3,hour4,enable1,enable2,enable3,enable4)
+        
         var a = document.getElementById("toggler").value;
         document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
         document.getElementById("medicineId").value = id;
+        document.getElementById("time1").value = hour1;
+        document.getElementById("time2").value = hour2;
+        document.getElementById("time3").value = hour3;
+        document.getElementById("time4").value = hour4;
+        if (enable1){
+            document.getElementById("butt1").value = "Staðfesta";
+        }
+        else{
+            document.getElementById("butt1").value = "Hætta við";
+        }
+        if (enable2){
+            document.getElementById("butt2").value = "Staðfesta";
+        }
+        else{
+            document.getElementById("butt2").value = "Hætta við";
+        }
+        if (enable3){
+            document.getElementById("butt3").value = "Staðfesta";
+        }
+        else{
+            document.getElementById("butt3").value = "Hætta við";
+        }
+        if (enable4){
+            document.getElementById("butt4").value = "Staðfesta";
+        }
+        else{
+            document.getElementById("butt4").value = "Hætta við";
+        }
 
         openNotification()
 

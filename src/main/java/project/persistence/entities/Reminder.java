@@ -112,28 +112,28 @@ public class Reminder {
 		this.hour4 = hour4;
 	}
 
-	private boolean getEnable1(){
+	public boolean getEnable1(){
 		return this.enable1;
 	}
-	private boolean getEnable2(){
+	public boolean getEnable2(){
 		return this.enable2;
 	}
-	private boolean getEnable3(){
+	public boolean getEnable3(){
 		return this.enable3;
 	}
-	private boolean getEnable4(){
+	public boolean getEnable4(){
 		return this.enable4;
 	}
-	private void setEnable1(boolean enable1){
+	public void setEnable1(boolean enable1){
 		this.enable1 = enable1;
 	}
-	private void setEnable2(boolean enable2){
+	public void setEnable2(boolean enable2){
 		this.enable1 = enable2;
 	}
-	private void setEnable3(boolean enable3){
+	public void setEnable3(boolean enable3){
 		this.enable1 = enable3;
 	}
-	private void setEnable4(boolean enable4){
+	public void setEnable4(boolean enable4){
 		this.enable1 = enable4;
 	}
 
