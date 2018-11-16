@@ -12,6 +12,8 @@ import project.persistence.entities.DoctorPatients;
 import project.persistence.entities.Medicine;
 import project.persistence.entities.Users;
 import project.service.*;
+
+import java.io.IOException;
 import java.util.List;
 
 
@@ -31,6 +33,8 @@ public class DoktorController
 	CabinetService cabinetService;
 	@Autowired
 	DoctorPatientsService doctorPatientsService;
+	@Autowired
+	UserController userController;
 	
 	List<Medicine> medicine;
 	// Dependency Injection
@@ -59,7 +63,7 @@ public class DoktorController
 	
 	@RequestMapping(value = "/allusers", method = RequestMethod.POST)
 	public String doctorPost(Model model,
-							 @RequestParam(value = "Accept", required=false) Long userId)
+							 @RequestParam(value = "Accept", required=false) Long userId) throws IOException
 	{
 		if(userId == null){
 			userId = -1L;
@@ -76,7 +80,8 @@ public class DoktorController
 		model.addAttribute("users", allUsers);
 		Users patient = userService.findOne(userId);
 		if(patient.getConfirmed()){
-			// TODO tengja við helgaFAll
+			Users doctor = this.userService.getUsersByUsername(this.userDetails.getUsername());
+			userController.sendHttp(patient.getEmail(), doctor.getName(), patient.getName(), "/doctorSend");
 		} else {
 			// TODO senda á html, að notandi er ekki með staðfest email eða með rétt email
 			

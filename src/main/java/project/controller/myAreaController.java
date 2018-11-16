@@ -106,6 +106,7 @@ public class myAreaController
 					if(assertHour(localTime4)) setEmail(item);
 
                 }
+                System.out.println("REEEE");
 			}
 			}, delay, interval);
 
@@ -172,7 +173,9 @@ public class myAreaController
 	 */
 	private void setEmail(Reminder item){
 		try {
-			userController.sendHttp(myUser.getEmail(), userService.findOne(item.getUsersId()).getName(), false, medicineService.findOne(item.getMedicineId()).getName());
+			userController.sendHttp(myUser.getEmail(),
+				userService.findOne(item.getUsersId()).getName(),
+				medicineService.findOne(item.getMedicineId()).getName(),"/reminder");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
