@@ -49,6 +49,16 @@ public class DoktorController
 	@RequestMapping(value = "/allusers", method = RequestMethod.GET)
 	public String allUsers(Model model)
 	{
+		try
+		{
+			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			String name = userService.getUsersByUsername(userDetails.getUsername()).getName();
+			model.addAttribute("loggedInn", true); model.addAttribute("name", name);
+		}
+		catch(Exception err)
+		{
+		
+		}
 		List<Users> allUsers = userService.getPatients();
 		model.addAttribute("users", allUsers);
 		
@@ -59,6 +69,7 @@ public class DoktorController
 	public String doctorPost(Model model,
 							 @RequestParam(value = "Accept", required=false) Long userId) throws IOException
 	{
+		
 		// bæta við tengingu læknir -> sjúklingur
 		if(userId == null){
 			userId = -1L;
