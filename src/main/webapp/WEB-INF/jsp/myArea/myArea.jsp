@@ -88,7 +88,9 @@
                     </div>
                     <div class="aminingaBox">
                         <h2 class="reminderHeadTitle">2.Áminning</h2>
+
                         <input type="time" class="Clock"name="time2" id="time2">
+
                         <input type="button" class="confirmReminderButton"   onclick="butts(2)" id="butt2">
                         <input type="hidden" name="buttonSeckond" id="buttonSeckond" value=""/>
                     </div>
@@ -176,40 +178,50 @@
 
     }
     function togglerer(name, id,hour1,hour2,hour3,hour4,enable1,enable2,enable3,enable4){
-        
-        alert(hour1)
-        var a = document.getElementById("toggler").value;
+
+
+        console.log(hour1,hour2,hour3,hour4);
+
         document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
         document.getElementById("medicineId").value = id;
-        document.getElementById("time1").value = "18:00";
-        document.getElementById("time2").value = hour2;
-        document.getElementById("time3").value = hour3;
-        document.getElementById("time4").value = hour4;
+        document.getElementById("time1").value = String(hour1);
+        document.getElementById("time2").value = String(hour2);
+        document.getElementById("time3").value = String(hour3);
+        document.getElementById("time4").value = String(hour4);
+
         if (enable1){
             alert("enable1");
             document.getElementById("butt1").value = "Staðfesta";
             document.getElementById("buttonFyrst").value = "Staðfesta";
         }
+
         else{
             document.getElementById("butt1").value = "Hætta við";
+            document.getElementById("buttonFyrst").value = "Hætta við";
         }
         if (enable2){
             document.getElementById("butt2").value = "Staðfesta";
+            document.getElementById("buttonSeckond").value = "Staðfesta";
         }
         else{
             document.getElementById("butt2").value = "Hætta við";
+            document.getElementById("buttonSeckond").value = "Hætta við";
         }
         if (enable3){
             document.getElementById("butt3").value = "Staðfesta";
+            document.getElementById("buttonThird").value = "Staðfesta";
         }
         else{
             document.getElementById("butt3").value = "Hætta við";
+            document.getElementById("buttonThird").value = "Hætta við";
         }
         if (enable4){
             document.getElementById("butt4").value = "Staðfesta";
+            document.getElementById("buttonFourth").value = "Staðfesta";
         }
         else{
             document.getElementById("butt4").value = "Hætta við";
+            document.getElementById("buttonFourth").value = "Hætta við";
         }
 
         openNotification()

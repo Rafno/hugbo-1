@@ -1,4 +1,4 @@
-.headNavigation {
+.headNavigation{
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -8,11 +8,11 @@
     font-size: 1rem;
 }
 
-.itemNavigation {
+.itemNavigation{
     float: left;
 }
 
-.itemNavigation a {
+a.itemNavigation{
     display: block;
     color: white;
     text-align: center;
@@ -20,13 +20,13 @@
     text-decoration: none;
 }
 
-.itemNavigation a:hover {
+.itemNavigation a:hover{
     background-color: #111;
 }
 #login{
     margin-left: 55%;
 }
-#register {
+#register{
 
 }
 #logout{

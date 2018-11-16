@@ -58,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 		
 		http
 			.authorizeRequests()
+			.antMatchers("/allusers").hasAuthority("DOCTOR")
 			.antMatchers("/").permitAll()
 			.antMatchers("/about").permitAll()
 			.antMatchers("/netfangstadfest").permitAll()
