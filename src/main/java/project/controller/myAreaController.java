@@ -273,10 +273,10 @@ public class myAreaController
 								  @RequestParam(value = "medicineId", required = false) Long medId,
 								  @RequestParam(value = "deleteAccount", required = false) String deleteAccount)
 	{
-		if(deleteAccount.equals("Eyða aðgang")){
+		/*if(deleteAccount.equals("Eyða aðgang")){
 			System.out.println("Virkar");
 			userService.delete(userService.getUser(userDetails.getUsername()));
-		}
+		}*/
 		// Time 1
 		if(medId != null) {
 			boolean enable1 = false, enable2 = false, enable3 = false, enable4 = false;

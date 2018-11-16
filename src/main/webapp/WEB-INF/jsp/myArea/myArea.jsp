@@ -112,7 +112,7 @@
     </div>
 
     <form method="post" action = "/myhome" class="deleteAccountButton">
-        <input type="submit" class="unSubscribeButton" value="Eyða aðgang"  name = "deleteAccount" onclick="location.href = '/';">
+        <input type="submit" class="unSubscribeButton" value="Eyða aðgan"  name = "deleteAccount" onclick="location.href = '/';">
     </form>
 </body>
 <script>
@@ -184,19 +184,14 @@
         
         var a = hour1.substr(0,2);
         var b = hour1.substr(3,5);
-        console.log(hour1.substr(0,2));
         console.log(hour1.substr(3,5));
-        console.log(a," þetta er strengurinn");
-        var c = hour1.substr(0,2)+":"+hour1.substr(3,5);
-        var d = c.substr(0,1);
-        console.log(d);
-        console.log(c);
+        
         document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
         document.getElementById("medicineId").value = id;
-        document.getElementById("time1").value = c;
-        document.getElementById("time2").value = String(hour2).toString();
-        document.getElementById("time3").value = String(hour3).toString();
-        document.getElementById("time4").value = String(hour4).toString();
+        document.getElementById("time1").value = hour1.substr(3,5);
+        document.getElementById("time2").value = hour2.substr(3,5);
+        document.getElementById("time3").value = hour3.substr(3,5);
+        document.getElementById("time4").value = hour4.substr(3,5);
 
 
         if (enable1){
