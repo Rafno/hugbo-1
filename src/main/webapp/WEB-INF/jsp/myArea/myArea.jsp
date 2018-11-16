@@ -88,7 +88,9 @@
                     </div>
                     <div class="aminingaBox">
                         <h2 class="reminderHeadTitle">2.Áminning</h2>
-                        <input type="time"  class="Clock"name="time2" id="time2">
+
+                        <input type="time" class="Clock"name="time2" id="time2">
+
                         <input type="button" class="confirmReminderButton"   onclick="butts(2)" id="butt2">
                         <input type="hidden" name="buttonSeckond" id="buttonSeckond" value=""/>
                     </div>
@@ -100,7 +102,7 @@
                     </div>
                     <div class="aminingaBox">
                         <h2 class="reminderHeadTitle">4.Áminning</h2>
-                        <input type="time"  class="Clock" name="time4" id="time4">
+                        <input type="time" class="Clock" name="time4" id="time4">
                         <input type="button" class="confirmReminderButton" onclick="butts(4)" id="butt4">
                         <input type="hidden" name="buttonFourth" id="buttonFourth" value=""/>
                         <input type="hidden" name="medicineId" id="medicineId"/>
@@ -177,6 +179,7 @@
     }
     function togglerer(name, id,hour1,hour2,hour3,hour4,enable1,enable2,enable3,enable4){
 
+
         console.log(hour1,hour2,hour3,hour4);
 
         document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
@@ -185,9 +188,13 @@
         document.getElementById("time2").value = String(hour2);
         document.getElementById("time3").value = String(hour3);
         document.getElementById("time4").value = String(hour4);
+
         if (enable1){
+            alert("enable1");
             document.getElementById("butt1").value = "Staðfesta";
-            document.getElementById("buttonFyrst").value = "Staðfesta";        }
+            document.getElementById("buttonFyrst").value = "Staðfesta";
+        }
+
         else{
             document.getElementById("butt1").value = "Hætta við";
             document.getElementById("buttonFyrst").value = "Hætta við";
