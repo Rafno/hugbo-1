@@ -8,7 +8,6 @@
     <title>Appótekið - Heimasvæði</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/myArea.css"/>"/>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/searchEng.css"/>"/>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/checkBox.css"/>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -62,7 +61,7 @@
                             '   ${obj.enable2}',
                             '   ${obj.enable3}',
                             '   ${obj.enable4}'
-                            )" value="Skoða áminingar">
+                            )" value="Skoða áminningar">
                     </td>
                 </tr>
                 </c:forEach>
@@ -182,16 +181,14 @@
 
     }
     function togglerer(name, id,hour1,hour2,hour3,hour4,enable1,enable2,enable3,enable4){
-
-
-        console.log(hour1,hour2,hour3,hour4);
-
+        
         document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
         document.getElementById("medicineId").value = id;
         document.getElementById("time1").value = String(hour1).toString();
         document.getElementById("time2").value = String(hour2).toString();
         document.getElementById("time3").value = String(hour3).toString();
         document.getElementById("time4").value = String(hour4).toString();
+
 
         if (enable1){
             alert("enable1");
