@@ -29,14 +29,25 @@
                 <table id="lyf" border="1">
                     <tr>
                         <th>${role}</th>
+                        <th>Bæjarfélag</th>
+                        <th>Heimilisfang</th>
+                        <th>Póstnúmer</th>
+                        <th>Heimsvæði</th>
+                        <th>Með gildan tölvupóst</th>
                     </tr>
                     <tr>
                     <c:forEach var="pat" items="${patients}">
                         <td><c:out value="${pat.name}"/></td>
+                        <td><c:out value="${pat.homeTown}"/></td>
+                        <td><c:out value="${pat.homeAddress}"/></td>
+                        <td><c:out value="${pat.zipCode}"/></td>
+                        <td><a href="myHome/${pat.id}">Fara á heimasvæði</a></td>
+                        <td><c:out value="${pat.confirmed}"/></td>
                     </tr>
                 </c:forEach>
                 </table>
             </c:if>
+            <c:if test="${not empty reminderMeds}">
             <table id="lyf" border="1">
                 <tr>
                     <th>Heiti lyfs</th>
@@ -66,7 +77,7 @@
                     </td>
                 </tr>
                 </c:forEach>
-
+                </c:if>
             </table>
         </div>
     </div>
@@ -112,8 +123,9 @@
         </Form>
     </div>
 
-    <form method="post" action = "/myhome" class="deleteAccountButton">
-        <input type="submit" class="unSubscribeButton" value="Eyða aðgan"  name = "deleteAccount" onclick="location.href = '/';">
+    <form method="GET" action = "/deletemyuserrightnow" class="deleteAccountButton">
+        <input type="submit" class="unSubscribeButton" value="Eyða aðgangi">
+
     </form>
 </body>
 <script>

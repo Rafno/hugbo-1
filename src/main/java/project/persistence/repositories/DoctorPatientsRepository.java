@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import project.persistence.entities.DoctorPatients;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * By extending the {@link JpaRepository} we have access to powerful methods.
@@ -23,6 +24,9 @@ import java.util.List;
 public interface DoctorPatientsRepository extends JpaRepository<DoctorPatients, Long> {
 
 	DoctorPatients save(DoctorPatients doctorPatients);
+	
+	DoctorPatients findByDoctorId(Long id);
+	DoctorPatients findByPatientId(Long id);
 
 	void delete(DoctorPatients doctorPatients);
 

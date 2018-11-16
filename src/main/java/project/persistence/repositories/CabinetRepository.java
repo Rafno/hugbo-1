@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import project.persistence.entities.Cabinet;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * By extending the {@link JpaRepository} we have access to powerful methods.
@@ -23,6 +24,8 @@ import java.util.List;
 public interface CabinetRepository extends JpaRepository<Cabinet, Long> {
 
 	Cabinet save(Cabinet cabinet);
+	
+	Cabinet findByUsersId(Long id);
 
 	void delete(Cabinet cabinet);
 

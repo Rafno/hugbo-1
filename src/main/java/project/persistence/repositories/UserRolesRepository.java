@@ -11,4 +11,6 @@ public interface UserRolesRepository extends JpaRepository<User_roles, Long>
 	User_roles save(User_roles user);
 	
 	void delete(User_roles user);
+	
+	User_roles findByUsername(String username);
 }

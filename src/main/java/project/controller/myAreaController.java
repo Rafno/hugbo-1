@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +17,7 @@ import project.persistence.entities.*;
 import project.service.*;
 import com.cloudinary.Cloudinary;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -69,35 +71,15 @@ public class myAreaController
 		// If you change "Index" to something else, be sure you have a .jsp
 		// file that has the same name
 		getUser();
+		String role = userService.getUser(userDetails.getUsername()).getRole();
 		// Interval
 		int delay = 0;   // delay for 5 sec.
 		int interval = 600000;  // iterate every sec.
 		Timer timer = new Timer();
 		
-
-		timer.scheduleAtFixedRate(new TimerTask()
-		{
-			public void run() {
-				//Hér þarf að skoða Db inn.
-				
-				List<Reminder> amining = reminderService.findAll();
-				for (Reminder item : amining) {
-                    LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm"));
-                    LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm"));
-                    LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm"));
-                    LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm"));
-                    String ids = item.getUsersId().toString();
-                    
-                    // Checks if our hour is valid to Iceland, then sends the email to that our user.
-					if(assertHour(localTime1)) setEmail(item);
-					if(assertHour(localTime2)) setEmail(item);
-					if(assertHour(localTime3)) setEmail(item);
-					if(assertHour(localTime4)) setEmail(item);
-
-                }
-			}
-			}, delay, interval);
-
+		
+		Timers(interval, delay, timer);
+		
 		// add medicine to my home table
 		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -153,24 +135,27 @@ public class myAreaController
 					)
 				);
 			}
-
-			model.addAttribute("reminderMeds", reminderMeds);
+			if(myUser.getRole() != "DOCTOR"){
+				model.addAttribute("reminderMeds", reminderMeds);
+			}
 			
 		}
 		// Find role returns the appropriate column name, patients for doctors, doctors for patients.
 		// If this user is a doctor, show all of their patients.
-		model.addAttribute("role",findRole(this.myUser.getRole()));
+		
 		model.addAttribute("image", myUser.getImagePublicId());
 		Long id = this.myUser.getId();
 		model.addAttribute("loggedInn", true);
 		String name = findName(userDetails);
 		
 		model.addAttribute("name", name);
-		addPatientsOrDoctorsById(id, this.myUser.getRole(), model);
-		String role = userService.getUser(userDetails.getUsername()).getRole();
+		
+		
 		if(role.equals("DOCTOR"))
 		{
+			addPatientsById(id, this.myUser.getRole(), model);
 			model.addAttribute("doctorLoggadurInn", true);
+			model.addAttribute("role","Sjúklingar");
 		}else {
 			// Doctor er ekki loggaður inn
 		}
@@ -181,6 +166,102 @@ public class myAreaController
 		// í bobjectid sem er runnað í gegnum þau lyf sem user er að taka.
 
 		return "myArea/myArea";
+	}
+	@RequestMapping(value = "/myHome/{patientId}", method = RequestMethod.GET)
+	public String patientAreas(@PathVariable Long patientId, Model model) throws IOException
+	{
+		Users patient = userService.findOne(patientId);
+		
+		int delay = 0;   // delay for 5 sec.
+		int interval = 600000;  // iterate every sec.
+		Timer timer = new Timer();
+		
+		Timers(interval, delay, timer);
+		// bæta við reminder á user
+		List<Cabinet> cab = cabinetService.getMedsByUser(patient.getId());
+		if(cab.size() > 0)
+		{
+			List<Medicine> medicine = new ArrayList<>();
+			List<ReminderMeds> reminderMeds = new ArrayList<>();
+			for(int i = 0; i < cab.size(); i++)
+			{
+				Long medId = cab.get(i).getMedicineId();
+				Medicine med = medicineService.findOne(cab.get(i).getMedicineId());
+				
+				Reminder myReminder = reminderService.getRelation(patient.getId(),medId);
+				
+				// ef ekki til bua til
+				if(myReminder == null){
+					
+					myReminder = new Reminder(
+						medId,
+						patient.getId(),
+						"18:00",
+						"18:00",
+						"18:00",
+						"18:00",
+						false,
+						false,
+						false,
+						false
+					);
+					
+					reminderService.save(myReminder);
+				}
+				
+				Reminder newReminder = reminderService.getRelation(patient.getId(),medId);
+				
+				reminderMeds.add(i, new ReminderMeds(
+						med.getName(),
+						med.getPharmaceutical_form(),
+						med.getStrength(),
+						med.getId(),
+						newReminder.getHour1(),
+						newReminder.getHour2(),
+						newReminder.getHour3(),
+						newReminder.getHour4(),
+						newReminder.getEnable1(),
+						newReminder.getEnable2(),
+						newReminder.getEnable3(),
+						newReminder.getEnable4()
+					)
+								);
+			}
+			
+			model.addAttribute("reminderMeds", reminderMeds);
+			
+		}
+		// Find role returns the appropriate column name, patients for doctors, doctors for patients.
+		// If this user is a doctor, show all of their patients.
+		model.addAttribute("image", patient.getImagePublicId());
+		
+		return "myArea/myArea";
+	}
+	
+	private void Timers(int interval, int delay, Timer timer)
+	{
+		timer.scheduleAtFixedRate(new TimerTask()
+		{
+			public void run() {
+				//Hér þarf að skoða Db inn.
+				
+				List<Reminder> amining = reminderService.findAll();
+				for (Reminder item : amining) {
+					LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm"));
+					LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm"));
+					LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm"));
+					LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm"));
+					String ids = item.getUsersId().toString();
+					
+					// Checks if our hour is valid to Iceland, then sends the email to that our user.
+					if(assertHour(localTime1)) setEmail(item);
+					if(assertHour(localTime2)) setEmail(item);
+					if(assertHour(localTime3)) setEmail(item);
+					if(assertHour(localTime4)) setEmail(item);
+					
+				}
+			}
+		}, delay, interval);
 	}
 	
 	/**
@@ -215,28 +296,22 @@ public class myAreaController
 		return userService.getUsersByUsername(userDetails.getUsername()).getName();
 	}
 	
-	private void addPatientsOrDoctorsById(Long id, String role, Model model)
+	private void addPatientsById(Long id, String role, Model model)
 	{
 		if(role.matches("DOCTOR"))
 		{
 			model.addAttribute("patients", userService.findAllPatients(id));
 		}
-		else if(role.matches("USER"))
-		{
-			model.addAttribute("patients", userService.findDoctor(id));
-		}
+
 	}
 	
-	private String findRole(String role)
+	private boolean findRole(String role)
 	{
 		if(role.matches("DOCTOR")){
-			role = "Sjúklingar";
+			return true;
 		}
-		else {
-			role = "Læknir";
-		}
+		 else return false;
 		
-		return role;
 	}
 	
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
@@ -271,13 +346,8 @@ public class myAreaController
 								  @RequestParam(value = "time3", required = false) String time3,
 								  @RequestParam(value = "buttonFourth", required = false) String buttonFourth,
 								  @RequestParam(value = "time4", required = false) String time4,
-								  @RequestParam(value = "medicineId", required = false) Long medId,
-								  @RequestParam(value = "deleteAccount", required = false) String deleteAccount)
+								  @RequestParam(value = "medicineId", required = false) Long medId)
 	{
-		/*if(deleteAccount.equals("Eyða aðgang")){
-			System.out.println("Virkar");
-			userService.delete(userService.getUser(userDetails.getUsername()));
-		}*/
 		// Time 1
 		if(medId != null) {
 			boolean enable1 = false, enable2 = false, enable3 = false, enable4 = false;
