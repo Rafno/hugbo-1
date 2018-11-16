@@ -4,7 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
 <jsp:include page="../headNavigation/headNavigation.jsp" />
-
+<!-- routið er '/allusers' þessi síða mun sína alla notendur sem eru sjúklingar og hérna geta læknar assignað á sig
+     nýja sjíklinga -->
 <head>
     <title>Appótekið</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/allUser.css"/>"/>

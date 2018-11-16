@@ -3,7 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
 <jsp:include page="../headNavigation/headNavigation.jsp" />
-
+<!-- ROutid herna er '/myHome' og þetta html skjal er fyrir heimasvæðið þitt bæði sem dr og patient. Hér geturð sett áminingar á þig
+     sme sjúkligur og sem læknir geturðu fylgst með sjúklingunum þínum.-->
 <head>
     <title>Appótekið - Heimasvæði</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/myArea.css"/>"/>
