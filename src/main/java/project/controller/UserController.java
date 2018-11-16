@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 import project.persistence.entities.Users;
 
 import project.service.UserService;
@@ -39,7 +40,10 @@ public class UserController {
 	private static Boolean allGood;
 	
 	private UserDetails userDetails;
-
+	private myAreaController myAreaController;
+	private Users myUser;
+	
+	
 	@Autowired
 	public UserController(UserService userService) {
 		this.userService = userService;
@@ -61,6 +65,7 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(@RequestParam(value = "error", required = false) String error,
 						@RequestParam(value = "logout", required = false) String logout,
+						@RequestParam(value = "deleteAccount", required = false) String deleteAccount,
 						Model model) {
 		String errorMessage = null;
 		if (error != null) {
@@ -68,6 +73,9 @@ public class UserController {
 		}
 		if (logout != null) {
 			errorMessage = "Þú hefur verið útskráður";
+		}
+		if(deleteAccount !=null){
+			errorMessage = "Aðgangi eytt";
 		}
 		model.addAttribute("errorMsg", errorMessage);
 		// Búum til try catch sem skoðar hvort user er skráður inn
@@ -80,7 +88,14 @@ public class UserController {
 
 		return "/Login/login";
 	}
-
+	@RequestMapping(value ="/deletemyuserrightnow", method = RequestMethod.GET)
+	public RedirectView delete(){
+		getUser();
+		userService.delete(myUser);
+		RedirectView redirectView = new RedirectView();
+		redirectView.setUrl("/logout");
+		return redirectView;
+	}
 	// To call this method, enter "localhost:8080/user" into a browser
 	/*TODO Passa að bæjarfélag, póstnúmer og heimilisfang gildin koma aftur ef það kemur upp villa*/
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -247,5 +262,11 @@ public class UserController {
 				break;
 			}
 		}
+	}
+	public void getUser()
+	{
+		
+		this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		this.myUser = userService.getUser(userDetails.getUsername());
 	}
 }

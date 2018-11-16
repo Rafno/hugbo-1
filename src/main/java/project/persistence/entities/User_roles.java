@@ -21,7 +21,6 @@ public class User_roles
 	private String username;
 	private String role;
 	
-	
 	public User_roles(){
 	}
 	public User_roles(String username, String role){
@@ -39,6 +38,7 @@ public class User_roles
 		this.id = id;
 	}
 	
+	@OneToOne(mappedBy = "users")
 	public String getUsername()
 	{
 		return username;

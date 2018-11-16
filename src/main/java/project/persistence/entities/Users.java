@@ -39,6 +39,7 @@ public class Users
 	private boolean enabled;
 	// Notice the empty constructor, because we need to be able to create an empty PostitNote to add
 	// to our model so we can use it with our form
+	
 	public Users(){}
 	public Users(String name,
 				 String username,
@@ -72,7 +73,6 @@ public class Users
 		this.confirmed = confirmed;
 
 	}
-	
 	public Long getId()
 	{
 		return id;
