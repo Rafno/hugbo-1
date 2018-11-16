@@ -12,7 +12,7 @@
     float: left;
 }
 
-a.itemNavigation{
+.itemNavigation a{
     display: block;
     color: white;
     text-align: center;

@@ -110,6 +110,10 @@
             </div>
         </Form>
     </div>
+
+    <form method="post" action = "/myhome" class="deleteAccountButton">
+        <input type="submit" class="unSubscribeButton" value="Eyða aðgang"  name = "deleteAccount" onclick="location.href = '/';">
+    </form>
 </body>
 <script>
     function  butts(numb) {
@@ -180,10 +184,11 @@
         
         document.getElementById("Doctorutgafudagur").innerHTML = "Setja áminningu á "+name;
         document.getElementById("medicineId").value = id;
-        document.getElementById("time1").value = hour1;
-        document.getElementById("time2").value = "18:00";
-        document.getElementById("time3").value = hour3;
-        document.getElementById("time4").value = hour4;
+        document.getElementById("time1").value = String(hour1).toString();
+        document.getElementById("time2").value = String(hour2).toString();
+        document.getElementById("time3").value = String(hour3).toString();
+        document.getElementById("time4").value = String(hour4).toString();
+
 
         if (enable1){
             alert("enable1");

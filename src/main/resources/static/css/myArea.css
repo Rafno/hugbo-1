@@ -70,7 +70,13 @@ img{
     margin-left: 25%;
 }
 
-
+.deleteAccountButton{
+    height: 20%;
+    width: 20%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 
 

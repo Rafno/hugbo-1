@@ -73,18 +73,6 @@ public class myAreaController
 		int interval = 600000;  // iterate every sec.
 		Timer timer = new Timer();
 		
-		//    TEST
-		/*
-		String myDateString1 = "17:58:10";
-		String myDateString2 = "22:53:30";
-		String myDateString3 = "22:53:47";
-		String myDateString4 = "22:53:43";
-		*/
-		//this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		/*
-		Long userID = userService.getUsersByUsername(userDetails.getUsername()).getId();
-		reminderService.save(new Reminder(1L, userID , myDateString1, myDateString2, myDateString3, myDateString4, false, false, false, false));
-		*/
 
 		timer.scheduleAtFixedRate(new TimerTask()
 		{
@@ -112,9 +100,10 @@ public class myAreaController
 		// add medicine to my home table
 		userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+		// bæta við reminder á user
+
 		Long userId = userService.getUser(userDetails.getUsername()).getId();
 		List<Cabinet> cab = cabinetService.getMedsByUser(userId);
-		System.out.println(cab.size());
 		if(cab.size() > 0)
 		{
 			List<Medicine> medicine = new ArrayList<>();
@@ -126,6 +115,7 @@ public class myAreaController
 
 				Reminder myReminder = reminderService.getRelation(userId,medId);
 
+				// ef ekki til bua til
 				if(myReminder == null){
 
 					myReminder = new Reminder(
@@ -194,8 +184,8 @@ public class myAreaController
 	
 	/**
 	 * Assert hour accepts a time, makes sure that it is valid and returns true.
-	 * @param time
-	 * @return
+	 * @param time Time value for our timezone.
+	 * @return a boolean value if the time is correct
 	 */
 	private boolean assertHour(LocalTime time){
 		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
@@ -208,7 +198,7 @@ public class myAreaController
 	
 	/**
 	 *	Accepts an item and sets up an email service for that user.
-	 * @param item
+	 * @param item reminder item from entity.
 	 */
 	private void setEmail(Reminder item){
 		try {
@@ -249,9 +239,9 @@ public class myAreaController
 	}
 	
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
-	public String myAreasPost(Model model, @RequestParam("pic") MultipartFile file) throws IOException
+	public String myAreasPost(Model model,
+							  @RequestParam("pic") MultipartFile file) throws IOException
 	{
-		
 		// load image to cloudinary
 		Map uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
 		
@@ -280,8 +270,13 @@ public class myAreaController
 								  @RequestParam(value = "time3", required = false) String time3,
 								  @RequestParam(value = "buttonFourth", required = false) String buttonFourth,
 								  @RequestParam(value = "time4", required = false) String time4,
-								  @RequestParam(value = "medicineId", required = false) Long medId)
+								  @RequestParam(value = "medicineId", required = false) Long medId,
+								  @RequestParam(value = "deleteAccount", required = false) String deleteAccount)
 	{
+		if(deleteAccount.equals("Eyða aðgang")){
+			System.out.println("Virkar");
+			userService.delete(userService.getUser(userDetails.getUsername()));
+		}
 		// Time 1
 		if(medId != null) {
 			boolean enable1 = false, enable2 = false, enable3 = false, enable4 = false;
@@ -293,21 +288,6 @@ public class myAreaController
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			Long userId = userService.getUser(userDetails.getUsername()).getId();
 			Long reminderID = reminderService.getRelation(userId, medId).getId();
-			System.out.println(reminderID);
-			/*
-			if (reminderID != null) {
-				reminderService.updateReminder(
-					reminderID,
-					time1,
-					time2,
-					time3,
-					time4,
-					enable1,
-					enable2,
-					enable3,
-					enable4
-				);
-			}*/
 		}
 
 		//Redirect
