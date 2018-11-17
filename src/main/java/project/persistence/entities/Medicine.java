@@ -45,22 +45,7 @@ public class Medicine {
     // to our model so we can use it with our form
     public Medicine() {
     }
-	
-    public Medicine(String name, String active_ingredient, String pharmaceutical_form,
-					String strength, String atc_code, String legal_status, String mah,
-					String other_info, String marketed, String ma_issued) {
-		
-		this.name = name;
-		this.active_ingredient = active_ingredient;
-		this.pharmaceutical_form = pharmaceutical_form;
-		this.strength = strength;
-		this.atc_code = atc_code;
-		this.legal_status = legal_status;
-		this.mah = mah;
-		this.other_info = other_info;
-		this.marketed = marketed;
-		this.ma_issued = ma_issued;
-	}
+    
 
 	public String getName() {
 		return name;

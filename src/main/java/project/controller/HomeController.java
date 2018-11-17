@@ -25,19 +25,19 @@ public class HomeController
 
 	// Instance
 	@Autowired
-	StringManipulationService stringService;
+	private StringManipulationService stringService;
 	@Autowired
-	MedicineService medicineService;
+	private MedicineService medicineService;
 	@Autowired
-	UserService userService;
+	private UserService userService;
 	@Autowired
-	CabinetService cabinetService;
+	private CabinetService cabinetService;
 	@Autowired
-	DoctorPatientsService doctorPatientsService;
+	private DoctorPatientsService doctorPatientsService;
 	@Autowired
-	ReminderService reminderService;
+	private ReminderService reminderService;
 
-	List<Medicine> medicine;
+	private List<Medicine> medicine;
 	// Dependency Injection
 
 	private UserDetails userDetails;
@@ -125,7 +125,9 @@ public class HomeController
 				Long medicineId = medicineService.getMedId(s1[1], s2[1], s3[1], s4[1]);
 
 				Long userId = userService.getUser(userDetails.getUsername()).getId();
-				Cabinet cabinet = new Cabinet(medicineId, userId); cabinetService.save(cabinet);
+				if(userService.getUser(userDetails.getUsername()).getRole().matches("USER")){
+					Cabinet cabinet = new Cabinet(medicineId, userId); cabinetService.save(cabinet);
+				}
 			}
 		}
 		// hér þarf að skoða hvort user er loggaður inn því þeira fara á mismunandi pop up glugga

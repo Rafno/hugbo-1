@@ -23,10 +23,6 @@ public class DoctorPatients
 	private Long doctorId;
 	private Long patientId;
 
-	// Notice the empty constructor, because we need to be able to create an empty PostitNote to add
-	// to our model so we can use it with our form
-	public DoctorPatients(int i, int i1){
-	}
 
 	public DoctorPatients(Long doctorId, Long patientId) {
 		this.doctorId = doctorId;

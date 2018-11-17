@@ -40,7 +40,7 @@ public class UserController {
 	private static Boolean allGood;
 	
 	private UserDetails userDetails;
-	private myAreaController myAreaController;
+	
 	private Users myUser;
 	
 	
