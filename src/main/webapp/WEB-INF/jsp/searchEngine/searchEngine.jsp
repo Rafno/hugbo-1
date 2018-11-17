@@ -116,6 +116,7 @@
                             <option value="${obj.id}">  ${obj.name} </option>
                         </c:forEach>
                     </select>
+                    <p>Smelltu til að velja sjúkling</p>
                 </div>
             </div>
             <div class="acceptContainer" method = "post" >
@@ -260,5 +261,8 @@
     #backButton{
         background-color: red;
         color: white;
+    }
+    .optionPannelAddMedToUser{
+        width: 70%;
     }
 </style>
