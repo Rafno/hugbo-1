@@ -97,6 +97,7 @@ public class HomeController
 	{
 
 
+
 		if(leita == null){
 			leita = this.prevLeita;
 		}
@@ -168,19 +169,25 @@ public class HomeController
 		{
 
 		}
-		System.out.print("þetta er post og þett er query");
-		String req = request.getQueryString();
-		System.out.println(req);
+		int starting = 1;
+		int ending = 51;
+		int page = 1;
+		int finalPage =0;
 
-		//Segjum að við erum á síðu 2
-		int page = 2;
-		int starting = 50;
-		int ending = 100;
-		// það þarf síðan að margfalda það við 50 svi við fáum þá frá 50-10
-		//Hér þarf að setja inn starting point og ending point fyrir foreach.
+		try{
+			String req = request.getQueryString();
+			String [] b = req.split("page=");
+			starting = Integer.parseInt(b[1]);
+			ending = Integer.parseInt(b[2]);
+			page = ending/50;
+
+		}catch(Exception e){
+			System.out.println(e);
+		}
+
 		model.addAttribute("starting",starting );
 		model.addAttribute("ending",ending);
-		model.addAttribute("search",leita);
+		model.addAttribute("page",page);
 		return "searchEngine/searchEngine";
 	}
 

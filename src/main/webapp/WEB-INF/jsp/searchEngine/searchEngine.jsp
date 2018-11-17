@@ -16,7 +16,7 @@
     <div class="lowerBanner_container">
         <p class="headerTxt">  Lyfjaskápurinn heima hjá þér</p>
         <div class = "lowerBanner">
-            <Form method="post">
+            <Form method="post" action="/?page=0page=50" >
                 <label>
                     <input type="text" value="${leita}" class="searchTextArea" name="search"/>
                     <input type="hidden" name="nafn" value=""/>
@@ -138,17 +138,42 @@
         </div>
     </div>
     <div class="pagingContainer">
-        <a href="http://localhost:8080?start=${search}?page=${Integer.parseInt(starting)-50}">
-            <button>aftur á bak</button>
-
-        </a>
-        <h4>Síða nr 5</h4>
-        <a href="http://localhost:8080?start=${search}page=${Integer.parseInt(starting)+50}">
-            <button>Áfram</button>
-        </a>
+        <h4> ${integer.parseInt(finalCounter+1)}</h4>
+        <c:if test="${page>= 1}">
+            <Form method="post"  action ="http://localhost:8080?page=${Integer.parseInt(starting)-50}page=${Integer.parseInt(ending)-50}" class="backButton">
+                    <input type="submit" value="Aftur á bak" id ="backButton">
+                    <input type="hidden" name="nafn" value=""/>
+                    <input type="hidden" name ="styrkur" value=""/>
+                    <input type="hidden" name ="lyfjaform"  value=""/>
+                    <input type="hidden" name ="utgafudagur" value=""/>
+                    <param name="search" value="">
+                    <param name="nafn" value="">
+                    <param name="search" value="">
+                    <param name="nafn" value="">
+                    <param name="styrkur" value="">
+                    <param name="lyfjaform" value="">
+                    <param name="utgafudagur" value="">
+            </Form>
+        </c:if>
+        <h4>Síða númer ${Integer.parseInt(page)} </h4>
+        <c:if test="${Integer.parseInt(counter) >= Integer.parseInt(page)}"><h1>Skrifaður eitthvað helvítis mellan þín eða ég fkn geng frá þér helv..... jspfkn skjal</h1></c:if>
+        <Form method="post" action="http://localhost:8080?page=${Integer.parseInt(starting)+50}page=${Integer.parseInt(ending)+50}" class="forwardButton">
+                <input type="submit" value="Áfram" id="forwardButton">
+                <input type="hidden" name="nafn" value=""/>
+                <input type="hidden" name ="styrkur" value=""/>
+                <input type="hidden" name ="lyfjaform"  value=""/>
+                <input type="hidden" name ="utgafudagur" value=""/>
+                <param name="search" value="">
+                <param name="nafn" value="">
+                <param name="search" value="">
+                <param name="nafn" value="">
+                <param name="styrkur" value="">
+                <param name="lyfjaform" value="">
+                <param name="utgafudagur" value="">
+        </Form>
     </div>
 
-
+    <h1>${counter}</h1>
 <script>
     function openPopUpPatient(nafn,styrkur,lyfjaform,utgafudagur,pdfLink){
         var modal = document.getElementById('myModal');
@@ -215,3 +240,27 @@
 </script>
 </body>
 </html>
+<style>
+    .pagingContainer{
+        display: flex;
+        flex-direction: row;
+        font-size: 0.8rem;
+        justify-content: center;
+        margin-top: 1%;
+        margin-bottom: 1%;
+    }
+    .backButton{
+        padding-right: 3%;
+    }
+    .forwardButton{
+        padding-left: 3%;
+    }
+    #forwardButton{
+        background-color: red;
+        color: white;
+    }
+    #backButton{
+        background-color: green;
+        color: white;
+    }
+</style>
