@@ -134,8 +134,9 @@
 .DoctorSelectOptionsContainer{
     flex: 0 1 50%;
 }
-.pagingContainer{
-    display: flex;
-    flex-direction: row;
-    font-size: 1.3rem;
+.forwardButton{
+
+}
+.backButton{
+
 }
