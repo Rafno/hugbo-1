@@ -138,7 +138,6 @@
         </div>
     </div>
     <div class="pagingContainer">
-        <h4> ${integer.parseInt(finalCounter+1)}</h4>
         <c:if test="${page>= 1}">
             <Form method="post"  action ="http://localhost:8080?page=${Integer.parseInt(starting)-50}page=${Integer.parseInt(ending)-50}" class="backButton">
                     <input type="submit" value="Aftur á bak" id ="backButton">
@@ -156,24 +155,23 @@
             </Form>
         </c:if>
         <h4>Síða númer ${Integer.parseInt(page)} </h4>
-        <c:if test="${Integer.parseInt(counter) >= Integer.parseInt(page)}"><h1>Skrifaður eitthvað helvítis mellan þín eða ég fkn geng frá þér helv..... jspfkn skjal</h1></c:if>
-        <Form method="post" action="http://localhost:8080?page=${Integer.parseInt(starting)+50}page=${Integer.parseInt(ending)+50}" class="forwardButton">
-                <input type="submit" value="Áfram" id="forwardButton">
-                <input type="hidden" name="nafn" value=""/>
-                <input type="hidden" name ="styrkur" value=""/>
-                <input type="hidden" name ="lyfjaform"  value=""/>
-                <input type="hidden" name ="utgafudagur" value=""/>
-                <param name="search" value="">
-                <param name="nafn" value="">
-                <param name="search" value="">
-                <param name="nafn" value="">
-                <param name="styrkur" value="">
-                <param name="lyfjaform" value="">
-                <param name="utgafudagur" value="">
-        </Form>
+        <c:if test="${ endPage >= Integer.parseInt(page)}">
+            <Form method="post" action="http://localhost:8080?page=${Integer.parseInt(starting)+50}page=${Integer.parseInt(ending)+50}" class="forwardButton">
+                    <input type="submit" value="Áfram" id="forwardButton">
+                    <input type="hidden" name="nafn" value=""/>
+                    <input type="hidden" name ="styrkur" value=""/>
+                    <input type="hidden" name ="lyfjaform"  value=""/>
+                    <input type="hidden" name ="utgafudagur" value=""/>
+                    <param name="search" value="">
+                    <param name="nafn" value="">
+                    <param name="search" value="">
+                    <param name="nafn" value="">
+                    <param name="styrkur" value="">
+                    <param name="lyfjaform" value="">
+                    <param name="utgafudagur" value="">
+            </Form>
+        </c:if>
     </div>
-
-    <h1>${counter}</h1>
 <script>
     function openPopUpPatient(nafn,styrkur,lyfjaform,utgafudagur,pdfLink){
         var modal = document.getElementById('myModal');
@@ -256,11 +254,11 @@
         padding-left: 3%;
     }
     #forwardButton{
-        background-color: red;
+        background-color: green;
         color: white;
     }
     #backButton{
-        background-color: green;
+        background-color: red;
         color: white;
     }
 </style>
