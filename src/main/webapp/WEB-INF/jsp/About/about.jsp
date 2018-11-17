@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-<h2>Um Verkefnið</h2>
 <div class="aboutUsDiv">
+<h2>Um Verkefnið</h2>
 <p> Verkefni eftir Helga, Hinrik og Rafnar</p>
 <p>Appótekið er lyfja leitarvél skrifuð í Java Spring.<br>
 Vefsíðan notar Java Spring Security til að halda utan um öryggi á innskráningu.<br>
@@ -30,5 +30,4 @@ Vefsíðan notar Java Spring Security til að halda utan um öryggi á innskráningu.<
     <p>Tölvupóstaþjónustan sem við notum var handskrifuð af Helga og er skrifuð í Node.js. Hún keyrir á Heroku og þarf að vera hituð upp fyrir notkun </p>
 </div>
 </body>
-<footer>Class HBV501G, University of Iceland</footer>
 </html>

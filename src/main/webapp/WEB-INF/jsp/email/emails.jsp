@@ -13,8 +13,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-    <h2>Til hamingju</h2>
-    <h4>Netfangið þitt hefur verið staðfest</h4>
-    <footer>Class HBV501G, University of Iceland</footer>
+    <div class="emailContainer">
+        <h2>Til hamingju</h2>
+        <h4>Netfangið þitt hefur verið staðfest</h4>
+    </div>
 </body>
 </html>
+<style>
+    .emailContainer{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+</style>
