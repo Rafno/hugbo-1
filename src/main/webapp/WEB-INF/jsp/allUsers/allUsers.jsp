@@ -47,11 +47,8 @@
             <div class="popUpMainContainer">
                 <input class="popUpTexti" type="text" name="nafn" id = addPatientQuestion value = "nafn" readonly/>
                 <div class="popUpButtonContainer">
-                    <div class="declineContainer">
-                        <button class="popUpDecline" type="submit" name="decline">Nei</button>
-                    </div>
                     <div class="acceptContainer" method = "post" >
-                        <button class="popUpAccept" type="submit" id = getId  name="Accept">Já</button>
+                        <button class="popUpAcceptPatient" type="submit" id = getId  name="Accept">Staðfesta sjúkling</button>
                     </div>
                 </div>
             </div>
@@ -73,4 +70,13 @@
 </script>
 </body>
 </html>
+<style>
+    .popUpAcceptPatient{
+        background-color: green;
+        color: white;
+        display: flex;
+        justify-content: center;
+        margin-left: 140%;
+    }
+</style>
 

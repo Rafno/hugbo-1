@@ -28,7 +28,7 @@ Vefsíðan notar Java Spring Security til að halda utan um öryggi á innskráningu.<
         með söluleyfi á Íslandi. Nokkur lyf á gagnagrunninum okkar hafa hlekk að pdf skjali hjá Sérlyfjaskrá, þar á meðal Sobril, Viagra, Ritalin Uno og Atarax. <br>
         Við gátum ekki sótt hlekkinn fyrir öll lyfin í gagnagrunninum okkar og þess vegna ákváðum við að sýna þess virkni fyrir nokkur sérvalin lyf. <br>
     </p>
-    <p>Póstaþjónustan sem við notum var handskrifuð af Helga og er skrifuð í Node.js. Hún keyrir á Heroku og þarf að vera hituð upp fyrir notkun </p>
+    <p>Póstaþjónustan sem við notum var handskrifuð af Helga Grétar og er skrifuð í Node.js. Hún keyrir á Heroku og þarf að vera hituð upp fyrir notkun </p>
 </div>
 </body>
 </html>

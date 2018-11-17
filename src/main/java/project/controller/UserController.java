@@ -137,7 +137,7 @@ public class UserController {
 
 			String number = sendHttp(emailAddress, name,"", "");
 
-			model.addAttribute("succesfull", "Til hamingju " + name + ". Aðgangurinn þinn hefur verið búinn til, tölvupóstur hefur verið sendur á póstfangið þitt til að staðfesta aðganginn.");
+			model.addAttribute("succesfull", "Til hamingju " + name + ". Aðgangurinn þinn hefur verið búinn til, tölvupóstur hefur  verið sendur á póstfangið þitt til að staðfesta aðganginn.");
 
 			//Cloudinary link
 			String img = "<img src='http://res.cloudinary.com/dfhjyjyg1/image/upload/zkitbd9veqxrcdpmhnlj'/>";
