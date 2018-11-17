@@ -9,9 +9,8 @@
     <title>Appótekið - nýskráning</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="<c:url value="/css/register.css"/>"/>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/css/headNavigation.css"/>"/>
-    <jsp:include page="../headNavigation/headNavigation.jsp" />
 </head>
+    <jsp:include page="../headNavigation/headNavigation.jsp" />
 <body>
 
     <div class="registerHeader">Búa til nýjan notanda</div>
@@ -94,6 +93,7 @@
         </div>
     </form>
 </body>
+</html>
 <script>
     /*setInterval(function(){
         var xhr = new XMLHttpRequest();

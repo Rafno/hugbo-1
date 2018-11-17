@@ -47,7 +47,7 @@
                 <th>Markağsett</th>
                 <th>ımsar upplısingar</th>
             </tr>
-                <c:set var = "counter" scope = "session" value = "${0}"/>
+                <c:set var = "counter" scope = "session" value = "${1}"/>
                 <c:forEach items="${medicine}" var="obj">
                     <c:if test="${starting <= Integer.parseInt(counter) and ending >= Integer.parseInt(counter) }">
                         <!-- Hér şarf ağ skilgreina starting og endastağ-->
@@ -156,7 +156,7 @@
             </Form>
         </c:if>
         <h4>Síğa númer ${Integer.parseInt(page)} </h4>
-        <c:if test="${ endPage >= Integer.parseInt(page)}">
+        <c:if test="${ endPage > Integer.parseInt(page)}">
             <Form method="post" action="http://localhost:8080?page=${Integer.parseInt(starting)+50}page=${Integer.parseInt(ending)+50}" class="forwardButton">
                     <input type="submit" value="Áfram" id="forwardButton">
                     <input type="hidden" name="nafn" value=""/>

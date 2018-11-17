@@ -13,7 +13,7 @@
     <header>
         <ul class="headNavigation">
             <li class="itemNavigation"><a class="active" href="/">Appótek</a></li>
-            <li class="itemNavigation"><a class="active" href="/about">Um vefsíðuna</a></li>
+            <li class="itemNavigation" id="aboutSite"><a class="active" href="/about">Um vefsíðuna</a></li>
             <li class="itemNavigation" id="homeArea">
                 <a href="/myHome"class="active">
                     <img src="./../../../img/house.png" alt="headImage"class="headNavigationPic"/>
@@ -31,7 +31,7 @@
 <c:if test="${empty loggedInn}">
     <ul class="headNavigation">
         <li class="itemNavigation"><a class="active" href="/">Appótek</a></li>
-        <li class="itemNavigation"><a class="active" href="/about">Um vefsíðuna</a></li>
+        <li class="itemNavigation" id="aboutSiter"><a class="active" href="/about">Um vefsíðuna</a></li>
         <li class="itemNavigation">
             <a href="/myHome"class="active">
 
@@ -42,3 +42,22 @@
     </ul>
 </c:if>
 </html>
+<style>
+    #aboutSite{
+        width: 10%;
+    }
+    #aboutSiter{
+        width: 10%;
+    }
+    .itemNavigation a{
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 10px 10px;
+        width: 100%;
+        text-decoration: none;
+    }
+    #logout{
+        margin-left: 55%;
+    }
+</style>
