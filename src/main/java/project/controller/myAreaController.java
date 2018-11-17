@@ -64,17 +64,16 @@ public class myAreaController
 
 					// Checks if our hour is valid to Iceland, then sends the email to that our user.
 					//Enable is mirrored, if false send email, if true don't send email.
-					// I hate you Helgi.
-					if(item.getEnable1()){
+					if(!item.getEnable1()){
 						if(assertHour(localTime1)) setEmail(item);
 					}
-					if(item.getEnable2()){
+					if(!item.getEnable2()){
 						if(assertHour(localTime2)) setEmail(item);
 					}
-					if(item.getEnable3()){
+					if(!item.getEnable3()){
 						if(assertHour(localTime3)) setEmail(item);
 					}
-					if(item.getEnable4()){
+					if(!item.getEnable4()){
 						if(assertHour(localTime4)) setEmail(item);
 					}
 
@@ -358,10 +357,26 @@ public class myAreaController
 		// Time 1
 		if(medId != null) {
 			boolean enable1 = true, enable2 = true, enable3 = true, enable4 = true;
-			if (buttonFyrst.equals("Hætta við")) enable1 = true;
-			if (buttonSeckond.equals("Hætta við")) enable2 = true;
-			if (buttonThird.equals("Hætta við")) enable3 = true;
-			if (buttonFourth.equals("Hætta við")) enable4 = true;
+			if (buttonFyrst.equals("Hætta við")){
+				enable1 = false;
+			}else{
+				enable1 = true;
+			}
+			if (buttonSeckond.equals("Hætta við")){
+				enable2 = false;
+			}else{
+				enable2 = true;
+			}
+			if (buttonThird.equals("Hætta við")){
+				enable3 = false;
+			}else{
+				enable3 = true;
+			}
+			if (buttonFourth.equals("Hætta við")){
+				enable4 = false;
+			}else{
+				enable4 = true;
+			}
 
 
 			this.userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -384,6 +399,7 @@ public class myAreaController
 		redirectView.setUrl("/myHome");
 		return redirectView;
 	}
+
 	@RequestMapping(value = "/myhome/{patientId}", method = RequestMethod.POST)
 	public RedirectView otherAreaPut(@PathVariable Long patientId, Model model,
 								  @RequestParam(value = "time1", required = false) String time1,
@@ -403,10 +419,26 @@ public class myAreaController
 
 		if(medId != null) {
 			boolean enable1 = true, enable2 = true, enable3 = true, enable4 = true;
-			if (buttonFyrst.equals("Hætta við")) enable1 = true;
-			if (buttonSeckond.equals("Hætta við")) enable2 = true;
-			if (buttonThird.equals("Hætta við")) enable3 = true;
-			if (buttonFourth.equals("Hætta við")) enable4 = true;
+			if (buttonFyrst.equals("Hætta við")){
+				enable1 = false;
+			}else{
+				enable1 = true;
+			}
+			if (buttonSeckond.equals("Hætta við")){
+				enable2 = false;
+			}else{
+				enable2 = true;
+			}
+			if (buttonThird.equals("Hætta við")){
+				enable3 = false;
+			}else{
+				enable3 = true;
+			}
+			if (buttonFourth.equals("Hætta við")){
+				enable4 = false;
+			}else{
+				enable4 = true;
+			}
 
 
 
@@ -428,6 +460,7 @@ public class myAreaController
 		redirectView.setUrl("/myHome");
 		return redirectView;
 	}
+
 	public void getUser()
 	{
 		
