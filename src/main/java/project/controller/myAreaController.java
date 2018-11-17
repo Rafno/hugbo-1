@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
+import project.persistence.POJO.ReminderMeds;
 import project.persistence.entities.*;
 import project.service.*;
 import com.cloudinary.Cloudinary;
@@ -354,7 +355,7 @@ public class myAreaController
 	{
 		// Time 1
 		if(medId != null) {
-			boolean enable1 = false, enable2 = false, enable3 = false, enable4 = false;
+			boolean enable1 = true, enable2 = true, enable3 = true, enable4 = true;
 			if (buttonFyrst.equals("Hætta við")) enable1 = true;
 			if (buttonSeckond.equals("Hætta við")) enable2 = true;
 			if (buttonThird.equals("Hætta við")) enable3 = true;

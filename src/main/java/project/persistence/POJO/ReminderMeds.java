@@ -1,5 +1,5 @@
-package project.persistence.entities;
-
+package project.persistence.POJO;
+//Plain Old Java Object
 public class ReminderMeds {
 
 	private String name;
