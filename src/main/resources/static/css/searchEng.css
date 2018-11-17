@@ -76,19 +76,17 @@
 /* Modal Content */
 .modal-content{
     background-color: #fefefe;
-    margin: auto;
     border: 1px solid #888;
-    width: 50%;
-    margin-top: 10%;
+    width: 75%;
+    margin: 10% auto auto;
 }
 
 /* The Close Button */
 .close{
-    float: right;
     font-size: 28px;
     font-weight: bold;
     position: absolute;
-    right: 25.4%;
+    left: 85%;
     color: #dddd;
 }
 
@@ -139,4 +137,7 @@
 }
 .backButton{
 
+}
+a{
+    margin-left: 5%;
 }
