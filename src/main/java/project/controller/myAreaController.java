@@ -47,7 +47,92 @@ public class myAreaController
 	private UserController userController = new UserController(userService);
 	
 	private Users myUser;
-	
+	private void Timers(int interval, int delay, Timer timer)
+	{
+		timer.scheduleAtFixedRate(new TimerTask()
+		{
+			public void run() {
+				//Hér þarf að skoða Db inn.
+
+				List<Reminder> amining = reminderService.findAll();
+				for (Reminder item : amining) {
+					LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm"));
+					LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm"));
+					LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm"));
+					LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm"));
+					String ids = item.getUsersId().toString();
+
+					// Checks if our hour is valid to Iceland, then sends the email to that our user.
+					//Enable is mirrored, if false send email, if true don't send email.
+					// I hate you Helgi.
+					if(item.getEnable1()){
+						if(assertHour(localTime1)) setEmail(item);
+					}
+					if(item.getEnable2()){
+						if(assertHour(localTime2)) setEmail(item);
+					}
+					if(item.getEnable3()){
+						if(assertHour(localTime3)) setEmail(item);
+					}
+					if(item.getEnable4()){
+						if(assertHour(localTime4)) setEmail(item);
+					}
+
+				}
+			}
+		}, delay, interval);
+	}
+
+	/**
+	 * Assert hour accepts a time, makes sure that it is valid and returns true.
+	 * @param time Time value for our timezone.
+	 * @return a boolean value if the time is correct
+	 */
+	private boolean assertHour(LocalTime time){
+		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
+		LocalTime current_time = zdt.toLocalTime();
+		if (time.getHour() == current_time.getHour() && Math.abs(time.getMinute() - current_time.getMinute()) < 10) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 *	Accepts an item and sets up an email service for that user.
+	 * @param item reminder item from entity.
+	 */
+	private void setEmail(Reminder item){
+		try {
+			userController.sendHttp(myUser.getEmail(),
+				userService.findOne(item.getUsersId()).getName(),
+				medicineService.findOne(item.getMedicineId()).getName(),"/reminder");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	private String findName(UserDetails userDetails)
+	{
+		return userService.getUsersByUsername(userDetails.getUsername()).getName();
+	}
+
+	private void addPatientsById(Long id, String role, Model model)
+	{
+		if(role.matches("DOCTOR"))
+		{
+			model.addAttribute("patients", userService.findAllPatients(id));
+		}
+
+	}
+
+	private boolean findRole(String role)
+	{
+		if(role.matches("DOCTOR")){
+			return true;
+		}
+		else return false;
+
+	}
+
 	@Autowired
 	public myAreaController(UserService userService)
 	{
@@ -167,7 +252,9 @@ public class myAreaController
 	public String patientAreas(@PathVariable Long patientId, Model model) throws IOException
 	{
 		Users patient = userService.findOne(patientId);
-		
+		model.addAttribute("patientId",patient.getId());
+		model.addAttribute("doctorLoggadurInn", true);
+		model.addAttribute("loggedInn", true);
 		int delay = 0;   // delay for 5 sec.
 		int interval = 600000;  // iterate every sec.
 		Timer timer = new Timer();
@@ -232,92 +319,7 @@ public class myAreaController
 		
 		return "myArea/myArea";
 	}
-	
-	private void Timers(int interval, int delay, Timer timer)
-	{
-		timer.scheduleAtFixedRate(new TimerTask()
-		{
-			public void run() {
-				//Hér þarf að skoða Db inn.
-				
-				List<Reminder> amining = reminderService.findAll();
-				for (Reminder item : amining) {
-					LocalTime localTime1 = LocalTime.parse(item.getHour1(), DateTimeFormatter.ofPattern("HH:mm"));
-					LocalTime localTime2 = LocalTime.parse(item.getHour2(), DateTimeFormatter.ofPattern("HH:mm"));
-					LocalTime localTime3 = LocalTime.parse(item.getHour3(), DateTimeFormatter.ofPattern("HH:mm"));
-					LocalTime localTime4 = LocalTime.parse(item.getHour4(), DateTimeFormatter.ofPattern("HH:mm"));
-					String ids = item.getUsersId().toString();
-					
-					// Checks if our hour is valid to Iceland, then sends the email to that our user.
-					//Enable is mirrored, if false send email, if true don't send email.
-					// I hate you Helgi.
-					if(item.getEnable1()){
-						if(assertHour(localTime1)) setEmail(item);
-					}
-					if(item.getEnable2()){
-						if(assertHour(localTime2)) setEmail(item);
-					}
-					if(item.getEnable3()){
-						if(assertHour(localTime3)) setEmail(item);
-					}
-					if(item.getEnable4()){
-						if(assertHour(localTime4)) setEmail(item);
-					}
-					
-				}
-			}
-		}, delay, interval);
-	}
-	
-	/**
-	 * Assert hour accepts a time, makes sure that it is valid and returns true.
-	 * @param time Time value for our timezone.
-	 * @return a boolean value if the time is correct
-	 */
-	private boolean assertHour(LocalTime time){
-		ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("Atlantic/Reykjavik"));
-		LocalTime current_time = zdt.toLocalTime();
-		if (time.getHour() == current_time.getHour() && Math.abs(time.getMinute() - current_time.getMinute()) < 10) {
-			return true;
-		}
-		return false;
-	}
-	
-	/**
-	 *	Accepts an item and sets up an email service for that user.
-	 * @param item reminder item from entity.
-	 */
-	private void setEmail(Reminder item){
-		try {
-			userController.sendHttp(myUser.getEmail(),
-				userService.findOne(item.getUsersId()).getName(),
-				medicineService.findOne(item.getMedicineId()).getName(),"/reminder");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	private String findName(UserDetails userDetails)
-	{
-		return userService.getUsersByUsername(userDetails.getUsername()).getName();
-	}
-	
-	private void addPatientsById(Long id, String role, Model model)
-	{
-		if(role.matches("DOCTOR"))
-		{
-			model.addAttribute("patients", userService.findAllPatients(id));
-		}
 
-	}
-	
-	private boolean findRole(String role)
-	{
-		if(role.matches("DOCTOR")){
-			return true;
-		}
-		 else return false;
-		
-	}
 	
 	@RequestMapping(value = "/myHome", method = RequestMethod.POST)
 	public String myAreasPost(Model model,
@@ -382,7 +384,50 @@ public class myAreaController
 		redirectView.setUrl("/myHome");
 		return redirectView;
 	}
-	
+	@RequestMapping(value = "/myhome/{patientId}", method = RequestMethod.POST)
+	public RedirectView otherAreaPut(@PathVariable Long patientId, Model model,
+								  @RequestParam(value = "time1", required = false) String time1,
+								  @RequestParam(value = "buttonFyrst", required = false) String buttonFyrst,
+								  @RequestParam(value = "buttonSeckond", required = false) String buttonSeckond,
+								  @RequestParam(value = "time2", required = false) String time2,
+								  @RequestParam(value = "buttonThird", required = false) String buttonThird,
+								  @RequestParam(value = "time3", required = false) String time3,
+								  @RequestParam(value = "buttonFourth", required = false) String buttonFourth,
+								  @RequestParam(value = "time4", required = false) String time4,
+								  @RequestParam(value = "medicineId", required = false) Long medId)
+	{
+		Users patient = userService.findOne(patientId);
+		model.addAttribute("doctorLoggadurInn", true);
+		model.addAttribute("loggedInn", true);
+		// Time 1
+
+		if(medId != null) {
+			boolean enable1 = true, enable2 = true, enable3 = true, enable4 = true;
+			if (buttonFyrst.equals("Hætta við")) enable1 = true;
+			if (buttonSeckond.equals("Hætta við")) enable2 = true;
+			if (buttonThird.equals("Hætta við")) enable3 = true;
+			if (buttonFourth.equals("Hætta við")) enable4 = true;
+
+
+
+			Long id = reminderService.getRelation(patient.getId(), medId).getId();
+			reminderService.updateReminder(	id,
+				time1,
+				time2,
+				time3,
+				time4,
+				enable1,
+				enable2,
+				enable3,
+				enable4
+			);
+		}
+
+		//Redirect
+		RedirectView redirectView = new RedirectView();
+		redirectView.setUrl("/myHome");
+		return redirectView;
+	}
 	public void getUser()
 	{
 		

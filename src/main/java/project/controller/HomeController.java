@@ -212,7 +212,13 @@ public class HomeController
 		{
 
 		}
-		
+		String role = userService.getUser(userDetails.getUsername()).getRole();
+		if(role.equals("DOCTOR"))
+		{
+			model.addAttribute("doctorLoggadurInn", true);
+		}else {
+			// Doctor er ekki loggaður inn
+		}
 		
 		return "About/about";
 	}

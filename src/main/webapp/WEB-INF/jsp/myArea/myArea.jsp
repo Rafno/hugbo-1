@@ -84,7 +84,12 @@
     <!-- Pop up kassinn fyrir notification -->
     <div id="myModalUnregistered" class="modal">
         <!-- Þetta er glugginn sem memur ofan á gráa gluggan-->
-        <Form method="POST" action="/myhome" class="reminderForm">
+        <c:if test="${not empty patientId}">
+            <Form method="POST" action="/myhome/${patientId}" class="reminderForm">
+        </c:if>
+        <c:if test="${empty patientId}">
+            <Form method="POST" action="/myhome" class="reminderForm">
+        </c:if>
             <div class="modal-content">
                 <div class="popUpHeadReminder">
                     <input type="submit" class="close" id="unregisterdClosing" value="&times;">
@@ -315,5 +320,19 @@
     .reminderHeadTitle {
         margin-left: 10%;
         font-weight: bold;
+    }
+    .myHomeHeader{
+        display: flex;
+        justify-content: center;
+        font-size: 2rem;
+    }
+    .unSubscribeButton{
+        background-color: red;
+        color: white;
+        font-size: 1.4rem;
+        border-radius: 9px;
+    }
+    .myAreaTable{
+        margin-left: -6%;
     }
 </style>
