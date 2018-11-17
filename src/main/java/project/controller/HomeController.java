@@ -107,7 +107,6 @@ public class HomeController
 		medicine = medicineService.findPlaceContainingKeywordAnywhere(stringService.convertStringToLowerCase(leita));
 		model.addAttribute("leita", leita); model.addAttribute("medicine", medicine);
 
-
 		if(principal != null)
 		{
 			// Find patients for Doctor
@@ -174,6 +173,7 @@ public class HomeController
 		int starting = 1;
 		int ending = 51;
 		int page = 1;
+		int endPage = 2;
 		int finalPage =0;
 
 		try{
@@ -182,14 +182,19 @@ public class HomeController
 			starting = Integer.parseInt(b[1]);
 			ending = Integer.parseInt(b[2]);
 			page = ending/50;
+			Double temp = (double)medicine.size()/50;
+			Double temp2 = temp+1.0;
+			endPage = temp2.intValue();
 
 		}catch(Exception e){
 			System.out.println(e);
 		}
+		System.out.println(medicine.size());
 
 		model.addAttribute("starting",starting );
 		model.addAttribute("ending",ending);
 		model.addAttribute("page",page);
+		model.addAttribute("endPage", endPage);
 		return "searchEngine/searchEngine";
 	}
 
