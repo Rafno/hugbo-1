@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
+import project.persistence.POJO.ReminderMeds;
 import project.persistence.entities.*;
 import project.service.*;
 import com.cloudinary.Cloudinary;
@@ -224,7 +225,6 @@ public class myAreaController
 			}
 			
 			model.addAttribute("reminderMeds", reminderMeds);
-			
 		}
 		// Find role returns the appropriate column name, patients for doctors, doctors for patients.
 		// If this user is a doctor, show all of their patients.
@@ -249,10 +249,20 @@ public class myAreaController
 					String ids = item.getUsersId().toString();
 					
 					// Checks if our hour is valid to Iceland, then sends the email to that our user.
-					if(assertHour(localTime1)) setEmail(item);
-					if(assertHour(localTime2)) setEmail(item);
-					if(assertHour(localTime3)) setEmail(item);
-					if(assertHour(localTime4)) setEmail(item);
+					//Enable is mirrored, if false send email, if true don't send email.
+					// I hate you Helgi.
+					if(item.getEnable1()){
+						if(assertHour(localTime1)) setEmail(item);
+					}
+					if(item.getEnable2()){
+						if(assertHour(localTime2)) setEmail(item);
+					}
+					if(item.getEnable3()){
+						if(assertHour(localTime3)) setEmail(item);
+					}
+					if(item.getEnable4()){
+						if(assertHour(localTime4)) setEmail(item);
+					}
 					
 				}
 			}
@@ -345,7 +355,7 @@ public class myAreaController
 	{
 		// Time 1
 		if(medId != null) {
-			boolean enable1 = false, enable2 = false, enable3 = false, enable4 = false;
+			boolean enable1 = true, enable2 = true, enable3 = true, enable4 = true;
 			if (buttonFyrst.equals("Hætta við")) enable1 = true;
 			if (buttonSeckond.equals("Hætta við")) enable2 = true;
 			if (buttonThird.equals("Hætta við")) enable3 = true;
