@@ -87,8 +87,8 @@
         <Form method="POST" action="/myhome" class="reminderForm">
             <div class="modal-content">
                 <div class="popUpHeadReminder">
-                    <h2 class="popUpHeadTitle" id = "Doctorutgafudagur"></h2>
                     <input type="submit" class="close" id="unregisterdClosing" value="&times;">
+                    <h2 class="popUpHeadTitle" id = "Doctorutgafudagur"></h2>
                 </div>
                 <div class="amminingaContainer">
                     <div class="aminingaBox">

@@ -81,8 +81,8 @@
         <!-- Þetta er glugginn sem kemur ofan á gráa gluggan-->
         <Form class="modal-content" method="post">
             <div class="popUpHead">
-                <h2 class="popUpHeadTitle">Bæta lyf í lyfjaskáp</h2>
                 <div class="close" id="patientClose">&times;</div>
+                <h2 class="popUpHeadTitle">Bæta lyf í lyfjaskáp</h2>
             </div>
             <div class="popUpTextContainer">
                 <input class="popUpTexti" type="text" name="nafn" id="nafn" value = "nafn" readonly/>
@@ -108,7 +108,7 @@
                     <input class="popUpTexti"type="text" name="styrkur" id="Doctorstyrkur" readonly/>
                     <input class="popUpTexti"type="text" name="lyfjaform" id="Doctorlyfjaform" readonly/>
                     <input class="popUpTexti"type="text" name="utgafudagur" id="Doctorutgafudagur" readonly/>
-                    <a class="popUpTexti" id="pdfLink" name="pdfLink"></a>
+                    <a class="popUpTexti" id="pdfLinks" name="pdfLink"></a>
                 </div>
                 <div class="DoctorSelectOptionsContainer">
                     <select class="optionPannelAddMedToUser" onChange="myFunction(this.options[this.selectedIndex].value)" name = "userId">
@@ -204,8 +204,8 @@
         var e = document.getElementById('Doctorutgafudagur').value = "útgáfudagur: "+utgafudagur;
         var g = document.getElementById('getMed').value = medId;
         if(pdfLink){
-            document.getElementById('pdfLink').text = "Sérlyfjaskrá";
-            document.getElementById('pdfLink').href = pdfLink;
+            document.getElementById('pdfLinks').text = "Sérlyfjaskrá";
+            document.getElementById('pdfLinks').href = pdfLink;
         }
         // Ná í span elementið sem lokar modelinu
         modal.style.display = "block";
