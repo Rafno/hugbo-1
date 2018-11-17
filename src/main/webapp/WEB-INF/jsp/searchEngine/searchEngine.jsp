@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1" %>
 <!-- þetta skjal er post í leitarvél hér assignaru lyf á þig ef þú ert sjúklingur og ef þú ert dr þá geturðu sett lyf á sjúklinginn.   -->
-<jsp:include page="../headNavigation/headNavigation.jsp" />
 <head>
     <title>Project Title</title>
     <link rel="stylesheet" type="text/css" href="<c:url value="../css/searchEng.css"/>"/>
@@ -12,6 +11,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
+<jsp:include page="../headNavigation/headNavigation.jsp" />
 <body>
     <div class="lowerBanner_container">
         <p class="headerTxt">  Lyfjaskápurinn heima hjá þér</p>
@@ -139,7 +139,7 @@
         </div>
     </div>
     <div class="pagingContainer">
-        <c:if test="${page>= 1}">
+        <c:if test="${page> 1}">
             <Form method="post"  action ="http://localhost:8080?page=${Integer.parseInt(starting)-50}page=${Integer.parseInt(ending)-50}" class="backButton">
                     <input type="submit" value="Aftur á bak" id ="backButton">
                     <input type="hidden" name="nafn" value=""/>
