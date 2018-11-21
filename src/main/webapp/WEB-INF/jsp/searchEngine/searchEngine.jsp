@@ -140,7 +140,7 @@
     </div>
     <div class="pagingContainer">
         <c:if test="${page> 1}">
-            <Form method="post"  action ="http://localhost:8080?page=${Integer.parseInt(starting)-50}page=${Integer.parseInt(ending)-50}" class="backButton">
+            <Form method="post"  action ="https://hugbo.herokuapp.com?page=${Integer.parseInt(starting)-50}page=${Integer.parseInt(ending)-50}" class="backButton">
                     <input type="submit" value="Aftur á bak" id ="backButton">
                     <input type="hidden" name="nafn" value=""/>
                     <input type="hidden" name ="styrkur" value=""/>
@@ -157,7 +157,7 @@
         </c:if>
         <h4>Síğa númer ${Integer.parseInt(page)} </h4>
         <c:if test="${ endPage > Integer.parseInt(page)}">
-            <Form method="post" action="http://localhost:8080?page=${Integer.parseInt(starting)+50}page=${Integer.parseInt(ending)+50}" class="forwardButton">
+            <Form method="post" action="https://hugbo.herokuapp.com?page=${Integer.parseInt(starting)+50}page=${Integer.parseInt(ending)+50}" class="forwardButton">
                     <input type="submit" value="Áfram" id="forwardButton">
                     <input type="hidden" name="nafn" value=""/>
                     <input type="hidden" name ="styrkur" value=""/>
